@@ -190,6 +190,34 @@
 </li>
 {{- end}}
 
+{{/* Plat d'un repas dans la vue de la semaine ; paramètres : E (entrée
+   de menu), Meal, Back. */}}
+{{define "dish"}}
+{{- $e := .E}}
+<div class="dish{{if $e.Locked}} is-locked{{end}}{{if eq $e.Status "cuisine"}} is-cooked{{end}}" data-entry="{{$e.ID}}">
+  <div class="dish-head">
+    <span class="dish-role">{{$e.Role.Label}}</span>
+    {{- if $e.RecipeID}}<a class="dish-title" href="/recettes/{{$e.RecipeID}}?portions={{decimal $e.Portions}}">{{$e.Title}}</a>{{else}}<span class="dish-title">{{$e.Title}}</span>{{end}}
+    {{- with $e.Grade}}{{template "grade" .}}{{end}}
+  </div>
+  <ul class="badges">
+    {{- if $e.Locked}}<li class="warn">verrouillé</li>{{end}}
+    {{- if eq $e.Status "cuisine"}}<li class="badge-ok">cuisiné</li>{{else if eq $e.Status "reporte"}}<li class="warn">reporté</li>{{end}}
+    {{- if $e.IsLeftover}}<li>restes</li>{{end}}
+    {{- range $e.Reasons}}<li>{{.}}</li>{{end}}
+  </ul>
+  {{- if ne $e.Status "cuisine"}}
+  <div class="dish-actions no-print">
+    {{- if and $e.RecipeID (not $e.IsLeftover)}}<a class="btn btn-small" href="/menus/plats/{{$e.ID}}/cuisine">Cuisiné</a>{{end}}
+    <form method="post" action="/menus/plats/{{$e.ID}}/verrou"><input type="hidden" name="back" value="{{.Back}}"><button class="btn btn-small btn-ghost" aria-pressed="{{$e.Locked}}">{{if $e.Locked}}Déverrouiller{{else}}Verrouiller{{end}}</button></form>
+    <a class="btn btn-small btn-ghost" href="/menus/repas/{{$e.MealID}}?alternatives={{$e.Role}}#{{$e.Role}}">Changer</a>
+  </div>
+  {{- else if $e.CookedBatch}}
+  <div class="dish-actions no-print"><a class="btn btn-small btn-ghost" href="/menus/plats/{{$e.ID}}/cuisine">Détail</a></div>
+  {{- end}}
+</div>
+{{- end}}
+
 {{/* Pagination : paramètres Page (catalog.ListPage ou équivalent), Base
    (chemin) et Query (filtres sans la page). */}}
 {{define "pager"}}

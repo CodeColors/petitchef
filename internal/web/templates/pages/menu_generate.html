@@ -1,0 +1,54 @@
+{{define "content"}}
+{{- $p := .Data.Pref}}
+<h1>Générer les menus</h1>
+<form class="form card form-card" method="post" action="/menus/generer">
+  <div class="field-row">
+    <div class="field"><label for="from">À partir du</label><input id="from" name="from" type="date" value="{{.Data.From}}" required></div>
+    <div class="field">
+      <label for="weeks">Durée</label>
+      <select id="weeks" name="weeks">{{range $w := list 1 2 3 4 5 6 7 8}}<option value="{{$w}}"{{if eq $w $p.Weeks}} selected{{end}}>{{$w}} semaine{{if gt $w 1}}s{{end}}</option>{{end}}</select>
+    </div>
+    <div class="field">
+      <label for="template">Semaine type</label>
+      <select id="template" name="template">{{range .Data.Templates}}<option value="{{.ID}}"{{if eq64 .ID $p.TemplateID}} selected{{end}}>{{.Name}}</option>{{end}}</select>
+    </div>
+  </div>
+  <fieldset>
+    <legend>Priorité</legend>
+    <div class="segmented">
+      {{- range .Data.Presets}}<label><input type="radio" name="preset" value="{{.Code}}"{{if eq .Code $p.Preset}} checked{{end}}><span>{{.Label}}</span></label>{{end}}
+    </div>
+  </fieldset>
+  <label class="check"><input type="checkbox" name="leftovers" value="1"{{if $p.Leftovers}} checked{{end}}> Cuisiner pour deux repas quand c'est possible (restes le lendemain midi)</label>
+  <p class="hint">Les plats verrouillés et déjà cuisinés sont conservés ; les autres sont remplacés. Allergies, régimes, recettes « à ne plus proposer » et temps maximum des créneaux sont toujours respectés.</p>
+  <details class="more">
+    <summary>Réglages fins</summary>
+    <fieldset>
+      <legend>Poids des critères (0 à 10)</legend>
+      <input type="hidden" name="custom_possible" value="1">
+      <div class="field-row">
+        {{- range $f := list (list "w_stock" "Utiliser le stock" $p.Weights.Stock) (list "w_balance" "Équilibre" $p.Weights.Balance) (list "w_variety" "Variété" $p.Weights.Variety) (list "w_season" "Saison" $p.Weights.Season) (list "w_rating" "Favoris et notes" $p.Weights.Rating) (list "w_cost" "Coût" $p.Weights.Cost) (list "w_quick" "Rapidité" $p.Weights.Quick)}}
+        <div class="field"><label for="{{index $f 0}}">{{index $f 1}}</label><input id="{{index $f 0}}" name="{{index $f 0}}" type="range" min="0" max="10" value="{{index $f 2}}"></div>
+        {{- end}}
+      </div>
+      <label class="check"><input type="checkbox" name="custom" value="1"{{if eq $p.Preset "perso"}} checked{{end}}> Utiliser ces poids plutôt que la priorité choisie</label>
+    </fieldset>
+    <fieldset>
+      <legend>Règles de la semaine</legend>
+      <input type="hidden" name="rules" value="1">
+      <div class="field-row">
+        <div class="field"><label for="fish_min">Poisson au moins</label><input id="fish_min" name="fish_min" inputmode="numeric" value="{{$p.Rules.FishMin}}"></div>
+        <div class="field"><label for="red_max">Viande rouge au plus</label><input id="red_max" name="red_max" inputmode="numeric" value="{{$p.Rules.RedMeatMax}}"></div>
+        <div class="field"><label for="veg_min">Repas végétariens au moins</label><input id="veg_min" name="veg_min" inputmode="numeric" value="{{$p.Rules.VegetarianMin}}"></div>
+        <div class="field"><label for="no_repeat">Même recette pas avant (jours)</label><input id="no_repeat" name="no_repeat" inputmode="numeric" value="{{$p.Rules.NoRepeatDays}}"></div>
+      </div>
+      <label class="check"><input type="checkbox" name="veg_every" value="1"{{if $p.Rules.VegEveryMeal}} checked{{end}}> Des légumes à chaque repas</label>
+    </fieldset>
+    <div class="field-row">
+      <div class="field"><label for="seed">Graine</label><input id="seed" name="seed" inputmode="numeric" value="{{$p.Seed}}"></div>
+    </div>
+    <label class="check"><input type="checkbox" name="same_seed" value="1"> Réutiliser cette graine (même graine, même menu)</label>
+  </details>
+  <div class="actions"><button class="btn btn-primary">Générer</button><a class="btn" href="/menus">Annuler</a></div>
+</form>
+{{end}}

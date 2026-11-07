@@ -2,10 +2,14 @@ package web
 
 import (
 	"html/template"
+	"slices"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/codecolors/petitchef/internal/catalog"
+	"github.com/codecolors/petitchef/internal/menus"
+	"github.com/codecolors/petitchef/internal/planner"
 	"github.com/codecolors/petitchef/internal/platform/calendar"
 	"github.com/codecolors/petitchef/internal/platform/money"
 	"github.com/codecolors/petitchef/internal/platform/qty"
@@ -15,33 +19,42 @@ import (
 // templateFuncs renvoie les fonctions disponibles dans les gabarits.
 func templateFuncs(static assets) template.FuncMap {
 	return template.FuncMap{
-		"asset":       static.url,
-		"euros":       money.Format,
-		"navActive":   navActive,
-		"plural":      plural,
-		"date":        func(d calendar.Date) string { return d.Format() },
-		"datetime":    func(t time.Time) string { return t.In(time.Local).Format("02/01/2006 à 15h04") },
-		"fileSize":    fileSize,
-		"add":         func(a, b int) int { return a + b },
-		"seq":         seq,
-		"qty":         qty.Format,
-		"qtyShort":    qty.FormatShort,
-		"qtyInput":    qty.FormatInput,
-		"decimal":     qty.FormatDecimal,
-		"unitLabel":   qty.UnitLabel,
-		"monthNames":  func() []string { return catalog.MonthNames[:] },
-		"allergens":   func() []catalog.AllergenInfo { return catalog.AllAllergens },
-		"traits":      func() []catalog.TraitInfo { return catalog.AllTraits },
-		"groups":      func() []catalog.Group { return catalog.Groups },
-		"universes":   func() []catalog.Universe { return catalog.Universes },
-		"bases":       func() []qty.Base { return qty.Bases },
-		"diets":       func() []catalog.DietInfo { return catalog.AllDiets },
-		"days":        days,
-		"eq64":        func(a, b int64) bool { return a == b },
-		"dict":        dict,
-		"int64":       func(v int) int64 { return int64(v) },
-		"stars":       func(n int) []int { return seq(n) },
-		"list":        func(v ...any) []any { return v },
+		"asset":      static.url,
+		"euros":      money.Format,
+		"navActive":  navActive,
+		"plural":     plural,
+		"date":       func(d calendar.Date) string { return d.Format() },
+		"datetime":   func(t time.Time) string { return t.In(time.Local).Format("02/01/2006 à 15h04") },
+		"fileSize":   fileSize,
+		"add":        func(a, b int) int { return a + b },
+		"seq":        seq,
+		"qty":        qty.Format,
+		"qtyShort":   qty.FormatShort,
+		"qtyInput":   qty.FormatInput,
+		"decimal":    qty.FormatDecimal,
+		"unitLabel":  qty.UnitLabel,
+		"monthNames": func() []string { return catalog.MonthNames[:] },
+		"allergens":  func() []catalog.AllergenInfo { return catalog.AllAllergens },
+		"traits":     func() []catalog.TraitInfo { return catalog.AllTraits },
+		"groups":     func() []catalog.Group { return catalog.Groups },
+		"universes":  func() []catalog.Universe { return catalog.Universes },
+		"bases":      func() []qty.Base { return qty.Bases },
+		"diets":      func() []catalog.DietInfo { return catalog.AllDiets },
+		"days":       days,
+		"eq64":       func(a, b int64) bool { return a == b },
+		"dict":       dict,
+		"int64":      func(v int) int64 { return int64(v) },
+		"stars":      func(n int) []int { return seq(n) },
+		"list":       func(v ...any) []any { return v },
+		"join":       strings.Join,
+		"hasID":      func(list []int64, id int64) bool { return slices.Contains(list, id) },
+		"cell": func(cells map[[2]int64]menus.Cell, d int, slot int64) menus.Cell {
+			c, ok := cells[[2]int64{int64(d), slot}]
+			if !ok {
+				return menus.Cell{Format: planner.NoMeal, AllMembers: true}
+			}
+			return c
+		},
 		"coef":        func(g recipes.Grid, grp catalog.Group) string { return signedDecimal(int64(g.Coef[grp]) * 100) },
 		"letter":      func(i int) string { return string(rune('A' + i)) },
 		"hasDiet":     func(d, b catalog.Diet) bool { return d&b != 0 },

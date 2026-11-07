@@ -293,3 +293,91 @@ JSON propre (`petitchef-recettes`, version 1, documenté dans
 ingrédient inconnu crée un produit « à compléter » plutôt que d'échouer ;
 une recette dont le titre existe est ignorée. Le lecteur schema.org servira
 tel quel à l'import par URL (phase 2).
+
+## Foyer, créneaux et générateur de menus (jalons 6 et 7)
+
+### Repas datés plutôt qu'une table « menus »
+Un menu est l'ensemble des repas (`meals`, un par date et créneau) et de
+leurs plats (`menu_entries`, un par rôle). Pas de table `menus`
+intermédiaire : la semaine affichée, la génération, l'historique et la
+liste de courses travaillent tous sur des plages de dates. Les « menus
+enregistrés » (`saved_menus`) sont des modèles relatifs (jour 0, 1…).
+
+### Semaine type → repas, puis réglages ponctuels
+La semaine type fixe, pour chaque jour et créneau, le format (plat seul,
+entrée + plat, plat + dessert, complet, pas de repas à la maison), les
+membres présents et les invités. Un repas est créé d'après elle **une
+seule fois** (`EnsureMeals`) ; ses réglages restent ensuite modifiables
+sans que la semaine type ne les écrase.
+
+### Portions
+Portions d'un repas = Σ portions relatives des membres présents
+(adulte 1, enfant 0,5, ado 1,25…) + invités (1 chacun) ; 2 par défaut tant
+que le foyer n'a pas de membre. Un plat cuisiné pour deux repas porte les
+portions des deux.
+
+### Moteur pur, service qui charge
+`internal/planner` ne lit pas la base : il reçoit créneaux, recettes
+candidates (besoins par portion, avis, coût), stock, historique et
+réglages. Le service des menus charge tout en une dizaine de requêtes
+(`recipes.All` charge toutes les recettes et leurs ingrédients en trois),
+appelle le moteur et écrit le résultat en une transaction.
+
+### Algorithme
+1. **Contraintes strictes** (jamais violées) : type adapté au rôle, temps
+   de préparation + cuisson ≤ maximum du créneau, allergies et régimes des
+   présents, aliments refusés, recettes « à ne plus proposer ». La règle
+   « pas la même recette avant N jours » est stricte tant qu'il reste des
+   recettes admissibles, levée sinon (une case n'est jamais vide par excès
+   de variété).
+2. **Score pondéré** (poids 0 à 10, préréglages Équilibré, Économique,
+   Anti-gaspi, Rapide) : stock (part du poids des ingrédients disponible à
+   la date du repas, bonus si un produit périme dans les 3 jours), indice
+   d'équilibre, saison, notes et favoris, coût (par rapport au coût médian),
+   rapidité, variété (protéine et féculent différents des repas voisins,
+   recette peu cuisinée récemment) ; ajustements : règles de la semaine
+   (poisson au moins N fois, viande rouge au plus N fois, au moins N repas
+   végétariens), cohérence du repas (entrée et dessert légers si le plat est
+   copieux), légumes à chaque repas.
+3. **Affectation gloutonne** dans l'ordre chronologique, plat d'abord (la
+   cohérence de l'entrée et du dessert en dépend), avec un **stock virtuel**
+   consommé au fil du menu (deux recettes ne comptent pas deux fois les
+   mêmes courgettes).
+4. **Amélioration locale bornée** (au plus 240 essais, 8 alternatives) qui
+   remplace un plat quand la note globale y gagne, règles de la semaine
+   comprises.
+5. Égalités départagées par un bruit déterministe dérivé de la **graine** :
+   même graine, même menu (testé).
+
+Pas de solveur, pas d'IA, pas d'appel réseau. Mesure : 68 ms pour 4
+semaines, 2 repas par jour, entrée + plat, 500 recettes et 1 000 lots en
+stock sur la machine de développement (voir `PERFORMANCE.md`). Les dates
+sont converties une fois en numéros de jour : leur analyse sur chaînes
+représentait d'abord les deux tiers du temps.
+
+### Explicabilité
+Chaque plat garde ses raisons (`menu_entries.reasons`, JSON) : « utilise
+les courgettes qui périment jeudi », « favori », « de saison », « 25 min »,
+« poisson de la semaine », « restes du dîner de lundi »… Le bilan de la
+semaine (indice moyen, répartition des protéines, coût estimé, part des
+ingrédients déjà en stock) est recalculé à l'affichage par le même moteur.
+
+### Restes, plats prêts, verrouillage
+- « Cuisiner pour deux repas » : option du générateur (recettes étiquetées
+  batch cooking ou mijoté, servies au dîner) et action manuelle ; les restes
+  vont au repas du lendemain midi, le plat d'origine porte les portions des
+  deux, les restes n'ont rien à acheter.
+- Les plats prêts en stock (lots liés à une recette : fait maison,
+  restes, congélateur) sont proposés en priorité quand ils suffisent.
+- Verrouillé ou cuisiné : conservé tel quel à la régénération.
+- « Pas cuisiné / reporté » : le plat reste au menu (ses ingrédients restent
+  réservés pour la liste de courses) jusqu'à ce qu'on le replace.
+
+### « Que cuisiner ce soir ? »
+Même moteur (`planner.RankTonight`), préréglage anti-gaspi, contraintes du
+foyer entier ; classement « faisable maintenant » puis par part en stock.
+Depuis un lot qui périme, « Trouver une recette » filtre sur ce produit.
+
+### Échange de plats
+Glisser-déposer sur ordinateur (amélioration progressive) et liste
+« Échanger avec » sur mobile et sans script : même action serveur.

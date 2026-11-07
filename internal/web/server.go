@@ -19,6 +19,7 @@ import (
 	"github.com/codecolors/petitchef/internal/catalog"
 	"github.com/codecolors/petitchef/internal/config"
 	"github.com/codecolors/petitchef/internal/household"
+	"github.com/codecolors/petitchef/internal/menus"
 	"github.com/codecolors/petitchef/internal/photos"
 	"github.com/codecolors/petitchef/internal/platform/db"
 	"github.com/codecolors/petitchef/internal/platform/validation"
@@ -43,6 +44,7 @@ type Services struct {
 	Recipes   *recipes.Service
 	Household *household.Service
 	Photos    *photos.Service
+	Menus     *menus.Service
 	Alerts    *alerts.Service
 	Backups   *backup.Service
 	// Restart arrête proprement PetitChef, que la politique de redémarrage

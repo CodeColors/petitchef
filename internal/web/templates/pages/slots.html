@@ -1,0 +1,65 @@
+{{define "content"}}
+<h1>Créneaux et semaines types</h1>
+<nav class="tabs" aria-label="Menus">
+  <a href="/menus">Semaine</a>
+  <a href="/menus/modeles">Menus enregistrés et historique</a>
+  <a href="/creneaux" aria-current="page">Créneaux et semaines types</a>
+</nav>
+<section aria-labelledby="creneaux">
+  <h2 id="creneaux">Créneaux</h2>
+  <ul class="rows">
+    {{- range .Data.Slots}}
+    <li class="row">
+      <form class="inline-form grow" method="post" action="/creneaux/{{.ID}}">
+        <div class="field"><label for="slot-{{.ID}}">Nom</label><input id="slot-{{.ID}}" name="name" value="{{.Name}}" required></div>
+        <div class="field"><label for="wk-{{.ID}}">Max. semaine (min)</label><input id="wk-{{.ID}}" name="max_weekday" inputmode="numeric" value="{{.MaxMinWeekday}}"></div>
+        <div class="field"><label for="we-{{.ID}}">Max. week-end (min)</label><input id="we-{{.ID}}" name="max_weekend" inputmode="numeric" value="{{.MaxMinWeekend}}"></div>
+        <label class="check"><input type="checkbox" name="enabled" value="1"{{if .Enabled}} checked{{end}}> Activé</label>
+        <button class="btn">Enregistrer</button>
+      </form>
+    </li>
+    {{- end}}
+  </ul>
+  <p class="hint">Temps maximum de préparation et cuisson (0 : sans limite), par exemple 30 min en semaine le soir.</p>
+</section>
+<section aria-labelledby="semaines">
+  <h2 id="semaines">Semaines types</h2>
+  <ul class="chips">{{range .Data.Templates}}<li><a href="/creneaux?semaine={{.ID}}"{{if eq64 .ID $.Data.Template.ID}} aria-current="true"{{end}}>{{.Name}}{{if .IsDefault}} (par défaut){{end}}</a></li>{{end}}</ul>
+  <form class="form" method="post" action="/semaines-types/{{.Data.Template.ID}}">
+    <p class="hint">Format et convives de chaque créneau ; un repas déjà planifié garde ses réglages, modifiables ponctuellement dans le menu.</p>
+    <ol class="week">
+      {{- range $d := .Data.Days}}
+      <li class="day">
+        <h3>{{weekday $d}}</h3>
+        {{- range $.Data.Slots}}{{if .Enabled}}{{$key := printf "%d_%d" $d .ID}}{{$c := cell $.Data.Cells $d .ID}}
+        <fieldset class="meal">
+          <legend>{{.Name}}</legend>
+          <label class="sr-only" for="format_{{$key}}">Format du {{.Name}} de {{weekday $d}}</label>
+          <select id="format_{{$key}}" name="format_{{$key}}">{{range $.Data.Formats}}<option value="{{.}}"{{if eq . $c.Format}} selected{{end}}>{{.Label}}</option>{{end}}</select>
+          <div class="field"><label for="guests_{{$key}}">Invités</label><input id="guests_{{$key}}" name="guests_{{$key}}" inputmode="numeric" value="{{$c.Guests}}"></div>
+          {{- if $.Data.Members}}
+          <details>
+            <summary>Présents : {{if $c.AllMembers}}tout le foyer{{else}}{{len $c.Members}} membre(s){{end}}</summary>
+            <label class="check"><input type="radio" name="present_{{$key}}" value="all"{{if $c.AllMembers}} checked{{end}}> Tout le foyer</label>
+            <label class="check"><input type="radio" name="present_{{$key}}" value="some"{{if not $c.AllMembers}} checked{{end}}> Seulement :</label>
+            {{- range $.Data.Members}}<label class="check"><input type="checkbox" name="members_{{$key}}" value="{{.ID}}"{{if hasID $c.Members .ID}} checked{{end}}> {{.Name}}</label>{{end}}
+          </details>
+          {{- end}}
+        </fieldset>
+        {{- end}}{{end}}
+      </li>
+      {{- end}}
+    </ol>
+    <label class="check"><input type="checkbox" name="default" value="1"{{if .Data.Template.IsDefault}} checked{{end}}> Semaine type par défaut</label>
+    <div class="actions"><button class="btn btn-primary">Enregistrer la semaine type</button></div>
+  </form>
+  <form class="card inline-form" method="post" action="/semaines-types">
+    <div class="field"><label for="tpl-name">Nouvelle semaine type</label><input id="tpl-name" name="name" placeholder="Vacances" required></div>
+    <input type="hidden" name="from" value="{{.Data.Template.ID}}">
+    <button class="btn">Créer (copie de « {{.Data.Template.Name}} »)</button>
+  </form>
+  {{- if gt (len .Data.Templates) 1}}
+  <form class="danger-zone" method="post" action="/semaines-types/{{.Data.Template.ID}}/supprimer" data-confirm="Supprimer la semaine type « {{.Data.Template.Name}} » ?"><button class="btn btn-danger">Supprimer cette semaine type</button></form>
+  {{- end}}
+</section>
+{{end}}

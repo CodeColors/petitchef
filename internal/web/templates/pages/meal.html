@@ -1,0 +1,83 @@
+{{define "content"}}
+{{- $m := .Data.Meal}}
+<div class="page-head">
+  <h1>{{$m.SlotName}} du {{dayLabel $m.Date}}</h1>
+  <a class="btn" href="{{.Data.Back}}">Retour à la semaine</a>
+</div>
+{{- range $role := .Data.Roles}}{{$e := index $.Data.Dishes $role}}
+<section class="card" id="{{$role}}" aria-labelledby="t-{{$role}}">
+  <h2 id="t-{{$role}}">{{$role.Label}}</h2>
+  {{- if $e.ID}}
+  {{template "dish" dict "E" $e "Meal" $m "Back" (printf "/menus/repas/%d" $m.ID)}}
+  {{- if ne $e.Status "cuisine"}}
+  <div class="actions">
+    <form method="post" action="/menus/plats/{{$e.ID}}/reporter"><input type="hidden" name="back" value="/menus/repas/{{$m.ID}}"><button class="btn btn-small">{{if eq $e.Status "reporte"}}Remettre au menu{{else}}Pas cuisiné / reporter{{end}}</button></form>
+    {{- if and (eq $role "plat") $e.RecipeID (not $e.CookDouble) (not $e.IsLeftover)}}<form method="post" action="/menus/plats/{{$e.ID}}/restes"><input type="hidden" name="back" value="/menus/repas/{{$m.ID}}"><button class="btn btn-small">Cuisiner pour 2 repas</button></form>{{end}}
+    <form method="post" action="/menus/plats/{{$e.ID}}/retirer" data-confirm="Retirer {{$e.Title}} du menu ?"><input type="hidden" name="back" value="/menus/repas/{{$m.ID}}"><button class="btn btn-small btn-ghost">Retirer</button></form>
+  </div>
+  {{- if and $.Data.Week (not $e.IsLeftover)}}
+  <form class="inline-form" method="post" action="/menus/plats/{{$e.ID}}/echanger">
+    <input type="hidden" name="back" value="/menus/repas/{{$m.ID}}">
+    <div class="field"><label for="with-{{$role}}">Échanger avec</label>
+      <select id="with-{{$role}}" name="with">{{range $.Data.Week}}<option value="{{.ID}}">{{.Label}}</option>{{end}}</select></div>
+    <button class="btn">Échanger</button>
+  </form>
+  {{- end}}
+  {{- end}}
+  {{- end}}
+  {{- with index $.Data.Alternatives $role}}
+  <h3>Propositions</h3>
+  <ul class="alternatives">
+    {{- range .}}
+    <li class="item">
+      <div class="item-head"><a class="item-title" href="/recettes/{{.RecipeID}}">{{.Title}}</a>{{template "grade" .Grade}}</div>
+      <ul class="badges">{{range .Reasons}}<li>{{.}}</li>{{end}}</ul>
+      <form method="post" action="/menus/repas/{{$m.ID}}/plat">
+        <input type="hidden" name="role" value="{{$role}}"><input type="hidden" name="recipe" value="{{.RecipeID}}">
+        <input type="hidden" name="reasons" value="{{join .Reasons "|"}}">
+        <button class="btn btn-small btn-primary">Choisir</button>
+      </form>
+    </li>
+    {{- end}}
+  </ul>
+  {{- else}}
+  {{- if ne $e.Status "cuisine"}}<a class="btn btn-small" href="/menus/repas/{{$m.ID}}?alternatives={{$role}}#{{$role}}">Proposer 5 alternatives</a>{{end}}
+  {{- end}}
+  {{- if ne $e.Status "cuisine"}}
+  <details class="more">
+    <summary>Choisir à la main</summary>
+    <form class="inline-form" method="post" action="/menus/repas/{{$m.ID}}/plat">
+      <input type="hidden" name="role" value="{{$role}}">
+      <div class="field"><label for="recipe-{{$role}}">Recette</label>
+        <select id="recipe-{{$role}}" name="recipe">{{range index $.Data.Titles $role}}<option value="{{.ID}}">{{.Title}}</option>{{end}}</select></div>
+      <button class="btn">Placer</button>
+    </form>
+    <form class="inline-form" method="post" action="/menus/repas/{{$m.ID}}/plat">
+      <input type="hidden" name="role" value="{{$role}}">
+      <div class="field"><label for="produit-{{$role}}">ou un simple produit</label>
+        {{template "product-input" dict "ID" (printf "produit-%s" $role) "Name" "produit" "Value" "" "Required" true}}</div>
+      <button class="btn">Placer</button>
+    </form>
+  </details>
+  {{- end}}
+</section>
+{{- end}}
+<form class="form card form-card" method="post" action="/menus/repas/{{$m.ID}}">
+  <h2>Format et convives</h2>
+  <div class="field">
+    <label for="format">Format</label>
+    <select id="format" name="format">{{range .Data.Formats}}<option value="{{.}}"{{if eq . $m.Format}} selected{{end}}>{{.Label}}</option>{{end}}</select>
+  </div>
+  <fieldset>
+    <legend>Convives</legend>
+    <label class="check"><input type="checkbox" name="all" value="1"{{if $m.AllMembers}} checked{{end}}> Tout le foyer</label>
+    <div class="actions">{{range .Data.Members}}<label class="check"><input type="checkbox" name="members" value="{{.ID}}"{{if hasID $m.Members .ID}} checked{{end}}> {{.Name}}</label>{{end}}</div>
+    <p class="hint">Décochez « tout le foyer » pour ne compter que les membres cochés.</p>
+  </fieldset>
+  <div class="field-row">
+    <div class="field"><label for="guests">Invités</label><input id="guests" name="guests" inputmode="numeric" value="{{$m.Guests}}"></div>
+    <div class="field"><label for="max_min">Temps maximum (min) <span class="optional">(vide : celui du créneau)</span></label><input id="max_min" name="max_min" inputmode="numeric" value="{{if ge $m.MaxMin 0}}{{$m.MaxMin}}{{end}}"></div>
+  </div>
+  <div class="actions"><button class="btn btn-primary">Enregistrer</button></div>
+</form>
+{{end}}

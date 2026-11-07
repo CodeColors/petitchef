@@ -1,0 +1,18 @@
+{{define "content"}}
+<h1>Ajouter « {{.Data.Recipe.Title}} » au menu</h1>
+<form class="form card form-card" method="post" action="/menus/ajouter">
+  <input type="hidden" name="recipe" value="{{.Data.Recipe.ID}}">
+  <div class="field-row">
+    <div class="field"><label for="date">Jour</label><input id="date" name="date" type="date" value="{{.Data.Date}}" required></div>
+    <div class="field">
+      <label for="slot">Repas</label>
+      <select id="slot" name="slot">{{range .Data.Slots}}<option value="{{.ID}}"{{if eq .Slug "diner"}} selected{{end}}>{{.Name}}</option>{{end}}</select>
+    </div>
+    <div class="field">
+      <label for="role">Rôle</label>
+      <select id="role" name="role">{{range .Data.Roles}}<option value="{{.}}">{{.Label}}</option>{{end}}</select>
+    </div>
+  </div>
+  <div class="actions"><button class="btn btn-primary">Ajouter</button><a class="btn" href="/recettes/{{.Data.Recipe.ID}}">Annuler</a></div>
+</form>
+{{end}}

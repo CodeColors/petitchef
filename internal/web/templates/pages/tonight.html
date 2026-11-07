@@ -1,0 +1,37 @@
+{{define "content"}}
+<h1>Que cuisiner {{if .Data.Product}}avec « {{.Data.Product}} »{{else}}ce soir{{end}} ?</h1>
+<form class="filters" method="get" action="/ce-soir">
+  <div class="filter-grid">
+    <div class="field">
+      <label for="role">Je cherche</label>
+      <select id="role" name="role">
+        <option value="plat"{{if eq .Data.Role "plat"}} selected{{end}}>un plat</option>
+        <option value="entree"{{if eq .Data.Role "entree"}} selected{{end}}>une entrée</option>
+        <option value="dessert"{{if eq .Data.Role "dessert"}} selected{{end}}>un dessert</option>
+      </select>
+    </div>
+    <div class="field"><label for="portions">Pour (portions)</label><input id="portions" name="portions" inputmode="decimal" value="{{if .Data.Portions}}{{decimal .Data.Portions}}{{end}}" placeholder="tout le foyer"></div>
+  </div>
+  {{- if .Data.ProductID}}<input type="hidden" name="produit" value="{{.Data.ProductID}}">{{end}}
+  <div class="actions"><button class="btn">Chercher</button>{{if .Data.ProductID}}<a href="/ce-soir">Toutes les recettes</a>{{end}}</div>
+</form>
+<p class="hint">Classement par part des ingrédients déjà en stock, en privilégiant ce qui périme bientôt ; allergies, régimes et refus du foyer sont respectés.</p>
+{{- if .Data.Items}}
+<ul class="cards">
+  {{- range .Data.Items}}
+  <li class="item">
+    <div class="item-head"><a class="item-title" href="/recettes/{{.RecipeID}}">{{.Title}}</a>{{template "grade" .Grade}}</div>
+    <p class="item-meta">{{if eq (len .Missing) 0}}<strong class="badge-ok">Faisable maintenant</strong>{{else if eq (len .Missing) 1}}Il manque 1 ingrédient : {{index .Missing 0}}{{else}}Il manque {{len .Missing}} ingrédients{{end}} · {{.Coverage}} % en stock · {{.Min}} min</p>
+    <ul class="badges">{{range .Reasons}}<li>{{.}}</li>{{end}}</ul>
+    <form class="inline-form" method="post" action="/menus/ajouter">
+      <input type="hidden" name="recipe" value="{{.RecipeID}}"><input type="hidden" name="date" value="{{$.Data.Today}}"><input type="hidden" name="role" value="{{$.Data.Role}}">
+      <div class="field"><label for="slot-{{.RecipeID}}">Repas</label><select id="slot-{{.RecipeID}}" name="slot">{{range $.Data.Slots}}<option value="{{.ID}}"{{if eq .Slug "diner"}} selected{{end}}>{{.Name}}</option>{{end}}</select></div>
+      <button class="btn btn-small btn-primary">Au menu d'aujourd'hui</button>
+    </form>
+  </li>
+  {{- end}}
+</ul>
+{{- else}}
+<p class="card empty">Aucune recette ne convient.</p>
+{{- end}}
+{{end}}

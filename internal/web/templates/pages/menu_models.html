@@ -1,0 +1,37 @@
+{{define "content"}}
+<h1>Menus enregistrés et historique</h1>
+<nav class="tabs" aria-label="Menus">
+  <a href="/menus">Semaine</a>
+  <a href="/menus/modeles" aria-current="page">Menus enregistrés et historique</a>
+  <a href="/creneaux">Créneaux et semaines types</a>
+</nav>
+<section class="card" aria-labelledby="enregistres">
+  <h2 id="enregistres">Menus enregistrés</h2>
+  {{- if .Data.Models}}
+  <ul class="rows">
+    {{- range .Data.Models}}
+    <li class="row">
+      <span class="row-body"><span class="row-title">{{.Name}}</span><span class="row-meta">{{.Days}} jours · {{.Dishes}} plats</span></span>
+      <form class="inline-form" method="post" action="/menus/modeles/{{.ID}}/appliquer">
+        <div class="field"><label for="from-{{.ID}}">À partir du</label><input id="from-{{.ID}}" name="from" type="date" value="{{$.Data.Monday}}" required></div>
+        <button class="btn">Appliquer</button>
+      </form>
+      <form method="post" action="/menus/modeles/{{.ID}}/supprimer" data-confirm="Supprimer « {{.Name}} » ?"><button class="btn btn-icon btn-ghost" aria-label="Supprimer {{.Name}}">×</button></form>
+    </li>
+    {{- end}}
+  </ul>
+  {{- else}}<p class="muted">Aucun menu enregistré.</p>{{end}}
+  <form class="inline-form" method="post" action="/menus/modeles">
+    <div class="field"><label for="model-name">Enregistrer la semaine du</label><input id="model-from" name="from" type="date" value="{{.Data.Monday}}" aria-label="Premier jour" required></div>
+    <div class="field"><label for="model-days">Jours</label><input id="model-days" name="days" inputmode="numeric" value="7"></div>
+    <div class="field"><label for="model-name">sous le nom</label><input id="model-name" name="name" placeholder="Semaine d'hiver express" required></div>
+    <button class="btn">Enregistrer</button>
+  </form>
+</section>
+<section class="card" aria-labelledby="historique">
+  <h2 id="historique">Semaines passées et à venir</h2>
+  {{- if .Data.Weeks}}
+  <ul class="chips">{{range .Data.Weeks}}<li><a href="/menus?semaine={{.}}">Semaine du {{date .}}</a></li>{{end}}</ul>
+  {{- else}}<p class="muted">Pas encore de menu.</p>{{end}}
+</section>
+{{end}}

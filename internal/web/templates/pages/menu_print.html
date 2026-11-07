@@ -1,0 +1,19 @@
+{{define "content"}}
+<div class="page-head">
+  <h1>Menu de la semaine du {{dayLabel .Data.Monday}}</h1>
+  <div class="actions no-print"><button class="btn btn-primary" type="button" data-print>Imprimer</button><a class="btn" href="/menus?semaine={{.Data.Monday}}">Retour</a></div>
+</div>
+<ol class="week">
+  {{- range .Data.Days}}
+  <li class="day">
+    <h2>{{dayLabel .Date}}</h2>
+    {{- range .Meals}}{{if ne .Format "aucun"}}
+    <section class="meal">
+      <span class="meal-slot">{{.SlotName}}</span>
+      {{- range .Entries}}<p><span class="dish-role">{{.Role.Label}}</span><br>{{.Title}}{{if .Grade}} ({{.Grade}}){{end}}</p>{{end}}
+    </section>
+    {{- end}}{{end}}
+  </li>
+  {{- end}}
+</ol>
+{{end}}
