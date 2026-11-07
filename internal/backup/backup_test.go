@@ -57,7 +57,7 @@ func (e *env) op(label string) {
 
 func (e *env) labels() []string {
 	e.t.Helper()
-	rows, err := e.db.R.QueryContext(e.t.Context(), `SELECT key FROM settings ORDER BY key`)
+	rows, err := e.db.R.QueryContext(e.t.Context(), `SELECT key FROM settings WHERE key != 'shopping' ORDER BY key`)
 	if err != nil {
 		e.t.Fatal(err)
 	}

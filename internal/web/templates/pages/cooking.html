@@ -1,0 +1,43 @@
+{{define "content"}}
+{{- $r := .Data.Recipe}}
+<div class="cook" data-cook>
+  <div class="page-head">
+    <h1>{{$r.Title}}</h1>
+    <a class="btn" href="/recettes/{{$r.ID}}">Quitter</a>
+  </div>
+  <p class="hint" data-wakelock hidden>L'écran reste allumé pendant la recette.</p>
+  <section class="card" aria-labelledby="ingr">
+    <h2 id="ingr">Ingrédients pour {{decimal .Data.Portions}} portion(s)</h2>
+    {{- $group := ""}}
+    <ul class="ingredients">
+      {{- range $i, $l := .Data.Lines}}
+      {{- if ne $l.Group $group}}{{$group = $l.Group}}<li class="ingredient-group">{{$l.Group}}</li>{{end}}
+      <li><label class="check"><input type="checkbox"> {{with $l.Scaled}}<strong>{{.}}</strong> {{end}}{{$l.Name}}{{with $l.Note}} ({{.}}){{end}}</label></li>
+      {{- end}}
+    </ul>
+  </section>
+  <ol class="steps-list" data-steps>
+    {{- range $i, $st := $r.Steps}}
+    <li class="cook-step" data-step="{{$i}}">
+      <p>{{$st.Text}}</p>
+      {{- if $st.TimerSec}}<button class="btn timer" type="button" data-timer="{{$st.TimerSec}}">Minuterie {{div60 $st.TimerSec}} min</button>{{end}}
+    </li>
+    {{- end}}
+  </ol>
+  <div class="cook-nav" data-cook-nav hidden>
+    <button class="btn" type="button" data-prev>Étape précédente</button>
+    <button class="btn btn-primary" type="button" data-next>Étape suivante</button>
+  </div>
+  <div class="timers" data-timers aria-live="polite"></div>
+  <section class="card" aria-labelledby="fin">
+    <h2 id="fin">C'est prêt ?</h2>
+    {{- if .Data.EntryID}}
+    <a class="btn btn-primary" href="/menus/plats/{{.Data.EntryID}}/cuisine?retour=/recettes/{{$r.ID}}%23avis">Marquer comme cuisiné</a>
+    {{- else}}
+    <a class="btn" href="/menus/ajouter?recette={{$r.ID}}">Ajouter au menu d'aujourd'hui pour le marquer cuisiné</a>
+    {{- end}}
+    <a class="btn" href="/recettes/{{$r.ID}}#avis">Noter la recette</a>
+  </section>
+</div>
+<script src="{{asset "cook.js"}}" defer></script>
+{{end}}

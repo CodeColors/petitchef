@@ -1,0 +1,42 @@
+{{define "content"}}
+{{- $v := .Data}}
+<div class="page-head">
+  <h1>En magasin</h1>
+  <a class="btn" href="/courses">Liste complète</a>
+</div>
+<p class="notice offline-banner" role="status">Hors ligne : vos coches sont gardées sur ce téléphone et seront envoyées au retour du réseau.</p>
+<p class="summary" data-left>{{plural $v.Left "article" "articles"}} à prendre</p>
+<div data-store>
+{{- range $g := $v.Groups}}{{range $g.Aisles}}
+<section class="aisle">
+  <h2><span>{{.Name}}</span></h2>
+  <ul class="shop">
+    {{- range .Items}}
+    <li class="shop-line{{if .Checked}} is-checked{{end}}" id="ligne-{{.ID}}" data-item="{{.ID}}">
+      <form class="shop-toggle" method="post" action="/courses/lignes/{{.ID}}/cocher">
+        <input type="hidden" name="back" value="/courses/magasin">
+        <input type="hidden" name="checked" value="{{if .Checked}}0{{else}}1{{end}}">
+        <button class="shop-check" aria-pressed="{{.Checked}}">
+          <span class="shop-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span>
+          <span class="shop-text"><span class="shop-name">{{.Name}}</span></span>
+          <span class="shop-qty">{{.BuyLabel}}</span>
+        </button>
+      </form>
+      <details class="no-print">
+        <summary aria-label="Prix payé pour {{.Name}}">€</summary>
+        <form class="inline-form" method="post" action="/courses/lignes/{{.ID}}/cocher">
+          <input type="hidden" name="back" value="/courses/magasin"><input type="hidden" name="checked" value="1">
+          <div class="field"><label for="price-{{.ID}}">Prix payé</label><input id="price-{{.ID}}" name="price" inputmode="decimal" size="6"></div>
+          <button class="btn btn-small">OK</button>
+        </form>
+      </details>
+    </li>
+    {{- end}}
+  </ul>
+</section>
+{{- end}}{{end}}
+</div>
+{{- if not $v.List.Items}}<p class="card empty">Rien à acheter.</p>{{end}}
+<p class="actions"><a class="btn btn-primary" href="/courses/ranger">Ranger les courses</a></p>
+<script src="{{asset "store.js"}}" defer></script>
+{{end}}

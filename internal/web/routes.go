@@ -94,6 +94,21 @@ func (s *Server) routes() map[string]http.HandlerFunc {
 		"POST /semaines-types/{id}":                   s.saveTemplate,
 		"POST /semaines-types/{id}/supprimer":         s.deleteTemplate,
 		"GET /ce-soir":                                s.tonightPage,
+		"GET /courses":                                s.shoppingPage,
+		"GET /courses/magasin":                        s.storeModePage,
+		"POST /courses/recalculer":                    s.recomputeShopping,
+		"POST /courses/ajouter":                       s.addShoppingItem,
+		"POST /courses/lignes/{id}/cocher":            s.toggleItem,
+		"POST /courses/lignes/{id}/retirer":           s.removeShoppingItem,
+		"POST /courses/magasin":                       s.chooseStore,
+		"POST /courses/rythme":                        s.saveSchedule,
+		"GET /courses/texte":                          s.shoppingText,
+		"GET /courses/ranger":                         s.putAwayPage,
+		"POST /courses/ranger":                        s.putAway,
+		"GET /menus/plats/{id}/cuisine":               s.cookPage,
+		"POST /menus/plats/{id}/cuisine":              s.cook,
+		"POST /menus/plats/{id}/decuisiner":           s.uncook,
+		"GET /recettes/{id}/cuisine":                  s.cookingMode,
 		"GET /emplacements":                           s.locationsPage,
 		"POST /emplacements":                          s.saveLocation,
 		"POST /emplacements/{id}/supprimer":           s.deleteLocation,
@@ -108,10 +123,6 @@ func (s *Server) publicRoutes(mux *http.ServeMux) {
 
 func (s *Server) morePage(w http.ResponseWriter, r *http.Request) {
 	s.render(w, r, http.StatusOK, "plus", "Plus", nil)
-}
-
-func (s *Server) home(w http.ResponseWriter, r *http.Request) {
-	s.render(w, r, http.StatusOK, "home", "Accueil", nil)
 }
 
 // serviceWorker sert le service worker à la racine (portée « / » requise

@@ -1,0 +1,78 @@
+{{define "content"}}
+{{- $v := .Data}}
+<div class="page-head">
+  <h1>Courses</h1>
+  <div class="actions">
+    <a class="btn btn-primary" href="/courses/magasin">Mode magasin</a>
+    <a class="btn" href="/courses/ranger">Ranger les courses{{if $v.Checked}} ({{$v.Checked}}){{end}}</a>
+  </div>
+</div>
+<section class="card no-print" aria-labelledby="periode">
+  <h2 id="periode" class="sr-only">Période et magasin</h2>
+  <p>{{if $v.List.Until}}Liste calculée jusqu'au <strong>{{date $v.List.Until}}</strong>{{else}}Liste jamais calculée{{end}} · prochaines courses le {{dayLabel $v.Next}}, suivantes le {{dayLabel $v.Until}}.</p>
+  <div class="actions">
+    <form class="inline-form" method="post" action="/courses/recalculer">
+      <div class="field"><label for="until">Couvrir jusqu'au</label><input id="until" name="until" type="date" value="{{$v.Until}}"></div>
+      <button class="btn btn-primary">Recalculer la liste</button>
+    </form>
+    {{- if $v.Stores}}
+    <form class="inline-form" method="post" action="/courses/magasin">
+      <div class="field"><label for="store">Magasin</label>
+        <select id="store" name="store">{{range $v.Stores}}<option value="{{.ID}}"{{if eq64 .ID $v.List.StoreID}} selected{{end}}>{{.Name}}</option>{{end}}</select></div>
+      <button class="btn">Trier</button>
+    </form>
+    {{- else}}<a href="/magasins">Créer mon magasin pour trier dans l'ordre de mon parcours</a>{{end}}
+  </div>
+  <details class="more">
+    <summary>Jour des courses</summary>
+    <form class="inline-form" method="post" action="/courses/rythme">
+      <div class="field"><label for="weekday">Je fais les courses le</label>
+        <select id="weekday" name="weekday">{{range $d := $v.Weekdays}}<option value="{{$d}}"{{if eq $d $v.Schedule.Weekday}} selected{{end}}>{{weekday $d}}</option>{{end}}</select></div>
+      <div class="field"><label for="every">tous les (jours)</label><input id="every" name="every" inputmode="numeric" value="{{$v.Schedule.Every}}"></div>
+      <button class="btn">Enregistrer</button>
+    </form>
+  </details>
+</section>
+<form id="ajout" class="card inline-form no-print" method="post" action="/courses/ajouter">
+  <div class="field"><label for="produit">Ajouter un article</label>{{template "product-input" dict "ID" "produit" "Name" "produit" "Value" "" "Required" true}}</div>
+  <div class="field"><label for="qty">Quantité <span class="optional">(facultatif)</span></label><input id="qty" name="qty" inputmode="decimal"></div>
+  <button class="btn btn-primary">Ajouter</button>
+</form>
+{{- if $v.List.Items}}
+<p class="summary">{{plural $v.Left "article à acheter" "articles à acheter"}}{{if $v.Checked}}, {{$v.Checked}} dans le chariot{{end}}{{if $v.Known}} · coût estimé {{euros $v.Total}}{{if lt $v.Known (len $v.List.Items)}} ({{$v.Known}} prix connus sur {{len $v.List.Items}}){{end}}{{end}}</p>
+<p class="actions no-print">
+  {{- if $v.Split}}<a href="/courses">Vue par rayon</a>{{else}}<a href="/courses?par=magasin">Répartir par magasin</a>{{end}}
+  <a href="/courses/texte">Version texte (à copier)</a>
+  <button class="btn btn-small" type="button" data-copy="/courses/texte" hidden>Copier la liste</button>
+  <button class="btn btn-small" type="button" data-print>Imprimer</button>
+</p>
+{{- range $g := $v.Groups}}
+{{- if $v.Split}}<h2>{{$g.Name}}</h2>{{end}}
+{{- range $g.Aisles}}
+<section class="aisle">
+  <h2><span>{{.Name}}</span>{{if .Cost}}<span class="muted">{{euros .Cost}}</span>{{end}}</h2>
+  <ul class="shop">
+    {{- range .Items}}
+    <li class="shop-line{{if .Checked}} is-checked{{end}}" id="ligne-{{.ID}}">
+      <form class="shop-toggle" method="post" action="/courses/lignes/{{.ID}}/cocher">
+        <input type="hidden" name="checked" value="{{if .Checked}}0{{else}}1{{end}}">
+        <button class="shop-check" aria-pressed="{{.Checked}}">
+          <span class="shop-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></span>
+          <span class="shop-text"><span class="shop-name">{{.Name}}</span><span class="shop-detail">{{range $i, $d := .Details}}{{if $i}} + {{end}}{{$d}}{{end}}{{if and .PackSize (ne .Need .Buy)}} · besoin réel {{qty .Need .Unit}}{{end}}</span></span>
+          <span class="shop-qty">{{.BuyLabel}}</span>
+        </button>
+      </form>
+      <form method="post" action="/courses/lignes/{{.ID}}/retirer" class="no-print"><button class="btn btn-icon btn-ghost" aria-label="Retirer {{.Name}} de la liste">×</button></form>
+    </li>
+    {{- end}}
+  </ul>
+</section>
+{{- end}}
+{{- end}}
+{{- else}}
+<div class="card empty">
+  <p>La liste est vide. Générez un menu puis recalculez la liste, ou ajoutez des articles.</p>
+  <a class="btn" href="/menus">Menus</a>
+</div>
+{{- end}}
+{{end}}

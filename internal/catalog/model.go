@@ -509,3 +509,22 @@ var AllTraits = []TraitInfo{
 
 // MonthNames nomme les mois (index 0 = janvier).
 var MonthNames = [...]string{"janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"}
+
+// BuyUnits renvoie les quantités dans lesquelles le produit s'achète :
+// ses conditionnements, sinon la botte ou le bouquet (herbes), sinon la
+// pièce entière pour un produit vendu au poids dont on connaît le poids
+// d'une pièce (« 1 concombre » plutôt que « 131 g »).
+func (p Product) BuyUnits() []int64 {
+	if len(p.Packages) > 0 {
+		return p.PackageQtys()
+	}
+	for _, u := range p.Units {
+		if u.Unit == "botte" || u.Unit == "bouquet" {
+			return []int64{u.Qty}
+		}
+	}
+	if p.Unit == qty.Gram && p.PieceG > 0 {
+		return []int64{p.PieceG}
+	}
+	return nil
+}

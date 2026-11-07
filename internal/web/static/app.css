@@ -838,3 +838,12 @@ a.dish-title:hover { text-decoration: underline; }
   a { color: inherit; text-decoration: none; }
   @page { size: A4 landscape; margin: 10mm; }
 }
+
+/* Mode cuisine : gros caractères, sans navigation. */
+.cooking-mode .tabbar, .cooking-mode .fab { display: none; }
+.cooking-mode .page { padding-bottom: 2rem; }
+.cooking-mode .ingredients { font-size: 1.125rem; }
+.store-mode .fab { display: none; }
+.dish-actions details > summary, .shop-line details > summary { min-height: var(--tap); padding: 0 .75rem; }
+.shop-line details { flex: none; }
+.grow { flex: 1; min-width: 0; }

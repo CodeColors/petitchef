@@ -91,7 +91,7 @@ produits:
   - Orange | syn oranges | piece 200 | cond 1500, 2000 | cons 21/3/- | emp fruits | groupe fruits | saison 11-4
   - Orange à jus | piece 180 | cond 2000 | cons 21/3/- | emp fruits | groupe fruits | saison 11-4
   - Clémentine | syn clémentines, mandarine | piece 70 | cond 1000, 2000 | cons 14/2/- | emp fruits | groupe fruits | saison 11-2
-  - Citron jaune | syn citron, citrons | piece 120 | cond 500, 1000 | cons 30/7/- | emp fruits | groupe fruits | saison toute | u cs=330
+  - Citron jaune | syn citron, citrons | piece 120 | cond 500, 1000 | cons 30/7/- | emp fruits | groupe fruits | saison toute | u cs=15
   - Citron vert | syn lime | piece 70 | cons 21/7/- | emp fruits | groupe fruits | saison toute
   - Pamplemousse | syn pomelo | piece 400 | cons 21/3/- | emp fruits | groupe fruits | saison 11-4
   - Kiwi | syn kiwis | piece 80 | cond 1000 | cons 21/2/- | emp fruits | groupe fruits | saison 11-4

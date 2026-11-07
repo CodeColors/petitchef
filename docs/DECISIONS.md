@@ -381,3 +381,81 @@ Depuis un lot qui périme, « Trouver une recette » filtre sur ce produit.
 ### Échange de plats
 Glisser-déposer sur ordinateur (amélioration progressive) et liste
 « Échanger avec » sur mobile et sans script : même action serveur.
+
+## Liste de courses (jalon 8)
+
+### Un seul moteur, une fonction pure
+`shopping.Compute` reçoit les besoins du menu (datés), les lots de stock,
+les produits suivis et les ajouts manuels, et renvoie les lignes. Il ne lit
+pas la base ; le service prépare ses entrées et enregistre le résultat.
+Mesure : 0,5 ms pour 4 semaines de menus (840 besoins) et 1 000 lots.
+
+1. **Menu − stock** : les besoins sont traités dans l'ordre des repas ;
+   chaque repas puise, en FEFO, dans les lots **utilisables à sa date** (un
+   produit périmé avant le repas ne compte pas) et **non réservés** par les
+   repas précédents. Les produits de base, les ingrédients « au goût » ou
+   facultatifs, les restes et les plats prêts du stock n'ont rien à
+   acheter ; un plat simple (« pizza surgelée ») compte un conditionnement ;
+   un plat reporté reste à préparer.
+2. **Stock minimum et consommation prévue** : stock restant **aux courses
+   suivantes**, après le menu, moins la consommation estimée sur la
+   période ; sous le minimum, on complète jusqu'à la cible. Un produit de
+   base « presque vide » entre jusqu'à sa cible (ou un conditionnement).
+3. **Ajouts manuels**, quantité facultative (un conditionnement par
+   défaut).
+4. Fusion par produit avec le détail des origines (« 400 g pour le gratin
+   de mardi + 200 g pour la quiche de jeudi − 200 g déjà en stock »),
+   **arrondi** au conditionnement (ou à la botte, ou à la pièce entière pour
+   un légume vendu au poids), tri dans **l'ordre des rayons du magasin**
+   choisi.
+
+### Période
+Jour des courses réglable (samedi, tous les 7 jours par défaut). La liste
+couvre d'aujourd'hui jusqu'aux courses **suivantes** (celles d'après la
+prochaine), période modifiable au moment du recalcul.
+
+### Recalcul sans rien perdre
+La liste en cours est une table (`shopping_items`) : le recalcul met à jour
+les lignes calculées, supprime celles devenues inutiles **sauf** si elles
+sont cochées ou ajoutées à la main, et respecte les lignes retirées à la
+main (`dismissed`) jusqu'au rangement. Une seule liste, partagée par tous
+les comptes du foyer : chacun voit l'état à jour à chaque action ou
+rechargement, sans interrogation périodique.
+
+### Ranger les courses
+Un écran reprend les lignes cochées avec quantité, emplacement, date
+limite proposée et prix (pré-rempli s'il a été saisi en magasin) ; une
+seule transaction les entre en stock (mouvements « achat », prix relevés
+par magasin), puis les retire de la liste. Les lignes non cochées
+(« non trouvé ») restent pour les courses suivantes.
+
+### Mode magasin hors ligne : service worker minimal
+BuddyGet n'en avait pas. Ici, l'usage en magasin (réseau faible) le
+justifie, et il est **limité à un écran** :
+
+- `sw.js`, servi à la racine (portée nécessaire), n'intercepte que
+  `GET /courses/magasin` (réseau d'abord, copie de secours) et les fichiers
+  `/static/` qu'elle charge (versionnés, donc sûrs à garder) ; il ignore
+  toute autre requête. Il n'est enregistré que depuis le mode magasin.
+- Cocher fonctionne sans réseau : `store.js` applique la coche à l'écran,
+  la mémorise dans `localStorage` (file d'envoi) et la transmet dès que
+  possible (`online`, prochaine ouverture) ; un bandeau signale le mode
+  hors ligne. Sans script, chaque coche est un formulaire classique.
+- Pas de synchronisation bidirectionnelle ni de résolution de conflits :
+  la dernière coche envoyée l'emporte, ce qui convient à un foyer.
+
+## Cuisiné, mode cuisine, « ce soir » (jalon 9)
+
+- **Cuisiné** ouvre un écran de confirmation pré-rempli (ingrédients mis à
+  l'échelle des portions, recettes composées déroulées, produits de base
+  exclus) où l'on corrige quantités et produits, décoche ou ajoute une
+  ligne. La validation décompte en FEFO dans une seule action de stock
+  (`menu_entry_id` renseigné), incrémente l'historique de la recette et
+  peut ranger des restes comme plat « fait maison » (une pièce = une
+  portion, lié à la recette : le générateur pourra les proposer).
+  « Annuler cuisiné » rejoue l'action à l'envers.
+- **Mode cuisine** : étapes une à une, gros caractères, ingrédients mis à
+  l'échelle cochables, minuteries multiples détectées dans le texte des
+  étapes, écran maintenu allumé par `Screen Wake Lock` quand le navigateur
+  le permet ; en fin de recette, « marquer comme cuisiné » (plat du jour
+  retrouvé dans le menu) et « noter la recette ».

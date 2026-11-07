@@ -1,0 +1,25 @@
+{{define "content"}}
+<h1>Ranger les courses</h1>
+{{- if .Data.Lines}}
+<form class="form" method="post" action="/courses/ranger">
+  <p class="hint">Les articles cochés entrent en stock en une étape. Quantités, emplacements, dates limites et prix sont modifiables.{{if .Data.Left}} {{plural .Data.Left "article non coché reste" "articles non cochés restent"}} sur la liste.{{end}}</p>
+  <ul class="cards">
+    {{- range .Data.Lines}}{{$k := .ID}}
+    <li class="item">
+      <div class="item-head"><span class="item-title">{{.Name}}</span><span class="qty">{{.BuyLabel}}</span></div>
+      <div class="field-row">
+        <div class="field"><label for="qty_{{$k}}">Quantité ({{.Unit.Label}})</label><input id="qty_{{$k}}" name="qty_{{$k}}" inputmode="decimal" value="{{.Qty}}"></div>
+        <div class="field"><label for="location_{{$k}}">Emplacement</label>
+          <select id="location_{{$k}}" name="location_{{$k}}">{{$loc := .LocationID}}{{range $.Data.Locations}}<option value="{{.ID}}"{{if eq64 .ID $loc}} selected{{end}}>{{.Name}}</option>{{end}}</select></div>
+        <div class="field"><label for="best_{{$k}}">Date limite</label><input id="best_{{$k}}" name="best_{{$k}}" type="date" value="{{.BestBefore}}"></div>
+        <div class="field"><label for="price_{{$k}}">Prix payé (€)</label><input id="price_{{$k}}" name="price_{{$k}}" inputmode="decimal" value="{{.Price}}"></div>
+      </div>
+    </li>
+    {{- end}}
+  </ul>
+  <div class="actions"><button class="btn btn-primary">Tout ranger</button><a class="btn" href="/courses">Retour</a></div>
+</form>
+{{- else}}
+<div class="card empty"><p>Aucun article coché : cochez ce que vous avez acheté dans la liste.</p><a class="btn" href="/courses">Liste de courses</a></div>
+{{- end}}
+{{end}}

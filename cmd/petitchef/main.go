@@ -39,6 +39,7 @@ import (
 	"github.com/codecolors/petitchef/internal/platform/db"
 	"github.com/codecolors/petitchef/internal/recipes"
 	"github.com/codecolors/petitchef/internal/scheduler"
+	"github.com/codecolors/petitchef/internal/shopping"
 	"github.com/codecolors/petitchef/internal/stock"
 	"github.com/codecolors/petitchef/internal/web"
 )
@@ -108,6 +109,7 @@ func run() error {
 	inventory := stock.NewService(database, products)
 	cookbook := recipes.NewService(database, products)
 	members := household.NewService(database)
+	planning := menus.NewService(database, products, cookbook, members, inventory)
 	if err := cookbook.SyncSeed(ctx); err != nil {
 		return err
 	}
@@ -123,7 +125,8 @@ func run() error {
 		Stock:     inventory,
 		Recipes:   cookbook,
 		Household: members,
-		Menus:     menus.NewService(database, products, cookbook, members, inventory),
+		Menus:     planning,
+		Shopping:  shopping.NewService(database, products, cookbook, planning, inventory),
 		Photos:    photos.NewService(cfg.PhotosDir(), cfg.MaxUploadBytes(), cfg.PhotosQuotaBytes()),
 		Alerts:    alertCenter,
 		Backups:   backups,

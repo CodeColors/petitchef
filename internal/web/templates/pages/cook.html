@@ -1,0 +1,37 @@
+{{define "content"}}
+{{- $e := .Data.Entry}}
+<h1>Cuisiné : {{$e.Title}}</h1>
+{{- if eq $e.Status "cuisine"}}
+<div class="card">
+  <p>Ce plat est marqué cuisiné{{if $e.CookedBatch}} ; les ingrédients ont été décomptés du stock{{end}}.</p>
+  <form method="post" action="/menus/plats/{{$e.ID}}/decuisiner" data-confirm="Annuler « cuisiné » et remettre les ingrédients en stock ?">
+    <input type="hidden" name="back" value="{{.Data.Back}}">
+    <button class="btn">Annuler « cuisiné »</button>
+  </form>
+</div>
+{{- else}}
+<form class="form card form-card" method="post" action="/menus/plats/{{$e.ID}}/cuisine">
+  <input type="hidden" name="back" value="{{.Data.Back}}">
+  <input type="hidden" name="lines" value="{{len .Data.Uses}}">
+  <p class="hint">Pour {{decimal $e.Portions}} portion(s). Corrigez ce que vous avez réellement utilisé : quantité (« j'ai mis 300 g »), produit (« j'ai pris du lait »), ou décochez. Le stock est décompté en commençant par ce qui périme le plus tôt ; c'est annulable.</p>
+  <ul class="rows">
+    {{- range $i, $u := .Data.Uses}}
+    <li class="row">
+      <label class="check"><input type="checkbox" name="use_{{$i}}" value="1" checked><span class="sr-only">Utilisé : {{$u.Name}}</span></label>
+      <div class="field grow"><label for="produit_{{$i}}">Produit{{with $u.Via}} <span class="optional">({{.}})</span>{{end}}</label>{{template "product-input" dict "ID" (printf "produit_%d" $i) "Name" (printf "produit_%d" $i) "Value" $u.Name "Required" false}}</div>
+      <div class="field"><label for="qty_{{$i}}">Quantité ({{$u.Unit.Label}})</label><input id="qty_{{$i}}" name="qty_{{$i}}" inputmode="decimal" value="{{qtyInput $u.Qty $u.Unit}}" size="6">
+        <p class="hint">En stock : {{qty $u.InStock $u.Unit}}</p></div>
+    </li>
+    {{- end}}
+    <li class="row">
+      <div class="field grow"><label for="produit_{{len .Data.Uses}}">Autre produit utilisé <span class="optional">(facultatif)</span></label>{{template "product-input" dict "ID" (printf "produit_%d" (len .Data.Uses)) "Name" (printf "produit_%d" (len .Data.Uses)) "Value" "" "Required" false}}</div>
+      <div class="field"><label for="qty_{{len .Data.Uses}}">Quantité</label><input id="qty_{{len .Data.Uses}}" name="qty_{{len .Data.Uses}}" inputmode="decimal" size="6"></div>
+    </li>
+  </ul>
+  {{- if $e.RecipeID}}
+  <div class="field"><label for="leftovers">Restes à ranger au réfrigérateur <span class="optional">(portions, facultatif)</span></label><input id="leftovers" name="leftovers" inputmode="decimal" placeholder="0"></div>
+  {{- end}}
+  <div class="actions"><button class="btn btn-primary">Confirmer et décompter</button><a class="btn" href="{{.Data.Back}}">Annuler</a></div>
+</form>
+{{- end}}
+{{end}}
