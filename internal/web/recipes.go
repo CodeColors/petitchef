@@ -470,6 +470,7 @@ func (s *Server) importRecipes(w http.ResponseWriter, r *http.Request) {
 	}
 	defer func() { _ = file.Close() }()
 	res, err := s.Recipes.Import(r.Context(), file)
+	defer s.db.ReleaseMemory(r.Context())
 	if err != nil {
 		if msg, ok := s.inputError(w, r, err); ok {
 			s.render(w, r, http.StatusUnprocessableEntity, "recipe_import", "Importer des recettes", importView{Error: msg})

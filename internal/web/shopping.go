@@ -148,6 +148,7 @@ func (s *Server) recomputeShopping(w http.ResponseWriter, r *http.Request) {
 		until = d
 	}
 	l, err := s.Shopping.Recompute(r.Context(), until)
+	defer s.db.ReleaseMemory(r.Context())
 	if err != nil {
 		s.failed(w, r, err, "/courses")
 		return

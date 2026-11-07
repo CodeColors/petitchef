@@ -166,6 +166,9 @@ func (s *Server) generateMenus(w http.ResponseWriter, r *http.Request) {
 		pref.Seed = 0
 	}
 	res, err := s.Menus.Generate(ctx, menus.Request{From: from, Weeks: pref.Weeks, Preferences: pref})
+	// Opération ponctuelle et lourde : sa mémoire de travail est rendue au
+	// système, rien ne la reprendrait au repos.
+	defer s.db.ReleaseMemory(ctx)
 	if err != nil {
 		s.failed(w, r, err, "/menus/generer")
 		return
