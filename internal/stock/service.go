@@ -650,30 +650,37 @@ func idList(ids []int64) string {
 	return "[" + strings.Join(parts, ",") + "]"
 }
 
+// undoMove est un mouvement à annuler.
+type undoMove struct {
+	id, item, qty int64
+	kind          Kind
+	best, opened  sql.NullString
+}
+
+func batchMovements(ctx context.Context, tx *sql.Tx, batch int64) ([]undoMove, error) {
+	rows, err := tx.QueryContext(ctx, `SELECT id, coalesce(stock_item_id, 0), kind, qty, prev_best_before, prev_opened_on
+		FROM stock_movements WHERE batch = ? AND NOT undone ORDER BY id DESC`, batch)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = rows.Close() }()
+	var list []undoMove
+	for rows.Next() {
+		var m undoMove
+		if err := rows.Scan(&m.id, &m.item, &m.kind, &m.qty, &m.best, &m.opened); err != nil {
+			return nil, err
+		}
+		list = append(list, m)
+	}
+	return list, rows.Err()
+}
+
 // Undo annule une action : les quantités sont rétablies, les dates d'un
 // lot ouvert restaurées, et les mouvements marqués annulés.
 func (s *Service) Undo(ctx context.Context, batch int64) error {
 	return s.db.Tx(ctx, func(tx *sql.Tx) error {
-		rows, err := tx.QueryContext(ctx, `SELECT id, coalesce(stock_item_id, 0), kind, qty, prev_best_before, prev_opened_on
-			FROM stock_movements WHERE batch = ? AND NOT undone ORDER BY id DESC`, batch)
+		list, err := batchMovements(ctx, tx, batch)
 		if err != nil {
-			return err
-		}
-		type mv struct {
-			id, item, qty int64
-			kind          Kind
-			best, opened  sql.NullString
-		}
-		var list []mv
-		for rows.Next() {
-			var m mv
-			if err := rows.Scan(&m.id, &m.item, &m.kind, &m.qty, &m.best, &m.opened); err != nil {
-				_ = rows.Close()
-				return err
-			}
-			list = append(list, m)
-		}
-		if err := errors.Join(rows.Err(), rows.Close()); err != nil {
 			return err
 		}
 		if len(list) == 0 {

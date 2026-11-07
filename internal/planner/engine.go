@@ -319,7 +319,7 @@ func (e *engine) staticScore(ci int, s *Slot, slotIdx int, lots map[int64][]stoc
 
 // noise départage les égalités de façon déterministe (graine).
 func (e *engine) noise(ci, slot int, role Role) int {
-	x := e.in.Seed ^ uint64(e.cands[ci].ID)*0x9E3779B97F4A7C15 ^ uint64(slot)*0xBF58476D1CE4E5B9 ^ uint64(len(role))*0x94D049BB133111EB
+	x := e.in.Seed ^ uint64(e.cands[ci].ID)*0x9E3779B97F4A7C15 ^ uint64(slot)*0xBF58476D1CE4E5B9 ^ uint64(len(role))*0x94D049BB133111EB //nolint:gosec // hachage : le débordement est voulu
 	x ^= x >> 31
 	x *= 0xD6E8FEB86659FD93
 	x ^= x >> 32
@@ -674,7 +674,7 @@ func (e *engine) improve() {
 	if len(movable) == 0 {
 		return
 	}
-	rng := rand.New(rand.NewPCG(e.in.Seed, e.in.Seed^0x5DEECE66D))
+	rng := rand.New(rand.NewPCG(e.in.Seed, e.in.Seed^0x5DEECE66D)) //nolint:gosec // déterminisme voulu (même graine, même menu), pas de sécurité en jeu
 	iterations := min(3*len(movable), 240)
 	current := e.objective()
 	for range iterations {
@@ -811,7 +811,7 @@ func (e *engine) summary() Summary {
 	}
 	if graded > 0 {
 		avg := gradeSum / graded
-		sm.Grade = string(rune('A' + (100-avg+12)/25))
+		sm.Grade = letterOf(avg)
 	}
 	if weight > 0 {
 		sm.StockShare = int(covered * 100 / weight)
@@ -906,3 +906,12 @@ func Summarize(in Input, plan []Placement) Summary {
 	}
 	return e.summary()
 }
+
+// letterOf convertit une note moyenne (0 à 100) en lettre A à E.
+func letterOf(v int) string {
+	i := min(max((100-v+12)/25, 0), 4)
+	return "ABCDE"[i : i+1]
+}
+
+// Letter convertit une note moyenne (0 à 100) en lettre A à E.
+func Letter(v int) string { return letterOf(v) }

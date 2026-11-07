@@ -1,6 +1,7 @@
 package web
 
 import (
+	"github.com/codecolors/petitchef/internal/planner"
 	"github.com/codecolors/petitchef/internal/platform/money"
 	"github.com/codecolors/petitchef/internal/stats"
 )
@@ -55,7 +56,7 @@ func newBarChart(id, title, desc string, points []stats.Point, format func(int64
 func euroValue(v int64) string { return money.Format(v) }
 
 func gradeValue(v int64) string {
-	letter := string(rune('A' + (100-v+12)/25))
+	letter := planner.Letter(int(v))
 	return letter + " (" + itoa(v) + "/100)"
 }
 

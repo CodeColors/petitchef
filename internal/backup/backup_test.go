@@ -70,6 +70,9 @@ func (e *env) labels() []string {
 		}
 		out = append(out, k)
 	}
+	if err := rows.Err(); err != nil {
+		e.t.Fatal(err)
+	}
 	return out
 }
 

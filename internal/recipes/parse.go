@@ -93,7 +93,7 @@ func splitIngredients(src string) []string {
 		case ')', ']':
 			depth--
 		case ',', ';':
-			if depth == 0 && !(r == ',' && i > 0 && i+1 < len(src) && isDigit(src[i-1]) && isDigit(src[i+1])) {
+			if depth == 0 && (r != ',' || i == 0 || i+1 >= len(src) || !isDigit(src[i-1]) || !isDigit(src[i+1])) {
 				out = append(out, src[start:i])
 				start = i + 1
 			}

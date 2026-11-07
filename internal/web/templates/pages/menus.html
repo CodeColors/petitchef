@@ -12,7 +12,7 @@
   <a href="/menus/modeles">Menus enregistrés et historique</a>
   <a href="/creneaux">Créneaux et semaines types</a>
 </nav>
-<div class="section-head no-print">
+<div class="week-nav no-print">
   <a class="btn" href="/menus?semaine={{.Data.Prev}}" aria-label="Semaine précédente">←</a>
   <h2>Semaine du {{dayLabel .Data.Monday}}</h2>
   <a class="btn" href="/menus?semaine={{.Data.Next}}" aria-label="Semaine suivante">→</a>
@@ -59,7 +59,7 @@
     <div><dt>Coût estimé</dt><dd>{{if .Cost}}{{euros .Cost}}{{if not .CostKnown}} <span class="tag">prix partiels</span>{{end}}{{else}}—{{end}}</dd></div>
   </dl>
   {{- if .Proteins}}
-  <p class="hint">Plats principaux : {{range $k, $v := .Proteins}}{{$k}} {{$v}} · {{end}}</p>
+  <p class="hint">Plats principaux : {{$first := true}}{{range $k, $v := .Proteins}}{{if not $first}} · {{end}}{{$first = false}}{{$k}} {{$v}}{{end}}.</p>
   {{- end}}
 </section>
 {{end}}

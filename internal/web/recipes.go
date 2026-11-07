@@ -44,7 +44,7 @@ func recipeFilter(r *http.Request) (recipes.Filter, bool) {
 	if season {
 		f.Month = int(calendar.Today().Time().Month())
 	}
-	if f.MaxGrade != "" && !strings.Contains("ABCDE", f.MaxGrade) {
+	if f.MaxGrade != "" && (len(f.MaxGrade) != 1 || f.MaxGrade[0] < 'A' || f.MaxGrade[0] > 'E') {
 		f.MaxGrade = ""
 	}
 	return f, season

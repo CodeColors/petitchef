@@ -253,7 +253,7 @@ func validateInput(in *Input) error {
 		return validation.Error("Nombre de portions entre 1 et 100.")
 	case in.PrepMin < 0 || in.CookMin < 0 || in.RestMin < 0 || in.PrepMin > 10000 || in.CookMin > 10000 || in.RestMin > 10000:
 		return validation.Error("Temps invalide.")
-	case in.BalanceManual != "" && !strings.Contains("ABCDE", in.BalanceManual):
+	case in.BalanceManual != "" && (len(in.BalanceManual) != 1 || in.BalanceManual[0] < 'A' || in.BalanceManual[0] > 'E'):
 		return validation.Error("Indice d'équilibre : A à E.")
 	}
 	if in.Difficulty < 1 || in.Difficulty > 3 {
@@ -627,8 +627,8 @@ func (s *Service) Grid(ctx context.Context) (Grid, error) {
 		return g, err
 	}
 	var saved Grid
-	if err := json.Unmarshal([]byte(raw), &saved); err != nil {
-		return g, nil
+	if json.Unmarshal([]byte(raw), &saved) != nil || saved.Validate() != nil {
+		saved = g // réglage illisible : grille par défaut
 	}
 	for k, v := range saved.Coef {
 		g.Coef[k] = v

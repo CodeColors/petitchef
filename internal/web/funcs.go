@@ -44,12 +44,12 @@ func templateFuncs(static assets) template.FuncMap {
 		"eq64":       func(a, b int64) bool { return a == b },
 		"dict":       dict,
 		"int64":      func(v int) int64 { return int64(v) },
-		"stars":      func(n int) []int { return seq(n) },
+		"stars":      seq,
 		"list":       func(v ...any) []any { return v },
 		"join":       strings.Join,
 		"div60":      func(v int) int { return (v + 30) / 60 },
 		"int":        func(v int64) int { return int(v) },
-		"hasID":      func(list []int64, id int64) bool { return slices.Contains(list, id) },
+		"hasID":      slices.Contains[[]int64],
 		"cell": func(cells map[[2]int64]menus.Cell, d int, slot int64) menus.Cell {
 			c, ok := cells[[2]int64{int64(d), slot}]
 			if !ok {
@@ -58,7 +58,7 @@ func templateFuncs(static assets) template.FuncMap {
 			return c
 		},
 		"coef":        func(g recipes.Grid, grp catalog.Group) string { return signedDecimal(int64(g.Coef[grp]) * 100) },
-		"letter":      func(i int) string { return string(rune('A' + i)) },
+		"letter":      func(i int) string { return "ABCDE"[min(max(i, 0), 4) : min(max(i, 0), 4)+1] },
 		"hasDiet":     func(d, b catalog.Diet) bool { return d&b != 0 },
 		"recipeTypes": func() []recipes.TypeInfo { return recipes.AllTypes },
 		"difficulty": func(n int) string {

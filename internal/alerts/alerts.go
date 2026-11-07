@@ -67,14 +67,15 @@ func (k Kind) ParamLabel() string {
 	return "Lignes minimum"
 }
 
-func (k Kind) paramBounds() (int, int) {
+// paramMax renvoie la valeur maximale du paramètre (le minimum est 1).
+func (k Kind) paramMax() int {
 	switch k {
 	case ExpiringSoon, NoMenu:
-		return 1, 14
+		return 14
 	case Shortage:
-		return 1, 60
+		return 60
 	}
-	return 1, 100
+	return 100
 }
 
 // Check examine une partie de la situation pour les types activés ; il est
@@ -151,8 +152,8 @@ func (s *Service) SaveSettings(ctx context.Context, settings []Setting) error {
 		if !slices.Contains(Kinds, st.Kind) {
 			return validation.Error("Type d'alerte inconnu.")
 		}
-		if lo, hi := st.Kind.paramBounds(); st.Param < lo || st.Param > hi {
-			return validation.Errorf("%s : valeur entre %d et %d.", st.Kind.Label(), lo, hi)
+		if hi := st.Kind.paramMax(); st.Param < 1 || st.Param > hi {
+			return validation.Errorf("%s : valeur entre 1 et %d.", st.Kind.Label(), hi)
 		}
 	}
 	return s.db.Tx(ctx, func(tx *sql.Tx) error {

@@ -203,8 +203,8 @@
   <ul class="badges">
     {{- if $e.Locked}}<li class="warn">verrouillé</li>{{end}}
     {{- if eq $e.Status "cuisine"}}<li class="badge-ok">cuisiné</li>{{else if eq $e.Status "reporte"}}<li class="warn">reporté</li>{{end}}
-    {{- if $e.IsLeftover}}<li>restes</li>{{end}}
-    {{- range $e.Reasons}}<li>{{.}}</li>{{end}}
+    {{- if and $e.IsLeftover (not $e.Reasons)}}<li>restes</li>{{end}}
+    {{- range $e.Reasons}}{{if ne . "restes"}}<li>{{.}}</li>{{end}}{{end}}
   </ul>
   {{- if ne $e.Status "cuisine"}}
   <div class="dish-actions no-print">

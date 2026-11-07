@@ -161,7 +161,7 @@ func (s *Server) generateMenus(w http.ResponseWriter, r *http.Request) {
 			NoRepeatDays: int(formInt(r.PostFormValue("no_repeat"), 10)),
 		}
 	}
-	pref.Seed = uint64(formInt(r.PostFormValue("seed"), 0))
+	pref.Seed = uint64(max(formInt(r.PostFormValue("seed"), 0), 0)) //nolint:gosec // valeur positive
 	if r.PostFormValue("same_seed") == "" {
 		pref.Seed = 0
 	}

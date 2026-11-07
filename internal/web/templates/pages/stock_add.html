@@ -36,7 +36,7 @@
     {{- end}}
     <div class="field">
       <label for="qty">{{if and $p $p.Packages}}ou quantité{{else}}Quantité{{end}} {{if $p}}<span class="optional">({{$p.Unit.Label}})</span>{{end}}</label>
-      <input id="qty" name="qty" inputmode="decimal" value="{{.Data.Qty}}">
+      <input id="qty" name="qty" inputmode="decimal" value="{{.Data.Qty}}" hx-preserve="true">
     </div>
   </div>
   <div class="field-row">
@@ -54,7 +54,7 @@
     </div>
     <div class="field">
       <label for="price">Prix payé <span class="optional">(facultatif, €)</span></label>
-      <input id="price" name="price" inputmode="decimal" value="{{.Data.Price}}">
+      <input id="price" name="price" inputmode="decimal" value="{{.Data.Price}}" hx-preserve="true">
     </div>
   </div>
   <label class="check"><input type="checkbox" name="no_date" value="1"> Sans date limite</label>

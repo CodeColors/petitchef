@@ -184,7 +184,13 @@ func (s *Server) addStock(w http.ResponseWriter, r *http.Request) {
 		if in.LocationID == 0 {
 			in.LocationID = p.LocationID
 		}
+		// Une quantité saisie l'emporte sur le nombre de conditionnements
+		// proposé par défaut.
 		switch {
+		case strings.TrimSpace(f.Qty) != "":
+			if in.Qty, err = baseQty(f.Qty, p.Unit); err != nil {
+				return err
+			}
 		case strings.TrimSpace(f.Packages) != "" && f.PackageID > 0:
 			n, err := qty.ParseDecimal(f.Packages)
 			if err != nil {
@@ -194,10 +200,6 @@ func (s *Server) addStock(w http.ResponseWriter, r *http.Request) {
 				if pk.ID == f.PackageID {
 					in.Qty = pk.Qty * n / 1000
 				}
-			}
-		case strings.TrimSpace(f.Qty) != "":
-			if in.Qty, err = baseQty(f.Qty, p.Unit); err != nil {
-				return err
 			}
 		}
 		if in.Qty <= 0 {
