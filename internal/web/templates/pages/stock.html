@@ -1,0 +1,48 @@
+{{define "content"}}
+<div class="page-head">
+  <h1>{{if .Data.Filter.Priority}}À consommer en priorité{{else}}Stock{{end}}</h1>
+  <a class="btn btn-primary" href="/stock/ajouter">Ajouter au stock</a>
+</div>
+{{template "stock-tabs" .Data.Tab}}
+{{template "undo" dict "Last" .Data.Last "Back" .Data.Back}}
+<form class="filters" method="get" action="{{.Path}}" role="search" hx-get="{{.Path}}" hx-target="#resultats" hx-trigger="input changed delay:200ms from:#q, change" hx-push-url="true">
+  <div class="filter-grid">
+    <div class="field"><label for="q">Rechercher</label><input id="q" name="q" type="search" value="{{.Data.Filter.Query}}" autocomplete="off"></div>
+    <div class="field">
+      <label for="emplacement">Emplacement</label>
+      <select id="emplacement" name="emplacement">
+        <option value="">Tous</option>
+        {{- range .Data.Locations}}<option value="{{.ID}}"{{if eq64 .ID $.Data.Filter.LocationID}} selected{{end}}>{{.Name}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="univers">Univers</label>
+      <select id="univers" name="univers">
+        <option value="">Tous</option>
+        {{- range universes}}<option value="{{.}}"{{if eq . $.Data.Filter.Universe}} selected{{end}}>{{.Label}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="rayon">Rayon</label>
+      <select id="rayon" name="rayon">
+        <option value="">Tous</option>
+        {{- range .Data.Aisles}}<option value="{{.ID}}"{{if eq64 .ID $.Data.Filter.AisleID}} selected{{end}}>{{.Name}}</option>{{end}}
+      </select>
+    </div>
+  </div>
+  <noscript><button class="btn">Filtrer</button></noscript>
+</form>
+<div id="resultats" class="results" aria-live="polite">{{template "results" .}}</div>
+{{end}}
+
+{{define "results"}}
+<p class="summary">{{plural .Data.Page.Total "lot" "lots"}} en stock</p>
+{{- if .Data.Page.Items}}
+<ul class="cards">
+  {{- range .Data.Page.Items}}{{template "stock-item" dict "Item" . "Today" $.Data.Today "Back" $.Data.Back}}{{end}}
+</ul>
+{{template "pager" dict "Page" .Data.Page "Base" .Path "Query" .Data.Query}}
+{{- else}}
+<div class="card empty"><p>Rien en stock ici.</p><a class="btn btn-primary" href="/stock/ajouter">Ajouter un produit</a></div>
+{{- end}}
+{{end}}

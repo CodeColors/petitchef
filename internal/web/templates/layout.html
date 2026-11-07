@@ -130,6 +130,51 @@
 <datalist id="{{.ID}}-liste"></datalist>
 {{- end}}
 
+{{/* Onglets de la rubrique Stock ; paramètre : onglet courant. */}}
+{{define "stock-tabs"}}
+<nav class="tabs" aria-label="Stock">
+  <a href="/stock"{{if eq . "tout"}} aria-current="page"{{end}}>Tout</a>
+  <a href="/stock/priorite"{{if eq . "priorite"}} aria-current="page"{{end}}>À consommer en priorité</a>
+  <a href="/stock/suivi"{{if eq . "suivi"}} aria-current="page"{{end}}>Stock minimum</a>
+  <a href="/stock/inventaire"{{if eq . "inventaire"}} aria-current="page"{{end}}>Mode inventaire</a>
+  <a href="/stock/scan"{{if eq . "scan"}} aria-current="page"{{end}}>Scanner</a>
+</nav>
+{{- end}}
+
+{{/* Dernière action de stock annulable ; paramètres : Last, Back. */}}
+{{define "undo"}}
+{{- with .Last}}
+<form class="notice inline-form" method="post" action="/stock/annuler">
+  <span class="grow">Dernière action : {{.Label}} — {{.Product}}.</span>
+  <input type="hidden" name="batch" value="{{.Batch}}">
+  <input type="hidden" name="back" value="{{$.Back}}">
+  <button class="btn btn-small">Annuler</button>
+</form>
+{{- end}}
+{{- end}}
+
+{{/* Carte d'un lot de stock avec ses gestes rapides ; paramètres : Item,
+   Today, Back. */}}
+{{define "stock-item"}}
+{{- $i := .Item}}{{$e := $i.ExpiryOn .Today}}
+<li class="item" id="lot-{{$i.ID}}">
+  <div class="item-head">
+    <a class="item-title" href="/stock/produit/{{$i.ProductID}}">{{$i.Product}}</a>
+    <span class="qty">{{qty $i.Qty $i.Unit}}</span>
+  </div>
+  <p class="item-meta">{{with $i.Location}}{{.}}{{else}}Sans emplacement{{end}}{{with $e.Label}} · <span class="{{$e.Class}}">{{.}}</span>{{end}}{{if $i.OpenedOn}} · ouvert le {{date $i.OpenedOn}}{{end}}</p>
+  <div class="quick">
+    <form method="post" action="/stock/lots/{{$i.ID}}/moins"><input type="hidden" name="back" value="{{.Back}}"><button class="btn btn-small" aria-label="Retirer {{qty $i.Step $i.Unit}} de {{$i.Product}}">−</button></form>
+    <form method="post" action="/stock/lots/{{$i.ID}}/plus"><input type="hidden" name="back" value="{{.Back}}"><button class="btn btn-small" aria-label="Ajouter {{qty $i.Step $i.Unit}} de {{$i.Product}}">+</button></form>
+    <form method="post" action="/stock/lots/{{$i.ID}}/fini"><input type="hidden" name="back" value="{{.Back}}"><button class="btn btn-small">Fini</button></form>
+    {{- if not $i.OpenedOn}}<form method="post" action="/stock/lots/{{$i.ID}}/ouvert"><input type="hidden" name="back" value="{{.Back}}"><button class="btn btn-small">Ouvert</button></form>{{end}}
+    <form method="post" action="/stock/lots/{{$i.ID}}/jete" data-confirm="Jeter {{$i.Product}} ({{qty $i.Qty $i.Unit}}) ? Ce sera compté comme gaspillage."><input type="hidden" name="back" value="{{.Back}}"><button class="btn btn-small btn-ghost">Jeté</button></form>
+    <a class="btn btn-small btn-ghost" href="/stock/lots/{{$i.ID}}/deplacer?retour={{.Back}}">Déplacer</a>
+    {{- if lt $e.Days 4}}<a class="btn btn-small btn-ghost" href="/ce-soir?produit={{$i.ProductID}}">Trouver une recette</a>{{end}}
+  </div>
+</li>
+{{- end}}
+
 {{/* Pagination : paramètres Page (catalog.ListPage ou équivalent), Base
    (chemin) et Query (filtres sans la page). */}}
 {{define "pager"}}

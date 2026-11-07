@@ -1,0 +1,26 @@
+{{define "content"}}
+<h1>Mode inventaire</h1>
+{{template "stock-tabs" "inventaire"}}
+<p class="hint">Choisissez un emplacement, faites-en le tour et corrigez les quantités ; seuls les écarts sont enregistrés (comme corrections d'inventaire).</p>
+<ul class="chips">
+  {{- range .Data.Locations}}<li><a href="/stock/inventaire?emplacement={{.ID}}"{{if eq64 .ID $.Data.Location.ID}} aria-current="true"{{end}}>{{.Name}}</a></li>{{end}}
+</ul>
+{{- if .Data.Location.ID}}
+<form class="form" method="post" action="/stock/inventaire">
+  <input type="hidden" name="location" value="{{.Data.Location.ID}}">
+  {{- if .Data.Items}}
+  <ul class="rows">
+    {{- range .Data.Items}}
+    <li class="row">
+      <label class="row-body" for="qty-{{.ID}}"><span class="row-title">{{.Product}}</span><span class="row-meta">{{if .BestBefore}}{{.DateKind}} {{date .BestBefore}}{{else}}sans date{{end}} · en {{.Unit.Label}}</span></label>
+      <input id="qty-{{.ID}}" name="qty_{{.ID}}" inputmode="decimal" value="{{qtyInput .Qty .Unit}}" class="qty-input">
+    </li>
+    {{- end}}
+  </ul>
+  <div class="actions"><button class="btn btn-primary">Enregistrer l'inventaire</button></div>
+  {{- else}}
+  <p class="card empty">Rien n'est enregistré dans « {{.Data.Location.Name}} ».</p>
+  {{- end}}
+</form>
+{{- end}}
+{{end}}

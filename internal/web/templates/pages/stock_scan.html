@@ -1,0 +1,14 @@
+{{define "content"}}
+<h1>Scanner un produit</h1>
+{{template "stock-tabs" "scan"}}
+<div class="card form-card" data-scan>
+  <video class="scan-video" hidden playsinline muted></video>
+  <p class="hint" data-scan-status>Saisissez le code-barres (ou scannez-le si votre navigateur le permet).</p>
+  <form class="inline-form" method="get" action="/stock/code">
+    <div class="field"><label for="code">Code-barres</label><input id="code" name="code" inputmode="numeric" pattern="[0-9 ]{8,17}" autocomplete="off" required></div>
+    <button class="btn btn-primary">Chercher</button>
+    <button class="btn" type="button" data-scan-start hidden>Utiliser l'appareil photo</button>
+  </form>
+</div>
+<script src="{{asset "scan.js"}}" defer></script>
+{{end}}

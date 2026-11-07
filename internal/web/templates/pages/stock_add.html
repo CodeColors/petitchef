@@ -1,0 +1,62 @@
+{{define "content"}}
+<h1>Ajouter au stock</h1>
+{{template "undo" dict "Last" .Data.Last "Back" "/stock/ajouter"}}
+<form class="form card form-card" method="post" action="/stock/ajouter">
+  {{- with .Data.Error}}<p class="alert" role="alert">{{.}}</p>{{end}}
+  {{- with .Data.Scanned}}<p class="notice">Code-barres {{.}} : il sera associé au produit choisi.</p><input type="hidden" name="code" value="{{.}}">{{end}}
+  <div class="field">
+    <label for="produit">Produit</label>
+    <div hx-get="/stock/ajouter" hx-trigger="change from:#produit" hx-target="#details" hx-include="#produit" hx-swap="outerHTML"></div>
+    {{template "product-input" dict "ID" "produit" "Name" "produit" "Value" .Data.ProductName "Required" true}}
+    <p class="hint">Un produit inconnu est créé à la volée.</p>
+  </div>
+  {{template "details" .}}
+  <div class="actions">
+    <button class="btn btn-primary">Ajouter</button>
+    <a class="btn" href="/stock">Terminé</a>
+  </div>
+</form>
+{{end}}
+
+{{define "details"}}
+<div id="details" class="form">
+  {{- $p := .Data.Product}}
+  <div class="field-row">
+    {{- if and $p $p.Packages}}
+    <div class="field">
+      <label for="packages">Nombre de conditionnements</label>
+      <input id="packages" name="packages" inputmode="decimal" value="{{.Data.Packages}}">
+    </div>
+    <div class="field">
+      <label for="package">Conditionnement</label>
+      <select id="package" name="package">
+        {{- range $p.Packages}}<option value="{{.ID}}"{{if eq64 .ID $.Data.PackageID}} selected{{end}}>{{qty .Qty $p.Unit}}{{with .Label}} ({{.}}){{end}}</option>{{end}}
+      </select>
+    </div>
+    {{- end}}
+    <div class="field">
+      <label for="qty">{{if and $p $p.Packages}}ou quantité{{else}}Quantité{{end}} {{if $p}}<span class="optional">({{$p.Unit.Label}})</span>{{end}}</label>
+      <input id="qty" name="qty" inputmode="decimal" value="{{.Data.Qty}}">
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="location">Emplacement</label>
+      <select id="location" name="location">
+        <option value="0">Selon le produit</option>
+        {{- range .Data.Locations}}<option value="{{.ID}}"{{if eq64 .ID $.Data.LocationID}} selected{{end}}>{{.Name}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="best_before">Date limite</label>
+      <input id="best_before" name="best_before" type="date" value="{{.Data.BestBefore}}" aria-describedby="date-aide">
+      <p id="date-aide" class="hint">{{if .Data.BestBefore}}Proposée d'après la conservation indicative ; modifiable.{{else}}Vide : proposée d'après la conservation indicative.{{end}}</p>
+    </div>
+    <div class="field">
+      <label for="price">Prix payé <span class="optional">(facultatif, €)</span></label>
+      <input id="price" name="price" inputmode="decimal" value="{{.Data.Price}}">
+    </div>
+  </div>
+  <label class="check"><input type="checkbox" name="no_date" value="1"> Sans date limite</label>
+</div>
+{{end}}

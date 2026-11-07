@@ -1,0 +1,31 @@
+{{define "content"}}
+<h1>Stock minimum</h1>
+{{template "stock-tabs" "suivi"}}
+<p class="hint">Produits de consommation courante (hygiène, entretien, café, lait…) : sous leur minimum, ou signalés presque vides, ils entrent dans la liste de courses.</p>
+{{- if .Data.Items}}
+<ul class="rows">
+  {{- range .Data.Items}}
+  <li class="row">
+    <a class="row-link" href="/stock/produit/{{.ProductID}}">
+      <span class="row-title">{{.Name}}{{if .Below}} <span class="tag badge-warn">à racheter</span>{{end}}</span>
+      <span class="row-meta">En stock {{qty .Stock .Unit}}{{if .Min}} · minimum {{qty .Min .Unit}} · cible {{qty .Target .Unit}}{{end}}{{if .Low}} · presque vide{{end}}{{if .RunOut}} · sous le minimum vers le {{date .RunOut}}{{end}}</span>
+    </a>
+  </li>
+  {{- end}}
+</ul>
+{{- else}}
+<p class="card empty">Aucun produit suivi pour l'instant. Partez d'un modèle ci-dessous ou réglez un minimum depuis la fiche de stock d'un produit.</p>
+{{- end}}
+<section aria-labelledby="modeles">
+  <h2 id="modeles">Modèles pour démarrer</h2>
+  <ul class="cards">
+    {{- range .Data.Templates}}
+    <li class="item">
+      <div class="item-head"><span class="item-title">{{.Name}}</span></div>
+      <p class="item-meta">{{.Desc}} : {{range $i, $it := .Items}}{{if $i}}, {{end}}{{$it.Product}}{{end}}.</p>
+      <form method="post" action="/stock/modeles/{{.Slug}}" data-confirm="Appliquer « {{.Name}} » ? Les minimums de ces produits seront remplacés."><button class="btn">Appliquer</button></form>
+    </li>
+    {{- end}}
+  </ul>
+</section>
+{{end}}

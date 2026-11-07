@@ -35,6 +35,7 @@ import (
 	"github.com/codecolors/petitchef/internal/platform/calendar"
 	"github.com/codecolors/petitchef/internal/platform/db"
 	"github.com/codecolors/petitchef/internal/scheduler"
+	"github.com/codecolors/petitchef/internal/stock"
 	"github.com/codecolors/petitchef/internal/web"
 )
 
@@ -100,6 +101,7 @@ func run() error {
 		return err
 	}
 	products := catalog.NewService(database)
+	inventory := stock.NewService(database, products)
 	baseURL := ""
 	if cfg.BaseURL != nil {
 		baseURL = cfg.BaseURL.String()
@@ -109,6 +111,7 @@ func run() error {
 	handler, err := web.New(cfg, database, web.Services{
 		Auth:    auth.NewService(database),
 		Catalog: products,
+		Stock:   inventory,
 		Alerts:  alertCenter,
 		Backups: backups,
 		// Après une restauration préparée : arrêt propre, la politique de
@@ -141,6 +144,14 @@ func run() error {
 	background.Go(func() { alertCenter.Run(ctx) })
 	background.Go(func() {
 		scheduler.Run(ctx,
+			scheduler.Job{Name: "estimation des consommations", Run: func(ctx context.Context, today calendar.Date) error {
+				_, err := inventory.RefreshEstimates(ctx, today)
+				return err
+			}},
+			scheduler.Job{Name: "lots épuisés", Run: func(ctx context.Context, today calendar.Date) error {
+				_, err := inventory.Purge(ctx, today)
+				return err
+			}},
 			scheduler.Job{Name: "alertes", Run: alertCenter.Daily},
 			scheduler.Job{Name: "sauvegarde automatique", Run: func(ctx context.Context, _ calendar.Date) error {
 				return backups.Daily(ctx, time.Now())

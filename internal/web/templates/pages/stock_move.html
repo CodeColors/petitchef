@@ -1,0 +1,26 @@
+{{define "content"}}
+{{- $i := .Data.Item}}
+<h1>Déplacer {{$i.Product}}</h1>
+<form class="form card form-card" method="post" action="/stock/lots/{{$i.ID}}/deplacer">
+  <input type="hidden" name="back" value="{{.Data.Back}}">
+  <p>En stock : {{qty $i.Qty $i.Unit}}{{with $i.Location}} ({{.}}){{end}}.</p>
+  <div class="field">
+    <label for="location">Vers</label>
+    <select id="location" name="location">
+      {{- range .Data.Locations}}{{if ne .ID $i.LocationID}}<option value="{{.ID}}">{{.Name}}</option>{{end}}{{end}}
+    </select>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="qty">Quantité <span class="optional">(vide : tout ; {{$i.Unit.Label}})</span></label>
+      <input id="qty" name="qty" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="best_before">Nouvelle date limite <span class="optional">(facultatif)</span></label>
+      <input id="best_before" name="best_before" type="date">
+      <p class="hint">Vide : la date reste la même, ou devient celle de la conservation au congélateur.</p>
+    </div>
+  </div>
+  <div class="actions"><button class="btn btn-primary">Déplacer</button><a class="btn" href="{{if .Data.Back}}{{.Data.Back}}{{else}}/stock{{end}}">Annuler</a></div>
+</form>
+{{end}}

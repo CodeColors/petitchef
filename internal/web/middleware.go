@@ -19,7 +19,7 @@ const contentSecurityPolicy = "default-src 'self'; img-src 'self' data:; object-
 
 // permissionsPolicy refuse les fonctions du navigateur inutiles ; le micro
 // reste permis au site pour la dictée de la saisie rapide.
-const permissionsPolicy = "camera=(), geolocation=(), payment=(), usb=(), microphone=(self)"
+const permissionsPolicy = "camera=(self), geolocation=(), payment=(), usb=(), microphone=(self)"
 
 // hstsPolicy impose HTTPS au navigateur une fois PetitChef publié en HTTPS
 // (BASE_URL), sans engager les sous-domaines.

@@ -1,0 +1,50 @@
+{{define "content"}}
+{{- $p := .Data.Product}}{{$st := .Data.Settings}}
+<div class="page-head">
+  <h1>{{$p.Name}}</h1>
+  <div class="actions">
+    <a class="btn btn-primary" href="/stock/ajouter?produit_id={{$p.ID}}">Ajouter</a>
+    <a class="btn" href="/catalogue/{{$p.ID}}?retour=/stock/produit/{{$p.ID}}">Fiche produit</a>
+  </div>
+</div>
+<dl class="figures card">
+  <div><dt>En stock</dt><dd>{{qty .Data.Total $p.Unit}}</dd></div>
+  {{- if $st.Min}}<div><dt>Minimum</dt><dd>{{qty $st.Min $p.Unit}}</dd></div>{{end}}
+  {{- if $st.DailyUse}}<div><dt>Consommation estimée</dt><dd>{{qty (div1000x30 $st.DailyUse) $p.Unit}} / mois</dd></div>{{end}}
+  {{- if .Data.RunOut}}<div><dt>Sous le minimum vers le</dt><dd>{{date .Data.RunOut}}</dd></div>{{end}}
+</dl>
+{{- if .Data.Items}}
+<ul class="cards">{{range .Data.Items}}{{template "stock-item" dict "Item" . "Today" $.Data.Today "Back" $.Data.Back}}{{end}}</ul>
+{{- else}}
+<p class="card empty">Aucun lot en stock.</p>
+{{- end}}
+<form class="card inline-form" method="post" action="/stock/produit/{{$p.ID}}/presque-vide">
+  <input type="hidden" name="back" value="{{.Data.Back}}">
+  {{- if $st.Low}}
+  <span class="grow">Signalé presque vide depuis le {{date $st.LowSince}} : il est sur la prochaine liste.</span>
+  <button class="btn" name="low" value="0">Retirer le signalement</button>
+  {{- else}}
+  <span class="grow">{{if $p.Staple}}Produit de base : signalez-le quand il est presque fini.{{else}}Bientôt fini ?{{end}}</span>
+  <button class="btn" name="low" value="1">Presque vide</button>
+  {{- end}}
+</form>
+<form class="form card form-card" method="post" action="/stock/produit/{{$p.ID}}/reglages">
+  <h2>Stock minimum</h2>
+  <p class="hint">« Au moins 2 dentifrices, en racheter jusqu'à 4 » : la liste de courses complète jusqu'à la cible quand le stock passe (ou passera) sous le minimum.</p>
+  <div class="field-row">
+    <div class="field"><label for="min">Minimum <span class="optional">({{$p.Unit.Label}})</span></label><input id="min" name="min" inputmode="decimal" value="{{if $st.Min}}{{qtyInput $st.Min $p.Unit}}{{end}}"></div>
+    <div class="field"><label for="target">Cible <span class="optional">({{$p.Unit.Label}})</span></label><input id="target" name="target" inputmode="decimal" value="{{if $st.Target}}{{qtyInput $st.Target $p.Unit}}{{end}}"></div>
+  </div>
+  <label class="check"><input type="checkbox" name="track" value="1"{{if $st.Track}} checked{{end}}> Estimer ma consommation et prévoir la rupture</label>
+  <div class="actions"><button class="btn btn-primary">Enregistrer</button></div>
+</form>
+{{- if .Data.History}}
+<section class="card" aria-labelledby="journal">
+  <h2 id="journal">Derniers mouvements</h2>
+  <div class="table-scroll"><table class="data">
+    <thead><tr><th>Date</th><th>Mouvement</th><th class="num">Quantité</th></tr></thead>
+    <tbody>{{range .Data.History}}<tr><td>{{date .Date}}</td><td>{{.Kind.Label}}{{if .Undone}} (annulé){{end}}</td><td class="num">{{if ne .Kind "ouverture"}}{{qty .Qty .Unit}}{{end}}</td></tr>{{end}}</tbody>
+  </table></div>
+</section>
+{{- end}}
+{{end}}

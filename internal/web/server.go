@@ -5,7 +5,6 @@ package web
 
 import (
 	"errors"
-	"html/template"
 	"log/slog"
 	"net/http"
 	"net/netip"
@@ -19,11 +18,9 @@ import (
 	"github.com/codecolors/petitchef/internal/backup"
 	"github.com/codecolors/petitchef/internal/catalog"
 	"github.com/codecolors/petitchef/internal/config"
-	"github.com/codecolors/petitchef/internal/platform/calendar"
 	"github.com/codecolors/petitchef/internal/platform/db"
-	"github.com/codecolors/petitchef/internal/platform/money"
-	"github.com/codecolors/petitchef/internal/platform/qty"
 	"github.com/codecolors/petitchef/internal/platform/validation"
+	"github.com/codecolors/petitchef/internal/stock"
 )
 
 const (
@@ -39,6 +36,7 @@ const maxFormBytes = 64 << 10
 type Services struct {
 	Auth    *auth.Service
 	Catalog *catalog.Service
+	Stock   *stock.Service
 	Alerts  *alerts.Service
 	Backups *backup.Service
 	// Restart arrête proprement PetitChef, que la politique de redémarrage
@@ -112,49 +110,6 @@ func New(cfg config.Config, database *db.DB, svc Services) (http.Handler, error)
 	}))
 
 	return securityHeaders(logRequests(csrf.Handler(mux)), s.secureCookies), nil
-}
-
-// templateFuncs renvoie les fonctions disponibles dans les gabarits.
-func templateFuncs(static assets) template.FuncMap {
-	return template.FuncMap{
-		"asset":     static.url,
-		"euros":     money.Format,
-		"navActive": navActive,
-		"plural":    plural,
-		"date":      func(d calendar.Date) string { return d.Format() },
-		"datetime":  func(t time.Time) string { return t.In(time.Local).Format("02/01/2006 à 15h04") },
-		"fileSize":  fileSize,
-		"add":       func(a, b int) int { return a + b },
-		"seq": func(n int) []int {
-			out := make([]int, n)
-			for i := range out {
-				out[i] = i
-			}
-			return out
-		},
-		"qty":        qty.Format,
-		"qtyShort":   qty.FormatShort,
-		"qtyInput":   qty.FormatInput,
-		"decimal":    qty.FormatDecimal,
-		"unitLabel":  qty.UnitLabel,
-		"monthNames": func() []string { return catalog.MonthNames[:] },
-		"allergens":  func() []catalog.AllergenInfo { return catalog.AllAllergens },
-		"traits":     func() []catalog.TraitInfo { return catalog.AllTraits },
-		"groups":     func() []catalog.Group { return catalog.Groups },
-		"universes":  func() []catalog.Universe { return catalog.Universes },
-		"bases":      func() []qty.Base { return qty.Bases },
-		"diets":      func() []catalog.DietInfo { return catalog.AllDiets },
-		"days": func(n int64) string {
-			if n < 0 {
-				return ""
-			}
-			return strconv.FormatInt(n, 10)
-		},
-		"int64":  func(n int) int64 { return int64(n) },
-		"eq64":   func(a, b int64) bool { return a == b },
-		"dict":   dict,
-		"mul100": func(v int64) int64 { return v * 100 },
-	}
 }
 
 // render affiche une page dans la mise en page commune, avec le message
@@ -335,14 +290,4 @@ func plural(n int, one, many string) string {
 		return strconv.Itoa(n) + " " + one
 	}
 	return strconv.Itoa(n) + " " + many
-}
-
-// dict construit un paramètre de gabarit à partir de paires clé, valeur.
-func dict(kv ...any) map[string]any {
-	m := make(map[string]any, len(kv)/2)
-	for i := 0; i+1 < len(kv); i += 2 {
-		k, _ := kv[i].(string)
-		m[k] = kv[i+1]
-	}
-	return m
 }

@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/codecolors/petitchef/internal/platform/money"
 	"github.com/codecolors/petitchef/internal/platform/qty"
 	"github.com/codecolors/petitchef/internal/platform/validation"
 )
@@ -55,4 +56,16 @@ func splitList(v string) []string {
 		}
 	}
 	return out
+}
+
+// parseEuros lit un prix positif (« 2,49 ») en centimes.
+func parseEuros(v string) (int64, error) {
+	c, err := money.Parse(v)
+	if err != nil {
+		return 0, err
+	}
+	if c < 0 {
+		return 0, validation.Error("Le prix doit être positif.")
+	}
+	return c, nil
 }

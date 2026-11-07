@@ -140,3 +140,72 @@ végétales).
 d'un magasin. Glisser-déposer (amélioration progressive dans `app.js`) et
 boutons « monter / descendre » (formulaires, accessibles au clavier et
 sans script) utilisent le même service.
+
+## Inventaire et stock minimum (jalons 3 et 4)
+
+### Lots et journal unique
+Le stock est fait de **lots** (`stock_items`) : produit, emplacement,
+quantité, date limite (DLC ou DDM), date d'ouverture, prix payé, origine.
+Toute variation passe par `stock_movements`, journal **unique** :
+achat, ajout, consommation par recette, consommation manuelle, perte,
+correction d'inventaire, transfert, ouverture. Statistiques (gaspillage,
+consommation), estimation de consommation et annulation lisent ce seul
+journal.
+
+### Annulation par action
+Chaque action reçoit un numéro (`batch`) commun à ses mouvements. Annuler
+rejoue les mouvements à l'envers (quantités, dates d'un lot ouvert) et les
+marque `undone`, en refusant si le stock a changé depuis d'une manière qui
+rendrait le résultat négatif. Un lot vidé n'est pas supprimé tout de suite
+(`emptied_on`) : il peut être restauré ; la tâche quotidienne purge les lots
+vides depuis plus de 30 jours, leurs mouvements restant au journal.
+L'interface propose « Annuler » pour la dernière action de l'utilisateur
+(15 minutes) : un bandeau, sans pile d'historique à gérer.
+
+### FEFO
+« Premier périmé, premier sorti » : `stock.PlanFEFO` (pure, testée)
+ordonne les lots par date limite, lots sans date en dernier. Un lot périmé
+à la date du repas ne compte pas comme disponible pour le menu ou la liste ;
+lors du décompte réel d'une recette cuisinée, il sert en dernier recours
+(on a cuisiné avec ce qu'on avait).
+
+### Dates limites proposées
+À l'ajout : aujourd'hui + conservation « fermé » du produit, ou
+« congelé » si l'emplacement est de type congelé. « Ouvert aujourd'hui »
+ramène la date à aujourd'hui + conservation « ouvert » si c'est plus tôt.
+Un déplacement vers le congélateur propose la conservation au congélateur.
+Valeurs indicatives et modifiables à chaque étape.
+
+### Gestes rapides sans script
+−/+ (un conditionnement, ou une pièce), Fini, Ouvert, Jeté, Déplacer :
+chaque geste est un petit formulaire POST qui revient à la page d'origine
+(ancre sur le lot). Pas de JavaScript nécessaire, pas d'état à synchroniser.
+
+### Valeur du gaspillage
+La valeur d'une perte est calculée au moment du mouvement : prix payé du
+lot au prorata, sinon dernier prix connu du produit, sinon inconnue. Elle
+est figée dans `value_cents` : les statistiques n'ont pas à reconstituer
+des prix passés.
+
+### Stock minimum et consommation estimée
+`stock_settings` porte minimum, cible, suivi et signalement « presque
+vide ». La consommation moyenne est estimée sur 180 jours à partir des
+mouvements de consommation et de cuisine (ni pertes, ni corrections), dès
+deux consommations sur au moins 14 jours : total consommé ÷ durée depuis la
+première consommation observée. Calcul quotidien par la tâche planifiée,
+stocké en millièmes d'unité par jour. La date de rupture prévue en découle
+(`stock.RunOutDate`) ; la liste de courses l'utilise (jalon 8).
+
+### Modèles de stock
+Trois modèles (salle de bain, ménage, placard de base) décrits en Go
+(noms du catalogue, minimum, cible) : les appliquer règle les produits
+correspondants, modifiables ensuite. Pas de table : ce sont des suggestions,
+pas des données.
+
+### Scan de code-barres
+`BarcodeDetector` du navigateur (Chrome Android notamment), chargé par
+`scan.js` uniquement sur l'écran de scan ; ailleurs ou sans cette API, la
+saisie du code fonctionne. Aucune bibliothèque de décodage n'est
+embarquée. Un code inconnu est associé au produit choisi lors de l'ajout :
+il sera reconnu ensuite. La politique `Permissions-Policy` autorise la
+caméra pour l'application elle-même.
