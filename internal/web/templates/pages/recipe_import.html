@@ -1,0 +1,9 @@
+{{define "content"}}
+<h1>Importer des recettes</h1>
+<form class="form card form-card" method="post" action="/recettes/importer" enctype="multipart/form-data">
+  {{- with .Data.Error}}<p class="alert" role="alert">{{.}}</p>{{end}}
+  <p>Fichier JSON exporté par PetitChef, ou recette au format schema.org <code>Recipe</code> (JSON-LD). Les ingrédients sont rapprochés du catalogue ; un produit inconnu est créé et rangé dans « à compléter ». Une recette dont le titre existe déjà est ignorée.</p>
+  <div class="field"><label for="file">Fichier</label><input id="file" name="file" type="file" accept=".json,.jsonld,application/json,application/ld+json" required></div>
+  <div class="actions"><button class="btn btn-primary">Importer</button><a class="btn" href="/recettes">Annuler</a></div>
+</form>
+{{end}}

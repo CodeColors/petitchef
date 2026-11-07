@@ -1,0 +1,249 @@
+- titre: Mousse au chocolat maison
+  types: dessert
+  portions: 6
+  preparation: 20
+  repos: 180
+  etiquettes: classique, réception, sans cuisson
+  ingredients: |
+    200 g Chocolat noir pâtissier
+    6 Œufs
+    1 pincée Sel fin
+    30 g Sucre en poudre
+  etapes:
+    - Faire fondre le chocolat au bain-marie et laisser tiédir.
+    - Incorporer les jaunes au chocolat ; monter les blancs en neige avec le sel et le sucre.
+    - Incorporer délicatement les blancs, répartir et réserver 3 h au frais.
+- titre: Gâteau au yaourt
+  types: dessert, gouter
+  portions: 8
+  preparation: 10
+  cuisson: 35
+  etiquettes: enfants, four, économique
+  ingredients: |
+    1 Yaourt nature
+    3 Œufs
+    150 g Sucre en poudre
+    250 g Farine de blé
+    1 sachet Levure chimique
+    8 cl Huile de tournesol
+    1 sachet Sucre vanillé
+  etapes:
+    - Préchauffer le four à 180 °C ; mélanger le yaourt, les œufs et les sucres.
+    - Ajouter la farine et la levure, puis l'huile.
+    - Verser dans un moule beurré et cuire 35 min.
+- titre: Crêpes
+  types: dessert, gouter
+  portions: 6
+  preparation: 10
+  repos: 60
+  cuisson: 30
+  etiquettes: enfants, économique, classique
+  ingredients: |
+    250 g Farine de blé
+    4 Œufs
+    50 cl Lait demi-écrémé
+    30 g Beurre doux
+    1 c. à soupe Sucre en poudre
+    1 pincée Sel fin
+  etapes:
+    - Mélanger farine, sucre et sel, ajouter les œufs puis le lait petit à petit et le beurre fondu.
+    - Laisser reposer 1 h.
+    - Cuire les crêpes dans une poêle chaude légèrement beurrée.
+- titre: Tarte aux pommes
+  types: dessert
+  portions: 6
+  preparation: 20
+  cuisson: 35
+  etiquettes: four, automne, classique
+  ingredients: |
+    1 [Pâte brisée maison]
+    5 Pomme
+    300 g Compote de pommes
+    30 g Sucre en poudre
+    20 g Beurre doux
+  etapes:
+    - Étaler la pâte dans un moule, la garnir de compote.
+    - Disposer les pommes en fines lamelles, saupoudrer de sucre et parsemer de beurre.
+    - Cuire 35 min à 190 °C.
+- titre: Salade de fruits frais
+  types: dessert
+  portions: 4
+  preparation: 15
+  etiquettes: rapide, sans cuisson, végan, enfants
+  ingredients: |
+    2 Orange
+    2 Kiwi
+    2 Pomme
+    2 Banane
+    1 Citron jaune
+    1 c. à soupe Sucre en poudre (facultatif)
+  etapes:
+    - Éplucher et couper les fruits en morceaux.
+    - Arroser de jus de citron et de sucre si besoin ; servir frais.
+- titre: Compote pommes-poires
+  types: dessert, gouter
+  portions: 6
+  preparation: 15
+  cuisson: 20
+  etiquettes: enfants, économique, végan, batch cooking
+  ingredients: |
+    1 kg Pomme
+    500 g Poire
+    1 c. à café Cannelle moulue
+    5 cl Eau plate
+  etapes:
+    - Éplucher et couper les fruits.
+    - Cuire 20 min à couvert avec l'eau et la cannelle, puis écraser.
+- titre: Clafoutis aux cerises
+  types: dessert
+  portions: 6
+  preparation: 15
+  cuisson: 40
+  etiquettes: four, été
+  ingredients: |
+    500 g Cerise
+    3 Œufs
+    100 g Sucre en poudre
+    80 g Farine de blé
+    30 cl Lait demi-écrémé
+    20 g Beurre doux
+  etapes:
+    - Beurrer un plat et y disposer les cerises lavées.
+    - Battre œufs et sucre, ajouter la farine puis le lait.
+    - Verser sur les fruits et cuire 40 min à 180 °C.
+- titre: Crumble aux pommes
+  types: dessert
+  portions: 6
+  preparation: 15
+  cuisson: 35
+  etiquettes: four, automne, enfants
+  ingredients: |
+    6 Pomme
+    150 g Farine de blé
+    100 g Sucre roux
+    100 g Beurre doux
+    1 c. à café Cannelle moulue
+  etapes:
+    - Couper les pommes en dés dans un plat, saupoudrer de cannelle.
+    - Sabler farine, sucre et beurre et répartir sur les fruits.
+    - Cuire 35 min à 180 °C.
+- titre: Fondant au chocolat
+  types: dessert
+  portions: 8
+  preparation: 15
+  cuisson: 25
+  etiquettes: four, réception
+  ingredients: |
+    200 g Chocolat noir pâtissier
+    150 g Beurre doux
+    150 g Sucre en poudre
+    4 Œufs
+    50 g Farine de blé
+  etapes:
+    - Faire fondre chocolat et beurre ; ajouter le sucre puis les œufs un à un et la farine.
+    - Cuire 25 min à 180 °C ; le cœur doit rester fondant.
+- titre: Panna cotta aux fruits rouges
+  types: dessert
+  portions: 6
+  preparation: 15
+  repos: 240
+  etiquettes: réception
+  ingredients: |
+    50 cl Crème liquide entière
+    60 g Sucre en poudre
+    3 feuilles Gélatine en feuilles
+    1 c. à café Extrait de vanille
+    300 g Fruits rouges surgelés
+  etapes:
+    - Faire ramollir la gélatine dans l'eau froide.
+    - Chauffer la crème avec le sucre et la vanille, ajouter la gélatine essorée.
+    - Verser dans des verrines, réserver 4 h et servir avec les fruits rouges mixés.
+- titre: Tiramisu
+  types: dessert
+  portions: 6
+  preparation: 25
+  repos: 360
+  etiquettes: réception, sans cuisson
+  ingredients: |
+    500 g Mascarpone
+    4 Œufs
+    100 g Sucre en poudre
+    24 Biscuits cuillère
+    15 g Café moulu
+    2 c. à soupe Cacao en poudre non sucré
+  etapes:
+    - Préparer 30 cl de café fort et le laisser refroidir.
+    - Fouetter jaunes et sucre, ajouter le mascarpone puis les blancs montés en neige.
+    - Alterner biscuits trempés dans le café et crème ; réserver 6 h, saupoudrer de cacao.
+- titre: Fromage blanc au miel et aux noix
+  types: dessert
+  portions: 4
+  preparation: 5
+  etiquettes: rapide, sans cuisson
+  ingredients: |
+    500 g Fromage blanc
+    4 c. à soupe Miel
+    40 g Cerneaux de noix
+  etapes:
+    - Répartir le fromage blanc, arroser de miel et parsemer de noix concassées.
+- titre: Pancakes
+  types: petit_dejeuner, gouter, dessert
+  portions: 4
+  preparation: 10
+  cuisson: 15
+  etiquettes: enfants, rapide
+  ingredients: |
+    200 g Farine de blé
+    2 Œufs
+    25 cl Lait demi-écrémé
+    30 g Sucre en poudre
+    1 sachet Levure chimique
+    20 g Beurre doux
+  etapes:
+    - Mélanger farine, sucre et levure, ajouter les œufs puis le lait et le beurre fondu.
+    - Cuire des petites louches de pâte 2 min de chaque côté dans une poêle chaude.
+- titre: Banana bread
+  types: gouter, petit_dejeuner
+  portions: 8
+  preparation: 15
+  cuisson: 50
+  etiquettes: anti-gaspi, four
+  ingredients: |
+    3 Banane
+    2 Œufs
+    80 g Sucre roux
+    200 g Farine de blé
+    1 sachet Levure chimique
+    80 g Beurre doux
+  etapes:
+    - Écraser les bananes bien mûres, ajouter les œufs, le sucre et le beurre fondu.
+    - Incorporer la farine et la levure ; cuire 50 min à 180 °C dans un moule à cake.
+- titre: Poires pochées au chocolat
+  types: dessert
+  portions: 4
+  preparation: 15
+  cuisson: 25
+  etiquettes: automne, hiver
+  ingredients: |
+    4 Poire
+    80 g Sucre en poudre
+    100 g Chocolat noir pâtissier
+    10 cl Crème liquide entière
+    1 Gousse de vanille
+  etapes:
+    - Pocher les poires épluchées 20 min dans 1 L d'eau avec le sucre et la vanille.
+    - Faire fondre le chocolat avec la crème et napper les poires égouttées.
+- titre: Porridge aux fruits
+  types: petit_dejeuner
+  portions: 2
+  preparation: 5
+  cuisson: 5
+  etiquettes: rapide, végétarien
+  ingredients: |
+    80 g Flocons d'avoine
+    40 cl Lait demi-écrémé
+    1 Banane
+    1 c. à soupe Miel
+  etapes:
+    - Cuire les flocons dans le lait 5 min en remuant.
+    - Servir avec la banane en rondelles et le miel.

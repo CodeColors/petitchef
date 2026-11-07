@@ -1,0 +1,98 @@
+{{define "content"}}
+{{- $r := .Data.Recipe}}{{$a := .Data.Analysis}}
+<div class="page-head">
+  <h1>{{$r.Title}}</h1>
+  <div class="actions no-print">
+    <a class="btn btn-primary" href="/recettes/{{$r.ID}}/cuisine?portions={{decimal .Data.Portions}}">Mode cuisine</a>
+    <a class="btn" href="/menus/ajouter?recette={{$r.ID}}">Ajouter au menu</a>
+    <a class="btn" href="/recettes/{{$r.ID}}/modifier">Modifier</a>
+  </div>
+</div>
+{{- with $r.Photo}}<img class="item-photo" src="/photos/{{.}}" alt="Photo de {{$r.Title}}">{{end}}
+<dl class="figures card">
+  <div><dt>Types</dt><dd>{{$r.Types.Labels}}</dd></div>
+  <div><dt>Temps</dt><dd>{{$r.TotalMin}} min</dd></div>
+  <div><dt>Indice d'équilibre</dt><dd>{{template "grade" $r.Grade}}{{if $r.BalanceManual}} <span class="tag">ajusté à la main</span>{{end}}</dd></div>
+  <div><dt>Difficulté</dt><dd>{{difficulty $r.Difficulty}}</dd></div>
+  {{- if .Data.CostKnown}}<div><dt>Coût estimé</dt><dd>{{euros .Data.Cost}}{{if lt .Data.CostKnown .Data.CostTotal}} <span class="tag">{{.Data.CostKnown}}/{{.Data.CostTotal}} prix connus</span>{{end}}</dd></div>{{end}}
+  {{- if $r.CookedCount}}<div><dt>Cuisinée</dt><dd>{{$r.CookedCount}} fois{{with $r.LastCooked}}, dernière le {{date .}}{{end}}</dd></div>{{end}}
+</dl>
+<p class="item-meta">Préparation {{$r.PrepMin}} min{{if $r.CookMin}} · cuisson {{$r.CookMin}} min{{end}}{{if $r.RestMin}} · repos {{$r.RestMin}} min{{end}}{{with $r.Utensils}} · ustensiles : {{.}}{{end}}</p>
+<ul class="badges" aria-label="Indicateurs">
+  {{- if $r.InSeason .Data.Month}}{{if ne $r.Season.Label "toute l'année"}}<li class="badge-ok">de saison</li>{{end}}{{end}}
+  {{- range .Data.Diets}}<li>{{.}}</li>{{end}}
+  {{- range $r.Tags}}<li><a href="/recettes?etiquette={{.}}">{{.}}</a></li>{{end}}
+</ul>
+{{- with .Data.Allergens}}<p><strong>Allergènes :</strong> {{range $i, $x := .}}{{if $i}}, {{end}}{{$x}}{{end}}.</p>{{end}}
+
+<section class="card" aria-labelledby="ingredients">
+  <div class="section-head">
+    <h2 id="ingredients">Ingrédients</h2>
+    <form class="inline-form no-print" method="get" action="/recettes/{{$r.ID}}">
+      <div class="field"><label for="portions">Portions</label><input id="portions" name="portions" inputmode="decimal" value="{{decimal .Data.Portions}}" size="4"></div>
+      <button class="btn">Adapter</button>
+    </form>
+  </div>
+  {{- $group := ""}}
+  <ul class="ingredients">
+    {{- range .Data.Lines}}
+    {{- if ne .Group $group}}{{$group = .Group}}<li class="ingredient-group">{{.Group}}</li>{{end}}
+    <li>{{with .Scaled}}<strong>{{.}}</strong> {{end}}{{if .SubRecipe}}<a href="/recettes/{{.SubRecipe}}">{{.Name}}</a>{{else}}{{.Name}}{{end}}{{with .Note}} ({{.}}){{end}}{{if .Optional}} <span class="tag">facultatif</span>{{end}}{{if and .ToTaste (not .Scaled)}} <span class="muted">au goût</span>{{end}}</li>
+    {{- end}}
+  </ul>
+</section>
+<section class="card" aria-labelledby="etapes">
+  <h2 id="etapes">Préparation</h2>
+  <ol class="steps-list">{{range $r.Steps}}<li>{{.Text}}</li>{{end}}</ol>
+  {{- with $r.Notes}}<p class="hint">{{.}}</p>{{end}}
+  {{- with $r.Source}}<p class="hint">Source : {{.}}</p>{{end}}
+</section>
+<section class="card" aria-labelledby="equilibre">
+  <h2 id="equilibre">Pourquoi {{template "grade" $a.Balance.Grade}} ?</h2>
+  <p>Score {{$a.Balance.Score}} d'après le poids de chaque groupe alimentaire (A à partir de {{index .Data.Grid.Thresholds 0}}). {{if $r.BalanceManual}}Indice ajusté à la main : {{$r.BalanceManual}}.{{end}}</p>
+  <ul class="reasons">{{range $a.Balance.Contributions}}<li><span>{{.Group.Label}} : {{.Share}} % du poids</span><strong>{{printf "%+d" .Points}}</strong></li>{{end}}</ul>
+  {{- with $a.Balance.Unweighed}}<p class="hint">Poids inconnu, non compté : {{range $i, $x := .}}{{if $i}}, {{end}}{{$x}}{{end}}.</p>{{end}}
+  {{- with $a.Nutrition}}<p class="hint">Estimation par portion : {{.Kcal}} kcal, protéines {{decimal (mul100 .Proteins)}} g, glucides {{decimal (mul100 .Carbs)}} g, lipides {{decimal (mul100 .Fat)}} g, fibres {{decimal (mul100 .Fibres)}} g.</p>{{end}}
+  <p class="hint">Indice maison, indicatif : ce n'est pas un Nutri-Score et il n'a aucune valeur médicale. <a href="/equilibre">Voir la grille</a>.</p>
+</section>
+<section class="card no-print" aria-labelledby="avis" id="avis">
+  <h2 id="avis-titre">Avis du foyer</h2>
+  {{- if .Data.Ratings}}
+  {{- range .Data.Ratings}}
+  <form class="form" method="post" action="/recettes/{{$r.ID}}/avis">
+    <input type="hidden" name="member" value="{{.MemberID}}">
+    <fieldset>
+      <legend>{{.Member}}</legend>
+      <div class="segmented">
+        {{- $st := .Stars}}{{$m := .MemberID}}
+        {{- range $i := list 1 2 3 4 5}}<label><input type="radio" name="stars" value="{{$i}}"{{if eq $i $st}} checked{{end}}><span>{{$i}}</span></label>{{end}}
+      </div>
+      <div class="actions">
+        <label class="check"><input type="checkbox" name="favorite" value="1"{{if .Favorite}} checked{{end}}> Favori</label>
+        <label class="check"><input type="checkbox" name="banned" value="1"{{if .Banned}} checked{{end}}> À ne plus proposer</label>
+      </div>
+      <div class="field"><label for="comment-{{.MemberID}}">Commentaire</label><input id="comment-{{.MemberID}}" name="comment" value="{{.Comment}}"></div>
+      <div class="actions"><button class="btn">Enregistrer l'avis de {{.Member}}</button></div>
+    </fieldset>
+  </form>
+  {{- end}}
+  {{- else}}
+  <p class="hint">Ajoutez les <a href="/foyer">membres du foyer</a> pour noter les recettes.</p>
+  {{- end}}
+</section>
+<section class="card no-print" aria-labelledby="plus">
+  <h2 id="plus">Plus</h2>
+  <form class="inline-form" method="post" action="/recettes/{{$r.ID}}/photo" enctype="multipart/form-data">
+    <div class="field"><label for="photo">Photo</label><input id="photo" name="photo" type="file" accept="image/*"></div>
+    <button class="btn">Envoyer</button>
+  </form>
+  <div class="actions">
+    <form method="post" action="/recettes/{{$r.ID}}/dupliquer"><button class="btn">Créer une variante</button></form>
+    <a class="btn" href="/recettes/{{$r.ID}}/export/recette.json">Exporter (JSON)</a>
+    <a class="btn" href="/recettes/{{$r.ID}}/export/schema.json">Exporter (schema.org)</a>
+  </div>
+  <form class="danger-zone" method="post" action="/recettes/{{$r.ID}}/supprimer" data-confirm="Supprimer définitivement « {{$r.Title}} » ?">
+    <button class="btn btn-danger">Supprimer la recette</button>
+  </form>
+</section>
+{{end}}

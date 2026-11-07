@@ -175,6 +175,21 @@
 </li>
 {{- end}}
 
+{{/* Carte d'une recette (recipes.Summary) ; paramètres : R, Extra
+   (contenu supplémentaire facultatif). */}}
+{{define "recipe-card"}}
+{{- $r := .R}}
+<li class="item">
+  {{- with $r.Photo}}<img class="item-photo" src="/photos/{{.}}" alt="" loading="lazy">{{end}}
+  <div class="item-head">
+    <a class="item-title" href="/recettes/{{$r.ID}}">{{$r.Title}}</a>
+    {{template "grade" $r.Grade}}
+  </div>
+  <p class="item-meta">{{$r.Types.Labels}} · {{$r.TotalMin}} min{{if $r.Stars}} · {{decimal (mul100 (int64 $r.Stars))}}/5{{end}}{{if $r.Favorite}} · favori{{end}}</p>
+  {{- with .Extra}}{{.}}{{end}}
+</li>
+{{- end}}
+
 {{/* Pagination : paramètres Page (catalog.ListPage ou équivalent), Base
    (chemin) et Query (filtres sans la page). */}}
 {{define "pager"}}

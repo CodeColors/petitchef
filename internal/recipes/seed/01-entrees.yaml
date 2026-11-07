@@ -1,0 +1,227 @@
+- titre: Salade de tomates à la mozzarella
+  types: entree
+  portions: 4
+  preparation: 10
+  etiquettes: rapide, sans cuisson, végétarien, été
+  ingredients: |
+    6 Tomate
+    2 Mozzarella
+    1 botte Basilic frais
+    3 c. à soupe Huile d'olive
+    1 c. à soupe Vinaigre balsamique
+    Fleur de sel
+    Poivre noir moulu
+  etapes:
+    - Trancher les tomates et la mozzarella, les disposer en alternance.
+    - Parsemer de feuilles de basilic, arroser d'huile et de vinaigre, saler et poivrer au moment de servir.
+- titre: Carottes râpées au citron
+  types: entree
+  portions: 4
+  preparation: 10
+  etiquettes: rapide, sans cuisson, enfants, végétarien
+  ingredients: |
+    500 g Carotte
+    1 Citron jaune
+    2 c. à soupe Huile d'olive
+    2 c. à soupe Persil plat
+    Sel fin
+  etapes:
+    - Éplucher et râper les carottes.
+    - Assaisonner avec le jus du citron, l'huile, le sel et le persil ciselé.
+- titre: Velouté de potiron
+  types: entree, plat
+  portions: 4
+  preparation: 15
+  cuisson: 25
+  etiquettes: végétarien, automne, batch cooking
+  ingredients: |
+    1 kg Potiron
+    1 Pomme de terre
+    1 Oignon jaune
+    1 Bouillon de légumes
+    20 cl Crème liquide entière
+    1 pincée Muscade moulue
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Éplucher et couper le potiron, la pomme de terre et l'oignon en morceaux.
+    - Couvrir d'eau avec le bouillon et cuire 25 min.
+    - Mixer avec la crème, assaisonner de sel, poivre et muscade.
+- titre: Soupe de poireaux et pommes de terre
+  types: entree, plat
+  portions: 4
+  preparation: 15
+  cuisson: 30
+  etiquettes: végétarien, hiver, batch cooking, économique
+  ingredients: |
+    3 Poireau
+    3 Pomme de terre
+    1 Bouillon de légumes
+    1 noix Beurre doux
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Laver et émincer les poireaux, éplucher et couper les pommes de terre.
+    - Faire suer les poireaux dans le beurre 5 min, ajouter les pommes de terre, le bouillon et 1,5 L d'eau.
+    - Cuire 25 min puis mixer et rectifier l'assaisonnement.
+- titre: Gaspacho
+  types: entree
+  portions: 4
+  preparation: 15
+  repos: 60
+  etiquettes: végétarien, été, sans cuisson
+  ingredients: |
+    1 kg Tomate
+    1 Concombre
+    1 Poivron rouge
+    1 Échalote
+    1 gousse Ail
+    3 c. à soupe Huile d'olive
+    1 c. à soupe Vinaigre de vin
+    Sel fin
+  etapes:
+    - Couper tous les légumes en morceaux et les mixer finement avec l'huile et le vinaigre.
+    - Saler et réserver au moins 1 h au frais avant de servir.
+- titre: Œufs mimosa
+  types: entree
+  portions: 4
+  preparation: 15
+  cuisson: 10
+  etiquettes: classique, enfants, végétarien
+  ingredients: |
+    6 Œufs
+    3 c. à soupe Mayonnaise
+    1 c. à soupe Ciboulette
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Cuire les œufs 10 min dans l'eau bouillante, les refroidir et les écaler.
+    - Couper les œufs en deux, mélanger les jaunes écrasés avec la mayonnaise, saler et poivrer.
+    - Garnir les blancs et parsemer de ciboulette.
+- titre: Salade de lentilles
+  types: entree, plat
+  portions: 4
+  preparation: 15
+  cuisson: 25
+  etiquettes: végétarien, économique, batch cooking
+  ingredients: |
+    250 g Lentilles vertes
+    1 Échalote
+    2 Carotte
+    1 Bouillon de légumes
+    2 c. à soupe Persil plat
+    4 [Vinaigrette maison]
+  etapes:
+    - Cuire les lentilles 25 min dans l'eau avec le bouillon et les carottes en dés.
+    - Égoutter, laisser tiédir puis mélanger avec l'échalote ciselée, le persil et la vinaigrette.
+- titre: Taboulé libanais
+  types: entree
+  portions: 4
+  preparation: 20
+  repos: 30
+  etiquettes: végétarien, été, sans cuisson
+  ingredients: |
+    100 g Boulgour
+    2 botte Persil plat
+    1 botte Menthe fraîche
+    3 Tomate
+    1 Oignon nouveau
+    2 Citron jaune
+    4 c. à soupe Huile d'olive
+    Sel fin
+  etapes:
+    - Faire gonfler le boulgour dans le jus des citrons pendant 30 min.
+    - Ciseler finement le persil, la menthe et l'oignon, couper les tomates en petits dés.
+    - Mélanger le tout avec l'huile et saler.
+- titre: Salade d'endives aux noix
+  types: entree
+  portions: 4
+  preparation: 10
+  etiquettes: rapide, sans cuisson, végétarien, hiver
+  ingredients: |
+    4 Endive
+    1 Pomme
+    50 g Cerneaux de noix
+    50 g Roquefort
+    4 [Vinaigrette maison]
+  etapes:
+    - Émincer les endives et couper la pomme en dés.
+    - Ajouter les noix, le roquefort émietté et la vinaigrette.
+- titre: Concombre à la crème
+  types: entree
+  portions: 4
+  preparation: 10
+  etiquettes: rapide, sans cuisson, végétarien, été
+  ingredients: |
+    2 Concombre
+    100 g Fromage blanc
+    1 c. à soupe Ciboulette
+    ½ Citron jaune
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Éplucher et trancher finement les concombres.
+    - Mélanger avec le fromage blanc, le jus de citron et la ciboulette, saler et poivrer.
+- titre: Velouté de champignons
+  types: entree
+  portions: 4
+  preparation: 10
+  cuisson: 20
+  etiquettes: végétarien, automne
+  ingredients: |
+    500 g Champignon de Paris
+    1 Échalote
+    1 Bouillon de légumes
+    20 cl Crème liquide légère
+    1 noix Beurre doux
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Faire revenir l'échalote et les champignons émincés dans le beurre 5 min.
+    - Ajouter 75 cl d'eau et le bouillon, cuire 15 min.
+    - Mixer avec la crème et assaisonner.
+- titre: Salade de betteraves à la feta
+  types: entree
+  portions: 4
+  preparation: 10
+  etiquettes: rapide, sans cuisson, végétarien
+  ingredients: |
+    500 g Betterave cuite
+    100 g Feta
+    1 Échalote
+    4 [Vinaigrette maison]
+  etapes:
+    - Couper les betteraves en dés, émietter la feta et ciseler l'échalote.
+    - Mélanger avec la vinaigrette.
+- titre: Houmous et crudités
+  types: entree
+  portions: 4
+  preparation: 15
+  etiquettes: végétarien, végan, sans cuisson, réception
+  ingredients: |
+    400 g Pois chiches en conserve
+    2 c. à soupe Tahini
+    1 Citron jaune
+    1 gousse Ail
+    3 c. à soupe Huile d'olive
+    1 c. à café Cumin
+    3 Carotte
+    1 Concombre
+    Sel fin
+  etapes:
+    - Mixer les pois chiches égouttés avec le tahini, le jus du citron, l'ail, l'huile, le cumin et un peu d'eau.
+    - Servir avec les carottes et le concombre coupés en bâtonnets.
+- titre: Avocat aux crevettes
+  types: entree
+  portions: 4
+  preparation: 10
+  etiquettes: rapide, sans cuisson, réception
+  ingredients: |
+    2 Avocat
+    200 g Crevette cuite
+    2 c. à soupe Mayonnaise
+    ½ Citron jaune
+    Sel fin
+  etapes:
+    - Couper les avocats en deux, retirer le noyau et arroser de jus de citron.
+    - Garnir de crevettes décortiquées mélangées à la mayonnaise.

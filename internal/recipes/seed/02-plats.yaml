@@ -1,0 +1,708 @@
+- titre: Spaghetti à la bolognaise
+  types: plat
+  portions: 4
+  preparation: 15
+  cuisson: 40
+  etiquettes: enfants, classique, batch cooking
+  ingredients: |
+    400 g Spaghetti
+    400 g Bœuf haché
+    1 Oignon jaune
+    1 Carotte
+    1 gousse Ail
+    800 g Tomates pelées en conserve
+    1 c. à soupe Concentré de tomate
+    2 c. à soupe Huile d'olive
+    1 c. à café Herbes de Provence
+    50 g Parmesan
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Faire revenir l'oignon, la carotte et l'ail hachés dans l'huile 5 min.
+    - Ajouter la viande et la faire dorer, puis les tomates, le concentré et les herbes ; laisser mijoter 30 min.
+    - Cuire les pâtes, les égoutter et servir avec la sauce et le parmesan.
+- titre: Lasagnes à la bolognaise
+  types: plat
+  portions: 6
+  preparation: 30
+  cuisson: 75
+  etiquettes: batch cooking, four, réception
+  ingredients: |
+    250 g Lasagnes sèches
+    500 g Bœuf haché
+    1 Oignon jaune
+    2 Carotte
+    800 g Tomates pelées en conserve
+    2 c. à soupe Huile d'olive
+    6 [Sauce béchamel]
+    100 g Emmental râpé
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Préparer une bolognaise avec l'oignon, les carottes, la viande et les tomates ; mijoter 30 min.
+    - Préchauffer le four à 180 °C ; alterner feuilles de lasagne, bolognaise et béchamel dans un plat.
+    - Couvrir de fromage et cuire 45 min.
+- titre: Quiche lorraine
+  types: plat
+  portions: 6
+  preparation: 15
+  cuisson: 35
+  etiquettes: four, classique
+  ingredients: |
+    1 [Pâte brisée maison]
+    200 g Lardons fumés
+    3 Œufs
+    20 cl Crème liquide entière
+    20 cl Lait demi-écrémé
+    80 g Emmental râpé
+    1 pincée Muscade moulue
+    Poivre noir moulu
+  etapes:
+    - Préchauffer le four à 200 °C, étaler la pâte dans un moule et la piquer.
+    - Faire dorer les lardons à sec et les répartir sur la pâte.
+    - Battre les œufs avec la crème, le lait, la muscade et le poivre ; verser, parsemer de fromage et cuire 35 min.
+- titre: Quiche aux poireaux
+  types: plat
+  portions: 6
+  preparation: 20
+  cuisson: 35
+  etiquettes: four, végétarien, hiver
+  ingredients: |
+    1 Pâte brisée
+    3 Poireau
+    3 Œufs
+    20 cl Crème fraîche légère
+    80 g Emmental râpé
+    1 noix Beurre doux
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Émincer les poireaux et les faire fondre 15 min dans le beurre.
+    - Garnir la pâte des poireaux, verser les œufs battus avec la crème, parsemer de fromage.
+    - Cuire 35 min à 200 °C.
+- titre: Poulet rôti et pommes de terre
+  types: plat
+  portions: 4
+  preparation: 15
+  cuisson: 75
+  etiquettes: four, classique, dimanche
+  ingredients: |
+    1 Poulet entier
+    1 kg Pomme de terre à chair ferme
+    4 gousses Ail
+    2 branches Thym frais
+    3 c. à soupe Huile d'olive
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Préchauffer le four à 200 °C ; badigeonner le poulet d'huile, saler et poivrer.
+    - Disposer autour les pommes de terre coupées, l'ail en chemise et le thym.
+    - Cuire 1 h 15 en arrosant régulièrement.
+- titre: Blanquette de veau
+  types: plat
+  portions: 6
+  preparation: 25
+  cuisson: 100
+  etiquettes: classique, mijoté, dimanche
+  ingredients: |
+    1,2 kg Blanquette de veau
+    4 Carotte
+    1 Oignon jaune
+    250 g Champignon de Paris
+    1 Bouillon de volaille
+    20 cl Crème fraîche épaisse
+    1 Œufs
+    40 g Beurre doux
+    40 g Farine de blé
+    1 Citron jaune
+    1 feuille Laurier
+    300 g Riz basmati
+  etapes:
+    - Couvrir la viande d'eau froide avec le bouillon, l'oignon, les carottes et le laurier ; cuire 1 h 30 à frémissement.
+    - Faire un roux avec le beurre et la farine, le mouiller avec 75 cl de bouillon de cuisson.
+    - Ajouter les champignons, la viande, puis hors du feu la crème, le jaune d'œuf et le jus de citron. Servir avec le riz.
+- titre: Bœuf bourguignon
+  types: plat
+  portions: 6
+  preparation: 25
+  cuisson: 180
+  etiquettes: mijoté, hiver, batch cooking
+  ingredients: |
+    1,2 kg Bœuf à bourguignon
+    150 g Lardons fumés
+    4 Carotte
+    2 Oignon jaune
+    250 g Champignon de Paris
+    75 cl Vin rouge de cuisine
+    2 c. à soupe Farine de blé
+    2 gousses Ail
+    1 feuille Laurier
+    2 branches Thym frais
+    2 c. à soupe Huile de tournesol
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Faire dorer la viande en morceaux dans l'huile, puis les lardons et les oignons.
+    - Saupoudrer de farine, mouiller avec le vin, ajouter carottes, ail, thym et laurier.
+    - Laisser mijoter 3 h à feu doux ; ajouter les champignons 30 min avant la fin.
+- titre: Hachis parmentier
+  types: plat
+  portions: 6
+  preparation: 30
+  cuisson: 45
+  etiquettes: four, enfants, batch cooking
+  ingredients: |
+    1,2 kg Pomme de terre
+    500 g Bœuf haché
+    1 Oignon jaune
+    25 cl Lait demi-écrémé
+    50 g Beurre doux
+    80 g Emmental râpé
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Cuire les pommes de terre et les écraser en purée avec le lait et le beurre.
+    - Faire revenir l'oignon et la viande, saler et poivrer.
+    - Étaler la viande dans un plat, couvrir de purée et de fromage ; gratiner 25 min à 200 °C.
+- titre: Gratin dauphinois
+  types: plat, accompagnement
+  portions: 6
+  preparation: 20
+  cuisson: 60
+  etiquettes: four, végétarien, hiver
+  ingredients: |
+    1,5 kg Pomme de terre
+    50 cl Lait demi-écrémé
+    25 cl Crème liquide entière
+    2 gousses Ail
+    1 pincée Muscade moulue
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Trancher finement les pommes de terre et les cuire 10 min dans le lait avec l'ail, la muscade, le sel et le poivre.
+    - Verser dans un plat, ajouter la crème et cuire 50 min à 180 °C.
+- titre: Saumon en papillote et haricots verts
+  types: plat
+  portions: 4
+  preparation: 10
+  cuisson: 20
+  etiquettes: rapide, poisson, four
+  ingredients: |
+    4 Filet de saumon
+    600 g Haricot vert
+    1 Citron jaune
+    2 c. à soupe Huile d'olive
+    1 botte Aneth
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Déposer chaque pavé sur une feuille de papier cuisson avec une rondelle de citron, de l'aneth, un filet d'huile, sel et poivre ; fermer.
+    - Cuire 15 min à 200 °C ; pendant ce temps, cuire les haricots verts 8 min à la vapeur.
+- titre: Cabillaud à la provençale
+  types: plat
+  portions: 4
+  preparation: 15
+  cuisson: 25
+  etiquettes: poisson, été
+  ingredients: |
+    4 Filet de cabillaud
+    4 Tomate
+    1 Courgette
+    1 Oignon jaune
+    2 gousses Ail
+    50 g Olives noires
+    3 c. à soupe Huile d'olive
+    1 c. à café Herbes de Provence
+    250 g Riz basmati
+    Sel fin
+  etapes:
+    - Faire revenir l'oignon, l'ail, la courgette et les tomates en dés 10 min dans l'huile.
+    - Ajouter les olives et les herbes, poser le poisson dessus et cuire à couvert 12 min.
+    - Servir avec le riz cuit.
+- titre: Moules marinières et frites
+  types: plat
+  portions: 4
+  preparation: 20
+  cuisson: 25
+  etiquettes: poisson, été
+  ingredients: |
+    2 kg Moules
+    2 Échalote
+    20 cl Vin blanc de cuisine
+    30 g Beurre doux
+    2 c. à soupe Persil plat
+    1 kg Frites surgelées
+  etapes:
+    - Gratter et rincer les moules.
+    - Faire suer les échalotes dans le beurre, ajouter le vin puis les moules ; cuire à couvert 6 min en remuant.
+    - Parsemer de persil ; servir avec les frites cuites au four.
+- titre: Curry de pois chiches
+  types: plat
+  portions: 4
+  preparation: 15
+  cuisson: 25
+  etiquettes: végétarien, végan, rapide, batch cooking
+  ingredients: |
+    800 g Pois chiches en conserve
+    400 ml Lait de coco en conserve
+    400 g Tomates pelées en conserve
+    1 Oignon jaune
+    2 gousses Ail
+    1 c. à soupe Curry en poudre
+    1 c. à café Gingembre moulu
+    200 g Épinard frais
+    250 g Riz basmati
+    2 c. à soupe Huile d'olive
+    Sel fin
+  etapes:
+    - Faire revenir l'oignon et l'ail dans l'huile avec les épices.
+    - Ajouter tomates, lait de coco et pois chiches égouttés ; mijoter 15 min, puis ajouter les épinards.
+    - Servir avec le riz.
+- titre: Dahl de lentilles corail
+  types: plat
+  portions: 4
+  preparation: 10
+  cuisson: 25
+  etiquettes: végétarien, végan, économique, rapide
+  ingredients: |
+    250 g Lentilles corail
+    400 ml Lait de coco en conserve
+    400 g Tomates concassées
+    1 Oignon jaune
+    2 gousses Ail
+    1 c. à café Curcuma
+    1 c. à café Cumin
+    1 c. à soupe Gingembre frais
+    2 c. à soupe Coriandre fraîche
+    2 c. à soupe Huile d'olive
+    Sel fin
+  etapes:
+    - Faire revenir l'oignon, l'ail, le gingembre et les épices dans l'huile.
+    - Ajouter les lentilles rincées, les tomates, le lait de coco et 40 cl d'eau ; cuire 20 min.
+    - Parsemer de coriandre.
+- titre: Chili con carne
+  types: plat
+  portions: 6
+  preparation: 15
+  cuisson: 45
+  etiquettes: batch cooking, épicé
+  ingredients: |
+    500 g Bœuf haché
+    800 g Haricots rouges en conserve
+    800 g Tomates pelées en conserve
+    1 Oignon jaune
+    1 Poivron rouge
+    2 gousses Ail
+    2 c. à café Cumin
+    1 c. à café Paprika
+    1 pincée Piment de Cayenne
+    2 c. à soupe Huile d'olive
+    300 g Riz long blanc
+    Sel fin
+  etapes:
+    - Faire revenir l'oignon, le poivron et l'ail, puis la viande.
+    - Ajouter les épices, les tomates et les haricots égouttés ; mijoter 35 min.
+    - Servir avec le riz.
+- titre: Chili sin carne
+  types: plat
+  portions: 4
+  preparation: 15
+  cuisson: 35
+  etiquettes: végétarien, végan, batch cooking
+  ingredients: |
+    800 g Haricots rouges en conserve
+    285 g Maïs doux en conserve
+    800 g Tomates pelées en conserve
+    1 Oignon jaune
+    1 Poivron rouge
+    2 c. à café Cumin
+    1 c. à café Paprika fumé
+    2 c. à soupe Huile d'olive
+    250 g Riz complet
+    Sel fin
+  etapes:
+    - Faire revenir l'oignon et le poivron dans l'huile avec les épices.
+    - Ajouter tomates, haricots et maïs égouttés ; mijoter 25 min.
+    - Servir avec le riz complet.
+- titre: Ratatouille
+  types: plat, accompagnement
+  portions: 6
+  preparation: 25
+  cuisson: 50
+  etiquettes: végétarien, végan, été, batch cooking
+  ingredients: |
+    2 Courgette
+    2 Aubergine
+    2 Poivron rouge
+    6 Tomate
+    2 Oignon jaune
+    3 gousses Ail
+    5 c. à soupe Huile d'olive
+    1 c. à café Herbes de Provence
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Couper tous les légumes en dés.
+    - Les faire revenir séparément dans l'huile, puis les réunir avec l'ail et les herbes.
+    - Laisser mijoter 40 min à couvert.
+- titre: Risotto aux champignons
+  types: plat
+  portions: 4
+  preparation: 10
+  cuisson: 30
+  etiquettes: végétarien, automne
+  ingredients: |
+    300 g Riz rond
+    400 g Champignon de Paris
+    1 Échalote
+    10 cl Vin blanc de cuisine
+    1 Bouillon de légumes
+    50 g Parmesan
+    30 g Beurre doux
+    2 c. à soupe Huile d'olive
+  etapes:
+    - Faire revenir l'échalote dans l'huile, ajouter le riz et le nacrer 2 min, déglacer au vin blanc.
+    - Ajouter le bouillon chaud louche par louche pendant 18 min, puis les champignons poêlés.
+    - Hors du feu, incorporer le beurre et le parmesan.
+- titre: Gratin de pâtes au jambon
+  types: plat
+  portions: 4
+  preparation: 10
+  cuisson: 25
+  etiquettes: enfants, rapide, four, économique
+  ingredients: |
+    300 g Coquillettes
+    4 tranches Jambon blanc
+    20 cl Crème fraîche légère
+    100 g Emmental râpé
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Cuire les coquillettes 2 min de moins que le temps indiqué.
+    - Mélanger avec le jambon en lanières et la crème, verser dans un plat, couvrir de fromage.
+    - Gratiner 15 min à 200 °C.
+- titre: Croque-monsieur et salade
+  types: plat
+  portions: 4
+  preparation: 10
+  cuisson: 10
+  etiquettes: rapide, enfants, four
+  ingredients: |
+    8 tranches Pain de mie
+    4 tranches Jambon blanc
+    100 g Emmental râpé
+    30 g Beurre doux
+    200 g Salade laitue
+    4 [Vinaigrette maison]
+  etapes:
+    - Beurrer le pain, garnir de jambon et de fromage, refermer et parsemer de fromage.
+    - Cuire 10 min à 200 °C ; servir avec la salade assaisonnée.
+- titre: Omelette aux fines herbes et salade
+  types: plat
+  portions: 2
+  preparation: 5
+  cuisson: 5
+  etiquettes: rapide, végétarien, économique
+  ingredients: |
+    5 Œufs
+    2 c. à soupe Ciboulette
+    1 c. à soupe Persil plat
+    1 noix Beurre doux
+    150 g Mâche
+    2 [Vinaigrette maison]
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Battre les œufs avec les herbes, saler et poivrer.
+    - Cuire dans le beurre chaud 3 à 4 min ; servir avec la mâche assaisonnée.
+- titre: Escalopes de dinde à la crème et champignons
+  types: plat
+  portions: 4
+  preparation: 10
+  cuisson: 20
+  etiquettes: rapide
+  ingredients: |
+    4 Escalope de dinde
+    250 g Champignon de Paris
+    20 cl Crème fraîche épaisse
+    1 Échalote
+    250 g Tagliatelles sèches
+    1 c. à soupe Huile d'olive
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Dorer les escalopes dans l'huile 4 min de chaque côté, réserver.
+    - Faire revenir l'échalote et les champignons, ajouter la crème et remettre la viande 5 min.
+    - Servir avec les tagliatelles.
+- titre: Poulet au curry et riz
+  types: plat
+  portions: 4
+  preparation: 15
+  cuisson: 25
+  etiquettes: rapide, enfants
+  ingredients: |
+    600 g Blanc de poulet
+    400 ml Lait de coco en conserve
+    1 Oignon jaune
+    1 c. à soupe Curry en poudre
+    250 g Riz basmati
+    2 c. à soupe Huile d'olive
+    2 c. à soupe Coriandre fraîche
+    Sel fin
+  etapes:
+    - Faire revenir l'oignon puis le poulet en morceaux dans l'huile.
+    - Ajouter le curry et le lait de coco ; mijoter 15 min.
+    - Servir avec le riz et la coriandre.
+- titre: Wok de poulet aux légumes
+  types: plat
+  portions: 4
+  preparation: 20
+  cuisson: 15
+  etiquettes: rapide
+  ingredients: |
+    500 g Blanc de poulet
+    2 Carotte
+    1 Poivron rouge
+    1 Brocoli
+    250 g Nouilles chinoises
+    3 c. à soupe Sauce soja
+    1 c. à soupe Gingembre frais
+    2 c. à soupe Huile de tournesol
+  etapes:
+    - Cuire les nouilles et les égoutter.
+    - Saisir le poulet en lamelles au wok, ajouter les légumes en fines lanières et le gingembre ; cuire 6 min.
+    - Ajouter les nouilles et la sauce soja, mélanger 2 min.
+- titre: Saucisses et lentilles
+  types: plat
+  portions: 4
+  preparation: 10
+  cuisson: 40
+  etiquettes: hiver, économique
+  ingredients: |
+    4 Saucisse de Toulouse
+    300 g Lentilles vertes
+    2 Carotte
+    1 Oignon jaune
+    1 feuille Laurier
+    Sel fin
+  etapes:
+    - Cuire les lentilles 30 min avec les carottes, l'oignon et le laurier.
+    - Dorer les saucisses à la poêle puis les ajouter aux lentilles 10 min.
+- titre: Pizza maison tomate et mozzarella
+  types: plat
+  portions: 4
+  preparation: 15
+  cuisson: 15
+  etiquettes: four, enfants, végétarien
+  ingredients: |
+    2 Pâte à pizza
+    300 ml Coulis de tomate
+    2 Mozzarella
+    1 c. à café Origan séché
+    2 c. à soupe Huile d'olive
+    1 botte Basilic frais
+  etapes:
+    - Préchauffer le four à 250 °C ; étaler les pâtes et les couvrir de coulis.
+    - Ajouter la mozzarella en tranches, l'origan et un filet d'huile.
+    - Cuire 12 à 15 min et parsemer de basilic.
+- titre: Gnocchis au pesto et tomates cerises
+  types: plat
+  portions: 4
+  preparation: 5
+  cuisson: 10
+  etiquettes: rapide, végétarien
+  ingredients: |
+    1 kg Gnocchi
+    190 g Pesto vert
+    250 g Tomate cerise
+    50 g Parmesan
+  etapes:
+    - Faire dorer les gnocchis à la poêle 8 min.
+    - Ajouter les tomates cerises coupées en deux et le pesto, mélanger.
+    - Servir avec le parmesan.
+- titre: Tajine de poulet aux légumes
+  types: plat
+  portions: 6
+  preparation: 20
+  cuisson: 60
+  etiquettes: mijoté, épicé
+  ingredients: |
+    6 Cuisse de poulet
+    4 Carotte
+    2 Courgette
+    1 Oignon jaune
+    2 c. à café Ras el-hanout
+    100 g Olives vertes
+    1 Citron jaune
+    300 g Semoule moyenne
+    3 c. à soupe Huile d'olive
+    Sel fin
+  etapes:
+    - Faire dorer le poulet dans l'huile avec l'oignon et les épices.
+    - Ajouter les carottes et 30 cl d'eau, cuire 40 min ; ajouter courgettes, olives et citron 20 min.
+    - Servir avec la semoule.
+- titre: Couscous de légumes
+  types: plat
+  portions: 6
+  preparation: 20
+  cuisson: 45
+  etiquettes: végétarien, végan, batch cooking
+  ingredients: |
+    400 g Semoule moyenne
+    400 g Pois chiches en conserve
+    3 Carotte
+    3 Courgette
+    3 Navet
+    1 Oignon jaune
+    400 g Tomates pelées en conserve
+    2 c. à café Ras el-hanout
+    3 c. à soupe Huile d'olive
+    Sel fin
+  etapes:
+    - Faire revenir l'oignon dans l'huile avec les épices, ajouter les légumes en morceaux, les tomates et 1 L d'eau.
+    - Cuire 35 min, ajouter les pois chiches 10 min avant la fin.
+    - Préparer la semoule et servir avec le bouillon de légumes.
+- titre: Steak haché, purée et carottes
+  types: plat
+  portions: 4
+  preparation: 15
+  cuisson: 25
+  etiquettes: enfants, classique
+  ingredients: |
+    4 Steak haché
+    1 kg Pomme de terre
+    500 g Carotte
+    20 cl Lait demi-écrémé
+    40 g Beurre doux
+    Sel fin
+  etapes:
+    - Cuire les pommes de terre et les carottes à l'eau salée 20 min.
+    - Écraser les pommes de terre en purée avec le lait et le beurre.
+    - Cuire les steaks 3 min de chaque côté.
+- titre: Filets de colin, riz et brocolis
+  types: plat
+  portions: 4
+  preparation: 10
+  cuisson: 20
+  etiquettes: rapide, poisson, enfants
+  ingredients: |
+    4 Filet de colin
+    250 g Riz basmati
+    1 Brocoli
+    1 Citron jaune
+    2 c. à soupe Huile d'olive
+    Sel fin
+  etapes:
+    - Cuire le riz et le brocoli en fleurettes à la vapeur.
+    - Poêler le poisson 4 min de chaque côté dans l'huile ; arroser de jus de citron.
+- titre: Pâtes au thon et à la tomate
+  types: plat
+  portions: 4
+  preparation: 5
+  cuisson: 15
+  etiquettes: rapide, économique, poisson
+  ingredients: |
+    400 g Penne
+    280 g Thon au naturel
+    400 g Tomates concassées
+    1 Oignon jaune
+    2 c. à soupe Huile d'olive
+    50 g Parmesan
+    Sel fin
+  etapes:
+    - Cuire les pâtes.
+    - Faire revenir l'oignon dans l'huile, ajouter les tomates 8 min puis le thon émietté.
+    - Mélanger aux pâtes et servir avec le parmesan.
+- titre: Tartiflette
+  types: plat
+  portions: 6
+  preparation: 20
+  cuisson: 45
+  etiquettes: four, hiver, réception
+  ingredients: |
+    1,5 kg Pomme de terre à chair ferme
+    1 Reblochon
+    200 g Lardons fumés
+    2 Oignon jaune
+    20 cl Crème fraîche épaisse
+    10 cl Vin blanc de cuisine
+  etapes:
+    - Cuire les pommes de terre 15 min, les couper en rondelles.
+    - Faire revenir oignons et lardons, déglacer au vin blanc, mélanger aux pommes de terre et à la crème.
+    - Verser dans un plat, poser le reblochon coupé en deux, cuire 25 min à 200 °C.
+- titre: Rôti de porc aux pommes
+  types: plat
+  portions: 6
+  preparation: 15
+  cuisson: 70
+  etiquettes: four, dimanche, automne
+  ingredients: |
+    1 kg Rôti de porc
+    4 Pomme
+    2 Oignon jaune
+    20 cl Vin blanc de cuisine
+    30 g Beurre doux
+    2 branches Thym frais
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Dorer le rôti dans le beurre sur toutes les faces.
+    - Ajouter les oignons, les pommes en quartiers, le thym et le vin.
+    - Cuire 1 h au four à 180 °C en arrosant.
+- titre: Tofu sauté aux légumes et quinoa
+  types: plat
+  portions: 4
+  preparation: 15
+  cuisson: 20
+  etiquettes: végétarien, végan, rapide
+  ingredients: |
+    400 g Tofu nature
+    250 g Quinoa
+    1 Brocoli
+    2 Carotte
+    3 c. à soupe Sauce soja
+    1 c. à soupe Huile de sésame
+    1 c. à soupe Graines de sésame
+  etapes:
+    - Cuire le quinoa 12 min.
+    - Faire dorer le tofu en dés dans l'huile, ajouter les légumes en petits morceaux et la sauce soja ; cuire 8 min.
+    - Servir sur le quinoa, parsemé de sésame.
+- titre: Galettes de sarrasin complètes
+  types: plat
+  portions: 4
+  preparation: 10
+  repos: 60
+  cuisson: 20
+  etiquettes: classique, enfants
+  ingredients: |
+    250 g Farine de sarrasin
+    1 Œufs
+    50 cl Eau plate
+    4 Œufs
+    4 tranches Jambon blanc
+    100 g Emmental râpé
+    20 g Beurre demi-sel
+    1 pincée Sel fin
+  etapes:
+    - Mélanger la farine, un œuf, le sel et l'eau ; laisser reposer 1 h.
+    - Cuire les galettes dans le beurre, garnir d'un œuf, de jambon et de fromage, replier les bords.
+- titre: Soupe minestrone
+  types: plat, entree
+  portions: 6
+  preparation: 20
+  cuisson: 35
+  etiquettes: végétarien, batch cooking, économique
+  ingredients: |
+    2 Carotte
+    2 Courgette
+    1 Poireau
+    2 Pomme de terre
+    250 g Haricots blancs en conserve
+    400 g Tomates concassées
+    100 g Coquillettes
+    1 Bouillon de légumes
+    2 c. à soupe Huile d'olive
+    50 g Parmesan
+  etapes:
+    - Faire revenir les légumes en dés dans l'huile, ajouter tomates, bouillon et 1,5 L d'eau ; cuire 20 min.
+    - Ajouter les pâtes et les haricots, cuire 10 min ; servir avec le parmesan.

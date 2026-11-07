@@ -1,0 +1,27 @@
+{{define "content"}}
+<h1>Grille de l'indice d'équilibre</h1>
+<form class="form card form-card" method="post" action="/equilibre">
+  {{- with .Data.Error}}<p class="alert" role="alert">{{.}}</p>{{end}}
+  <p>L'indice d'une recette est la somme, pour chaque groupe alimentaire, de son <strong>coefficient</strong> multiplié par sa <strong>part du poids</strong> des ingrédients (en %). Épices, condiments et boissons ne comptent pas. Exemple : 60 % de légumes (coefficient 1) apportent +60 points.</p>
+  <p class="hint">Indice maison et indicatif : ce n'est pas un Nutri-Score, et il n'a aucune valeur médicale.</p>
+  <div class="table-scroll"><table class="data">
+    <thead><tr><th>Groupe</th><th class="num">Coefficient</th></tr></thead>
+    <tbody>
+      {{- range .Data.Groups}}{{if and (ne . "condiments") (ne . "boissons")}}
+      <tr><td><label for="coef-{{.}}">{{.Label}}</label></td><td class="num"><input id="coef-{{.}}" name="coef_{{.}}" inputmode="decimal" value="{{coef $.Data.Grid .}}" size="5"></td></tr>
+      {{- end}}{{end}}
+    </tbody>
+  </table></div>
+  <fieldset>
+    <legend>Seuils (score minimum)</legend>
+    <div class="field-row">
+      {{- range $i, $t := .Data.Grid.Thresholds}}<div class="field"><label for="seuil-{{$i}}">{{template "grade" (letter $i)}}</label><input id="seuil-{{$i}}" name="seuil_{{$i}}" inputmode="numeric" value="{{$t}}"></div>{{end}}
+    </div>
+    <p class="hint">En dessous du seuil de D : E.</p>
+  </fieldset>
+  <div class="actions">
+    <button class="btn btn-primary">Enregistrer et recalculer</button>
+    <button class="btn" name="reset" value="1">Revenir à la grille par défaut</button>
+  </div>
+</form>
+{{end}}

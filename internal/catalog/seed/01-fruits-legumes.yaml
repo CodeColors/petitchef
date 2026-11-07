@@ -63,7 +63,7 @@ produits:
   - Cèpe | syn cèpes | cons 3/1/240 | saison 9-11
   - Girolle | syn girolles | cons 3/1/240 | saison 7-10
   - Maïs doux en épi | syn épi de maïs | piece 250 | cons 3/2/240 | saison 8-9 | groupe feculents_raffines
-  - Avocat | piece 200 | cons 7/1/- | emp fruits | saison 11-4 | groupe matieres_grasses
+  - Avocat | piece 200 | cons 7/1/- | emp fruits | saison 11-4
   - Gingembre frais | syn gingembre | piece 80 | cons 21/10/180 | groupe condiments | base | saison toute
   - Piment frais | syn piment rouge | piece 10 | cons 10/4/180 | groupe condiments | saison 7-10
   - Topinambour | cond 500 | cons 14/3/- | saison 10-3

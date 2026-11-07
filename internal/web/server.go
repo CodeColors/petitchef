@@ -18,8 +18,11 @@ import (
 	"github.com/codecolors/petitchef/internal/backup"
 	"github.com/codecolors/petitchef/internal/catalog"
 	"github.com/codecolors/petitchef/internal/config"
+	"github.com/codecolors/petitchef/internal/household"
+	"github.com/codecolors/petitchef/internal/photos"
 	"github.com/codecolors/petitchef/internal/platform/db"
 	"github.com/codecolors/petitchef/internal/platform/validation"
+	"github.com/codecolors/petitchef/internal/recipes"
 	"github.com/codecolors/petitchef/internal/stock"
 )
 
@@ -34,11 +37,14 @@ const maxFormBytes = 64 << 10
 
 // Services regroupe les services du domaine utilisés par l'interface.
 type Services struct {
-	Auth    *auth.Service
-	Catalog *catalog.Service
-	Stock   *stock.Service
-	Alerts  *alerts.Service
-	Backups *backup.Service
+	Auth      *auth.Service
+	Catalog   *catalog.Service
+	Stock     *stock.Service
+	Recipes   *recipes.Service
+	Household *household.Service
+	Photos    *photos.Service
+	Alerts    *alerts.Service
+	Backups   *backup.Service
 	// Restart arrête proprement PetitChef, que la politique de redémarrage
 	// du conteneur relance (restauration d'une sauvegarde).
 	Restart func()

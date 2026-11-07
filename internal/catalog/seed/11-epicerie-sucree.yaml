@@ -51,7 +51,7 @@ produits:
   - Biscuits au chocolat | syn cookies | cond 200 | all gluten, lait, soja | cons 270/30/-
   - Gaufrettes | cond 150 | all gluten, lait, soja | cons 270/30/-
   - Madeleines | cond 250 | all gluten, lait, oeufs | cons 120/14/-
-  - Biscuits cuillère | syn boudoirs | unite g | cond 175 | all gluten, oeufs | cons 365/30/-
+  - Biscuits cuillère | syn boudoirs | unite g | piece 6 | cond 175 | all gluten, oeufs | cons 365/30/-
   - Spéculoos | cond 250 | all gluten, soja | cons 270/30/-
   - Gâteau moelleux | syn quatre-quarts | cond 300 | all gluten, lait, oeufs | cons 90/7/-
   - Bonbons | cond 200 | cons 365/90/-

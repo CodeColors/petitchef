@@ -209,3 +209,87 @@ saisie du code fonctionne. Aucune bibliothèque de décodage n'est
 embarquée. Un code inconnu est associé au produit choisi lors de l'ajout :
 il sera reconnu ensuite. La politique `Permissions-Policy` autorise la
 caméra pour l'application elle-même.
+
+## Recettes (jalon 5)
+
+### Ingrédients saisis en texte, rapprochés du catalogue
+Le formulaire d'une recette prend ses ingrédients en **texte libre**, une
+ligne par ingrédient ou une liste collée (« 200 g de farine, 3 œufs, 1
+pincée de sel »). `recipes.ParseLine` en extrait quantité (décimale,
+fraction, « ½ »), unité (g, kg, cl, c. à soupe, gousse, sachet…), nom,
+précision (« émincé »), mentions « facultatif » et « au goût ». Le
+rapprochement (`recipes.Service.Resolve`) essaie, dans l'ordre : le nom
+exact ou un synonyme ; l'unité propre faisant partie du nom (« 4 filets de
+saumon ») ; le nom raccourci (« oignon émincé » → « oignon ») ; une
+proposition de la recherche. Dès qu'une ligne est incertaine, le formulaire
+revient avec un **écran de validation des correspondances**, ligne par
+ligne, où l'on corrige ou crée le produit à la volée. Le même format sert à
+l'édition (les ingrédients enregistrés sont réécrits en texte relisible),
+au jeu de départ et à l'export JSON : un seul analyseur, testé.
+
+### Quantités enregistrées deux fois
+`recipe_ingredients.qty` est en unités de base (calculs), `input_qty` et
+`input_unit` gardent la saisie (affichage : « 2 c. à soupe » plutôt que
+« 30 ml »). Les contenants sans conversion propre (boîte, paquet, sachet…)
+valent le plus petit conditionnement du produit.
+
+### Recettes composées
+Une ligne entre crochets désigne une autre recette (« 1 [Pâte brisée
+maison] », quantité en portions). `recipes.Expand` déroule récursivement
+les besoins en produits ; une boucle est refusée à l'enregistrement
+(`CheckCycle`) et détectée au déroulé. Modifier une recette recalcule
+celles qui l'utilisent.
+
+### Indicateurs calculés, jamais saisis
+Allergènes, traits de régime, saison (mois où tous les ingrédients frais
+saisonniers le sont), indice d'équilibre, protéine principale, féculent
+principal, « copieux » et part de végétaux sont recalculés à chaque
+enregistrement (et après la modification d'un produit) puis stockés dans
+`recipes` : la recherche et le générateur filtrent en SQL sans relire les
+ingrédients.
+
+### Indice d'équilibre
+Score = Σ (coefficient du groupe × part du poids en %), groupes neutres
+(condiments, boissons, non classés) exclus du poids ; lettre par seuils.
+Grille par défaut : légumes et légumineuses +1, fruits et poisson +0,8,
+féculents complets +0,6, volaille et œufs +0,3, produits laitiers +0,2,
+féculents raffinés 0, fromage −0,3, viande rouge −0,5, plats transformés
+−0,8, charcuterie −1, produits sucrés −1,2, matières grasses ajoutées −1,5 ;
+seuils A ≥ 35, B ≥ 15, C ≥ −5, D ≥ −25. Paramétrable (écran « Grille de
+l'indice d'équilibre », tout est recalculé), expliqué sur chaque recette
+(contribution de chaque groupe), corrigeable à la main (« ajusté à la
+main »). Ce n'est pas un Nutri-Score et l'interface le dit. L'estimation
+nutritionnelle par portion n'apparaît que si tous les ingrédients pesés ont
+leurs valeurs renseignées.
+
+### Recherche plein texte
+`recipes_fts` (FTS5, `unicode61 remove_diacritics 2`) indexe titre,
+ingrédients et étiquettes ; tenue à jour par l'application à chaque
+enregistrement (le contenu combine plusieurs tables, des déclencheurs
+seraient fragiles). Chaque mot saisi devient un préfixe obligatoire.
+
+### Avis par membre
+Note, favori, « à ne plus proposer », commentaire : une ligne par recette
+et par membre (`recipe_ratings`). L'historique « cuisinée » est un compteur
+et une date tenus à jour quand un repas est marqué cuisiné (jalon 9).
+
+### Jeu de départ
+70 recettes familiales rédigées pour PetitChef (YAML, même format de
+saisie), dont 3 bases réutilisées (pâte brisée, béchamel, vinaigrette).
+Chargé comme le catalogue, après lui, sans écraser une recette modifiée ;
+un test exige que chaque ingrédient corresponde **exactement** à un produit.
+
+### Une photo par recette
+Une seule photo (`recipes.photo`) plutôt qu'une table `recipe_photos` :
+suffisant pour une fiche et le mode cuisine, et plus simple à sauvegarder.
+Les photos sont réduites à 1600 px (code de BuddyGet, mémoire bornée),
+dans `/data/photos`, sous quota ; une variante partage la photo de
+l'original jusqu'à ce qu'on la remplace.
+
+### Import et export
+JSON propre (`petitchef-recettes`, version 1, documenté dans
+`docs/FORMATS.md`) et schema.org `Recipe` (JSON-LD, objet, liste ou
+`@graph`, durées ISO 8601, sections d'instructions). À l'import, un
+ingrédient inconnu crée un produit « à compléter » plutôt que d'échouer ;
+une recette dont le titre existe est ignorée. Le lecteur schema.org servira
+tel quel à l'import par URL (phase 2).

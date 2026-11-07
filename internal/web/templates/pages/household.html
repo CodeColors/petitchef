@@ -1,0 +1,37 @@
+{{define "content"}}
+<h1>Foyer et membres</h1>
+<p class="hint">Les membres du foyer (distincts des comptes de connexion) servent à mettre les recettes à l'échelle, à respecter allergies et régimes dans les menus, et à noter les recettes.</p>
+{{- if .Data.Members}}
+<ul class="rows" id="membres">
+  {{- range .Data.Members}}
+  <li class="row">
+    <a class="row-link" href="/foyer?membre={{.ID}}">
+      <span class="row-title">{{.Name}}</span>
+      <span class="row-meta">Portion {{decimal .Portion}}{{with .Diets.Labels}} · {{range $i, $x := .}}{{if $i}}, {{end}}{{$x}}{{end}}{{end}}{{with .Allergens.Labels}} · allergies : {{range $i, $x := .}}{{if $i}}, {{end}}{{$x}}{{end}}{{end}}{{with .RefusedNames}} · refuse : {{range $i, $x := .}}{{if $i}}, {{end}}{{$x}}{{end}}{{end}}</span>
+    </a>
+    <form method="post" action="/foyer/{{.ID}}/supprimer" data-confirm="Retirer {{.Name}} du foyer ?"><button class="btn btn-icon btn-ghost" aria-label="Retirer {{.Name}}">×</button></form>
+  </li>
+  {{- end}}
+</ul>
+{{- end}}
+{{- $m := .Data.Edit}}
+<form class="form card form-card" method="post" action="/foyer">
+  <h2>{{if $m.ID}}Modifier {{$m.Name}}{{else}}Ajouter un membre{{end}}</h2>
+  <input type="hidden" name="id" value="{{$m.ID}}">
+  <div class="field-row">
+    <div class="field"><label for="name">Prénom</label><input id="name" name="name" value="{{$m.Name}}" maxlength="40" required></div>
+    <div class="field">
+      <label for="portion">Portion relative</label>
+      <input id="portion" name="portion" inputmode="decimal" value="{{decimal $m.Portion}}" aria-describedby="portion-aide" required>
+      <p id="portion-aide" class="hint">1 pour un adulte, 0,5 pour un jeune enfant, 1,25 pour un adolescent.</p>
+    </div>
+  </div>
+  <fieldset><legend>Régimes</legend><div class="actions">{{range diets}}<label class="check"><input type="checkbox" name="diet_{{.Code}}" value="1"{{if hasDiet $m.Diets .Bit}} checked{{end}}> {{.Label}}</label>{{end}}</div></fieldset>
+  <details class="more"{{if $m.Allergens}} open{{end}}>
+    <summary>Allergies</summary>
+    <div class="field-row">{{range allergens}}<label class="check"><input type="checkbox" name="all_{{.Code}}" value="1"{{if $m.Allergens.Has .Bit}} checked{{end}}> {{.Label}}</label>{{end}}</div>
+  </details>
+  <div class="field"><label for="refused">Aliments refusés <span class="optional">(noms du catalogue, séparés par des virgules)</span></label><input id="refused" name="refused" value="{{range $i, $x := $m.RefusedNames}}{{if $i}}, {{end}}{{$x}}{{end}}" placeholder="Champignon de Paris, Fenouil"></div>
+  <div class="actions"><button class="btn btn-primary">Enregistrer</button>{{if $m.ID}}<a class="btn" href="/foyer">Annuler</a>{{end}}</div>
+</form>
+{{end}}

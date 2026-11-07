@@ -1,0 +1,70 @@
+{{define "content"}}
+{{- $in := .Data.Input}}
+<h1>{{.Title}}</h1>
+<form class="form card form-card" method="post" action="{{if .Data.ID}}/recettes/{{.Data.ID}}{{else}}/recettes{{end}}">
+  {{- with .Data.Error}}<p class="alert" role="alert">{{.}}</p>{{end}}
+  {{- if .Data.Review}}
+  <input type="hidden" name="review" value="1">
+  <section aria-labelledby="validation">
+    <h2 id="validation">Correspondances avec le catalogue</h2>
+    <p class="hint">Chaque ligne doit désigner un produit. Corrigez une proposition, ou saisissez un nom : un produit inconnu est créé à la volée.</p>
+    <ul class="rows">
+      {{- range $i, $x := .Data.Review}}
+      <li class="row">
+        <div class="field grow">
+          <label for="produit_{{$i}}">« {{$x.Raw}} »{{if eq $x.Confidence 3}} <span class="tag badge-ok">reconnu</span>{{else if eq $x.Confidence 2}} <span class="tag badge-ok">reconnu (nom raccourci)</span>{{else if eq $x.Confidence 1}} <span class="tag badge-warn">proposition</span>{{else}} <span class="tag badge-danger">inconnu</span>{{end}}</label>
+          {{- if $x.SubRecipe}}<input id="produit_{{$i}}" value="Recette : {{$x.Name}}" disabled>
+          {{- else}}
+          {{- $val := ""}}{{range $x.Suggestions}}{{if eq .ID $x.ProductID}}{{$val = .Name}}{{end}}{{end}}{{if eq $x.Confidence 0}}{{$val = $x.Name}}{{end}}
+          {{template "product-input" dict "ID" (printf "produit_%d" $i) "Name" (printf "produit_%d" $i) "Value" $val "Required" false}}
+          {{- end}}
+        </div>
+      </li>
+      {{- end}}
+    </ul>
+  </section>
+  {{- end}}
+  <div class="field"><label for="title">Titre</label><input id="title" name="title" value="{{$in.Title}}" maxlength="150" required></div>
+  <fieldset>
+    <legend>Types</legend>
+    <div class="actions">{{range recipeTypes}}<label class="check"><input type="checkbox" name="type_{{.Code}}" value="1"{{if $in.Types.Has .Bit}} checked{{end}}> {{.Label}}</label>{{end}}</div>
+  </fieldset>
+  <div class="field-row">
+    <div class="field"><label for="servings">Portions</label><input id="servings" name="servings" inputmode="numeric" value="{{$in.Servings}}" required></div>
+    <div class="field"><label for="prep">Préparation (min)</label><input id="prep" name="prep" inputmode="numeric" value="{{$in.PrepMin}}"></div>
+    <div class="field"><label for="cook">Cuisson (min)</label><input id="cook" name="cook" inputmode="numeric" value="{{$in.CookMin}}"></div>
+    <div class="field"><label for="rest">Repos (min)</label><input id="rest" name="rest" inputmode="numeric" value="{{$in.RestMin}}"></div>
+    <div class="field">
+      <label for="difficulty">Difficulté</label>
+      <select id="difficulty" name="difficulty">{{range $d := list 1 2 3}}<option value="{{$d}}"{{if eq $d $in.Difficulty}} selected{{end}}>{{difficulty $d}}</option>{{end}}</select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="ingredients">Ingrédients <span class="optional">(un par ligne, ou collés en une liste)</span></label>
+    <textarea id="ingredients" name="ingredients" rows="10" aria-describedby="ing-aide" required placeholder="200 g de farine&#10;3 œufs&#10;1 pincée de sel">{{.Data.Ingredients}}</textarea>
+    <p id="ing-aide" class="hint">« 2 c. à soupe d'huile d'olive », « ½ citron », « sel (au goût) », « 50 g de noix (facultatif) ». Une ligne terminée par « : » ouvre un groupe (« Pour la pâte : »). Une recette entre crochets s'utilise comme ingrédient : « 1 [Pâte brisée maison] ».</p>
+  </div>
+  <div class="field">
+    <label for="steps">Étapes <span class="optional">(une par ligne ; une durée comme « 20 min » devient une minuterie)</span></label>
+    <textarea id="steps" name="steps" rows="8">{{.Data.Steps}}</textarea>
+  </div>
+  <div class="field"><label for="tags">Étiquettes <span class="optional">(séparées par des virgules)</span></label><input id="tags" name="tags" value="{{.Data.Tags}}" placeholder="rapide, batch cooking, enfants"></div>
+  <details class="more">
+    <summary>Ustensiles, source, notes, indice manuel</summary>
+    <div class="field"><label for="utensils">Ustensiles</label><input id="utensils" name="utensils" value="{{$in.Utensils}}"></div>
+    <div class="field"><label for="source">Source <span class="optional">(texte ou adresse)</span></label><input id="source" name="source" value="{{$in.Source}}"></div>
+    <div class="field"><label for="notes">Notes</label><textarea id="notes" name="notes" rows="3">{{$in.Notes}}</textarea></div>
+    <div class="field">
+      <label for="grade">Indice d'équilibre</label>
+      <select id="grade" name="grade">
+        <option value="">Calculé</option>
+        {{- range $g := list "A" "B" "C" "D" "E"}}<option value="{{$g}}"{{if eq $g $in.BalanceManual}} selected{{end}}>{{$g}} (ajusté à la main)</option>{{end}}
+      </select>
+    </div>
+  </details>
+  <div class="actions">
+    <button class="btn btn-primary">Enregistrer</button>
+    <a class="btn" href="{{if .Data.ID}}/recettes/{{.Data.ID}}{{else}}/recettes{{end}}">Annuler</a>
+  </div>
+</form>
+{{end}}

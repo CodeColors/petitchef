@@ -32,8 +32,11 @@ import (
 	"github.com/codecolors/petitchef/internal/backup"
 	"github.com/codecolors/petitchef/internal/catalog"
 	"github.com/codecolors/petitchef/internal/config"
+	"github.com/codecolors/petitchef/internal/household"
+	"github.com/codecolors/petitchef/internal/photos"
 	"github.com/codecolors/petitchef/internal/platform/calendar"
 	"github.com/codecolors/petitchef/internal/platform/db"
+	"github.com/codecolors/petitchef/internal/recipes"
 	"github.com/codecolors/petitchef/internal/scheduler"
 	"github.com/codecolors/petitchef/internal/stock"
 	"github.com/codecolors/petitchef/internal/web"
@@ -102,6 +105,10 @@ func run() error {
 	}
 	products := catalog.NewService(database)
 	inventory := stock.NewService(database, products)
+	cookbook := recipes.NewService(database, products)
+	if err := cookbook.SyncSeed(ctx); err != nil {
+		return err
+	}
 	baseURL := ""
 	if cfg.BaseURL != nil {
 		baseURL = cfg.BaseURL.String()
@@ -109,11 +116,14 @@ func run() error {
 	alertCenter := alerts.NewService(database, baseURL)
 	backups := backup.NewService(database, cfg.DataDir, cfg.BackupPassphrase)
 	handler, err := web.New(cfg, database, web.Services{
-		Auth:    auth.NewService(database),
-		Catalog: products,
-		Stock:   inventory,
-		Alerts:  alertCenter,
-		Backups: backups,
+		Auth:      auth.NewService(database),
+		Catalog:   products,
+		Stock:     inventory,
+		Recipes:   cookbook,
+		Household: household.NewService(database),
+		Photos:    photos.NewService(cfg.PhotosDir(), cfg.MaxUploadBytes(), cfg.PhotosQuotaBytes()),
+		Alerts:    alertCenter,
+		Backups:   backups,
 		// Après une restauration préparée : arrêt propre, la politique de
 		// redémarrage du conteneur relance PetitChef.
 		Restart: stop,

@@ -1,0 +1,74 @@
+{{define "content"}}
+<div class="page-head">
+  <h1>Recettes</h1>
+  <div class="actions">
+    <a class="btn btn-primary" href="/recettes/nouvelle">Nouvelle recette</a>
+    <a class="btn" href="/ce-soir">Que cuisiner ce soir ?</a>
+  </div>
+</div>
+<form class="filters" method="get" action="/recettes" role="search" hx-get="/recettes" hx-target="#resultats" hx-trigger="input changed delay:250ms from:#q, change" hx-push-url="true">
+  <div class="filter-grid">
+    <div class="field"><label for="q">Rechercher</label><input id="q" name="q" type="search" value="{{.Data.Filter.Query}}" placeholder="Titre, ingrédient, étiquette" autocomplete="off"></div>
+    <div class="field">
+      <label for="type">Type</label>
+      <select id="type" name="type">
+        <option value="">Tous</option>
+        {{- range recipeTypes}}<option value="{{.Code}}"{{if eq .Bit $.Data.Filter.Type}} selected{{end}}>{{.Label}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="temps">Temps total</label>
+      <select id="temps" name="temps">
+        <option value="">Peu importe</option>
+        {{- range $m := list 15 30 45 60 90}}<option value="{{$m}}"{{if eq $m $.Data.Filter.MaxMinutes}} selected{{end}}>{{$m}} min au plus</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="indice">Indice d'équilibre</label>
+      <select id="indice" name="indice">
+        <option value="">Tous</option>
+        {{- range $g := list "A" "B" "C" "D"}}<option value="{{$g}}"{{if eq $g $.Data.Filter.MaxGrade}} selected{{end}}>{{$g}}{{if ne $g "A"}} ou mieux{{end}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="regime">Régime compatible</label>
+      <select id="regime" name="regime">
+        <option value="">Tous</option>
+        {{- range diets}}<option value="{{.Code}}"{{if eq .Bit $.Data.Filter.Diet}} selected{{end}}>{{.Label}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="note">Note</label>
+      <select id="note" name="note">
+        <option value="">Toutes</option>
+        {{- range $n := list 3 4 5}}<option value="{{$n}}"{{if eq $n $.Data.Filter.MinStars}} selected{{end}}>{{$n}}/5 et plus</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="etiquette">Étiquette</label>
+      <select id="etiquette" name="etiquette">
+        <option value="">Toutes</option>
+        {{- range .Data.Tags}}<option value="{{.Name}}"{{if eq .Name $.Data.Filter.Tag}} selected{{end}}>{{.Name}} ({{.Count}})</option>{{end}}
+      </select>
+    </div>
+  </div>
+  <div class="actions">
+    <label class="check"><input type="checkbox" name="saison" value="1"{{if .Data.Season}} checked{{end}}> De saison</label>
+    <label class="check"><input type="checkbox" name="favoris" value="1"{{if .Data.Filter.Favorites}} checked{{end}}> Favoris</label>
+    <a href="/ce-soir">Faisable avec mon stock</a>
+    <noscript><button class="btn">Filtrer</button></noscript>
+  </div>
+</form>
+<div id="resultats" class="results" aria-live="polite">{{template "results" .}}</div>
+<p class="actions"><a href="/recettes/importer">Importer des recettes</a> <a href="/recettes/export.json">Exporter toutes les recettes (JSON)</a></p>
+{{end}}
+
+{{define "results"}}
+<p class="summary">{{plural .Data.Page.Total "recette" "recettes"}}</p>
+{{- if .Data.Page.Items}}
+<ul class="cards">{{range .Data.Page.Items}}{{template "recipe-card" dict "R" .}}{{end}}</ul>
+{{template "pager" dict "Page" .Data.Page "Base" "/recettes" "Query" .Data.Query}}
+{{- else}}
+<div class="card empty"><p>Aucune recette ne correspond.</p><a class="btn btn-primary" href="/recettes/nouvelle">Créer une recette</a></div>
+{{- end}}
+{{end}}

@@ -50,7 +50,7 @@ produits:
   - Safran | cond 1 | base
   - Ail en poudre | cond 50 | u cc=3 | base
   - Échalote séchée | cond 40 | base
-  - Gousse de vanille | syn vanille | unite piece | piece 3 | cond 2000:2 gousses | base
+  - Gousse de vanille | syn vanille | unite piece | piece 3 | u gousse=1000 | cond 2000:2 gousses | base
   # Sauces et condiments
   - Moutarde de Dijon | syn moutarde | cond 210, 370 | u cs=15, cc=5 | all moutarde | cons 540/90/- | base
   - Moutarde à l'ancienne | cond 210 | u cs=15, cc=5 | all moutarde | cons 540/90/-

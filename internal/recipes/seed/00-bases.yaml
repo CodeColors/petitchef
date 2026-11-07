@@ -1,0 +1,46 @@
+# Bases utilisées par d'autres recettes (recettes composées).
+- titre: Pâte brisée maison
+  types: accompagnement
+  portions: 1
+  preparation: 10
+  repos: 30
+  etiquettes: base, sans cuisson
+  ingredients: |
+    250 g Farine de blé
+    125 g Beurre doux
+    1 pincée Sel fin
+    5 cl Eau plate
+  etapes:
+    - Sabler la farine, le sel et le beurre coupé en dés du bout des doigts.
+    - Ajouter l'eau froide petit à petit et former une boule sans trop travailler la pâte.
+    - Filmer et laisser reposer 30 min au réfrigérateur avant d'étaler.
+- titre: Sauce béchamel
+  types: sauce
+  portions: 4
+  preparation: 5
+  cuisson: 10
+  etiquettes: base, rapide
+  ingredients: |
+    40 g Beurre doux
+    40 g Farine de blé
+    50 cl Lait demi-écrémé
+    1 pincée Muscade moulue
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Faire fondre le beurre dans une casserole, ajouter la farine et remuer 1 min sans laisser colorer.
+    - Verser le lait froid d'un coup en fouettant, puis cuire 8 min à feu doux jusqu'à épaississement.
+    - Assaisonner de sel, poivre et muscade.
+- titre: Vinaigrette maison
+  types: sauce
+  portions: 4
+  preparation: 5
+  etiquettes: base, rapide, sans cuisson
+  ingredients: |
+    1 c. à café Moutarde de Dijon
+    1 c. à soupe Vinaigre de vin
+    3 c. à soupe Huile d'olive
+    Sel fin
+    Poivre noir moulu
+  etapes:
+    - Mélanger la moutarde, le vinaigre, le sel et le poivre, puis émulsionner avec l'huile.
