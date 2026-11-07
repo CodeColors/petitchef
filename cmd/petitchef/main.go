@@ -32,6 +32,7 @@ import (
 	"github.com/codecolors/petitchef/internal/backup"
 	"github.com/codecolors/petitchef/internal/catalog"
 	"github.com/codecolors/petitchef/internal/config"
+	"github.com/codecolors/petitchef/internal/exports"
 	"github.com/codecolors/petitchef/internal/household"
 	"github.com/codecolors/petitchef/internal/menus"
 	"github.com/codecolors/petitchef/internal/photos"
@@ -132,6 +133,7 @@ func run() error {
 		Menus:     planning,
 		Shopping:  groceries,
 		Stats:     stats.NewService(database),
+		Exports:   exports.NewService(database, planning, cookbook, groceries),
 		Photos:    photos.NewService(cfg.PhotosDir(), cfg.MaxUploadBytes(), cfg.PhotosQuotaBytes()),
 		Alerts:    alertCenter,
 		Backups:   backups,

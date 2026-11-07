@@ -110,6 +110,9 @@ func (s *Server) routes() map[string]http.HandlerFunc {
 		"POST /menus/plats/{id}/decuisiner":           s.uncook,
 		"GET /recettes/{id}/cuisine":                  s.cookingMode,
 		"GET /statistiques":                           s.statsPage,
+		"GET /exports":                                s.exportsPage,
+		"GET /exports/{name}":                         s.export,
+		"POST /exports/ical/revoquer":                 s.revokeICal,
 		"GET /emplacements":                           s.locationsPage,
 		"POST /emplacements":                          s.saveLocation,
 		"POST /emplacements/{id}/supprimer":           s.deleteLocation,
@@ -120,6 +123,7 @@ func (s *Server) routes() map[string]http.HandlerFunc {
 // jeton secret, service worker).
 func (s *Server) publicRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /sw.js", s.serviceWorker)
+	mux.HandleFunc("GET /ical/{token}", s.ical)
 }
 
 func (s *Server) morePage(w http.ResponseWriter, r *http.Request) {

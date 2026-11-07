@@ -1,0 +1,46 @@
+{{define "content"}}
+<h1>Exports</h1>
+<p class="hint">Tous les exports de PetitChef, en un seul endroit. Les sauvegardes complètes sont dans <a href="/sauvegardes">Sauvegardes</a>.</p>
+<section class="card" aria-labelledby="menus">
+  <h2 id="menus">Menus</h2>
+  <form class="inline-form" method="get" action="/exports/menus.csv">
+    <div class="field"><label for="du">Du</label><input id="du" name="du" type="date" value="{{.Data.Monday}}"></div>
+    <div class="field"><label for="au">Au</label><input id="au" name="au" type="date" value="{{.Data.Monday.AddDays 6}}"></div>
+    <button class="btn">CSV</button>
+    <button class="btn" formaction="/exports/menus.pdf">PDF A4</button>
+  </form>
+  <p><a href="/menus/imprimer?semaine={{.Data.Monday}}">Imprimer le menu de la semaine (pour le réfrigérateur)</a></p>
+</section>
+<section class="card" aria-labelledby="courses">
+  <h2 id="courses">Liste de courses</h2>
+  <div class="actions"><a class="btn" href="/courses/texte?telecharger=1">Texte</a><a class="btn" href="/exports/courses.pdf">PDF</a><a href="/courses">Ouvrir la liste</a></div>
+</section>
+<section class="card" aria-labelledby="recettes" id="recettes">
+  <h2 id="recettes-titre">Recettes</h2>
+  <div class="actions"><a class="btn" href="/recettes/export.json">Toutes les recettes (JSON)</a><a href="/recettes/importer">Importer</a></div>
+  <form class="form" method="get" action="/exports/recettes.pdf">
+    <fieldset>
+      <legend>Livre de recettes (PDF) ou sélection JSON</legend>
+      <div class="field-row">{{range .Data.Recipes}}<label class="check"><input type="checkbox" name="id" value="{{.ID}}"> {{.Title}}</label>{{end}}</div>
+    </fieldset>
+    <div class="actions"><button class="btn">Livre de recettes PDF</button><button class="btn" formaction="/recettes/export.json">Sélection en JSON</button></div>
+  </form>
+</section>
+<section class="card" aria-labelledby="inventaire">
+  <h2 id="inventaire">Inventaire et achats</h2>
+  <div class="actions">
+    <a class="btn" href="/exports/inventaire.csv">Inventaire (CSV)</a>
+    <a class="btn" href="/exports/achats.csv">Historique des achats (CSV)</a>
+    <a class="btn" href="/exports/achats-buddyget.csv">Achats pour BuddyGet (CSV)</a>
+  </div>
+  <p class="hint">Le fichier « pour BuddyGet » contient une opération par jour et par magasin (Date, Libellé, Montant) : il s'importe avec le profil générique de BuddyGet.</p>
+</section>
+<section class="card" aria-labelledby="ical-titre" id="ical">
+  <h2 id="ical-titre">Agenda (iCal)</h2>
+  <p>Abonnez votre agenda partagé à cette adresse secrète, en lecture seule : un événement par repas, des 7 derniers jours aux 8 semaines à venir.</p>
+  <div class="field"><label for="ical-url">Adresse</label><input id="ical-url" value="{{.Data.ICalURL}}" readonly></div>
+  <form method="post" action="/exports/ical/revoquer" data-confirm="Créer une nouvelle adresse ? L'ancienne cessera de fonctionner dans les agendas abonnés.">
+    <button class="btn">Révoquer et créer une nouvelle adresse</button>
+  </form>
+</section>
+{{end}}

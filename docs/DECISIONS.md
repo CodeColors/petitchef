@@ -481,3 +481,28 @@ valeur, par produit et par mois), dépenses par mois, rayon et univers
 (achats et ajouts avec prix), consommation des produits d'hygiène,
 d'entretien et de maison. Graphiques en SVG rendus côté serveur, chacun
 avec son tableau de valeurs.
+
+## Exports, iCal, sauvegardes (jalon 11)
+
+- **Point d'entrée unique** `internal/exports` et écran « Exports » :
+  menus (CSV, PDF A4 paysage), liste de courses (texte, PDF avec cases),
+  recettes (JSON de PetitChef, schema.org, livre de recettes PDF d'une
+  sélection), inventaire (CSV), historique des achats (CSV détaillé, et CSV
+  « pour BuddyGet »). Production en flux, à partir des services existants.
+- **CSV** séparés par des points-virgules avec BOM UTF-8 (ouverture directe
+  dans un tableur français), sauf l'export pour BuddyGet : `Date,Libellé,
+  Montant` (dates ISO, montant négatif à point décimal), une opération par
+  jour et par magasin, reconnu par le profil d'import générique de
+  BuddyGet.
+- **PDF** par `go-pdf/fpdf`, la bibliothèque de BuddyGet (et son module
+  `pdf.go`) : polices standard, aucun navigateur embarqué.
+- **iCal** : `/ical/<jeton>.ics`, sans session, le jeton aléatoire de 128
+  bits faisant office d'autorisation, comparé en temps constant et
+  révocable depuis l'écran des exports. Un événement par repas (heures
+  indicatives par créneau, fuseau Europe/Paris), des 7 derniers jours aux
+  8 semaines à venir, lignes repliées à 75 octets (RFC 5545).
+- **Sauvegardes** : reprises de BuddyGet sans changement de principe
+  (instantané SQLite cohérent `VACUUM INTO` + photos, archive tar.gz,
+  chiffrement `age` facultatif par `BACKUP_PASSPHRASE`, rotation des
+  sauvegardes automatiques, copie dossier ou WebDAV désactivée par défaut,
+  restauration préparée puis appliquée au redémarrage).

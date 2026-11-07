@@ -275,7 +275,8 @@ func (s *Service) AddTx(ctx context.Context, tx *sql.Tx, in AddInput, batch int6
 		in.Origin = Manual
 	}
 	var kind catalog.DateKind
-	if err := tx.QueryRowContext(ctx, `SELECT date_kind FROM products WHERE id = ?`, in.ProductID).Scan(&kind); err != nil {
+	var defLoc int64
+	if err := tx.QueryRowContext(ctx, `SELECT date_kind, coalesce(location_id, 0) FROM products WHERE id = ?`, in.ProductID).Scan(&kind, &defLoc); err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
 			return 0, db.ErrNotFound
 		}
@@ -283,6 +284,9 @@ func (s *Service) AddTx(ctx context.Context, tx *sql.Tx, in AddInput, batch int6
 	}
 	if in.DateKind != "" {
 		kind = in.DateKind
+	}
+	if in.LocationID == 0 {
+		in.LocationID = defLoc // emplacement par défaut du produit
 	}
 	var price, priceQty any
 	if in.PriceCents >= 0 {
