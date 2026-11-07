@@ -48,6 +48,7 @@ func templateFuncs(static assets) template.FuncMap {
 		"list":       func(v ...any) []any { return v },
 		"join":       strings.Join,
 		"div60":      func(v int) int { return (v + 30) / 60 },
+		"int":        func(v int64) int { return int(v) },
 		"hasID":      func(list []int64, id int64) bool { return slices.Contains(list, id) },
 		"cell": func(cells map[[2]int64]menus.Cell, d int, slot int64) menus.Cell {
 			c, ok := cells[[2]int64{int64(d), slot}]

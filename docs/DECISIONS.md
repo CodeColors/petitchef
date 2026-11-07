@@ -459,3 +459,25 @@ justifie, et il est **limité à un écran** :
   étapes, écran maintenu allumé par `Screen Wake Lock` quand le navigateur
   le permet ; en fin de recette, « marquer comme cuisiné » (plat du jour
   retrouvé dans le menu) et « noter la recette ».
+
+## Alertes et statistiques (jalon 10)
+
+### Un seul système d'alertes, des examens par domaine
+`internal/watch` décrit les situations (produits qui périment dans N jours,
+en un résumé quotidien ; produits périmés ; stock sous le minimum ; rupture
+prévue avant les prochaines courses ; menu de la semaine suivante non
+planifié ; liste prête la veille ou le jour des courses) et les inscrit
+auprès d'`internal/alerts`, qui reste l'unique système : clé de situation
+unique (pas de doublon), cloche et page dédiée, acquittement, canaux
+sortants facultatifs désactivés par défaut (e-mail SMTP, webhook ou ntfy,
+notifications discrètes, rythme immédiat ou récapitulatif). Examen après
+chaque action (requêtes POST) et par la tâche quotidienne, jamais par
+interrogation périodique.
+
+### Statistiques sans données parallèles
+Tout vient du journal des mouvements de stock et des menus : recettes les
+plus cuisinées, équilibre moyen par semaine, gaspillage (quantités et
+valeur, par produit et par mois), dépenses par mois, rayon et univers
+(achats et ajouts avec prix), consommation des produits d'hygiène,
+d'entretien et de maison. Graphiques en SVG rendus côté serveur, chacun
+avec son tableau de valeurs.

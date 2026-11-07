@@ -40,7 +40,9 @@ import (
 	"github.com/codecolors/petitchef/internal/recipes"
 	"github.com/codecolors/petitchef/internal/scheduler"
 	"github.com/codecolors/petitchef/internal/shopping"
+	"github.com/codecolors/petitchef/internal/stats"
 	"github.com/codecolors/petitchef/internal/stock"
+	"github.com/codecolors/petitchef/internal/watch"
 	"github.com/codecolors/petitchef/internal/web"
 )
 
@@ -110,6 +112,7 @@ func run() error {
 	cookbook := recipes.NewService(database, products)
 	members := household.NewService(database)
 	planning := menus.NewService(database, products, cookbook, members, inventory)
+	groceries := shopping.NewService(database, products, cookbook, planning, inventory)
 	if err := cookbook.SyncSeed(ctx); err != nil {
 		return err
 	}
@@ -118,6 +121,7 @@ func run() error {
 		baseURL = cfg.BaseURL.String()
 	}
 	alertCenter := alerts.NewService(database, baseURL)
+	watch.Register(alertCenter, inventory, planning, groceries)
 	backups := backup.NewService(database, cfg.DataDir, cfg.BackupPassphrase)
 	handler, err := web.New(cfg, database, web.Services{
 		Auth:      auth.NewService(database),
@@ -126,7 +130,8 @@ func run() error {
 		Recipes:   cookbook,
 		Household: members,
 		Menus:     planning,
-		Shopping:  shopping.NewService(database, products, cookbook, planning, inventory),
+		Shopping:  groceries,
+		Stats:     stats.NewService(database),
 		Photos:    photos.NewService(cfg.PhotosDir(), cfg.MaxUploadBytes(), cfg.PhotosQuotaBytes()),
 		Alerts:    alertCenter,
 		Backups:   backups,

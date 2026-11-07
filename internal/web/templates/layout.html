@@ -230,24 +230,26 @@
 {{- end}}
 {{- end}}
 
-{{/* Diagramme en barres (barChart) ; la figure porte le titre <ID>-titre. */}}
-{{define "bar-chart"}}
-<svg class="chart-svg" role="img" aria-labelledby="{{.ID}}-titre {{.ID}}-desc">
-  <desc id="{{.ID}}-desc">{{.Desc}}</desc>
-  <svg y="{{.Top}}%" width="100%" height="{{.Height}}%" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-    {{- range .YTicks}}
-    <line class="chart-grid" x1="0" x2="1000" y1="{{printf "%.1f" .Pos}}" y2="{{printf "%.1f" .Pos}}" vector-effect="non-scaling-stroke"/>
-    {{- end}}
-    {{- range .Bars}}
-    <rect class="chart-bar{{if .Over}} is-over{{end}}" x="{{printf "%.1f" .X}}" y="{{printf "%.1f" .Y}}" width="{{printf "%.1f" .W}}" height="{{printf "%.1f" .H}}"/>
-    {{- end}}
-    <line class="chart-threshold" x1="0" x2="1000" y1="{{printf "%.1f" .Reference}}" y2="{{printf "%.1f" .Reference}}" vector-effect="non-scaling-stroke"/>
+{{/* Diagramme en barres (barChart) et son tableau de valeurs. */}}
+{{define "bars"}}
+<figure class="chart card">
+  <figcaption id="{{.ID}}-titre">{{.Title}}</figcaption>
+  {{- if .Empty}}<p class="muted">Pas encore de données.</p>{{else}}
+  <svg class="chart-svg" role="img" aria-labelledby="{{.ID}}-titre {{.ID}}-desc">
+    <desc id="{{.ID}}-desc">{{.Desc}} Maximum : {{.Max}}.</desc>
+    <svg y="4%" width="100%" height="84%" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+      <line class="chart-grid" x1="0" x2="1000" y1="100" y2="100" vector-effect="non-scaling-stroke"/>
+      <line class="chart-grid" x1="0" x2="1000" y1="1000" y2="1000" vector-effect="non-scaling-stroke"/>
+      {{- range .Bars}}<rect class="chart-bar" x="{{printf "%.1f" .X}}" y="{{printf "%.1f" .Y}}" width="{{printf "%.1f" .W}}" height="{{printf "%.1f" .H}}"/>{{end}}
+    </svg>
+    <text class="chart-label" x="4" y="4%" dy="10">{{.Max}}</text>
+    {{- range .Bars}}<text class="chart-label chart-x" x="{{printf "%.1f" .LabelX}}%" y="100%" dy="-4">{{.Label}}</text>{{end}}
   </svg>
-  {{- range .YTicks}}
-  <text class="chart-label" x="4" y="{{printf "%.1f" .Pct}}%" dy="-4">{{.Label}}</text>
+  <details>
+    <summary>Tableau des valeurs</summary>
+    <table class="data"><thead><tr><th>Période</th><th class="num">Valeur</th></tr></thead>
+    <tbody>{{range .Rows}}<tr><td>{{.Label}}</td><td class="num">{{.Value}}</td></tr>{{end}}</tbody></table>
+  </details>
   {{- end}}
-  {{- range .XTicks}}
-  <text class="chart-label chart-x" x="{{printf "%.1f" .Pct}}%" y="100%" dy="-4">{{.Label}}</text>
-  {{- end}}
-</svg>
+</figure>
 {{- end}}

@@ -847,3 +847,4 @@ a.dish-title:hover { text-decoration: underline; }
 .dish-actions details > summary, .shop-line details > summary { min-height: var(--tap); padding: 0 .75rem; }
 .shop-line details { flex: none; }
 .grow { flex: 1; min-width: 0; }
+.chart-bar { fill: var(--primary); }

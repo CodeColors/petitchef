@@ -1,0 +1,51 @@
+{{define "content"}}
+{{- $r := .Data.Report}}
+<div class="page-head">
+  <h1>Statistiques</h1>
+  <form class="inline-form" method="get" action="/statistiques">
+    <div class="field"><label for="mois">Période</label>
+      <select id="mois" name="mois">{{range $m := list 3 6 12 24}}<option value="{{$m}}"{{if eq $m $.Data.Months}} selected{{end}}>{{$m}} derniers mois</option>{{end}}</select></div>
+    <button class="btn">Afficher</button>
+  </form>
+</div>
+<p class="hint">Du {{date $r.From}} au {{date $r.To}}. Calculé à partir du journal des mouvements de stock et des menus.</p>
+<div class="cards">{{range .Data.Charts}}<div>{{template "bars" .}}</div>{{end}}</div>
+<section class="card" aria-labelledby="cuisinees">
+  <h2 id="cuisinees">Recettes les plus cuisinées</h2>
+  {{- if $r.TopRecipes}}
+  <ol>{{range $r.TopRecipes}}<li><a href="/recettes/{{.ID}}">{{.Name}}</a> : {{.Count}} fois</li>{{end}}</ol>
+  {{- else}}<p class="muted">Marquez les repas « cuisinés » pour suivre vos classiques.</p>{{end}}
+</section>
+<section class="card" aria-labelledby="gaspi">
+  <h2 id="gaspi">Gaspillage</h2>
+  <p>{{plural (int $r.WasteCount) "produit jeté" "produits jetés"}} sur la période.</p>
+  {{- if $r.WasteProducts}}
+  <div class="table-scroll"><table class="data">
+    <thead><tr><th>Produit</th><th class="num">Fois</th><th class="num">Quantité</th><th class="num">Valeur</th></tr></thead>
+    <tbody>{{range $r.WasteProducts}}<tr><td>{{.Name}}</td><td class="num">{{.Count}}</td><td class="num">{{qty .Qty .Unit}}</td><td class="num">{{if .Value}}{{euros .Value}}{{else}}—{{end}}</td></tr>{{end}}</tbody>
+  </table></div>
+  {{- end}}
+</section>
+<section class="card" aria-labelledby="depenses-rayons">
+  <h2 id="depenses-rayons">Dépenses par univers et par rayon</h2>
+  {{- if or $r.SpendByUniverse $r.SpendByAisle}}
+  <div class="table-scroll"><table class="data">
+    <thead><tr><th>Univers</th><th class="num">Achats</th><th class="num">Montant</th></tr></thead>
+    <tbody>{{range $r.SpendByUniverse}}<tr><td>{{.Name}}</td><td class="num">{{.Count}}</td><td class="num">{{euros .Value}}</td></tr>{{end}}</tbody>
+  </table></div>
+  <div class="table-scroll"><table class="data">
+    <thead><tr><th>Rayon</th><th class="num">Achats</th><th class="num">Montant</th></tr></thead>
+    <tbody>{{range $r.SpendByAisle}}<tr><td>{{.Name}}</td><td class="num">{{.Count}}</td><td class="num">{{euros .Value}}</td></tr>{{end}}</tbody>
+  </table></div>
+  {{- else}}<p class="muted">Saisissez les prix en rangeant les courses pour suivre vos dépenses.</p>{{end}}
+</section>
+<section class="card" aria-labelledby="hygiene">
+  <h2 id="hygiene">Consommation hygiène, entretien et maison</h2>
+  {{- if $r.Household}}
+  <div class="table-scroll"><table class="data">
+    <thead><tr><th>Produit</th><th class="num">Fois</th><th class="num">Quantité</th></tr></thead>
+    <tbody>{{range $r.Household}}<tr><td><a href="/stock/produit/{{.ID}}">{{.Name}}</a></td><td class="num">{{.Count}}</td><td class="num">{{qty .Qty .Unit}}</td></tr>{{end}}</tbody>
+  </table></div>
+  {{- else}}<p class="muted">Pas encore de consommation enregistrée.</p>{{end}}
+</section>
+{{end}}

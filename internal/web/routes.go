@@ -109,6 +109,7 @@ func (s *Server) routes() map[string]http.HandlerFunc {
 		"POST /menus/plats/{id}/cuisine":              s.cook,
 		"POST /menus/plats/{id}/decuisiner":           s.uncook,
 		"GET /recettes/{id}/cuisine":                  s.cookingMode,
+		"GET /statistiques":                           s.statsPage,
 		"GET /emplacements":                           s.locationsPage,
 		"POST /emplacements":                          s.saveLocation,
 		"POST /emplacements/{id}/supprimer":           s.deleteLocation,
