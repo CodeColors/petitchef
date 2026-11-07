@@ -1,0 +1,50 @@
+rayon: fromages
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: refrigerateur
+  groupe: fromage
+  date: DLC
+  all: lait
+  cons: 21/7/90
+produits:
+  - Emmental râpé | syn gruyère râpé, fromage râpé | cond 70, 200, 500 | cons 30/5/90 | u poignee=30, cs=8
+  - Emmental | syn emmental en bloc | u tranche=20 | cond 250, 500 | cons 45/14/90
+  - Comté | cond 200, 500 | cons 60/14/90 | u tranche=20
+  - Beaufort | cond 250 | cons 60/14/90
+  - Gruyère | cond 250 | cons 45/14/90
+  - Parmesan | syn parmigiano reggiano | cond 100, 200 | cons 90/21/90 | u cs=6
+  - Parmesan râpé | cond 70 | cons 60/10/- | u cs=6
+  - Mozzarella | syn boule de mozzarella | piece 125 | cond 125, 250 | cons 21/2/60
+  - Mozzarella râpée | cond 200 | cons 30/5/90
+  - Burrata | piece 125 | cond 125 | cons 10/1/-
+  - Feta | cond 200 | cons 60/7/90
+  - Chèvre frais | cond 150 | cons 21/4/-
+  - Bûche de chèvre | syn chèvre en bûche | cond 180 | cons 21/7/90 | u tranche=20
+  - Crottin de chèvre | unite piece | piece 60 | cond 2000:2 crottins | cons 21/5/-
+  - Camembert | piece 250 | cond 250 | cons 21/5/-
+  - Brie | cond 300 | cons 21/5/-
+  - Coulommiers | cond 350 | cons 21/5/-
+  - Roquefort | cond 100, 150 | cons 30/7/-
+  - Bleu d'Auvergne | syn bleu | cond 150 | cons 30/7/-
+  - Gorgonzola | cond 150 | cons 30/7/-
+  - Raclette | syn fromage à raclette | u tranche=25 | cond 400, 800 | cons 30/7/90
+  - Reblochon | piece 450 | cond 450 | cons 21/5/-
+  - Tomme de Savoie | syn tomme | cond 300 | cons 30/10/-
+  - Cantal | cond 250 | cons 45/14/-
+  - Saint-Nectaire | cond 300 | cons 30/7/-
+  - Morbier | cond 250 | cons 30/7/-
+  - Munster | cond 200 | cons 21/5/-
+  - Mimolette | cond 250 | cons 60/14/-
+  - Edam | u tranche=20 | cond 250 | cons 45/10/90
+  - Gouda | u tranche=20 | cond 250 | cons 45/10/90
+  - Cheddar | u tranche=20 | cond 200 | cons 45/10/90
+  - Fromage à tartiner | syn fromage frais ail et fines herbes | cond 150 | cons 30/7/-
+  - Fromage frais nature | syn cream cheese, fromage à la crème | cond 150, 300 | cons 30/7/-
+  - Fromage en portions | syn vache qui rit | unite piece | piece 17 | cond 8000:8 portions, 16000:16 portions | cons 90/10/- | ddm
+  - Fromage fondu en tranches | syn tranches pour burger | u tranche=20 | cond 200 | cons 60/7/-
+  - Halloumi | cond 225 | cons 60/5/90
+  - Pecorino | cond 150 | cons 90/21/-
+  - Fromage à fondue | syn mélange pour fondue | cond 600 | cons 30/3/- | all lait, sulfites | traits +alcool
+  - Mont d'Or | syn vacherin | cond 500 | cons 21/5/- | saison 9-5
+  - Fromage végétal | syn alternative végétale au fromage | cond 200 | cons 60/7/- | groupe matieres_grasses | all

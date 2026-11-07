@@ -1,0 +1,68 @@
+rayon: hygiene
+defauts:
+  univers: hygiene
+  unite: piece
+  emp: salle-de-bain
+  date: DDM
+  cons: 1095/365/-
+produits:
+  - Dentifrice | syn pâte dentifrice | unite ml | cond 75, 225:3 × 75 ml | cons 1095/365/-
+  - Dentifrice enfant | unite ml | cond 50 | cons 1095/365/-
+  - Brosse à dents | syn brosses à dents | piece 1 | cond 2000:lot de 2, 4000:lot de 4 | cons -/90/-
+  - Brossettes interdentaires | piece 1 | cond 8000:8 brossettes | cons -/-/-
+  - Fil dentaire | piece 1 | cons -/-/-
+  - Bain de bouche | unite ml | cond 500 | cons 1095/365/-
+  - Gel douche | syn savon liquide douche | unite ml | cond 250, 750 | cons 1095/365/-
+  - Savon solide | syn savonnette | piece 1 | cond 2000:2 savons | cons -/-/-
+  - Savon liquide mains | syn savon pour les mains | unite ml | cond 300 | cons 1095/365/-
+  - Recharge de savon liquide | unite ml | cond 500, 1000 | cons 1095/365/-
+  - Shampooing | unite ml | cond 250, 500 | cons 1095/365/-
+  - Après-shampooing | unite ml | cond 200 | cons 1095/365/-
+  - Masque capillaire | unite ml | cond 300 | cons 1095/365/-
+  - Shampooing enfant | unite ml | cond 250 | cons 1095/365/-
+  - Déodorant | syn déodorant spray, anti-transpirant | piece 1 | cond 2000:lot de 2 | cons -/365/-
+  - Crème hydratante | syn crème visage | unite ml | cond 50 | cons 1095/180/-
+  - Lait corporel | unite ml | cond 250, 400 | cons 1095/365/-
+  - Crème mains | unite ml | cond 75 | cons 1095/365/-
+  - Crème solaire | syn protection solaire | unite ml | cond 200 | cons 1095/365/- | saison 5-9
+  - Baume à lèvres | syn stick à lèvres | piece 1 | cons -/365/-
+  - Démaquillant | syn eau micellaire | unite ml | cond 400 | cons 1095/365/-
+  - Disques de coton | syn cotons démaquillants | piece 1 | cond 80000:80 disques | cons -/-/-
+  - Coton-tiges | piece 1 | cond 200000:200 bâtonnets | cons -/-/-
+  - Rasoirs jetables | syn rasoir | piece 1 | cond 4000:4 rasoirs, 10000:10 rasoirs | cons -/-/-
+  - Lames de rasoir | piece 1 | cond 4000:4 lames, 8000:8 lames | cons -/-/-
+  - Mousse à raser | syn gel à raser | unite ml | cond 200 | cons 1095/365/-
+  - Après-rasage | unite ml | cond 100 | cons 1095/365/-
+  - Serviettes hygiéniques | piece 1 | cond 14000:14 serviettes, 28000:28 serviettes | cons -/-/-
+  - Protège-slips | piece 1 | cond 40000:40 protège-slips | cons -/-/-
+  - Tampons | piece 1 | cond 16000:16 tampons, 32000:32 tampons | cons -/-/-
+  - Mouchoirs en papier | syn mouchoirs | piece 1 | cond 15000:boîte de 150, 10000:10 paquets | cons -/-/-
+  - Papier toilette | syn PQ, papier hygiénique | piece 1 | cond 6000:6 rouleaux, 12000:12 rouleaux, 24000:24 rouleaux | cons -/-/- | u rouleau=1000
+  - Papier toilette humide | piece 1 | cond 50000:50 lingettes | cons -/-/-
+  - Pansements | syn sparadrap | piece 1 | cond 20000:boîte de 20 | cons 1825/-/-
+  - Désinfectant cutané | syn antiseptique | unite ml | cond 100 | cons 1095/365/-
+  - Paracétamol | piece 1 | cond 8000:boîte de 8 | cons 1095/-/-
+  - Thermomètre | piece 1 | cons -/-/-
+  - Gel hydroalcoolique | unite ml | cond 75, 500 | cons 1095/365/-
+  - Mousse coiffante | syn gel coiffant | unite ml | cond 150 | cons 1095/365/-
+  - Laque | unite ml | cond 300 | cons 1095/365/-
+  - Coloration cheveux | piece 1 | cons 1095/-/-
+  - Élastiques à cheveux | piece 1 | cond 20000:20 élastiques | cons -/-/-
+  - Vernis à ongles | piece 1 | cons 1095/365/-
+  - Dissolvant | unite ml | cond 125 | cons 1095/365/-
+  - Lingettes démaquillantes | piece 1 | cond 25000:25 lingettes | cons 730/90/-
+  - Huile de massage | syn huile pour le corps | unite ml | cond 100 | cons 1095/365/-
+  - Talc | unite g | cond 200 | cons 1825/730/-
+  - Préservatifs | piece 1 | cond 12000:12 préservatifs | cons 1095/-/-
+  - Produit pour lentilles | syn solution pour lentilles | unite ml | cond 360 | cons 730/90/-
+  - Lentilles de contact | piece 1 | cond 30000:30 lentilles | cons 1095/-/-
+  - Coupe-ongles | piece 1 | cons -/-/-
+  - Pince à épiler | piece 1 | cons -/-/-
+  - Peigne | syn brosse à cheveux | piece 1 | cons -/-/-
+  - Bandes de cire | syn cire épilatoire | piece 1 | cond 20000:20 bandes | cons 1095/-/-
+  - Sels de bain | unite g | cond 500 | cons 1095/365/-
+  - Gel pour lavage intime | unite ml | cond 250 | cons 1095/365/-
+  - Spray anti-moustiques | syn répulsif moustiques | unite ml | cond 100 | cons 1095/365/- | saison 5-9
+  - Bouillotte | piece 1 | cons -/-/-
+  - Brosse à dents électrique tête | syn têtes de rechange | piece 1 | cond 4000:4 têtes | cons -/90/-
+  - Eau de toilette | syn parfum | unite ml | cond 100 | cons 1095/730/-

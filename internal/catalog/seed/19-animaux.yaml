@@ -1,0 +1,28 @@
+rayon: animaux
+defauts:
+  univers: animaux
+  unite: g
+  emp: placard
+  date: DDM
+  cons: 365/60/-
+produits:
+  - Croquettes pour chat | syn croquettes chat | cond 1500, 4000
+  - Croquettes pour chien | syn croquettes chien | cond 3000, 12000
+  - Pâtée pour chat | syn sachets fraîcheur chat | unite piece | piece 85 | cond 12000:12 sachets | cons 730/2/-
+  - Pâtée pour chien | unite piece | piece 400 | cond 4000:4 boîtes | cons 730/2/-
+  - Friandises pour chat | cond 60 | cons 365/90/-
+  - Friandises pour chien | syn os à mâcher | cond 200 | cons 365/90/-
+  - Litière pour chat | syn litière | cond 5000, 10000 | cons -/-/-
+  - Litière végétale | cond 7000 | cons -/-/-
+  - Graines pour oiseaux | cond 1000 | cons 365/180/-
+  - Boules de graisse | syn nourriture oiseaux du jardin | unite piece | piece 90 | cond 6000:6 boules | saison 11-3
+  - Nourriture pour poissons | syn paillettes poissons | cond 50 | cons 730/180/-
+  - Granulés pour rongeurs | syn nourriture lapin | cond 1000 | cons 365/90/-
+  - Foin | cond 1000 | cons 365/90/-
+  - Anti-puces | syn pipettes antiparasitaires | unite piece | piece 1 | cond 4000:4 pipettes | cons 1095/-/-
+  - Sacs à déjections | syn sacs crottes | unite piece | piece 1 | cond 120000:120 sacs | cons -/-/-
+  - Shampooing pour chien | unite ml | cond 250 | cons 1095/365/-
+  - Lait pour chaton | unite ml | cond 200 | cons 365/2/-
+  - Jouet pour chat | unite piece | piece 1 | cons -/-/-
+  - Arbre à chat recharge | syn griffoir | unite piece | piece 1 | cons -/-/-
+  - Copeaux de litière | syn copeaux de bois | cond 2000 | cons -/-/-

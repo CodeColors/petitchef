@@ -1,0 +1,61 @@
+rayon: epicerie-sucree
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: placard
+  groupe: produits_sucres
+  date: DDM
+  cons: 365/90/-
+produits:
+  - Sucre en poudre | syn sucre, sucre blanc | cond 1000 | u cs=12, cc=4, tasse=200 | cons 1825/1825/- | base
+  - Sucre roux | syn cassonade | cond 500, 1000 | u cs=12, cc=4 | cons 1825/1825/- | base
+  - Sucre glace | cond 500 | u cs=8, cc=3 | cons 1825/1825/- | base
+  - Sucre en morceaux | unite g | cond 1000 | cons 1825/1825/-
+  - Sucre vanillé | unite piece | piece 8 | cond 10000:10 sachets | u sachet=1000 | base
+  - Miel | cond 250, 500 | u cs=20, cc=7 | cons 730/365/- | traits +animal
+  - Sirop d'érable | unite ml | densite 1330 | cond 250 | u cs=15, cc=5 | cons 730/180/-
+  - Sirop d'agave | unite ml | densite 1360 | cond 250 | u cs=15 | cons 730/180/-
+  - Confiture de fraises | syn confiture | cond 370 | u cs=20, cc=7 | cons 730/30/-
+  - Confiture d'abricots | cond 370 | u cs=20, cc=7 | cons 730/30/-
+  - Gelée de groseilles | cond 370 | u cs=20 | cons 730/30/-
+  - Pâte à tartiner chocolat-noisettes | syn pâte à tartiner | cond 400, 750 | u cs=20 | all lait, fruits_a_coque, soja | cons 365/90/-
+  - Chocolat noir pâtissier | syn chocolat noir, chocolat à cuire | cond 200 | u carre=5 | all lait, soja | cons 540/180/- | base
+  - Chocolat au lait | syn tablette de chocolat au lait | cond 100, 200 | u carre=5 | all lait, soja | cons 365/90/-
+  - Chocolat blanc | cond 100 | all lait | cons 365/90/-
+  - Pépites de chocolat | cond 100, 200 | all lait, soja | cons 365/90/-
+  - Cacao en poudre non sucré | syn cacao amer | cond 250 | u cs=7, cc=2 | cons 730/180/-
+  - Levure chimique | syn poudre à lever | unite piece | piece 11 | cond 8000:8 sachets | u sachet=1000, cc=360 | groupe condiments | base
+  - Bicarbonate alimentaire | cond 500 | u cc=5 | groupe condiments | base
+  - Gélatine en feuilles | unite piece | piece 2 | u feuille=1000 | cond 9000:9 feuilles | groupe condiments | traits +viande +porc
+  - Agar-agar | cond 8 | u cc=2 | groupe condiments
+  - Extrait de vanille | syn arôme vanille | unite ml | cond 50 | u cc=5 | groupe condiments | base
+  - Eau de fleur d'oranger | unite ml | cond 200 | u cs=15, cc=5 | groupe condiments | base
+  - Amandes en poudre | syn poudre d'amande | cond 125, 250 | u cs=8 | groupe fruits_coque | all fruits_a_coque | cons 365/90/-
+  - Amandes entières | syn amandes | cond 200 | groupe fruits_coque | all fruits_a_coque | cons 365/90/-
+  - Noisettes | cond 200 | groupe fruits_coque | all fruits_a_coque | cons 365/90/-
+  - Noisettes en poudre | cond 125 | groupe fruits_coque | all fruits_a_coque | cons 365/60/-
+  - Cerneaux de noix | syn noix | cond 100, 200 | groupe fruits_coque | all fruits_a_coque | cons 365/60/-
+  - Noix de coco râpée | cond 125 | u cs=6 | groupe fruits_coque | cons 365/90/-
+  - Raisins secs | cond 250 | groupe fruits | cons 365/90/-
+  - Abricots secs | cond 250 | groupe fruits | all sulfites | cons 365/90/-
+  - Pruneaux | cond 250 | groupe fruits | cons 365/90/-
+  - Dattes | cond 250 | groupe fruits | cons 365/90/-
+  - Figues sèches | cond 250 | groupe fruits | cons 365/90/-
+  - Cranberries séchées | cond 150 | groupe fruits | cons 365/90/-
+  - Compote de pommes | syn compote | cond 400, 700 | groupe fruits | cons 730/7/-
+  - Fruits au sirop | syn pêches au sirop, poires au sirop | cond 820 | groupe fruits | cons 730/4/-
+  - Lait concentré sucré | cond 397 | all lait | cons 365/7/-
+  - Caramel liquide | cond 210 | cons 365/90/-
+  - Préparation pour gâteau | syn préparation moelleux chocolat | cond 400 | all gluten, lait, oeufs
+  - Biscuits secs | syn petits beurres | cond 200 | all gluten, lait | cons 270/30/-
+  - Biscuits au chocolat | syn cookies | cond 200 | all gluten, lait, soja | cons 270/30/-
+  - Gaufrettes | cond 150 | all gluten, lait, soja | cons 270/30/-
+  - Madeleines | cond 250 | all gluten, lait, oeufs | cons 120/14/-
+  - Biscuits cuillère | syn boudoirs | unite g | cond 175 | all gluten, oeufs | cons 365/30/-
+  - Spéculoos | cond 250 | all gluten, soja | cons 270/30/-
+  - Gâteau moelleux | syn quatre-quarts | cond 300 | all gluten, lait, oeufs | cons 90/7/-
+  - Bonbons | cond 200 | cons 365/90/-
+  - Barres de céréales | unite piece | piece 25 | cond 6000:6 barres | groupe produits_sucres | all gluten, lait | cons 270/30/-
+  - Pâte d'amande | cond 250 | all fruits_a_coque | cons 365/60/-
+  - Sucre de canne | syn rapadura | cond 500 | u cs=12 | cons 1825/1825/-
+  - Crêpes prêtes | syn crêpes industrielles | unite piece | piece 50 | cond 8000:8 crêpes | all gluten, lait, oeufs | cons 60/5/-

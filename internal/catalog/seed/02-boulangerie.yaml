@@ -1,0 +1,36 @@
+rayon: boulangerie
+defauts:
+  univers: alimentaire
+  unite: piece
+  emp: placard
+  groupe: feculents_raffines
+  date: DLC
+  all: gluten
+  cons: 2/1/90
+produits:
+  - Baguette | syn pain, baguette tradition | piece 250 | u tranche=40
+  - Pain de campagne | piece 500 | u tranche=60 | cons 4/3/90
+  - Pain complet | piece 500 | u tranche=60 | cons 4/3/90 | groupe feculents_complets
+  - Pain aux céréales | piece 400 | u tranche=60 | cons 4/3/90 | groupe feculents_complets | all gluten, sesame
+  - Pain de seigle | piece 400 | u tranche=60 | cons 5/4/90 | groupe feculents_complets
+  - Pain de mie | piece 500 | unite g | u tranche=25 | cond 500 | cons 10/5/90 | ddm | all gluten, lait
+  - Pain de mie complet | unite g | u tranche=25 | cond 500 | cons 10/5/90 | ddm | groupe feculents_complets | all gluten, lait
+  - Pain burger | syn pains à hamburger, buns | piece 75 | cond 4000:4 pains, 6000:6 pains | cons 10/4/90 | ddm | all gluten, sesame, lait
+  - Pain pour hot-dog | piece 55 | cond 6000:6 pains | cons 10/4/90 | ddm
+  - Pain pita | piece 80 | cond 6000:6 pains | cons 10/4/90 | ddm
+  - Pain suédois | syn wasa, cracotte | unite g | cond 250 | cons 180/30/- | ddm
+  - Biscottes | unite g | u tranche=10 | cond 300 | cons 180/30/- | ddm
+  - Pain grillé | unite g | cond 250 | cons 180/30/- | ddm
+  - Croissant | piece 55 | cons 2/1/90 | all gluten, lait, oeufs | groupe produits_sucres
+  - Pain au chocolat | syn chocolatine | piece 70 | cons 2/1/90 | all gluten, lait, oeufs | groupe produits_sucres
+  - Pain aux raisins | piece 90 | cons 2/1/90 | all gluten, lait, oeufs | groupe produits_sucres
+  - Brioche | unite g | cond 400 | cons 10/4/90 | ddm | all gluten, lait, oeufs | groupe produits_sucres
+  - Brioche tranchée | unite g | u tranche=25 | cond 500 | cons 14/5/90 | ddm | all gluten, lait, oeufs | groupe produits_sucres
+  - Pain au lait | piece 35 | cond 10000:10 pains | cons 14/5/90 | ddm | all gluten, lait, oeufs | groupe produits_sucres
+  - Tortillas de blé | syn wraps, galettes de blé | piece 40 | cond 8000:8 galettes | cons 30/5/90 | ddm
+  - Fougasse | piece 300 | cons 2/1/60 | all gluten
+  - Chapelure | unite g | u cs=8 | cond 250 | cons 365/90/- | ddm | base
+  - Croûtons | unite g | cond 100 | cons 180/30/- | ddm
+  - Gressins | unite g | cond 125 | cons 180/30/- | ddm
+  - Pain d'épices | unite g | u tranche=25 | cond 300 | cons 60/10/- | ddm | groupe produits_sucres
+  - Galette de riz soufflé | syn galettes de riz | unite g | cond 130 | cons 180/30/- | ddm | all | groupe feculents_complets

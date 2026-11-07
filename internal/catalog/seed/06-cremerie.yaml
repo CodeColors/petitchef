@@ -1,0 +1,51 @@
+rayon: cremerie
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: refrigerateur
+  groupe: produits_laitiers
+  date: DLC
+  all: lait
+  cons: 21/5/90
+produits:
+  - Lait demi-écrémé | syn lait | unite ml | densite 1030 | cond 1000:1 L, 6000:6 × 1 L | cons 90/4/90 | ddm | emp placard | u verre=200, tasse=250
+  - Lait entier | unite ml | densite 1030 | cond 1000:1 L, 6000:6 × 1 L | cons 90/4/90 | ddm | emp placard
+  - Lait écrémé | unite ml | densite 1030 | cond 1000:1 L, 6000:6 × 1 L | cons 90/4/90 | ddm | emp placard
+  - Lait frais | syn lait frais pasteurisé | unite ml | densite 1030 | cond 1000 | cons 10/3/90
+  - Lait sans lactose | unite ml | densite 1030 | cond 1000 | cons 90/4/90 | ddm | emp placard | all
+  - Boisson à l'avoine | syn lait d'avoine | unite ml | cond 1000 | cons 240/5/- | ddm | emp placard | all gluten | traits -animal
+  - Boisson au soja | syn lait de soja | unite ml | cond 1000 | cons 240/5/- | ddm | emp placard | all soja | traits -animal
+  - Boisson à l'amande | syn lait d'amande | unite ml | cond 1000 | cons 240/5/- | ddm | emp placard | all fruits_a_coque | traits -animal
+  - Beurre doux | syn beurre | groupe matieres_grasses | u cs=15, cc=5, noix=10, noisette=5 | cond 125, 250, 500 | cons 60/30/180 | ddm
+  - Beurre demi-sel | groupe matieres_grasses | u cs=15, cc=5, noix=10 | cond 250 | cons 60/30/180 | ddm
+  - Margarine | syn matière grasse végétale | groupe matieres_grasses | u cs=15, cc=5 | cond 250, 500 | cons 90/30/- | ddm | all
+  - Crème fraîche épaisse | syn crème épaisse | groupe matieres_grasses | u cs=20, cc=7 | cond 200, 400 | cons 21/5/90
+  - Crème fraîche légère | groupe matieres_grasses | u cs=20, cc=7 | cond 200, 400 | cons 21/5/90
+  - Crème liquide entière | syn crème liquide, crème fleurette | unite ml | densite 1000 | groupe matieres_grasses | cond 200:20 cl, 500 | cons 60/4/90 | ddm
+  - Crème liquide légère | unite ml | groupe matieres_grasses | cond 200:20 cl, 500 | cons 60/4/90 | ddm
+  - Crème de soja | syn crème végétale | unite ml | groupe matieres_grasses | cond 200 | cons 240/4/- | ddm | emp placard | all soja | traits -animal
+  - Crème de coco | syn lait de coco | unite ml | groupe matieres_grasses | cond 200, 400 | cons 365/3/90 | ddm | emp placard | all | traits -animal
+  - Yaourt nature | syn yaourts nature | unite piece | piece 125 | cond 4000:4 pots, 8000:8 pots, 16000:16 pots | cons 28/1/-
+  - Yaourt aux fruits | unite piece | piece 125 | cond 8000:8 pots, 12000:12 pots | cons 28/1/- | groupe produits_sucres
+  - Yaourt à la grecque | syn yaourt grec | cond 150, 500 | cons 28/3/-
+  - Yaourt brassé | unite piece | piece 125 | cond 8000:8 pots | cons 28/1/-
+  - Yaourt au soja | unite piece | piece 100 | cond 4000:4 pots | cons 28/1/- | all soja | traits -animal
+  - Fromage blanc | syn faisselle | cond 500, 1000 | cons 21/4/-
+  - Petits-suisses | syn petit suisse | unite piece | piece 60 | cond 6000:6 pots, 12000:12 pots | cons 21/1/-
+  - Skyr | cond 450 | cons 28/4/-
+  - Crème dessert chocolat | syn crème dessert | unite piece | piece 125 | cond 4000:4 pots | cons 28/1/- | groupe produits_sucres
+  - Crème dessert vanille | unite piece | piece 125 | cond 4000:4 pots | cons 28/1/- | groupe produits_sucres
+  - Mousse au chocolat | unite piece | piece 60 | cond 4000:4 pots | cons 21/1/- | groupe produits_sucres | all lait, oeufs
+  - Riz au lait | unite piece | piece 100 | cond 4000:4 pots | cons 28/1/- | groupe produits_sucres
+  - Flan nappé caramel | unite piece | piece 100 | cond 4000:4 pots | cons 28/1/- | groupe produits_sucres | all lait, oeufs
+  - Compote en gourde | syn gourdes de compote | unite piece | piece 90 | cond 4000:4 gourdes, 12000:12 gourdes | cons 180/1/- | ddm | emp placard | groupe fruits | all
+  - Œufs | syn œuf, oeufs, oeuf | unite piece | piece 60 | groupe oeufs | all oeufs | cond 6000:6 œufs, 12000:12 œufs, 30000:30 œufs | cons 28/2/- | ddm
+  - Œufs bio plein air | unite piece | piece 60 | groupe oeufs | all oeufs | cond 6000:6 œufs, 12000:12 œufs | cons 28/2/- | ddm
+  - Jus d'orange frais | syn pur jus d'orange | unite ml | groupe fruits | cond 1000 | cons 21/3/90 | all
+  - Gaspacho | unite ml | groupe legumes | cond 1000 | cons 21/3/- | all
+  - Soupe fraîche de légumes | syn velouté frais | unite ml | groupe legumes | cond 1000 | cons 21/3/90 | all
+  - Kéfir | unite ml | cond 1000 | cons 21/4/-
+  - Lait fermenté à boire | syn yaourt à boire | unite ml | cond 1000 | cons 28/4/- | groupe produits_sucres
+  - Mascarpone | groupe matieres_grasses | cond 250, 500 | cons 30/4/-
+  - Ricotta | cond 250 | cons 21/4/- | groupe fromage
+  - Pâte à crêpes prête | unite ml | cond 750 | cons 14/2/- | groupe feculents_raffines | all lait, oeufs, gluten

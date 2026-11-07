@@ -1,0 +1,48 @@
+rayon: maison
+defauts:
+  univers: maison
+  unite: piece
+  emp: placard
+  date: DDM
+  cons: -/-/-
+produits:
+  - Essuie-tout | syn sopalin, papier absorbant | piece 1 | cond 2000:2 rouleaux, 4000:4 rouleaux, 6000:6 rouleaux | u rouleau=1000
+  - Papier aluminium | syn alu | piece 1 | u rouleau=1000
+  - Film étirable | syn film alimentaire | piece 1 | u rouleau=1000
+  - Papier cuisson | syn papier sulfurisé | piece 1 | u rouleau=1000
+  - Sacs congélation | piece 1 | cond 20000:20 sacs, 30000:30 sacs
+  - Sacs zip | syn sacs de conservation | piece 1 | cond 20000:20 sacs
+  - Boîtes de conservation | piece 1 | cond 3000:lot de 3
+  - Serviettes en papier | syn serviettes de table | piece 1 | cond 50000:50 serviettes, 100000:100 serviettes
+  - Nappe en papier | piece 1
+  - Assiettes jetables | syn assiettes en carton | piece 1 | cond 20000:20 assiettes
+  - Gobelets | syn verres en carton | piece 1 | cond 30000:30 gobelets
+  - Pailles | piece 1 | cond 50000:50 pailles
+  - Allumettes | piece 1 | cond 10000:10 boîtes
+  - Briquet | syn allume-gaz | piece 1
+  - Bougies | syn bougie chauffe-plat | piece 1 | cond 30000:30 bougies
+  - Piles AA | syn piles LR6 | piece 1 | cond 4000:4 piles, 8000:8 piles, 12000:12 piles
+  - Piles AAA | syn piles LR03 | piece 1 | cond 4000:4 piles, 8000:8 piles
+  - Piles 9 V | piece 1 | cond 1000:1 pile
+  - Piles bouton | syn pile CR2032 | piece 1 | cond 2000:2 piles
+  - Ampoule LED E27 | syn ampoule | piece 1 | cond 1000:1 ampoule, 3000:3 ampoules
+  - Ampoule LED E14 | piece 1 | cond 1000:1 ampoule
+  - Ampoule LED GU10 | piece 1 | cond 1000:1 ampoule
+  - Ruban adhésif | syn scotch | piece 1 | u rouleau=1000
+  - Colle | syn bâton de colle | piece 1
+  - Stylos | syn stylo bille | piece 1 | cond 4000:4 stylos
+  - Crayons à papier | piece 1 | cond 4000:4 crayons
+  - Cahier | piece 1
+  - Ramette de papier | syn papier imprimante | piece 1 | cond 500000:500 feuilles
+  - Enveloppes | piece 1 | cond 50000:50 enveloppes
+  - Timbres | piece 1 | cond 12000:carnet de 12
+  - Post-it | syn notes repositionnables | piece 1
+  - Cartouche d'encre | piece 1
+  - Filtres à café | piece 1 | cond 80000:80 filtres, 100000:100 filtres | emp placard
+  - Pastilles détartrantes | syn détartrant cafetière | piece 1 | cond 6000:6 pastilles
+  - Sacs aspirateur | piece 1 | cond 4000:4 sacs
+  - Filtre de hotte | piece 1
+  - Pinces à linge | piece 1 | cond 24000:24 pinces
+  - Cure-dents | piece 1 | cond 200000:200 cure-dents
+  - Pique-niques | syn couverts jetables | piece 1 | cond 24000:24 couverts
+  - Charbon de bois | syn barbecue | unite g | cond 3000 | emp garage | saison 5-9

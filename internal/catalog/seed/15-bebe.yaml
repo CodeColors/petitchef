@@ -1,0 +1,33 @@
+rayon: bebe
+defauts:
+  univers: bebe
+  unite: piece
+  emp: placard
+  date: DDM
+  cons: 730/-/-
+produits:
+  - Couches taille 1 | syn couches nouveau-né | piece 1 | cond 44000:paquet de 44
+  - Couches taille 2 | piece 1 | cond 40000:paquet de 40
+  - Couches taille 3 | piece 1 | cond 38000:paquet de 38
+  - Couches taille 4 | syn couches | piece 1 | cond 34000:paquet de 34
+  - Couches taille 5 | piece 1 | cond 30000:paquet de 30
+  - Culottes d'apprentissage | piece 1 | cond 24000:paquet de 24
+  - Lingettes bébé | syn lingettes | piece 1 | cond 64000:paquet de 64, 192000:3 paquets
+  - Liniment oléo-calcaire | syn liniment | unite ml | cond 500 | cons 730/180/-
+  - Crème pour le change | unite ml | cond 100 | cons 730/365/-
+  - Sérum physiologique | syn dosettes de sérum | piece 5 | cond 40000:40 dosettes | cons 1095/1/-
+  - Lait infantile 1er âge | syn lait 1er âge | unite g | cond 800, 900 | univers alimentaire | groupe produits_laitiers | all lait | cons 540/21/-
+  - Lait infantile 2e âge | syn lait 2e âge | unite g | cond 800, 900 | univers alimentaire | groupe produits_laitiers | all lait | cons 540/21/-
+  - Lait de croissance | unite ml | cond 1000 | univers alimentaire | groupe produits_laitiers | all lait | cons 270/2/-
+  - Petits pots de légumes | syn petits pots | piece 200 | cond 2000:2 pots | univers alimentaire | groupe legumes | cons 540/2/-
+  - Petits pots de fruits | piece 130 | cond 4000:4 pots | univers alimentaire | groupe fruits | cons 540/2/-
+  - Petits pots repas complet | syn petits plats bébé | piece 200 | cond 2000:2 pots | univers alimentaire | groupe plats_transformes | traits +viande | cons 540/2/-
+  - Céréales infantiles | syn farine bébé | unite g | cond 400 | univers alimentaire | groupe feculents_raffines | all gluten | cons 365/30/-
+  - Biscuits bébé | unite g | cond 150 | univers alimentaire | groupe produits_sucres | all gluten, lait | cons 270/30/-
+  - Gourdes de fruits bébé | piece 90 | cond 4000:4 gourdes | univers alimentaire | groupe fruits | cons 365/1/-
+  - Gel lavant bébé | unite ml | cond 500 | cons 730/365/-
+  - Coton bébé | syn carrés de coton | piece 1 | cond 100000:100 carrés | cons -/-/-
+  - Coton-tiges bébé | piece 1 | cond 60000:60 bâtonnets | cons -/-/-
+  - Tétine | piece 1 | cond 2000:2 tétines | cons -/-/-
+  - Lessive bébé | syn lessive hypoallergénique | unite ml | cond 1500 | univers entretien | cons 730/365/-
+  - Biberon | piece 1 | cons -/-/-

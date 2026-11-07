@@ -1,0 +1,50 @@
+rayon: boissons
+defauts:
+  univers: alimentaire
+  unite: ml
+  emp: cave
+  groupe: boissons
+  date: DDM
+  cons: 365/3/-
+produits:
+  - Eau plate | syn eau minérale, eau de source | cond 1500:1,5 L, 9000:6 × 1,5 L | cons 365/5/- | u verre=200
+  - Eau gazeuse | syn eau pétillante | cond 1000, 6000:6 × 1 L | cons 365/3/-
+  - Eau aromatisée | cond 1500 | groupe produits_sucres
+  - Cola | syn soda au cola | cond 1500, 6000:6 × 1 L, 1980:6 canettes | groupe produits_sucres | cons 270/3/-
+  - Cola sans sucres | syn cola zéro | cond 1500, 1980:6 canettes | cons 270/3/-
+  - Limonade | cond 1500 | groupe produits_sucres | cons 270/3/-
+  - Soda à l'orange | cond 1500 | groupe produits_sucres | cons 270/3/-
+  - Thé glacé | syn ice tea | cond 1500 | groupe produits_sucres | cons 270/3/-
+  - Tonic | cond 1000 | groupe produits_sucres | cons 270/3/-
+  - Boisson énergisante | cond 250 | groupe produits_sucres | cons 365/1/-
+  - Sirop de menthe | cond 750 | groupe produits_sucres | cons 730/180/-
+  - Sirop de citron | cond 750 | groupe produits_sucres | cons 730/180/-
+  - Jus de raisin | cond 1000 | groupe fruits | cons 365/5/-
+  - Jus d'ananas | cond 1000 | groupe fruits | cons 365/5/-
+  - Jus de tomate | cond 1000 | groupe legumes | cons 365/5/-
+  - Nectar d'abricot | cond 1000 | groupe produits_sucres | cons 365/5/-
+  - Smoothie | cond 750 | groupe fruits | cons 21/3/- | dlc | emp refrigerateur
+  - Bière blonde | syn bière | cond 250, 1500:6 × 25 cl, 4000:12 × 33 cl | all gluten | traits +alcool | cons 270/2/-
+  - Bière sans alcool | cond 1500:6 × 25 cl | all gluten | cons 270/2/-
+  - Cidre brut | syn cidre | cond 750 | all sulfites | traits +alcool | cons 365/5/-
+  - Vin rouge | cond 750 | all sulfites | traits +alcool | cons 1095/5/-
+  - Vin blanc | cond 750 | all sulfites | traits +alcool | cons 730/5/-
+  - Vin rosé | cond 750 | all sulfites | traits +alcool | cons 730/5/-
+  - Champagne | syn vin pétillant, crémant | cond 750 | all sulfites | traits +alcool | cons 1095/2/-
+  - Pastis | cond 700, 1000 | traits +alcool | cons 1825/365/-
+  - Whisky | cond 700 | traits +alcool | cons 1825/730/-
+  - Rhum | syn rhum ambré | cond 700 | traits +alcool | cons 1825/730/- | u cs=15
+  - Porto | cond 750 | all sulfites | traits +alcool | cons 1825/60/-
+  - Crème de cassis | cond 500 | traits +alcool | groupe produits_sucres | cons 1095/180/-
+  - Cognac | syn armagnac | cond 700 | traits +alcool | cons 1825/730/- | u cs=15
+  - Kirsch | cond 350 | traits +alcool | cons 1825/730/- | u cs=15
+  - Lait chocolaté | syn chocolat au lait à boire | cond 1000, 1200:6 × 20 cl | groupe produits_sucres | all lait | cons 180/3/-
+  - Boisson aux céréales | cond 1000 | groupe produits_sucres | all gluten | cons 270/5/-
+  - Kombucha | cond 750 | cons 90/5/- | emp refrigerateur
+  - Eau de coco | cond 1000 | cons 270/3/-
+  - Café froid | syn café latte en bouteille | cond 250 | all lait | cons 180/2/- | emp refrigerateur
+  - Gin | cond 700 | traits +alcool | cons 1825/730/-
+  - Vodka | cond 700 | traits +alcool | cons 1825/730/-
+  - Martini | syn vermouth | cond 1000 | traits +alcool | all sulfites | cons 1095/90/-
+  - Liqueur | cond 700 | traits +alcool | groupe produits_sucres | cons 1825/365/-
+  - Bière de Noël | syn bière ambrée | cond 750 | all gluten | traits +alcool | cons 270/2/- | saison 11-12

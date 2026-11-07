@@ -57,3 +57,86 @@ Dans BuddyGet, `alerts` importait tous les domaines. Ici, chaque domaine
 démarrage : le système d'alertes reste **unique** (une table, une cloche, un
 relais de notifications) sans dépendre des domaines, ce qui évite les cycles
 d'import (le stock déclenche des alertes, les alertes lisent le stock).
+
+## Catalogue (jalon 2)
+
+### Un seul référentiel : `products`
+Il n'existe pas de table d'ingrédients : une ligne de recette, une ligne de
+stock et une ligne de liste de courses référencent toutes `products.id`.
+Les rapprochements (menu ↔ stock ↔ courses) sont donc des égalités
+d'identifiants, sans heuristique.
+
+### Quantités entières dans l'unité de base
+Grammes, millilitres ou **millièmes de pièce** (« ½ citron » = 500), en
+`int64`. La saisie décimale (« 1,5 », « ½ », « 1 1/2 ») est lue en
+millièmes par `internal/platform/qty`, sans flottant. Les conversions d'un
+produit (`catalog.Conv`) combinent :
+
+- les unités génériques (g, kg, ml, cl, dl, L, c. à soupe = 15 ml,
+  c. à café = 5 ml, pincée = 0,5 g, tasse, verre) ;
+- le poids d'une pièce (`piece_g`) : « 1 oignon » → 120 g ;
+- la densité (`density`, g/L) entre volume et masse ; à défaut, celle de
+  l'eau, approximation assumée et signalée dans la documentation ;
+- des unités propres au produit (`product_units` : gousse, sachet,
+  tranche, ou une cuillère de farine = 10 g plutôt que 15 ml × densité).
+
+Une conversion impossible (pièce sans poids connu) est signalée, jamais
+devinée.
+
+### Arrondis
+- **Conditionnement** : le paquet qui couvre le besoin avec le moins de
+  surplus, puis le moins de paquets (300 g avec 250 g et 500 g → 1 × 500 g).
+- **Pièces mises à l'échelle** : pièce entière, ou demi-pièce si la recette
+  utilisait déjà une fraction ; jamais moins d'une demi-pièce.
+
+### Base de départ : YAML par rayon, chargée après les migrations
+Le cahier des charges demandait un chargement « par la première
+migration ». Les migrations étant du SQL pur (migrateur de BuddyGet),
+la base est chargée par `catalog.SyncSeed`, **juste après les migrations**,
+dans une transaction, et seulement si `settings.catalog_seed_version` est
+inférieure à `catalog.SeedVersion`. Avantages : format source lisible
+(`internal/catalog/seed/*.yaml`, une ligne par produit, valeurs par défaut
+par rayon), contrôlé par un test, et mises à jour possibles :
+
+- un produit de la base porte `origin = 'seed'` et un identifiant stable
+  `seed_key` (nom normalisé) ;
+- toute modification dans l'interface pose `modified = 1` : les versions
+  suivantes de la base ne touchent plus ce produit ;
+- un nom déjà pris par un produit de l'utilisateur n'est pas réimporté.
+
+880 produits (19 rayons), sans prix, code-barres ni valeur nutritionnelle
+(laissés vides). Durées de conservation indicatives, modifiables. Coût :
+160 ms au premier démarrage, rien ensuite.
+
+### Recherche de produits
+Forme normalisée (`catalog.Normalize` : casse, accents, ponctuation,
+pluriels simples) stockée dans `products.search` et
+`product_synonyms.search`, toutes deux `UNIQUE` : un nom ou un synonyme ne
+peut désigner qu'un produit. La recherche instantanée est un `LIKE` préfixe
+sur ces colonnes (≈ 1 000 lignes, moins d'une milliseconde) ; FTS5 est
+réservé aux recettes, où le texte libre le justifie.
+
+### Sélection d'un produit : `<datalist>` + création à la volée
+Partout où l'on choisit un produit, un champ texte propose le catalogue
+par une liste native du navigateur, remplie par HTMX à la frappe. Sans
+script, la saisie libre fonctionne : le serveur résout le nom (nom ou
+synonyme) et, s'il est inconnu, **crée le produit en une étape** avec le
+rayon, l'unité, l'univers et le groupe du produit existant le plus proche
+(mot commun), marqué « à compléter ». Aucun composant JavaScript de liste
+déroulante n'est nécessaire.
+
+### Régimes : traits des produits, compatibilité calculée
+Un produit porte des **traits** (chair animale, origine animale, porc,
+alcool) et ses **allergènes** (14 allergènes réglementaires, en bits). Les
+régimes (végétarien, végan, sans gluten, sans porc, sans lactose, sans
+alcool) s'en déduisent (`catalog.Compatible`) : une recette n'a jamais à
+déclarer sa compatibilité, elle la calcule de ses ingrédients. La base de
+départ déduit les traits du groupe alimentaire et des allergènes, avec
+des corrections explicites (`traits +porc`, `-animal` pour les boissons
+végétales).
+
+### Magasins : ordre des rayons
+`store_aisle_order` donne la position de chaque rayon dans le parcours
+d'un magasin. Glisser-déposer (amélioration progressive dans `app.js`) et
+boutons « monter / descendre » (formulaires, accessibles au clavier et
+sans script) utilisent le même service.

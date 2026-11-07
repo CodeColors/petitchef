@@ -1,0 +1,57 @@
+{{define "content"}}
+<h1>Magasins et rayons</h1>
+<nav class="tabs" aria-label="Catalogue">
+  <a href="/catalogue">Produits</a>
+  <a href="/catalogue?incomplets=1">À compléter</a>
+  <a href="/magasins" aria-current="page">Magasins et rayons</a>
+  <a href="/emplacements">Emplacements</a>
+</nav>
+<section class="card" aria-labelledby="magasins">
+  <h2 id="magasins">Vos magasins</h2>
+  {{- if .Data.Stores}}
+  <ul class="chips">
+    {{- range .Data.Stores}}<li><a href="/magasins?magasin={{.ID}}"{{if eq64 .ID $.Data.Selected.ID}} aria-current="true"{{end}}>{{.Name}}{{if .IsDefault}} (par défaut){{end}}</a></li>{{end}}
+  </ul>
+  {{- else}}
+  <p class="muted">Aucun magasin : la liste de courses suit l'ordre par défaut des rayons.</p>
+  {{- end}}
+  <form class="inline-form" method="post" action="/magasins">
+    <div class="field"><label for="store-name">Nouveau magasin</label><input id="store-name" name="name" placeholder="Leclerc, marché, drive…" required></div>
+    <label class="check"><input type="checkbox" name="default" value="1"{{if not .Data.Stores}} checked{{end}}> Par défaut</label>
+    <button class="btn">Ajouter</button>
+  </form>
+</section>
+<section aria-labelledby="ordre">
+  <div class="section-head">
+    <h2 id="ordre">{{if .Data.Selected.ID}}Parcours de {{.Data.Selected.Name}}{{else}}Ordre par défaut des rayons{{end}}</h2>
+  </div>
+  {{- if .Data.Selected.ID}}
+  <p class="hint">Rangez les rayons dans l'ordre où vous les parcourez : glissez-déposez, ou utilisez les boutons monter et descendre.</p>
+  <ol class="sortable" data-sortable="/magasins/{{.Data.Selected.ID}}/rayons">
+    {{- range $i, $a := .Data.Aisles}}
+    <li id="rayon-{{$a.ID}}" data-id="{{$a.ID}}">
+      <span class="grow">{{add $i 1}}. {{$a.Name}}</span>
+      <form method="post" action="/magasins/{{$.Data.Selected.ID}}/rayons">
+        <input type="hidden" name="aisle" value="{{$a.ID}}">
+        <button class="btn btn-icon btn-ghost" name="dir" value="up"{{if eq $i 0}} disabled{{end}} aria-label="Monter {{$a.Name}}">↑</button>
+        <button class="btn btn-icon btn-ghost" name="dir" value="down" aria-label="Descendre {{$a.Name}}">↓</button>
+      </form>
+    </li>
+    {{- end}}
+  </ol>
+  <form method="post" action="/magasins">
+    <input type="hidden" name="id" value="{{.Data.Selected.ID}}">
+    <div class="inline-form">
+      <div class="field"><label for="rename">Nom du magasin</label><input id="rename" name="name" value="{{.Data.Selected.Name}}" required></div>
+      <label class="check"><input type="checkbox" name="default" value="1"{{if .Data.Selected.IsDefault}} checked{{end}}> Par défaut</label>
+      <button class="btn">Enregistrer</button>
+    </div>
+  </form>
+  <form class="danger-zone" method="post" action="/magasins/{{.Data.Selected.ID}}/supprimer" data-confirm="Supprimer le magasin « {{.Data.Selected.Name}} » ?">
+    <button class="btn btn-danger">Supprimer ce magasin</button>
+  </form>
+  {{- else}}
+  <ol class="sortable">{{range .Data.Aisles}}<li>{{.Name}}</li>{{end}}</ol>
+  {{- end}}
+</section>
+{{end}}

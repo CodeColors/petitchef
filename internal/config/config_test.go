@@ -25,14 +25,14 @@ func TestLoadDefaults(t *testing.T) {
 
 func TestLoadValues(t *testing.T) {
 	cfg, err := Load(env(map[string]string{
-		"PORT":                 "9000",
-		"DATA_DIR":             "/srv/bg",
-		"LOG_LEVEL":            "debug",
-		"BASE_URL":             "https://budget.example.fr/",
-		"TRUSTED_PROXIES":      "172.16.0.0/12, 192.168.1.10",
-		"MAX_UPLOAD_MB":        "25",
-		"PHOTOS_QUOTA_MB": "500",
-		"BACKUP_PASSPHRASE":    "une très longue phrase",
+		"PORT":              "9000",
+		"DATA_DIR":          "/srv/bg",
+		"LOG_LEVEL":         "debug",
+		"BASE_URL":          "https://budget.example.fr/",
+		"TRUSTED_PROXIES":   "172.16.0.0/12, 192.168.1.10",
+		"MAX_UPLOAD_MB":     "25",
+		"PHOTOS_QUOTA_MB":   "500",
+		"BACKUP_PASSPHRASE": "une très longue phrase",
 	}))
 	if err != nil {
 		t.Fatal(err)

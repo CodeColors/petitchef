@@ -1,0 +1,55 @@
+rayon: entretien
+defauts:
+  univers: entretien
+  unite: piece
+  emp: buanderie
+  date: DDM
+  cons: 1825/730/-
+produits:
+  - Liquide vaisselle | syn produit vaisselle | unite ml | cond 500, 750 | emp placard
+  - Tablettes lave-vaisselle | syn pastilles lave-vaisselle | piece 1 | cond 30000:30 tablettes, 60000:60 tablettes | emp placard
+  - Liquide de rinçage | unite ml | cond 500 | emp placard
+  - Sel régénérant | syn sel lave-vaisselle | unite g | cond 2000 | emp placard
+  - Nettoyant lave-vaisselle | piece 1 | cond 3000:3 doses | emp placard
+  - Lessive liquide | syn lessive | unite ml | cond 1500, 3000
+  - Lessive en capsules | syn capsules de lessive | piece 1 | cond 26000:26 capsules, 52000:52 capsules
+  - Lessive en poudre | unite g | cond 2000
+  - Lessive pour linge délicat | unite ml | cond 1000
+  - Adoucissant | syn assouplissant | unite ml | cond 1000, 2000
+  - Détachant | syn détachant avant lavage | unite ml | cond 750
+  - Lingettes anti-décoloration | piece 1 | cond 24000:24 lingettes
+  - Vinaigre ménager | unite ml | cond 1000
+  - Bicarbonate de soude | unite g | cond 500, 1000
+  - Cristaux de soude | unite g | cond 1000
+  - Savon noir | unite ml | cond 1000
+  - Savon de Marseille | piece 1 | cond 2000:2 savons
+  - Nettoyant multi-usages | syn nettoyant ménager | unite ml | cond 750, 1500
+  - Nettoyant sol | syn produit pour sols | unite ml | cond 1000, 1500
+  - Nettoyant vitres | syn lave-vitres | unite ml | cond 750
+  - Nettoyant salle de bain | syn anticalcaire | unite ml | cond 750
+  - Nettoyant WC | syn gel WC | unite ml | cond 750
+  - Javel | syn eau de javel | unite ml | cond 1000, 2000
+  - Pastilles WC | syn bloc WC | piece 1 | cond 3000:3 blocs
+  - Dégraissant cuisine | unite ml | cond 750
+  - Désinfectant | syn spray désinfectant | unite ml | cond 500
+  - Déboucheur canalisations | syn déboucheur | unite ml | cond 1000
+  - Nettoyant four | unite ml | cond 500
+  - Crème à récurer | syn crème lavante | unite ml | cond 500
+  - Lingettes ménagères | syn lingettes nettoyantes | piece 1 | cond 50000:50 lingettes
+  - Éponges | syn éponge grattante | piece 1 | cond 3000:lot de 3, 6000:lot de 6 | cons -/30/-
+  - Éponge magique | syn gomme magique | piece 1 | cond 4000:lot de 4 | cons -/-/-
+  - Lavettes microfibres | syn chiffons microfibre | piece 1 | cond 4000:lot de 4 | cons -/-/-
+  - Serpillière | piece 1 | cons -/-/-
+  - Gants de ménage | piece 1 | cond 1000:1 paire | cons -/-/-
+  - Sacs poubelle 30 L | syn sacs poubelle | piece 1 | cond 20000:20 sacs, 50000:50 sacs | emp placard | cons -/-/-
+  - Sacs poubelle 50 L | piece 1 | cond 20000:20 sacs | emp placard | cons -/-/-
+  - Sacs poubelle 100 L | piece 1 | cond 10000:10 sacs | emp garage | cons -/-/-
+  - Désodorisant | syn parfum d'intérieur | piece 1 | cons 1095/90/-
+  - Anti-calcaire lave-linge | unite g | cond 1000
+  - Nettoyant inox | unite ml | cond 300
+  - Cire meubles | syn produit meubles | unite ml | cond 300
+  - Insecticide | syn anti-insectes | unite ml | cond 400
+  - Anti-mites | piece 1 | cond 24000:24 boules
+  - Recharge de désodorisant | piece 1 | cond 2000:2 recharges | cons 1095/60/-
+  - Pierre d'argile | syn pierre blanche | unite g | cond 300
+  - Alcool ménager | unite ml | cond 1000

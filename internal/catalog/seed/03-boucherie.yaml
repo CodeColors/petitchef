@@ -1,0 +1,54 @@
+rayon: boucherie
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: refrigerateur
+  groupe: viande_rouge
+  date: DLC
+  cons: 3/1/180
+produits:
+  - Steak haché | syn steaks hachés, viande hachée de bœuf | piece 100 | cond 200:2 steaks, 400:4 steaks, 1000:10 steaks | cons 3/1/120
+  - Bœuf haché | syn viande hachée | cond 350, 500 | cons 2/1/120
+  - Bœuf à bourguignon | syn bœuf bourguignon, viande à braiser | cond 500, 1000 | cons 3/1/240
+  - Bœuf à pot-au-feu | syn plat de côtes | cond 1000 | cons 3/1/240
+  - Rumsteck | cond 300 | cons 3/1/240
+  - Entrecôte | cond 300 | cons 3/1/240
+  - Bavette | cond 300 | cons 3/1/240
+  - Rôti de bœuf | cond 800 | cons 3/1/240
+  - Faux-filet | cond 300 | cons 3/1/240
+  - Paleron | cond 800 | cons 3/1/240
+  - Joue de bœuf | cond 800 | cons 3/1/240
+  - Escalope de veau | cond 300 | cons 3/1/240
+  - Blanquette de veau | syn veau à blanquette, tendron | cond 800 | cons 3/1/240
+  - Rôti de veau | cond 800 | cons 3/1/240
+  - Osso buco | cond 800 | cons 3/1/240
+  - Gigot d'agneau | cond 1500 | cons 3/1/240
+  - Côtelette d'agneau | syn côtelettes d'agneau | cond 400 | cons 3/1/240
+  - Épaule d'agneau | cond 1200 | cons 3/1/240
+  - Sauté d'agneau | syn navarin | cond 800 | cons 3/1/240
+  - Merguez | piece 60 | cond 360:6 merguez | cons 4/2/120
+  - Rôti de porc | cond 800 | cons 3/1/240 | traits +porc
+  - Côte de porc | syn côtes de porc | piece 180 | cond 360, 720 | cons 3/1/240 | traits +porc
+  - Échine de porc | cond 800 | cons 3/1/240 | traits +porc
+  - Filet mignon de porc | cond 500 | cons 3/1/240 | traits +porc
+  - Sauté de porc | cond 600 | cons 3/1/240 | traits +porc
+  - Travers de porc | syn ribs | cond 1000 | cons 3/1/240 | traits +porc
+  - Chair à saucisse | cond 400 | cons 2/1/120 | traits +porc | groupe charcuterie
+  - Saucisse de Toulouse | piece 100 | cond 400, 600 | cons 4/2/120 | traits +porc | groupe charcuterie
+  - Saucisse de Strasbourg | syn knack | piece 50 | cond 350 | cons 14/3/120 | traits +porc | groupe charcuterie
+  - Saucisse de Morteau | piece 400 | cons 14/3/120 | traits +porc | groupe charcuterie
+  - Poulet entier | syn poulet fermier | piece 1500 | unite piece | cons 3/1/240 | groupe volaille
+  - Blanc de poulet | syn filet de poulet, escalope de poulet | piece 130 | cond 260, 500, 1000 | cons 3/1/240 | groupe volaille
+  - Cuisse de poulet | syn cuisses de poulet | piece 250 | cond 500, 1000 | cons 3/1/240 | groupe volaille
+  - Pilon de poulet | syn pilons | piece 110 | cond 600 | cons 3/1/240 | groupe volaille
+  - Aiguillette de poulet | syn aiguillettes | cond 400 | cons 3/1/240 | groupe volaille
+  - Aile de poulet | syn ailes de poulet | cond 600 | cons 3/1/240 | groupe volaille
+  - Escalope de dinde | syn dinde | piece 120 | cond 240, 500 | cons 3/1/240 | groupe volaille
+  - Rôti de dinde | cond 800 | cons 3/1/240 | groupe volaille
+  - Cuisse de canard | cond 500 | cons 3/1/240 | groupe volaille
+  - Magret de canard | piece 350 | cons 4/2/240 | groupe volaille
+  - Pintade | unite piece | piece 1300 | cons 3/1/240 | groupe volaille
+  - Lapin | syn râble de lapin | cond 1200 | cons 3/1/240 | groupe volaille
+  - Foie de volaille | cond 250 | cons 2/1/120 | groupe volaille
+  - Cordon bleu | piece 100 | cond 200:2 pièces, 400:4 pièces | cons 10/2/120 | groupe plats_transformes | all gluten, lait, oeufs | traits +porc
+  - Nuggets de poulet | cond 400 | cons 10/2/120 | groupe plats_transformes | all gluten

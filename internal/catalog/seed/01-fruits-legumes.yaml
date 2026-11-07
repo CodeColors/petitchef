@@ -1,0 +1,123 @@
+rayon: fruits-legumes
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: refrigerateur
+  groupe: legumes
+  date: DLC
+  cons: 7/3/240
+produits:
+  # Légumes
+  - Ail | syn gousse d'ail | piece 50 | u gousse=5 | cond 250 | cons 60/14/180 | emp placard | groupe condiments | base | saison toute
+  - Oignon jaune | syn oignon, oignons | piece 120 | cond 1000 | cons 45/5/180 | emp placard | saison toute
+  - Oignon rouge | piece 120 | cond 500 | cons 30/5/180 | emp placard | saison toute
+  - Échalote | piece 25 | cond 250 | cons 45/5/180 | emp placard | saison toute
+  - Oignon nouveau | syn cébette | piece 30 | u botte=250 | cons 7/3/- | saison 4-7
+  - Pomme de terre | syn patate, pommes de terre | piece 150 | cond 1000, 2500, 5000 | cons 45/2/- | emp cave | groupe feculents_raffines | saison toute
+  - Pomme de terre à chair ferme | syn pomme de terre grenaille | piece 80 | cond 1000 | cons 45/2/- | emp cave | groupe feculents_raffines | saison toute
+  - Patate douce | piece 300 | cond 1000 | cons 21/2/240 | emp placard | groupe feculents_complets | saison 10-3
+  - Carotte | syn carottes | piece 100 | cond 1000 | cons 21/4/300 | saison toute
+  - Courgette | piece 220 | cond 1000 | cons 7/3/240 | saison 6-9
+  - Aubergine | piece 300 | cons 7/2/240 | saison 6-9
+  - Poivron rouge | syn poivron | piece 180 | cons 10/4/300 | saison 7-9
+  - Poivron vert | piece 180 | cons 10/4/300 | saison 7-9
+  - Poivron jaune | piece 180 | cons 10/4/300 | saison 7-9
+  - Tomate | syn tomates | piece 120 | cond 1000 | cons 7/2/240 | emp fruits | saison 6-9
+  - Tomate cerise | syn tomates cerises | cond 250, 500 | cons 7/2/- | emp fruits | saison 6-9
+  - Concombre | piece 350 | cons 7/3/- | saison 5-9
+  - Salade laitue | syn laitue | piece 300 | cons 5/2/- | saison 4-10
+  - Salade batavia | syn batavia | piece 350 | cons 5/2/- | saison 4-10
+  - Mâche | cond 125 | cons 5/2/- | saison 10-3
+  - Roquette | cond 125 | cons 5/2/- | saison 4-10
+  - Jeunes pousses d'épinard | cond 125 | cons 5/2/- | saison 3-6
+  - Mesclun | syn salade mélangée | cond 200 | cons 5/2/- | saison 4-10
+  - Endive | syn endives, chicon | piece 120 | cond 1000 | cons 7/2/- | saison 10-4
+  - Épinard frais | syn épinards | cond 500 | cons 4/2/300 | saison 3-6,9-11
+  - Chou-fleur | piece 1000 | cons 7/3/300 | saison 9-4
+  - Brocoli | syn brocolis | piece 400 | cons 5/3/300 | saison 6-11
+  - Chou vert | syn chou frisé | piece 1200 | cons 14/5/300 | saison 10-3
+  - Chou rouge | piece 1000 | cons 14/5/300 | saison 10-3
+  - Chou blanc | piece 1200 | cons 14/5/300 | saison 10-3
+  - Chou de Bruxelles | syn choux de bruxelles | cond 500 | cons 7/3/300 | saison 10-2
+  - Chou chinois | syn pak choï, bok choy | piece 600 | cons 7/3/- | saison 9-2
+  - Poireau | syn poireaux | piece 250 | cond 1000 | cons 10/4/300 | saison 9-4
+  - Céleri branche | piece 600 | cons 14/5/240 | saison 7-11 | all celeri
+  - Céleri-rave | piece 800 | cons 30/5/240 | saison 9-3 | all celeri
+  - Fenouil | piece 300 | cons 7/3/240 | saison 6-11
+  - Navet | piece 150 | cond 1000 | cons 14/4/240 | saison 10-3
+  - Panais | piece 200 | cond 500 | cons 14/4/240 | saison 10-3
+  - Betterave cuite | syn betterave rouge | piece 150 | cond 500 | cons 10/3/- | saison toute
+  - Radis | syn radis rose | u botte=250 | cons 5/2/- | saison 4-6
+  - Radis noir | piece 300 | cons 21/5/- | saison 10-3
+  - Haricot vert | syn haricots verts | cond 500 | cons 4/2/300 | saison 6-9
+  - Petits pois frais | cond 500 | cons 3/2/300 | saison 5-7 | groupe legumineuses
+  - Fève fraîche | syn fèves | cond 500 | cons 3/2/300 | saison 5-7 | groupe legumineuses
+  - Asperge verte | syn asperges | u botte=500 | cons 3/2/240 | saison 4-6
+  - Asperge blanche | u botte=500 | cons 3/2/240 | saison 4-6
+  - Artichaut | piece 350 | cons 5/2/- | saison 5-9
+  - Potiron | syn citrouille | piece 3000 | cond 1000 | cons 60/5/300 | emp cave | saison 9-12
+  - Butternut | syn courge butternut, doubeurre | piece 1200 | cons 60/5/300 | emp cave | saison 9-2
+  - Potimarron | piece 1200 | cons 60/5/300 | emp cave | saison 9-1
+  - Champignon de Paris | syn champignons de paris, champignons | cond 250, 500 | cons 5/2/240 | saison toute
+  - Champignon shiitake | syn shiitake | cond 150 | cons 5/2/240 | saison toute
+  - Cèpe | syn cèpes | cons 3/1/240 | saison 9-11
+  - Girolle | syn girolles | cons 3/1/240 | saison 7-10
+  - Maïs doux en épi | syn épi de maïs | piece 250 | cons 3/2/240 | saison 8-9 | groupe feculents_raffines
+  - Avocat | piece 200 | cons 7/1/- | emp fruits | saison 11-4 | groupe matieres_grasses
+  - Gingembre frais | syn gingembre | piece 80 | cons 21/10/180 | groupe condiments | base | saison toute
+  - Piment frais | syn piment rouge | piece 10 | cons 10/4/180 | groupe condiments | saison 7-10
+  - Topinambour | cond 500 | cons 14/3/- | saison 10-3
+  - Salsifis | cond 500 | cons 7/2/- | saison 10-2
+  - Blette | syn bettes, blettes | piece 800 | cons 5/2/240 | saison 5-11
+  - Cresson | u botte=200 | cons 3/1/- | saison 3-5,9-11
+  - Pousses de soja | syn germes de soja | cond 200 | cons 3/1/- | saison toute | all soja
+  # Herbes aromatiques
+  - Persil plat | syn persil | u botte=50, cs=4 | cons 7/4/180 | groupe condiments | saison toute
+  - Persil frisé | u botte=50, cs=4 | cons 7/4/180 | groupe condiments | saison toute
+  - Coriandre fraîche | syn coriandre | u botte=50, cs=4 | cons 7/4/180 | groupe condiments | saison toute
+  - Basilic frais | syn basilic | u botte=30, feuille=1 | cons 5/3/180 | groupe condiments | saison 5-9
+  - Ciboulette | u botte=30, cs=3 | cons 7/4/180 | groupe condiments | saison 3-10
+  - Menthe fraîche | syn menthe | u botte=30, feuille=1 | cons 7/3/180 | groupe condiments | saison 5-9
+  - Aneth | u botte=30 | cons 5/3/180 | groupe condiments | saison 5-9
+  - Estragon | u botte=30 | cons 7/3/180 | groupe condiments | saison 5-9
+  - Thym frais | u branche=1, botte=30 | cons 14/7/180 | groupe condiments | saison toute
+  - Romarin frais | u branche=2, botte=30 | cons 14/7/180 | groupe condiments | saison toute
+  - Cerfeuil | u botte=30 | cons 5/3/- | groupe condiments | saison 3-11
+  - Citronnelle | syn lemongrass | piece 20 | cons 14/7/180 | groupe condiments | saison toute
+  # Fruits
+  - Pomme | syn pommes | piece 160 | cond 1000, 1500 | cons 30/1/- | emp fruits | groupe fruits | saison 8-4
+  - Poire | syn poires | piece 170 | cond 1000 | cons 10/1/- | emp fruits | groupe fruits | saison 8-2
+  - Banane | syn bananes | piece 120 | cond 1000 | cons 7/1/90 | emp fruits | groupe fruits | saison toute
+  - Orange | syn oranges | piece 200 | cond 1500, 2000 | cons 21/3/- | emp fruits | groupe fruits | saison 11-4
+  - Orange à jus | piece 180 | cond 2000 | cons 21/3/- | emp fruits | groupe fruits | saison 11-4
+  - Clémentine | syn clémentines, mandarine | piece 70 | cond 1000, 2000 | cons 14/2/- | emp fruits | groupe fruits | saison 11-2
+  - Citron jaune | syn citron, citrons | piece 120 | cond 500, 1000 | cons 30/7/- | emp fruits | groupe fruits | saison toute | u cs=330
+  - Citron vert | syn lime | piece 70 | cons 21/7/- | emp fruits | groupe fruits | saison toute
+  - Pamplemousse | syn pomelo | piece 400 | cons 21/3/- | emp fruits | groupe fruits | saison 11-4
+  - Kiwi | syn kiwis | piece 80 | cond 1000 | cons 21/2/- | emp fruits | groupe fruits | saison 11-4
+  - Raisin blanc | syn raisin | cond 500 | cons 7/2/- | groupe fruits | saison 8-10
+  - Raisin noir | cond 500 | cons 7/2/- | groupe fruits | saison 8-10
+  - Fraise | syn fraises | cond 250, 500 | cons 3/1/300 | groupe fruits | saison 5-7
+  - Framboise | syn framboises | cond 125 | cons 2/1/300 | groupe fruits | saison 6-9
+  - Myrtille | syn myrtilles | cond 125 | cons 5/2/300 | groupe fruits | saison 7-9
+  - Mûre | syn mûres | cond 125 | cons 2/1/300 | groupe fruits | saison 8-9
+  - Groseille | syn groseilles | cond 125 | cons 3/1/300 | groupe fruits | saison 6-8
+  - Cerise | syn cerises | cond 500 | cons 4/1/300 | groupe fruits | saison 6-7
+  - Abricot | syn abricots | piece 45 | cond 1000 | cons 5/1/300 | emp fruits | groupe fruits | saison 6-8
+  - Pêche | syn pêches | piece 150 | cond 1000 | cons 5/1/300 | emp fruits | groupe fruits | saison 6-9
+  - Nectarine | syn brugnon | piece 150 | cond 1000 | cons 5/1/300 | emp fruits | groupe fruits | saison 6-9
+  - Prune | syn prunes, quetsche | piece 40 | cond 1000 | cons 5/1/300 | emp fruits | groupe fruits | saison 7-9
+  - Mirabelle | syn mirabelles | cond 500 | cons 4/1/300 | groupe fruits | saison 8-9
+  - Melon | piece 1000 | cons 5/2/- | emp fruits | groupe fruits | saison 6-9
+  - Pastèque | piece 4000 | cons 10/3/- | emp fruits | groupe fruits | saison 7-8
+  - Figue fraîche | syn figues | piece 50 | cons 3/1/- | groupe fruits | saison 8-10
+  - Ananas | piece 1500 | cons 5/3/180 | emp fruits | groupe fruits | saison 11-3
+  - Mangue | piece 400 | cons 7/2/240 | emp fruits | groupe fruits | saison 11-4
+  - Grenade | piece 300 | cons 21/3/- | emp fruits | groupe fruits | saison 10-1
+  - Fruit de la passion | syn maracuja | piece 40 | cons 10/2/- | emp fruits | groupe fruits | saison 11-3
+  - Litchi | syn litchis | cond 500 | cons 7/2/- | groupe fruits | saison 12-1
+  - Coing | piece 300 | cons 30/2/- | emp cave | groupe fruits | saison 10-11
+  - Kaki | piece 200 | cons 7/1/- | emp fruits | groupe fruits | saison 10-12
+  - Rhubarbe | cond 500 | cons 5/2/300 | groupe legumes | saison 4-6
+  - Châtaigne | syn marrons | cond 500 | cons 14/3/240 | emp placard | groupe fruits_coque | saison 10-12
+  - Noix fraîches | syn noix en coque | cond 500 | cons 60/14/- | emp placard | groupe fruits_coque | saison 9-12 | all fruits_a_coque

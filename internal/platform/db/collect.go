@@ -29,3 +29,8 @@ func Collect[T any](ctx context.Context, q *sql.DB, scan func(Scanner) (T, error
 	}
 	return out, rows.Err()
 }
+
+// Execer exécute une requête d'écriture : connexion ou transaction.
+type Execer interface {
+	ExecContext(ctx context.Context, query string, args ...any) (sql.Result, error)
+}

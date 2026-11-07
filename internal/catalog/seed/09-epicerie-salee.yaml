@@ -1,0 +1,96 @@
+rayon: epicerie-salee
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: placard
+  groupe: feculents_raffines
+  date: DDM
+  cons: 730/180/-
+produits:
+  # Pâtes, riz, céréales
+  - Spaghetti | syn spaghettis | cond 500, 1000 | all gluten | base
+  - Penne | syn pennes | cond 500, 1000 | all gluten
+  - Coquillettes | cond 500, 1000 | all gluten
+  - Fusilli | syn torsades | cond 500, 1000 | all gluten
+  - Tagliatelles sèches | syn tagliatelles | cond 500 | all gluten, oeufs
+  - Macaroni | cond 500 | all gluten
+  - Farfalle | syn papillons | cond 500 | all gluten
+  - Linguine | cond 500 | all gluten
+  - Pâtes complètes | syn spaghetti complets | cond 500 | all gluten | groupe feculents_complets
+  - Lasagnes sèches | syn feuilles de lasagne | cond 500 | all gluten
+  - Cannellonis | cond 250 | all gluten
+  - Vermicelles | cond 250 | all gluten
+  - Pâtes sans gluten | cond 500 | all
+  - Nouilles chinoises | syn nouilles aux œufs | cond 250 | all gluten, oeufs
+  - Riz basmati | syn riz | cond 500, 1000, 2000 | base
+  - Riz long blanc | cond 1000 | all
+  - Riz complet | cond 1000 | groupe feculents_complets
+  - Riz rond | syn riz pour risotto, riz arborio | cond 500, 1000
+  - Riz thaï | syn riz jasmin | cond 1000
+  - Riz sauvage | syn mélange de riz | cond 500 | groupe feculents_complets
+  - Semoule moyenne | syn semoule, couscous | cond 500, 1000 | all gluten
+  - Semoule complète | cond 500 | all gluten | groupe feculents_complets
+  - Boulgour | cond 500 | all gluten | groupe feculents_complets
+  - Quinoa | cond 500 | groupe feculents_complets
+  - Polenta | cond 500
+  - Blé précuit | syn ebly | cond 500 | all gluten | groupe feculents_complets
+  - Purée en flocons | syn purée instantanée | cond 500 | all lait
+  - Sarrasin | syn kasha | cond 500 | groupe feculents_complets
+  - Millet | cond 500 | groupe feculents_complets
+  # Légumineuses
+  - Lentilles vertes | syn lentilles | cond 500, 1000 | groupe legumineuses
+  - Lentilles corail | cond 500 | groupe legumineuses
+  - Pois chiches secs | cond 500 | groupe legumineuses
+  - Haricots blancs secs | syn lingots | cond 500 | groupe legumineuses
+  - Haricots rouges secs | cond 500 | groupe legumineuses
+  - Pois cassés | cond 500 | groupe legumineuses
+  - Flageolets secs | cond 500 | groupe legumineuses
+  # Conserves
+  - Pois chiches en conserve | syn pois chiches | cond 265:petite boîte, 400:boîte 4/4 | groupe legumineuses | cons 1095/3/-
+  - Haricots rouges en conserve | syn haricots rouges | cond 250, 400 | groupe legumineuses | cons 1095/3/-
+  - Haricots blancs en conserve | syn haricots blancs | cond 250, 400 | groupe legumineuses | cons 1095/3/-
+  - Lentilles cuisinées en conserve | cond 400 | groupe legumineuses | cons 1095/3/-
+  - Flageolets en conserve | syn flageolets | cond 265 | groupe legumineuses | cons 1095/3/-
+  - Maïs doux en conserve | syn maïs | cond 140, 285 | cons 1095/3/-
+  - Petits pois en conserve | syn petits pois carottes | cond 400 | groupe legumineuses | cons 1095/3/-
+  - Haricots verts en conserve | cond 400 | groupe legumes | cons 1095/3/-
+  - Tomates pelées en conserve | syn tomates pelées | cond 400, 800 | groupe legumes | cons 1095/4/-
+  - Tomates concassées | syn pulpe de tomate | cond 400 | groupe legumes | cons 1095/4/-
+  - Coulis de tomate | syn passata, purée de tomates | unite ml | densite 1040 | cond 500, 700 | groupe legumes | cons 730/4/-
+  - Champignons en conserve | syn champignons de paris émincés | cond 230 | groupe legumes | cons 1095/3/-
+  - Cœurs d'artichaut | cond 240 | groupe legumes | cons 1095/4/-
+  - Olives vertes | syn olives | cond 160 | groupe matieres_grasses | cons 730/21/-
+  - Olives noires | cond 160 | groupe matieres_grasses | cons 730/21/-
+  - Câpres | cond 100 | groupe condiments | cons 730/60/-
+  - Cornichons | cond 200, 400 | groupe condiments | cons 730/60/- | all moutarde
+  - Thon au naturel | syn thon en boîte, thon | cond 140, 280 | groupe poisson | all poissons | cons 1460/2/-
+  - Thon à l'huile | cond 160 | groupe poisson | all poissons | cons 1460/2/-
+  - Sardines à l'huile | syn sardines en boîte | cond 135 | groupe poisson | all poissons | cons 1460/2/-
+  - Maquereaux au vin blanc | cond 175 | groupe poisson | all poissons, sulfites | cons 1095/2/-
+  - Miettes de crabe | cond 120 | groupe poisson | all crustaces | cons 1095/2/-
+  - Anchois | cond 50 | groupe poisson | all poissons | cons 365/7/-
+  - Raviolis en conserve | cond 800 | groupe plats_transformes | traits +viande | all gluten | cons 1095/2/-
+  - Cassoulet en conserve | cond 840 | groupe plats_transformes | traits +porc | cons 1095/2/-
+  - Choucroute cuisinée | cond 800 | groupe plats_transformes | traits +porc | cons 1095/2/-
+  - Soupe en brique | syn velouté | unite ml | cond 1000 | groupe legumes | cons 365/3/- | all
+  - Bouillon de légumes | syn cube de bouillon | unite piece | piece 10 | cond 12000:12 cubes | groupe condiments | base | all celeri
+  - Bouillon de volaille | syn fond de volaille | unite piece | piece 10 | cond 12000:12 cubes | groupe condiments | base | traits +viande | all celeri
+  - Bouillon de bœuf | unite piece | piece 10 | cond 12000:12 cubes | groupe condiments | base | traits +viande | all celeri
+  - Fumet de poisson | unite g | cond 90 | groupe condiments | all poissons, celeri
+  # Farines, aides
+  - Farine de blé | syn farine, farine T55 | cond 1000 | u cs=10, cc=3, tasse=140 | all gluten | base | groupe feculents_raffines
+  - Farine complète | syn farine T110 | cond 1000 | u cs=10, tasse=130 | all gluten | groupe feculents_complets
+  - Fécule de maïs | syn maïzena | cond 400 | u cs=10, cc=3 | base
+  - Farine de sarrasin | cond 500 | u cs=10 | groupe feculents_complets
+  - Levure de boulanger | syn levure sèche | unite piece | piece 5 | cond 5000:5 sachets | u sachet=1000 | base | groupe condiments
+  - Pâte à tartiner salée | syn tapenade | cond 90 | groupe matieres_grasses | cons 365/14/-
+  - Biscuits apéritif | syn crackers | cond 150 | groupe plats_transformes | all gluten, lait | cons 270/14/-
+  - Chips | cond 150, 300 | groupe plats_transformes | cons 180/7/-
+  - Cacahuètes | syn arachides grillées | cond 200 | groupe fruits_coque | all arachides | cons 365/30/-
+  - Pistaches | cond 200 | groupe fruits_coque | all fruits_a_coque | cons 365/30/-
+  - Noix de cajou | cond 200 | groupe fruits_coque | all fruits_a_coque | cons 365/30/-
+  - Mélange de graines | syn graines pour salade | cond 150 | groupe fruits_coque | all sesame | cons 365/60/-
+  - Graines de courge | cond 150 | groupe fruits_coque | cons 365/60/-
+  - Pignons de pin | cond 100 | groupe fruits_coque | cons 365/60/- | all
+  - Tomates séchées | cond 150 | groupe legumes | cons 365/30/-
+  - Pâte de curry | cond 100 | groupe condiments | cons 365/30/- | all crustaces

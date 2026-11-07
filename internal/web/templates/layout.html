@@ -121,6 +121,27 @@
 {{/* Indice d'équilibre : lettre et couleur, jamais la couleur seule. */}}
 {{define "grade"}}<span class="grade grade-{{.}}" title="Indice d'équilibre {{.}}"><span aria-hidden="true">{{.}}</span><span class="sr-only">Indice d'équilibre {{.}}</span></span>{{end}}
 
+{{/* Champ produit : saisie libre avec suggestions du catalogue (liste
+   native du navigateur, remplie par HTMX). Paramètres : ID, Name, Value,
+   Label, Required. Un nom inconnu crée le produit à la volée. */}}
+{{define "product-input"}}
+<input id="{{.ID}}" name="{{.Name}}" value="{{.Value}}" list="{{.ID}}-liste" autocomplete="off" spellcheck="false"
+  hx-get="/catalogue/suggestions" hx-trigger="input changed delay:150ms, focus once" hx-target="#{{.ID}}-liste" hx-swap="innerHTML"{{if .Required}} required{{end}}>
+<datalist id="{{.ID}}-liste"></datalist>
+{{- end}}
+
+{{/* Pagination : paramètres Page (catalog.ListPage ou équivalent), Base
+   (chemin) et Query (filtres sans la page). */}}
+{{define "pager"}}
+{{- if or .Page.More (gt .Page.Page 0)}}
+<nav class="actions" aria-label="Pages">
+  {{- if gt .Page.Page 0}}<a class="btn" href="{{.Base}}?{{.Query}}&amp;page={{add .Page.Page -1}}">Page précédente</a>{{end}}
+  <span class="muted">Page {{add .Page.Page 1}}</span>
+  {{- if .Page.More}}<a class="btn" href="{{.Base}}?{{.Query}}&amp;page={{add .Page.Page 1}}">Page suivante</a>{{end}}
+</nav>
+{{- end}}
+{{- end}}
+
 {{/* Diagramme en barres (barChart) ; la figure porte le titre <ID>-titre. */}}
 {{define "bar-chart"}}
 <svg class="chart-svg" role="img" aria-labelledby="{{.ID}}-titre {{.ID}}-desc">

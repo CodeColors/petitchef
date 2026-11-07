@@ -24,10 +24,10 @@ const passphrase = "une phrase de passe solide"
 var now = time.Date(2026, 11, 1, 3, 15, 0, 0, time.Local)
 
 type env struct {
-	t       testing.TB
-	dir     string
-	db      *db.DB
-	s       *Service
+	t   testing.TB
+	dir string
+	db  *db.DB
+	s   *Service
 }
 
 func openEnv(t testing.TB, dir, pass string) *env {

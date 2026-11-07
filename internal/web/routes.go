@@ -26,6 +26,20 @@ func (s *Server) routes() map[string]http.HandlerFunc {
 		"POST /utilisateurs/mot-de-passe":             s.changePassword,
 		"POST /utilisateurs/{id}/supprimer":           s.deleteUser,
 		"GET /plus":                                   s.morePage,
+		"GET /catalogue":                              s.catalogPage,
+		"GET /catalogue/suggestions":                  s.productSuggestions,
+		"GET /catalogue/nouveau":                      s.newProductPage,
+		"POST /catalogue":                             s.saveProduct,
+		"GET /catalogue/{id}":                         s.editProductPage,
+		"POST /catalogue/{id}":                        s.saveProduct,
+		"POST /catalogue/{id}/retirer":                s.archiveProduct,
+		"GET /magasins":                               s.storesPage,
+		"POST /magasins":                              s.saveStore,
+		"POST /magasins/{id}/supprimer":               s.deleteStore,
+		"POST /magasins/{id}/rayons":                  s.moveAisle,
+		"GET /emplacements":                           s.locationsPage,
+		"POST /emplacements":                          s.saveLocation,
+		"POST /emplacements/{id}/supprimer":           s.deleteLocation,
 	}
 }
 

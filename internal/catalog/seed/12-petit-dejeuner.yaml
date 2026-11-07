@@ -1,0 +1,40 @@
+rayon: petit-dejeuner
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: placard
+  groupe: feculents_complets
+  date: DDM
+  cons: 365/60/-
+produits:
+  - Flocons d'avoine | syn porridge | cond 500, 1000 | u cs=6, tasse=90 | all gluten
+  - Muesli | cond 500, 750 | u tasse=100 | all gluten, fruits_a_coque
+  - Muesli croustillant | syn granola | cond 500 | groupe produits_sucres | all gluten, fruits_a_coque
+  - Corn flakes | syn pétales de maïs | cond 500 | groupe feculents_raffines
+  - Céréales au chocolat | syn céréales enfants | cond 375, 750 | groupe produits_sucres | all gluten
+  - Céréales complètes | syn céréales fourrées, pétales de blé complet | cond 500 | all gluten
+  - Café moulu | syn café | cond 250, 500 | u cs=7 | groupe boissons | cons 540/21/- | base
+  - Café en grains | cond 500, 1000 | groupe boissons | cons 540/30/- | base
+  - Café soluble | cond 100, 200 | u cc=2 | groupe boissons | cons 730/90/- | base
+  - Capsules de café | unite piece | piece 6 | cond 10000:10 capsules, 40000:40 capsules | groupe boissons | cons 365/365/-
+  - Dosettes de café | syn dosettes souples | unite piece | piece 7 | cond 36000:36 dosettes | groupe boissons | cons 365/365/-
+  - Café décaféiné | syn déca | cond 250 | groupe boissons | cons 540/21/-
+  - Thé noir | syn thé | unite piece | piece 2 | u sachet=1000 | cond 25000:25 sachets, 50000:50 sachets | groupe boissons | cons 730/365/- | base
+  - Thé vert | unite piece | piece 2 | u sachet=1000 | cond 25000:25 sachets | groupe boissons | cons 730/365/-
+  - Infusion | syn tisane, verveine | unite piece | piece 2 | u sachet=1000 | cond 20000:20 sachets | groupe boissons | cons 730/365/-
+  - Chicorée | cond 250 | groupe boissons | cons 730/180/-
+  - Cacao instantané | syn chocolat en poudre | cond 400, 800 | u cs=10 | groupe produits_sucres | all lait, soja | cons 540/180/-
+  - Pain de mie brioché | syn pain brioché | cond 500 | u tranche=30 | groupe produits_sucres | all gluten, lait, oeufs | cons 21/7/90
+  - Pâte à tartiner aux spéculoos | cond 400 | groupe produits_sucres | all gluten, soja
+  - Beurre de cacahuète | cond 340 | u cs=16 | groupe fruits_coque | all arachides | cons 365/90/-
+  - Purée d'amande | cond 250 | u cs=16 | groupe fruits_coque | all fruits_a_coque | cons 365/90/-
+  - Biscottes complètes | cond 300 | u tranche=10 | all gluten
+  - Pancakes prêts | unite piece | piece 35 | cond 6000:6 pancakes | groupe produits_sucres | all gluten, lait, oeufs | cons 60/5/-
+  - Graines de chia | cond 200 | groupe fruits_coque | cons 365/180/-
+  - Graines de lin | cond 250 | groupe fruits_coque | cons 365/90/-
+  - Son d'avoine | cond 500 | u cs=6 | all gluten
+  - Pruneaux d'Agen | cond 500 | groupe fruits | cons 365/90/-
+  - Jus de pomme | unite ml | cond 1000, 1500 | groupe fruits | cons 365/7/-
+  - Jus multifruits | unite ml | cond 1000 | groupe fruits | cons 365/5/-
+  - Jus d'orange à base de concentré | unite ml | cond 1000, 1500 | groupe fruits | cons 365/5/-
+  - Sirop de grenadine | syn sirop | unite ml | cond 750 | groupe produits_sucres | cons 730/180/-

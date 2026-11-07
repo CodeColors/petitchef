@@ -1,0 +1,51 @@
+rayon: surgeles
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: congelateur
+  groupe: legumes
+  date: DDM
+  cons: 365/2/365
+produits:
+  - Haricots verts surgelés | cond 1000 | saison toute
+  - Petits pois surgelés | cond 1000 | groupe legumineuses | saison toute
+  - Épinards hachés surgelés | syn épinards surgelés | cond 1000 | saison toute
+  - Brocolis surgelés | cond 1000 | saison toute
+  - Chou-fleur surgelé | cond 1000 | saison toute
+  - Poêlée de légumes surgelée | syn poêlée de légumes | cond 750, 1000 | saison toute
+  - Légumes pour couscous surgelés | cond 1000 | saison toute
+  - Ratatouille surgelée | cond 1000 | saison toute
+  - Jardinière de légumes surgelée | cond 1000 | saison toute
+  - Poivrons en lanières surgelés | cond 750 | saison toute
+  - Champignons émincés surgelés | cond 750 | saison toute
+  - Oignons émincés surgelés | cond 750 | saison toute
+  - Herbes aromatiques surgelées | syn persil surgelé, ciboulette surgelée | cond 75 | u cs=4 | groupe condiments | base | saison toute
+  - Ail surgelé | cond 75 | u gousse=5, cc=3 | groupe condiments | base | saison toute
+  - Frites surgelées | syn frites | cond 1000, 2500 | groupe plats_transformes
+  - Pommes noisettes | cond 750 | groupe plats_transformes
+  - Fruits rouges surgelés | syn mélange de fruits rouges | cond 500, 1000 | groupe fruits | saison toute
+  - Framboises surgelées | cond 500 | groupe fruits | saison toute
+  - Mangue surgelée | syn morceaux de mangue | cond 500 | groupe fruits | saison toute
+  - Filets de colin surgelés | syn colin surgelé, poisson blanc surgelé | cond 400, 1000 | groupe poisson | all poissons
+  - Filets de cabillaud surgelés | cond 400, 1000 | groupe poisson | all poissons
+  - Saumon surgelé | syn pavés de saumon surgelés | cond 500 | groupe poisson | all poissons
+  - Poisson pané | syn bâtonnets de poisson, panés de colin | cond 450, 900 | groupe plats_transformes | all poissons, gluten
+  - Crevettes surgelées | cond 400 | groupe poisson | all crustaces
+  - Fruits de mer surgelés | syn cocktail de fruits de mer | cond 500 | groupe poisson | all crustaces, mollusques
+  - Steaks hachés surgelés | piece 100 | cond 1000:10 steaks | groupe viande_rouge
+  - Escalopes de poulet surgelées | cond 1000 | groupe volaille
+  - Pizza surgelée | syn pizza 4 fromages surgelée | unite piece | piece 400 | cond 1000:1 pizza | groupe plats_transformes | all gluten, lait
+  - Lasagnes surgelées | cond 1000 | groupe plats_transformes | traits +viande | all gluten, lait, oeufs
+  - Hachis parmentier surgelé | cond 1000 | groupe plats_transformes | traits +viande | all lait
+  - Plat cuisiné surgelé | syn plat individuel surgelé | unite piece | piece 300 | groupe plats_transformes | all gluten, lait
+  - Feuilletés surgelés | syn feuilletés apéritif | cond 300 | groupe plats_transformes | all gluten, lait
+  - Glace vanille | syn crème glacée vanille | unite ml | densite 550 | cond 1000:1 L | groupe produits_sucres | all lait, oeufs
+  - Glace chocolat | unite ml | densite 550 | cond 1000:1 L | groupe produits_sucres | all lait
+  - Sorbet citron | syn sorbet | unite ml | densite 700 | cond 750 | groupe produits_sucres
+  - Bâtonnets glacés | syn esquimaux | unite piece | piece 70 | cond 6000:6 bâtonnets | groupe produits_sucres | all lait
+  - Bûche glacée | unite piece | piece 600 | groupe produits_sucres | all lait, oeufs | saison 12-1
+  - Croissants surgelés à cuire | unite piece | piece 60 | cond 10000:10 croissants | groupe produits_sucres | all gluten, lait
+  - Pain surgelé | syn baguettes précuites | unite piece | piece 250 | cond 4000:4 baguettes | groupe feculents_raffines | all gluten
+  - Galettes de légumes surgelées | cond 400 | groupe plats_transformes | all gluten
+  - Soja edamame surgelé | syn edamame | cond 500 | groupe legumineuses | all soja
+  - Glaçons | cond 2000 | groupe boissons | cons 365/-/365

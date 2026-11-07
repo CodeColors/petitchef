@@ -1,0 +1,65 @@
+{{define "content"}}
+<div class="page-head">
+  <h1>Catalogue</h1>
+  <a class="btn btn-primary" href="/catalogue/nouveau">Nouveau produit</a>
+</div>
+<nav class="tabs" aria-label="Catalogue">
+  <a href="/catalogue"{{if not .Data.Filter.Incomplete}} aria-current="page"{{end}}>Produits</a>
+  <a href="/catalogue?incomplets=1"{{if .Data.Filter.Incomplete}} aria-current="page"{{end}}>À compléter</a>
+  <a href="/magasins">Magasins et rayons</a>
+  <a href="/emplacements">Emplacements</a>
+</nav>
+<form class="filters" method="get" action="/catalogue" role="search" hx-get="/catalogue" hx-target="#resultats" hx-trigger="input changed delay:200ms from:#q, change" hx-push-url="true">
+  <div class="filter-grid">
+    <div class="field">
+      <label for="q">Rechercher</label>
+      <input id="q" name="q" type="search" value="{{.Data.Filter.Query}}" placeholder="Nom ou synonyme" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="univers">Univers</label>
+      <select id="univers" name="univers">
+        <option value="">Tous</option>
+        {{- range .Data.Universes}}<option value="{{.}}"{{if eq . $.Data.Filter.Universe}} selected{{end}}>{{.Label}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="rayon">Rayon</label>
+      <select id="rayon" name="rayon">
+        <option value="">Tous</option>
+        {{- range .Data.Aisles}}<option value="{{.ID}}"{{if eq64 .ID $.Data.Filter.AisleID}} selected{{end}}>{{.Name}} ({{.Products}})</option>{{end}}
+      </select>
+    </div>
+  </div>
+  {{- if .Data.Filter.Incomplete}}<input type="hidden" name="incomplets" value="1">{{end}}
+  <noscript><button class="btn">Filtrer</button></noscript>
+</form>
+<div id="resultats" class="results" aria-live="polite">
+{{template "results" .}}
+</div>
+{{end}}
+
+{{define "results"}}
+<p class="summary">{{plural .Data.Page.Total "produit" "produits"}}{{if .Data.Filter.Incomplete}} à compléter{{end}}</p>
+{{- if .Data.Page.Items}}
+<ul class="rows">
+  {{- range .Data.Page.Items}}
+  <li class="row">
+    <a class="row-link" href="/catalogue/{{.ID}}">
+      <span class="row-title">{{.Name}}{{if .Staple}} <span class="tag">de base</span>{{end}}{{if .Incomplete}} <span class="tag badge-warn">à compléter</span>{{end}}</span>
+      <span class="row-meta">{{.AisleName}} · {{.Universe.Label}}{{with .Location}} · {{.}}{{end}} · en {{.Unit.Label}}</span>
+    </a>
+  </li>
+  {{- end}}
+</ul>
+{{template "pager" dict "Page" .Data.Page "Base" "/catalogue" "Query" .Data.Query}}
+{{- else}}
+<div class="card empty">
+  <p>Aucun produit ne correspond.</p>
+  {{- with .Data.Filter.Query}}<a class="btn btn-primary" href="/catalogue/nouveau?nom={{.}}">Créer « {{.}} »</a>{{end}}
+</div>
+{{- end}}
+{{end}}
+
+{{define "suggestions"}}
+{{- range .Data}}<option value="{{.Name}}">{{if .Matched}}{{.Matched}} · {{end}}{{.Aisle}}</option>{{end}}
+{{- end}}

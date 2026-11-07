@@ -1,0 +1,39 @@
+rayon: monde
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: placard
+  groupe: condiments
+  date: DDM
+  cons: 730/90/-
+produits:
+  - Nouilles de riz | syn vermicelles de riz | cond 250, 400 | groupe feculents_raffines
+  - Nouilles udon | cond 400 | groupe feculents_raffines | all gluten
+  - Nouilles soba | cond 250 | groupe feculents_complets | all gluten
+  - Nouilles instantanées | syn ramen instantanées | cond 85, 425 | groupe plats_transformes | all gluten, soja
+  - Feuilles de riz | syn galettes pour rouleaux de printemps | cond 200 | groupe feculents_raffines
+  - Riz à sushi | cond 500, 1000 | groupe feculents_raffines
+  - Algues nori | unite piece | piece 3 | u feuille=1000 | cond 10000:10 feuilles | groupe legumes
+  - Wasabi | cond 43 | cons 365/30/-
+  - Gingembre mariné | syn gari | cond 190 | cons 365/30/-
+  - Miso | syn pâte miso | cond 300 | all soja | cons 365/90/-
+  - Pâte de curry rouge | cond 50, 112 | all crustaces | cons 730/30/-
+  - Pâte de curry vert | cond 50, 112 | all crustaces | cons 730/30/-
+  - Lait de coco en conserve | unite ml | cond 400 | groupe matieres_grasses | cons 730/3/90
+  - Pousses de bambou | cond 225 | groupe legumes | cons 1095/3/-
+  - Châtaignes d'eau | cond 225 | groupe legumes | cons 1095/3/-
+  - Sauce aigre-douce | cond 250 | groupe produits_sucres | cons 730/60/-
+  - Sauce satay | syn sauce cacahuète | cond 250 | groupe matieres_grasses | all arachides | cons 365/30/-
+  - Tortillas de maïs | cond 300 | groupe feculents_raffines | cons 60/7/90
+  - Chips de tortilla | syn nachos, tortilla chips | cond 200 | groupe plats_transformes | cons 180/7/-
+  - Sauce salsa | cond 300 | groupe legumes | cons 365/14/-
+  - Épices pour fajitas | syn mélange tex-mex | cond 30 | base
+  - Haricots noirs en conserve | syn haricots noirs | cond 400 | groupe legumineuses | cons 1095/3/-
+  - Piments jalapeños | cond 200 | groupe legumes | cons 730/30/-
+  - Semoule de couscous fine | cond 1000 | groupe feculents_raffines | all gluten
+  - Feuilles de brick | unite piece | piece 15 | u feuille=1000 | cond 10000:10 feuilles | groupe feculents_raffines | all gluten | cons 60/7/90
+  - Pâte de dattes | cond 500 | groupe produits_sucres | cons 365/60/-
+  - Garam masala | cond 40 | u cc=2 | base
+  - Lentilles beluga | cond 500 | groupe legumineuses | cons 730/180/-
+  - Pain naan | unite piece | piece 120 | cond 2000:2 naans | groupe feculents_raffines | all gluten, lait | cons 30/5/90
+  - Gnocchis de patate douce | cond 400 | groupe feculents_raffines | all gluten | cons 60/3/90

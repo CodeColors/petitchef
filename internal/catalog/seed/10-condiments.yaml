@@ -1,0 +1,84 @@
+rayon: condiments
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: placard
+  groupe: condiments
+  date: DDM
+  cons: 1095/365/-
+produits:
+  # Huiles et vinaigres
+  - Huile d'olive | unite ml | densite 915 | cond 500, 750, 1000 | u cs=15, cc=5, filet=10 | groupe matieres_grasses | cons 540/180/- | base
+  - Huile de tournesol | unite ml | densite 920 | cond 1000 | u cs=15, cc=5 | groupe matieres_grasses | cons 540/180/- | base
+  - Huile de colza | unite ml | densite 915 | cond 1000 | u cs=15, cc=5 | groupe matieres_grasses | cons 540/120/-
+  - Huile de sésame | unite ml | densite 920 | cond 250 | u cs=15, cc=5 | groupe matieres_grasses | all sesame | cons 540/120/-
+  - Huile de noix | unite ml | densite 920 | cond 250 | u cs=15, cc=5 | groupe matieres_grasses | all fruits_a_coque | cons 365/90/-
+  - Huile de friture | unite ml | densite 915 | cond 1000 | groupe matieres_grasses | cons 540/180/-
+  - Vinaigre de vin | syn vinaigre | unite ml | cond 500, 1000 | u cs=15, cc=5 | all sulfites | base
+  - Vinaigre balsamique | unite ml | cond 250, 500 | u cs=15, cc=5 | all sulfites
+  - Vinaigre de cidre | unite ml | cond 500 | u cs=15, cc=5 | all sulfites
+  - Vinaigre blanc | syn vinaigre d'alcool | unite ml | cond 1000 | u cs=15
+  - Vinaigre de riz | unite ml | cond 250 | u cs=15, cc=5
+  # Sel, poivre, épices
+  - Sel fin | syn sel | cond 500, 1000 | u cs=18, cc=6, pincee=1 | base
+  - Gros sel | cond 1000 | u cs=18, poignee=30 | base
+  - Fleur de sel | cond 125, 250 | u pincee=1, cc=5 | base
+  - Poivre noir moulu | syn poivre | cond 50 | u cc=2, pincee=1 | base
+  - Poivre en grains | cond 50, 100 | u cc=3 | base
+  - Cumin | cond 40 | u cc=2, pincee=1 | base
+  - Paprika | cond 40 | u cc=2, pincee=1 | base
+  - Paprika fumé | cond 40 | u cc=2 | base
+  - Curry en poudre | syn curry | cond 40 | u cc=2 | base | all moutarde, celeri
+  - Curcuma | cond 40 | u cc=3 | base
+  - Cannelle moulue | syn cannelle | cond 35 | u cc=2 | base
+  - Bâton de cannelle | unite piece | piece 3 | cond 5000:5 bâtons | base
+  - Muscade moulue | syn noix de muscade | cond 35 | u pincee=1, cc=2 | base
+  - Gingembre moulu | cond 35 | u cc=2 | base
+  - Piment d'Espelette | cond 40 | u pincee=1, cc=2 | base
+  - Piment de Cayenne | cond 40 | u pincee=1, cc=2 | base
+  - Ras el-hanout | cond 40 | u cc=2 | base
+  - Herbes de Provence | cond 30 | u cc=1, pincee=1 | base
+  - Thym séché | cond 20 | u cc=1, pincee=1 | base
+  - Origan séché | syn origan | cond 15 | u cc=1, pincee=1 | base
+  - Laurier | syn feuille de laurier | unite piece | piece 1 | u feuille=1000 | cond 20000:20 feuilles | base
+  - Clou de girofle | syn clous de girofle | unite piece | piece 1 | cond 30000:boîte | base
+  - Quatre-épices | cond 35 | u cc=2 | base
+  - Graines de sésame | syn sésame | cond 100 | u cs=9, cc=3 | all sesame | base
+  - Graines de moutarde | cond 50 | all moutarde | base
+  - Cardamome | cond 25 | base
+  - Anis étoilé | syn badiane | cond 20 | base
+  - Safran | cond 1 | base
+  - Ail en poudre | cond 50 | u cc=3 | base
+  - Échalote séchée | cond 40 | base
+  - Gousse de vanille | syn vanille | unite piece | piece 3 | cond 2000:2 gousses | base
+  # Sauces et condiments
+  - Moutarde de Dijon | syn moutarde | cond 210, 370 | u cs=15, cc=5 | all moutarde | cons 540/90/- | base
+  - Moutarde à l'ancienne | cond 210 | u cs=15, cc=5 | all moutarde | cons 540/90/-
+  - Mayonnaise | cond 235, 470 | u cs=15, cc=5 | groupe matieres_grasses | all oeufs, moutarde | cons 365/60/-
+  - Ketchup | cond 340, 560 | u cs=17 | groupe produits_sucres | cons 365/60/-
+  - Sauce soja | unite ml | cond 150, 250 | u cs=15, cc=5 | all soja, gluten | cons 730/180/- | base
+  - Sauce soja sucrée | unite ml | cond 250 | u cs=15 | all soja, gluten | cons 730/180/-
+  - Sauce Worcestershire | unite ml | cond 150 | u cs=15, cc=5 | all poissons | cons 730/180/-
+  - Tabasco | syn sauce piquante | unite ml | cond 60 | u cc=5 | cons 1095/365/-
+  - Sauce tomate cuisinée | syn sauce tomate | cond 420 | groupe legumes | cons 730/4/-
+  - Sauce bolognaise en bocal | cond 420 | groupe plats_transformes | traits +viande | all celeri | cons 730/4/-
+  - Pesto vert | syn pesto | cond 190 | u cs=15 | groupe matieres_grasses | all lait, fruits_a_coque | cons 365/14/-
+  - Pesto rouge | cond 190 | u cs=15 | groupe matieres_grasses | all lait, fruits_a_coque | cons 365/14/-
+  - Concentré de tomate | syn double concentré | cond 70, 140 | u cs=17, cc=6 | groupe legumes | cons 730/7/-
+  - Sauce barbecue | cond 400 | u cs=17 | groupe produits_sucres | cons 365/60/-
+  - Sauce béarnaise | cond 250 | groupe matieres_grasses | all oeufs, lait | cons 365/14/-
+  - Sauce vinaigrette | unite ml | cond 500 | u cs=15 | groupe matieres_grasses | all moutarde | cons 365/60/-
+  - Sauce nuoc-mâm | syn nuoc mam, sauce poisson | unite ml | cond 250 | u cs=15, cc=5 | all poissons | cons 730/365/-
+  - Harissa | cond 70, 135 | u cc=5 | cons 730/60/-
+  - Sauce sriracha | syn sriracha | unite ml | cond 435 | u cc=5 | cons 730/180/-
+  - Sauce teriyaki | unite ml | cond 250 | u cs=15 | all soja, gluten | cons 730/90/-
+  - Sauce hoisin | cond 250 | u cs=15 | all soja | cons 730/90/-
+  - Tahini | syn purée de sésame | cond 250 | u cs=15 | groupe fruits_coque | all sesame | cons 365/90/-
+  - Jus de citron en bouteille | syn jus de citron | unite ml | cond 200 | u cs=15, cc=5 | groupe fruits | cons 365/60/-
+  - Fond brun | syn fond de veau | cond 110 | u cs=8 | traits +viande | all celeri | base
+  - Sauce aux champignons | cond 300 | groupe plats_transformes | all lait | cons 365/4/-
+  - Cornichons aigres-doux | cond 350 | cons 730/60/-
+  - Oignons au vinaigre | syn petits oignons | cond 230 | groupe legumes | cons 730/60/-
+  - Chutney de mangue | syn chutney | cond 250 | groupe produits_sucres | cons 365/60/-
+  - Vin blanc de cuisine | unite ml | densite 990 | cond 750 | groupe boissons | all sulfites | traits +alcool | cons 730/7/-
+  - Vin rouge de cuisine | unite ml | densite 990 | cond 750 | groupe boissons | all sulfites | traits +alcool | cons 730/7/-

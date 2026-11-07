@@ -1,0 +1,57 @@
+rayon: charcuterie-traiteur
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: refrigerateur
+  groupe: charcuterie
+  date: DLC
+  traits: +porc
+  cons: 21/4/60
+produits:
+  - Jambon blanc | syn jambon de paris, jambon cuit | piece 45 | u tranche=45 | cond 180:4 tranches, 360:8 tranches | cons 14/4/60
+  - Jambon de poulet | syn blanc de poulet en tranches | u tranche=30 | cond 120 | cons 14/4/60 | groupe volaille | traits
+  - Jambon de dinde | u tranche=30 | cond 120 | cons 14/4/60 | groupe volaille | traits
+  - Jambon cru | syn jambon de bayonne, jambon serrano | u tranche=15 | cond 70, 120 | cons 30/5/-
+  - Lardons fumés | syn lardons | cond 150:2 × 75 g, 200 | cons 30/4/90
+  - Lardons nature | cond 150:2 × 75 g, 200 | cons 30/4/90
+  - Allumettes de bacon | syn bacon | u tranche=10 | cond 120 | cons 30/4/90
+  - Poitrine fumée | syn poitrine de porc | u tranche=20 | cond 150 | cons 30/4/90
+  - Saucisson sec | cond 250 | cons 90/21/- | emp placard | ddm
+  - Chorizo | u tranche=4 | cond 100, 225 | cons 60/14/- | ddm | all lait
+  - Salami | u tranche=6 | cond 100 | cons 30/5/-
+  - Rosette | u tranche=6 | cond 100 | cons 30/5/-
+  - Pâté de campagne | cond 180, 250 | cons 21/4/- | all
+  - Rillettes de porc | syn rillettes | cond 220 | cons 30/5/-
+  - Mousse de canard | cond 180 | cons 21/4/- | traits +viande | all lait
+  - Andouillette | piece 150 | cond 300 | cons 10/2/90
+  - Boudin noir | piece 125 | cond 250 | cons 10/2/90
+  - Boudin blanc | piece 100 | cond 400 | cons 10/2/90 | all lait, oeufs
+  - Knacki de volaille | syn saucisses de volaille | piece 35 | cond 350 | cons 21/3/90 | groupe volaille | traits
+  - Saucisses cocktail | cond 200 | cons 21/3/90
+  - Foie gras | syn foie gras de canard | cond 180 | cons 60/4/- | groupe matieres_grasses | traits +viande
+  - Carottes râpées | syn salade de carottes râpées | cond 250, 500 | cons 7/2/- | groupe legumes | traits | all moutarde
+  - Taboulé | cond 300, 500 | cons 7/2/- | groupe plats_transformes | traits | all gluten
+  - Salade piémontaise | cond 300 | cons 7/2/- | groupe plats_transformes | all oeufs, moutarde
+  - Céleri rémoulade | cond 300 | cons 7/2/- | groupe plats_transformes | traits | all celeri, oeufs, moutarde
+  - Houmous | syn hummus | cond 175, 300 | cons 14/4/90 | groupe legumineuses | traits | all sesame
+  - Tzatziki | cond 200 | cons 10/3/- | groupe produits_laitiers | traits | all lait
+  - Guacamole | cond 200 | cons 10/2/- | groupe matieres_grasses | traits
+  - Pizza fraîche | syn pizza jambon | piece 400 | cond 400 | cons 7/2/60 | groupe plats_transformes | all gluten, lait
+  - Quiche lorraine traiteur | piece 400 | cond 400 | cons 7/2/60 | groupe plats_transformes | all gluten, lait, oeufs
+  - Lasagnes traiteur | syn lasagnes bolognaise | cond 400, 1000 | cons 7/2/60 | groupe plats_transformes | traits +viande | all gluten, lait, oeufs, celeri
+  - Hachis parmentier traiteur | cond 400, 1000 | cons 7/2/60 | groupe plats_transformes | traits +viande | all lait
+  - Pâte à pizza | syn pâte à pizza fraîche | piece 260 | unite piece | cond 1000:1 pâte | cons 21/1/60 | groupe feculents_raffines | traits | all gluten
+  - Pâte brisée | syn pâte brisée fraîche | piece 230 | unite piece | cond 1000:1 rouleau | cons 21/1/60 | groupe feculents_raffines | traits | all gluten, lait
+  - Pâte feuilletée | syn pâte feuilletée fraîche | piece 230 | unite piece | cond 1000:1 rouleau | cons 21/1/60 | groupe feculents_raffines | traits | all gluten, lait
+  - Pâte sablée | piece 230 | unite piece | cond 1000:1 rouleau | cons 21/1/60 | groupe produits_sucres | traits | all gluten, lait, oeufs
+  - Pâtes fraîches | syn tagliatelles fraîches | cond 250, 400 | cons 21/3/90 | groupe feculents_raffines | traits | all gluten, oeufs
+  - Ravioli frais | syn ravioles | cond 250, 300 | cons 21/3/90 | groupe plats_transformes | traits | all gluten, oeufs, lait
+  - Gnocchi | syn gnocchis | cond 500 | cons 30/3/90 | groupe feculents_raffines | traits | all gluten
+  - Tortellini frais | cond 250 | cons 21/3/90 | groupe plats_transformes | traits +viande | all gluten, oeufs, lait
+  - Nems | cond 300 | cons 10/2/90 | groupe plats_transformes | traits +viande | all gluten, soja
+  - Samoussas | cond 250 | cons 10/2/90 | groupe plats_transformes | traits | all gluten
+  - Tofu nature | syn tofu ferme | cond 200, 400 | cons 30/4/90 | groupe legumineuses | traits | all soja
+  - Tofu fumé | cond 200 | cons 30/4/90 | groupe legumineuses | traits | all soja
+  - Galette végétale | syn steak végétal, burger végétarien | piece 100 | cond 200 | cons 21/3/90 | groupe legumineuses | traits | all soja, gluten
+  - Falafels | cond 200 | cons 14/3/90 | groupe legumineuses | traits | all
+  - Seitan | cond 200 | cons 21/4/90 | groupe legumineuses | traits | all gluten, soja

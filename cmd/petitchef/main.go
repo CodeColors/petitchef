@@ -30,6 +30,7 @@ import (
 	"github.com/codecolors/petitchef/internal/alerts"
 	"github.com/codecolors/petitchef/internal/auth"
 	"github.com/codecolors/petitchef/internal/backup"
+	"github.com/codecolors/petitchef/internal/catalog"
 	"github.com/codecolors/petitchef/internal/config"
 	"github.com/codecolors/petitchef/internal/platform/calendar"
 	"github.com/codecolors/petitchef/internal/platform/db"
@@ -95,6 +96,10 @@ func run() error {
 		}
 	}()
 
+	if err := catalog.SyncSeed(ctx, database); err != nil {
+		return err
+	}
+	products := catalog.NewService(database)
 	baseURL := ""
 	if cfg.BaseURL != nil {
 		baseURL = cfg.BaseURL.String()
@@ -103,6 +108,7 @@ func run() error {
 	backups := backup.NewService(database, cfg.DataDir, cfg.BackupPassphrase)
 	handler, err := web.New(cfg, database, web.Services{
 		Auth:    auth.NewService(database),
+		Catalog: products,
 		Alerts:  alertCenter,
 		Backups: backups,
 		// Après une restauration préparée : arrêt propre, la politique de

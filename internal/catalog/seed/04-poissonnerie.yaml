@@ -1,0 +1,37 @@
+rayon: poissonnerie
+defauts:
+  univers: alimentaire
+  unite: g
+  emp: refrigerateur
+  groupe: poisson
+  date: DLC
+  all: poissons
+  cons: 2/1/180
+produits:
+  - Filet de saumon | syn pavé de saumon, saumon | piece 125 | cond 250:2 pavés, 500:4 pavés
+  - Filet de cabillaud | syn cabillaud, dos de cabillaud | piece 125 | cond 250, 500
+  - Filet de colin | syn colin, lieu | piece 120 | cond 250, 500
+  - Filet de merlu | syn merlu | cond 400
+  - Filet de lieu noir | cond 400
+  - Filet de sole | syn sole | cond 250
+  - Filet de truite | syn truite | piece 120 | cond 250
+  - Filet de dorade | syn dorade | cond 250
+  - Filet de bar | syn bar, loup | cond 250
+  - Thon frais | syn steak de thon | cond 300
+  - Maquereau frais | syn maquereaux | piece 300 | cond 600
+  - Sardine fraîche | syn sardines fraîches | cond 500
+  - Filet de merlan | syn merlan | cond 300
+  - Lotte | syn queue de lotte | cond 500
+  - Raie | syn aile de raie | cond 500
+  - Crevette cuite | syn crevettes roses | cond 200, 400 | cons 3/1/180 | all crustaces
+  - Crevette crue | syn gambas | cond 300 | cons 2/1/180 | all crustaces
+  - Moules | syn moule | cond 1000, 2000 | cons 2/1/90 | all mollusques
+  - Huîtres | syn huître | unite piece | piece 80 | cond 12000:12 huîtres | cons 7/1/- | all mollusques
+  - Noix de Saint-Jacques | syn saint-jacques, coquilles saint-jacques | cond 250 | cons 2/1/180 | all mollusques
+  - Calamar | syn encornets, anneaux d'encornet | cond 400 | cons 2/1/180 | all mollusques
+  - Saumon fumé | piece 25 | u tranche=25 | cond 100:4 tranches, 200:8 tranches | cons 14/3/90
+  - Truite fumée | u tranche=25 | cond 100 | cons 14/3/90
+  - Surimi | syn bâtonnets de surimi | piece 17 | cond 250 | cons 21/3/90 | groupe plats_transformes | all poissons, oeufs, gluten
+  - Hareng fumé | syn filets de hareng | cond 250 | cons 30/5/- | groupe poisson
+  - Tarama | cond 100, 200 | cons 30/4/- | groupe plats_transformes | all poissons, oeufs, lait
+  - Rillettes de thon | cond 125 | cons 30/3/- | groupe plats_transformes | all poissons, lait

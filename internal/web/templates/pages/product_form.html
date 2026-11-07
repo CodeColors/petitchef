@@ -1,0 +1,162 @@
+{{define "content"}}
+{{- $p := .Data.Product}}
+<div class="page-head">
+  <h1>{{if .Data.New}}Nouveau produit{{else}}{{$p.Name}}{{end}}</h1>
+  {{- if not .Data.New}}<a class="btn" href="/stock/ajouter?produit_id={{$p.ID}}">Ajouter au stock</a>{{end}}
+</div>
+{{- if $p.Incomplete}}<p class="notice">Fiche créée à la volée : vérifiez le rayon, l'unité et la conservation, puis enregistrez.</p>{{end}}
+{{- if and (eq $p.Origin "seed") (not $p.Modified)}}<p class="hint">Produit de la base de départ. Une fois modifié, les mises à jour de la base ne le toucheront plus.</p>{{end}}
+<form class="form card form-card" method="post" action="{{if .Data.New}}/catalogue{{else}}/catalogue/{{$p.ID}}{{end}}">
+  {{- with .Data.Error}}<p class="alert" role="alert">{{.}}</p>{{end}}
+  <input type="hidden" name="back" value="{{.Data.Back}}">
+  <div class="field">
+    <label for="name">Nom</label>
+    <input id="name" name="name" value="{{$p.Name}}" maxlength="120" required>
+  </div>
+  <div class="field">
+    <label for="synonyms">Synonymes <span class="optional">(facultatif, séparés par des virgules)</span></label>
+    <input id="synonyms" name="synonyms" value="{{.Data.Synonyms}}" placeholder="patate, patates">
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="universe">Univers</label>
+      <select id="universe" name="universe">
+        {{- range universes}}<option value="{{.}}"{{if eq . $p.Universe}} selected{{end}}>{{.Label}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="aisle">Rayon</label>
+      <select id="aisle" name="aisle" required>
+        {{- range .Data.Aisles}}<option value="{{.ID}}"{{if eq64 .ID $p.AisleID}} selected{{end}}>{{.Name}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="location">Emplacement</label>
+      <select id="location" name="location">
+        <option value="0">—</option>
+        {{- range .Data.Locations}}<option value="{{.ID}}"{{if eq64 .ID $p.LocationID}} selected{{end}}>{{.Name}}</option>{{end}}
+      </select>
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="unit">Unité de base</label>
+      <select id="unit" name="unit" aria-describedby="unit-aide">
+        {{- range bases}}<option value="{{.}}"{{if eq . $p.Unit}} selected{{end}}>{{.Label}}</option>{{end}}
+      </select>
+      <p id="unit-aide" class="hint">Toutes les quantités sont calculées dans cette unité.</p>
+    </div>
+    <div class="field">
+      <label for="piece_g">Poids d'une pièce <span class="optional">(g)</span></label>
+      <input id="piece_g" name="piece_g" inputmode="numeric" value="{{if $p.PieceG}}{{$p.PieceG}}{{end}}">
+    </div>
+    <div class="field">
+      <label for="density">Densité <span class="optional">(g par litre)</span></label>
+      <input id="density" name="density" inputmode="numeric" value="{{if $p.Density}}{{$p.Density}}{{end}}">
+    </div>
+  </div>
+  <div class="field">
+    <label for="packages">Conditionnements usuels <span class="optional">(un par ligne, dans l'unité de base)</span></label>
+    <textarea id="packages" name="packages" rows="3" placeholder="250&#10;6000 : 6 × 1 L">{{.Data.Packages}}</textarea>
+    <p class="hint">La liste de courses arrondit au conditionnement supérieur.</p>
+  </div>
+  <div class="field">
+    <label for="units">Conversions propres <span class="optional">(unité=quantité de base)</span></label>
+    <input id="units" name="units" value="{{.Data.Units}}" placeholder="cs=15, gousse=5, tranche=40">
+  </div>
+  <fieldset class="field">
+    <legend>Conservation indicative <span class="optional">(jours ; jamais réglementaire)</span></legend>
+    <div class="field-row">
+      <div class="field"><label for="shelf_closed">Fermé</label><input id="shelf_closed" name="shelf_closed" inputmode="numeric" value="{{days $p.ShelfClosed}}"></div>
+      <div class="field"><label for="shelf_opened">Ouvert</label><input id="shelf_opened" name="shelf_opened" inputmode="numeric" value="{{days $p.ShelfOpened}}"></div>
+      <div class="field"><label for="shelf_frozen">Congelé</label><input id="shelf_frozen" name="shelf_frozen" inputmode="numeric" value="{{days $p.ShelfFrozen}}"></div>
+      <div class="field">
+        <label for="date_kind">Type de date</label>
+        <select id="date_kind" name="date_kind">
+          <option value="DLC"{{if eq $p.DateKind "DLC"}} selected{{end}}>DLC (à consommer jusqu'au)</option>
+          <option value="DDM"{{if eq $p.DateKind "DDM"}} selected{{end}}>DDM (de préférence avant)</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+  <div class="field-row">
+    <div class="field">
+      <label for="group">Groupe alimentaire</label>
+      <select id="group" name="group">
+        <option value="">— (non alimentaire)</option>
+        {{- range groups}}<option value="{{.}}"{{if eq . $p.Group}} selected{{end}}>{{.Label}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="season_from">Saison : de</label>
+      <select id="season_from" name="season_from">
+        <option value="0">—</option>
+        {{- range $i, $m := monthNames}}<option value="{{add $i 1}}"{{if eq (add $i 1) $.Data.SeasonFrom}} selected{{end}}>{{$m}}</option>{{end}}
+      </select>
+    </div>
+    <div class="field">
+      <label for="season_to">à</label>
+      <select id="season_to" name="season_to">
+        <option value="0">—</option>
+        {{- range $i, $m := monthNames}}<option value="{{add $i 1}}"{{if eq (add $i 1) $.Data.SeasonTo}} selected{{end}}>{{$m}}</option>{{end}}
+      </select>
+    </div>
+  </div>
+  <label class="check"><input type="checkbox" name="staple" value="1"{{if $p.Staple}} checked{{end}}> Produit de base (sel, huile, farine…) : non suivi au gramme, signalé « presque vide »</label>
+  <details class="more">
+    <summary>Allergènes et régimes</summary>
+    <fieldset>
+      <legend>Allergènes</legend>
+      <div class="field-row">
+        {{- range allergens}}<label class="check"><input type="checkbox" name="all_{{.Code}}" value="1"{{if $p.Allergens.Has .Bit}} checked{{end}}> {{.Label}}</label>{{end}}
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Indicateurs de régime</legend>
+      {{- range traits}}<label class="check"><input type="checkbox" name="trait_{{.Code}}" value="1"{{if $p.Traits.Has .Bit}} checked{{end}}> {{.Label}}</label>{{end}}
+    </fieldset>
+  </details>
+  <details class="more">
+    <summary>Magasin, marque, codes-barres</summary>
+    <div class="field-row">
+      <div class="field">
+        <label for="store">Magasin préféré</label>
+        <select id="store" name="store">
+          <option value="0">—</option>
+          {{- range .Data.Stores}}<option value="{{.ID}}"{{if eq64 .ID $p.StoreID}} selected{{end}}>{{.Name}}</option>{{end}}
+        </select>
+      </div>
+      <div class="field"><label for="brand">Marque préférée</label><input id="brand" name="brand" value="{{$p.Brand}}"></div>
+    </div>
+    <div class="field"><label for="barcodes">Codes-barres <span class="optional">(EAN, séparés par des virgules)</span></label><input id="barcodes" name="barcodes" inputmode="numeric" value="{{.Data.Barcodes}}"></div>
+  </details>
+  <details class="more">
+    <summary>Valeurs nutritionnelles pour 100 g</summary>
+    <div class="field-row">
+      <div class="field"><label for="kcal">Énergie (kcal)</label><input id="kcal" name="kcal" inputmode="numeric" value="{{if ge $p.Nutrition.Kcal 0}}{{$p.Nutrition.Kcal}}{{end}}"></div>
+      <div class="field"><label for="proteins">Protéines (g)</label><input id="proteins" name="proteins" inputmode="decimal" value="{{if ge $p.Nutrition.Proteins 0}}{{decimal (mul100 $p.Nutrition.Proteins)}}{{end}}"></div>
+      <div class="field"><label for="carbs">Glucides (g)</label><input id="carbs" name="carbs" inputmode="decimal" value="{{if ge $p.Nutrition.Carbs 0}}{{decimal (mul100 $p.Nutrition.Carbs)}}{{end}}"></div>
+      <div class="field"><label for="fat">Lipides (g)</label><input id="fat" name="fat" inputmode="decimal" value="{{if ge $p.Nutrition.Fat 0}}{{decimal (mul100 $p.Nutrition.Fat)}}{{end}}"></div>
+      <div class="field"><label for="fibres">Fibres (g)</label><input id="fibres" name="fibres" inputmode="decimal" value="{{if ge $p.Nutrition.Fibres 0}}{{decimal (mul100 $p.Nutrition.Fibres)}}{{end}}"></div>
+    </div>
+  </details>
+  <div class="actions">
+    <button class="btn btn-primary">Enregistrer</button>
+    <a class="btn" href="{{if .Data.Back}}{{.Data.Back}}{{else}}/catalogue{{end}}">Annuler</a>
+  </div>
+</form>
+{{- if .Data.Prices}}
+<section class="card form-card" aria-labelledby="prix">
+  <h2 id="prix">Derniers prix relevés</h2>
+  <div class="table-scroll"><table class="data">
+    <thead><tr><th>Date</th><th>Magasin</th><th class="num">Quantité</th><th class="num">Prix</th></tr></thead>
+    <tbody>{{range .Data.Prices}}<tr><td>{{date .Date}}</td><td>{{.Store}}</td><td class="num">{{qty .Qty $p.Unit}}</td><td class="num">{{euros .PriceCents}}</td></tr>{{end}}</tbody>
+  </table></div>
+</section>
+{{- end}}
+{{- if not .Data.New}}
+<form class="danger-zone" method="post" action="/catalogue/{{$p.ID}}/retirer" data-confirm="Retirer « {{$p.Name}} » du catalogue ? Son historique est conservé.">
+  <button class="btn btn-danger">Retirer du catalogue</button>
+</form>
+{{- end}}
+{{end}}

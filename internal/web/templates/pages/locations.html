@@ -1,0 +1,39 @@
+{{define "content"}}
+<h1>Emplacements</h1>
+<nav class="tabs" aria-label="Catalogue">
+  <a href="/catalogue">Produits</a>
+  <a href="/catalogue?incomplets=1">À compléter</a>
+  <a href="/magasins">Magasins et rayons</a>
+  <a href="/emplacements" aria-current="page">Emplacements</a>
+</nav>
+<ul class="rows">
+  {{- range .Data.Locations}}
+  <li class="row">
+    <form class="inline-form" method="post" action="/emplacements">
+      <input type="hidden" name="id" value="{{.ID}}">
+      <div class="field"><label for="loc-{{.ID}}">Nom</label><input id="loc-{{.ID}}" name="name" value="{{.Name}}" required></div>
+      <div class="field">
+        <label for="kind-{{.ID}}">Type</label>
+        <select id="kind-{{.ID}}" name="kind">
+          <option value="ambiant"{{if eq .Kind "ambiant"}} selected{{end}}>Ambiant</option>
+          <option value="frais"{{if eq .Kind "frais"}} selected{{end}}>Frais</option>
+          <option value="congele"{{if eq .Kind "congele"}} selected{{end}}>Congelé</option>
+        </select>
+      </div>
+      <button class="btn">Enregistrer</button>
+    </form>
+    <form method="post" action="/emplacements/{{.ID}}/supprimer" data-confirm="Supprimer l'emplacement « {{.Name}} » ?">
+      <button class="btn btn-icon btn-ghost" aria-label="Supprimer {{.Name}}">×</button>
+    </form>
+  </li>
+  {{- end}}
+</ul>
+<form class="card inline-form" method="post" action="/emplacements">
+  <div class="field"><label for="new-loc">Nouvel emplacement</label><input id="new-loc" name="name" placeholder="Placard du haut" required></div>
+  <div class="field">
+    <label for="new-kind">Type</label>
+    <select id="new-kind" name="kind"><option value="ambiant">Ambiant</option><option value="frais">Frais</option><option value="congele">Congelé</option></select>
+  </div>
+  <button class="btn btn-primary">Ajouter</button>
+</form>
+{{end}}
