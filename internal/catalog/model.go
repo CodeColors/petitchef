@@ -238,7 +238,11 @@ const (
 	PorkFree
 	LactoseFree
 	AlcoholFree
+	FishFree // sans poisson ni fruits de mer
 )
+
+// SeaFood regroupe les allergènes des produits de la mer.
+const SeaFood = FishAllergen | Crustaceans | Molluscs
 
 // DietInfo décrit un régime.
 type DietInfo struct {
@@ -251,6 +255,7 @@ type DietInfo struct {
 var AllDiets = []DietInfo{
 	{Vegetarian, "vegetarien", "Végétarien"}, {Vegan, "vegan", "Végan"}, {GlutenFree, "sans_gluten", "Sans gluten"},
 	{PorkFree, "sans_porc", "Sans porc"}, {LactoseFree, "sans_lactose", "Sans lactose"}, {AlcoholFree, "sans_alcool", "Sans alcool"},
+	{FishFree, "sans_poisson", "Sans poisson ni fruits de mer"},
 }
 
 // Labels nomme les régimes de l'ensemble.
@@ -273,7 +278,8 @@ func Compatible(d Diet, t Traits, a Allergens) bool {
 		d&GlutenFree != 0 && a&Gluten != 0,
 		d&PorkFree != 0 && t&Pork != 0,
 		d&LactoseFree != 0 && a&Milk != 0,
-		d&AlcoholFree != 0 && t&Alcohol != 0:
+		d&AlcoholFree != 0 && t&Alcohol != 0,
+		d&FishFree != 0 && a&SeaFood != 0:
 		return false
 	}
 	return true

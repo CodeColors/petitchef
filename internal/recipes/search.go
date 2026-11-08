@@ -134,6 +134,9 @@ func DietExclusions(d catalog.Diet) (catalog.Traits, catalog.Allergens) {
 	if d&catalog.PorkFree != 0 {
 		t |= catalog.Pork
 	}
+	if d&catalog.FishFree != 0 {
+		a |= catalog.SeaFood
+	}
 	if d&catalog.AlcoholFree != 0 {
 		t |= catalog.Alcohol
 	}

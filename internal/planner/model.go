@@ -198,6 +198,7 @@ type Rules struct {
 	VegetarianMin int  `json:"vegetarien_min"`
 	VegEveryMeal  bool `json:"legumes_chaque_repas"`
 	NoRepeatDays  int  `json:"pas_de_repetition_jours"`
+	NoFish        bool `json:"sans_poisson"` // aucun poisson ni fruit de mer au menu
 }
 
 // Preset est un préréglage de poids.

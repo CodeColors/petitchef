@@ -82,6 +82,15 @@ func gradeValue(g string) int {
 }
 
 func newEngine(in Input) *engine {
+	// Menus sans poisson : contrainte stricte ajoutée à chaque créneau.
+	if in.Rules.NoFish {
+		in.Rules.FishMin = 0
+		slots := slices.Clone(in.Slots)
+		for i := range slots {
+			slots[i].Diets |= catalog.FishFree
+		}
+		in.Slots = slots
+	}
 	e := &engine{in: in, byID: map[int64]int{}, at: map[cell]int{}, static: map[[2]int]staticScore{}, usedReady: map[int64]bool{}}
 	e.cands = slices.Clone(in.Candidates)
 	slices.SortFunc(e.cands, func(a, b Candidate) int { return cmp.Compare(a.ID, b.ID) })

@@ -20,6 +20,8 @@
     </div>
   </fieldset>
   <label class="check"><input type="checkbox" name="leftovers" value="1"{{if $p.Leftovers}} checked{{end}}> Cuisiner pour deux repas quand c'est possible (restes le lendemain midi)</label>
+  <input type="hidden" name="rules" value="1">
+  <label class="check"><input type="checkbox" name="no_fish" value="1"{{if $p.Rules.NoFish}} checked{{end}}> Menus sans poisson ni fruits de mer</label>
   <p class="hint">Les plats verrouillés et déjà cuisinés sont conservés ; les autres sont remplacés. Allergies, régimes, recettes « à ne plus proposer » et temps maximum des créneaux sont toujours respectés.</p>
   <details class="more">
     <summary>Réglages fins</summary>
@@ -35,7 +37,6 @@
     </fieldset>
     <fieldset>
       <legend>Règles de la semaine</legend>
-      <input type="hidden" name="rules" value="1">
       <div class="field-row">
         <div class="field"><label for="fish_min">Poisson au moins</label><input id="fish_min" name="fish_min" inputmode="numeric" value="{{$p.Rules.FishMin}}"></div>
         <div class="field"><label for="red_max">Viande rouge au plus</label><input id="red_max" name="red_max" inputmode="numeric" value="{{$p.Rules.RedMeatMax}}"></div>

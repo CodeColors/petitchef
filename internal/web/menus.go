@@ -159,6 +159,7 @@ func (s *Server) generateMenus(w http.ResponseWriter, r *http.Request) {
 			FishMin: int(formInt(r.PostFormValue("fish_min"), 0)), RedMeatMax: int(formInt(r.PostFormValue("red_max"), 7)),
 			VegetarianMin: int(formInt(r.PostFormValue("veg_min"), 0)), VegEveryMeal: r.PostFormValue("veg_every") != "",
 			NoRepeatDays: int(formInt(r.PostFormValue("no_repeat"), 10)),
+			NoFish:       r.PostFormValue("no_fish") != "",
 		}
 	}
 	pref.Seed = uint64(max(formInt(r.PostFormValue("seed"), 0), 0)) //nolint:gosec // valeur positive

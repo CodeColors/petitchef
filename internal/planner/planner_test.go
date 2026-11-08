@@ -267,3 +267,27 @@ func BenchmarkGenerate4Weeks500Recipes(b *testing.B) {
 		Generate(in)
 	}
 }
+
+func TestNoFish(t *testing.T) {
+	in := baseInput(200, 2, FullMeal)
+	for i := range in.Candidates {
+		if in.Candidates[i].Fish {
+			in.Candidates[i].Allergens |= catalog.FishAllergen
+		}
+	}
+	in.Candidates[2].Allergens |= catalog.Crustaceans // une entrée aux crevettes
+	in.Rules.NoFish = true
+	plan, _ := Generate(in)
+	byID := index(in.Candidates)
+	for _, p := range plan {
+		if byID[p.RecipeID].Allergens&catalog.SeaFood != 0 {
+			t.Errorf("menu sans poisson : « %s » servi", byID[p.RecipeID].Title)
+		}
+	}
+	if len(plan) == 0 {
+		t.Fatal("menu vide")
+	}
+	if catalog.Compatible(catalog.FishFree, 0, catalog.Molluscs) || !catalog.Compatible(catalog.FishFree, catalog.Meat, 0) {
+		t.Error("régime sans poisson")
+	}
+}
