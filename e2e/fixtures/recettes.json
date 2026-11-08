@@ -1,0 +1,2079 @@
+{
+ "format": "petitchef-recettes",
+ "version": 1,
+ "recettes": [
+  {
+   "titre": "Pâte brisée maison",
+   "types": [
+    "accompagnement"
+   ],
+   "portions": 1,
+   "preparation": 10,
+   "cuisson": 0,
+   "repos": 30,
+   "difficulte": 1,
+   "etiquettes": [
+    "base",
+    "sans cuisson"
+   ],
+   "ingredients": [
+    "250 g Farine de blé",
+    "125 g Beurre doux",
+    "1 pincée Sel fin",
+    "5 cl Eau plate"
+   ],
+   "etapes": [
+    "Sabler la farine, le sel et le beurre coupé en dés du bout des doigts.",
+    "Ajouter l'eau froide petit à petit et former une boule sans trop travailler la pâte.",
+    "Filmer et laisser reposer 30 min au réfrigérateur avant d'étaler."
+   ]
+  },
+  {
+   "titre": "Sauce béchamel",
+   "types": [
+    "sauce"
+   ],
+   "portions": 4,
+   "preparation": 5,
+   "cuisson": 10,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "base",
+    "rapide"
+   ],
+   "ingredients": [
+    "40 g Beurre doux",
+    "40 g Farine de blé",
+    "50 cl Lait demi-écrémé",
+    "1 pincée Muscade moulue",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Faire fondre le beurre dans une casserole, ajouter la farine et remuer 1 min sans laisser colorer.",
+    "Verser le lait froid d'un coup en fouettant, puis cuire 8 min à feu doux jusqu'à épaississement.",
+    "Assaisonner de sel, poivre et muscade."
+   ]
+  },
+  {
+   "titre": "Vinaigrette maison",
+   "types": [
+    "sauce"
+   ],
+   "portions": 4,
+   "preparation": 5,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "base",
+    "rapide",
+    "sans cuisson"
+   ],
+   "ingredients": [
+    "1 c. à café Moutarde de Dijon",
+    "1 c. à soupe Vinaigre de vin",
+    "3 c. à soupe Huile d'olive",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Mélanger la moutarde, le vinaigre, le sel et le poivre, puis émulsionner avec l'huile."
+   ]
+  },
+  {
+   "titre": "Salade de tomates à la mozzarella",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "sans cuisson",
+    "végétarien",
+    "été"
+   ],
+   "ingredients": [
+    "6 Tomate",
+    "2 Mozzarella",
+    "1 botte Basilic frais",
+    "3 c. à soupe Huile d'olive",
+    "1 c. à soupe Vinaigre balsamique",
+    "Fleur de sel",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Trancher les tomates et la mozzarella, les disposer en alternance.",
+    "Parsemer de feuilles de basilic, arroser d'huile et de vinaigre, saler et poivrer au moment de servir."
+   ]
+  },
+  {
+   "titre": "Carottes râpées au citron",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "sans cuisson",
+    "enfants",
+    "végétarien"
+   ],
+   "ingredients": [
+    "500 g Carotte",
+    "1 Citron jaune",
+    "2 c. à soupe Huile d'olive",
+    "2 c. à soupe Persil plat",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Éplucher et râper les carottes.",
+    "Assaisonner avec le jus du citron, l'huile, le sel et le persil ciselé."
+   ]
+  },
+  {
+   "titre": "Velouté de potiron",
+   "types": [
+    "entree",
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "automne",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "1 kg Potiron",
+    "1 Pomme de terre",
+    "1 Oignon jaune",
+    "1 Bouillon de légumes",
+    "20 cl Crème liquide entière",
+    "1 pincée Muscade moulue",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Éplucher et couper le potiron, la pomme de terre et l'oignon en morceaux.",
+    "Couvrir d'eau avec le bouillon et cuire 25 min.",
+    "Mixer avec la crème, assaisonner de sel, poivre et muscade."
+   ]
+  },
+  {
+   "titre": "Soupe de poireaux et pommes de terre",
+   "types": [
+    "entree",
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 30,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "hiver",
+    "batch cooking",
+    "économique"
+   ],
+   "ingredients": [
+    "3 Poireau",
+    "3 Pomme de terre",
+    "1 Bouillon de légumes",
+    "1 noix Beurre doux",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Laver et émincer les poireaux, éplucher et couper les pommes de terre.",
+    "Faire suer les poireaux dans le beurre 5 min, ajouter les pommes de terre, le bouillon et 1,5 L d'eau.",
+    "Cuire 25 min puis mixer et rectifier l'assaisonnement."
+   ]
+  },
+  {
+   "titre": "Gaspacho",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 0,
+   "repos": 60,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "été",
+    "sans cuisson"
+   ],
+   "ingredients": [
+    "1 kg Tomate",
+    "1 Concombre",
+    "1 Poivron rouge",
+    "1 Échalote",
+    "1 gousse Ail",
+    "3 c. à soupe Huile d'olive",
+    "1 c. à soupe Vinaigre de vin",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Couper tous les légumes en morceaux et les mixer finement avec l'huile et le vinaigre.",
+    "Saler et réserver au moins 1 h au frais avant de servir."
+   ]
+  },
+  {
+   "titre": "Œufs mimosa",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 10,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "classique",
+    "enfants",
+    "végétarien"
+   ],
+   "ingredients": [
+    "6 Œufs",
+    "3 c. à soupe Mayonnaise",
+    "1 c. à soupe Ciboulette",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Cuire les œufs 10 min dans l'eau bouillante, les refroidir et les écaler.",
+    "Couper les œufs en deux, mélanger les jaunes écrasés avec la mayonnaise, saler et poivrer.",
+    "Garnir les blancs et parsemer de ciboulette."
+   ]
+  },
+  {
+   "titre": "Salade de lentilles",
+   "types": [
+    "entree",
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "économique",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "250 g Lentilles vertes",
+    "1 Échalote",
+    "2 Carotte",
+    "1 Bouillon de légumes",
+    "2 c. à soupe Persil plat",
+    "4 [Vinaigrette maison]"
+   ],
+   "etapes": [
+    "Cuire les lentilles 25 min dans l'eau avec le bouillon et les carottes en dés.",
+    "Égoutter, laisser tiédir puis mélanger avec l'échalote ciselée, le persil et la vinaigrette."
+   ]
+  },
+  {
+   "titre": "Taboulé libanais",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 20,
+   "cuisson": 0,
+   "repos": 30,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "été",
+    "sans cuisson"
+   ],
+   "ingredients": [
+    "100 g Boulgour",
+    "2 botte Persil plat",
+    "1 botte Menthe fraîche",
+    "3 Tomate",
+    "1 Oignon nouveau",
+    "2 Citron jaune",
+    "4 c. à soupe Huile d'olive",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Faire gonfler le boulgour dans le jus des citrons pendant 30 min.",
+    "Ciseler finement le persil, la menthe et l'oignon, couper les tomates en petits dés.",
+    "Mélanger le tout avec l'huile et saler."
+   ]
+  },
+  {
+   "titre": "Salade d'endives aux noix",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "sans cuisson",
+    "végétarien",
+    "hiver"
+   ],
+   "ingredients": [
+    "4 Endive",
+    "1 Pomme",
+    "50 g Cerneaux de noix",
+    "50 g Roquefort",
+    "4 [Vinaigrette maison]"
+   ],
+   "etapes": [
+    "Émincer les endives et couper la pomme en dés.",
+    "Ajouter les noix, le roquefort émietté et la vinaigrette."
+   ]
+  },
+  {
+   "titre": "Concombre à la crème",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "sans cuisson",
+    "végétarien",
+    "été"
+   ],
+   "ingredients": [
+    "2 Concombre",
+    "100 g Fromage blanc",
+    "1 c. à soupe Ciboulette",
+    "½ Citron jaune",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Éplucher et trancher finement les concombres.",
+    "Mélanger avec le fromage blanc, le jus de citron et la ciboulette, saler et poivrer."
+   ]
+  },
+  {
+   "titre": "Velouté de champignons",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 20,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "automne"
+   ],
+   "ingredients": [
+    "500 g Champignon de Paris",
+    "1 Échalote",
+    "1 Bouillon de légumes",
+    "20 cl Crème liquide légère",
+    "1 noix Beurre doux",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Faire revenir l'échalote et les champignons émincés dans le beurre 5 min.",
+    "Ajouter 75 cl d'eau et le bouillon, cuire 15 min.",
+    "Mixer avec la crème et assaisonner."
+   ]
+  },
+  {
+   "titre": "Salade de betteraves à la feta",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "sans cuisson",
+    "végétarien"
+   ],
+   "ingredients": [
+    "500 g Betterave cuite",
+    "100 g Feta",
+    "1 Échalote",
+    "4 [Vinaigrette maison]"
+   ],
+   "etapes": [
+    "Couper les betteraves en dés, émietter la feta et ciseler l'échalote.",
+    "Mélanger avec la vinaigrette."
+   ]
+  },
+  {
+   "titre": "Houmous et crudités",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "végan",
+    "sans cuisson",
+    "réception"
+   ],
+   "ingredients": [
+    "400 g Pois chiches en conserve",
+    "2 c. à soupe Tahini",
+    "1 Citron jaune",
+    "1 gousse Ail",
+    "3 c. à soupe Huile d'olive",
+    "1 c. à café Cumin",
+    "3 Carotte",
+    "1 Concombre",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Mixer les pois chiches égouttés avec le tahini, le jus du citron, l'ail, l'huile, le cumin et un peu d'eau.",
+    "Servir avec les carottes et le concombre coupés en bâtonnets."
+   ]
+  },
+  {
+   "titre": "Avocat aux crevettes",
+   "types": [
+    "entree"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "sans cuisson",
+    "réception"
+   ],
+   "ingredients": [
+    "2 Avocat",
+    "200 g Crevette cuite",
+    "2 c. à soupe Mayonnaise",
+    "½ Citron jaune",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Couper les avocats en deux, retirer le noyau et arroser de jus de citron.",
+    "Garnir de crevettes décortiquées mélangées à la mayonnaise."
+   ]
+  },
+  {
+   "titre": "Spaghetti à la bolognaise",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 40,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "enfants",
+    "classique",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "400 g Spaghetti",
+    "400 g Bœuf haché",
+    "1 Oignon jaune",
+    "1 Carotte",
+    "1 gousse Ail",
+    "800 g Tomates pelées en conserve",
+    "1 c. à soupe Concentré de tomate",
+    "2 c. à soupe Huile d'olive",
+    "1 c. à café Herbes de Provence",
+    "50 g Parmesan",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Faire revenir l'oignon, la carotte et l'ail hachés dans l'huile 5 min.",
+    "Ajouter la viande et la faire dorer, puis les tomates, le concentré et les herbes ; laisser mijoter 30 min.",
+    "Cuire les pâtes, les égoutter et servir avec la sauce et le parmesan."
+   ]
+  },
+  {
+   "titre": "Lasagnes à la bolognaise",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 30,
+   "cuisson": 75,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "batch cooking",
+    "four",
+    "réception"
+   ],
+   "ingredients": [
+    "250 g Lasagnes sèches",
+    "500 g Bœuf haché",
+    "1 Oignon jaune",
+    "2 Carotte",
+    "800 g Tomates pelées en conserve",
+    "2 c. à soupe Huile d'olive",
+    "6 [Sauce béchamel]",
+    "100 g Emmental râpé",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Préparer une bolognaise avec l'oignon, les carottes, la viande et les tomates ; mijoter 30 min.",
+    "Préchauffer le four à 180 °C ; alterner feuilles de lasagne, bolognaise et béchamel dans un plat.",
+    "Couvrir de fromage et cuire 45 min."
+   ]
+  },
+  {
+   "titre": "Quiche lorraine",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 15,
+   "cuisson": 35,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "classique"
+   ],
+   "ingredients": [
+    "1 [Pâte brisée maison]",
+    "200 g Lardons fumés",
+    "3 Œufs",
+    "20 cl Crème liquide entière",
+    "20 cl Lait demi-écrémé",
+    "80 g Emmental râpé",
+    "1 pincée Muscade moulue",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Préchauffer le four à 200 °C, étaler la pâte dans un moule et la piquer.",
+    "Faire dorer les lardons à sec et les répartir sur la pâte.",
+    "Battre les œufs avec la crème, le lait, la muscade et le poivre ; verser, parsemer de fromage et cuire 35 min."
+   ]
+  },
+  {
+   "titre": "Quiche aux poireaux",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 20,
+   "cuisson": 35,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "végétarien",
+    "hiver"
+   ],
+   "ingredients": [
+    "1 Pâte brisée",
+    "3 Poireau",
+    "3 Œufs",
+    "20 cl Crème fraîche légère",
+    "80 g Emmental râpé",
+    "1 noix Beurre doux",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Émincer les poireaux et les faire fondre 15 min dans le beurre.",
+    "Garnir la pâte des poireaux, verser les œufs battus avec la crème, parsemer de fromage.",
+    "Cuire 35 min à 200 °C."
+   ]
+  },
+  {
+   "titre": "Poulet rôti et pommes de terre",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 75,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "classique",
+    "dimanche"
+   ],
+   "ingredients": [
+    "1 Poulet entier",
+    "1 kg Pomme de terre à chair ferme",
+    "4 gousses Ail",
+    "2 branches Thym frais",
+    "3 c. à soupe Huile d'olive",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Préchauffer le four à 200 °C ; badigeonner le poulet d'huile, saler et poivrer.",
+    "Disposer autour les pommes de terre coupées, l'ail en chemise et le thym.",
+    "Cuire 1 h 15 en arrosant régulièrement."
+   ]
+  },
+  {
+   "titre": "Blanquette de veau",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 25,
+   "cuisson": 100,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "classique",
+    "mijoté",
+    "dimanche"
+   ],
+   "ingredients": [
+    "1,2 kg Blanquette de veau",
+    "4 Carotte",
+    "1 Oignon jaune",
+    "250 g Champignon de Paris",
+    "1 Bouillon de volaille",
+    "20 cl Crème fraîche épaisse",
+    "1 Œufs",
+    "40 g Beurre doux",
+    "40 g Farine de blé",
+    "1 Citron jaune",
+    "1 feuille Laurier",
+    "300 g Riz basmati"
+   ],
+   "etapes": [
+    "Couvrir la viande d'eau froide avec le bouillon, l'oignon, les carottes et le laurier ; cuire 1 h 30 à frémissement.",
+    "Faire un roux avec le beurre et la farine, le mouiller avec 75 cl de bouillon de cuisson.",
+    "Ajouter les champignons, la viande, puis hors du feu la crème, le jaune d'œuf et le jus de citron. Servir avec le riz."
+   ]
+  },
+  {
+   "titre": "Bœuf bourguignon",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 25,
+   "cuisson": 180,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "mijoté",
+    "hiver",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "1,2 kg Bœuf à bourguignon",
+    "150 g Lardons fumés",
+    "4 Carotte",
+    "2 Oignon jaune",
+    "250 g Champignon de Paris",
+    "75 cl Vin rouge de cuisine",
+    "2 c. à soupe Farine de blé",
+    "2 gousses Ail",
+    "1 feuille Laurier",
+    "2 branches Thym frais",
+    "2 c. à soupe Huile de tournesol",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Faire dorer la viande en morceaux dans l'huile, puis les lardons et les oignons.",
+    "Saupoudrer de farine, mouiller avec le vin, ajouter carottes, ail, thym et laurier.",
+    "Laisser mijoter 3 h à feu doux ; ajouter les champignons 30 min avant la fin."
+   ]
+  },
+  {
+   "titre": "Hachis parmentier",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 30,
+   "cuisson": 45,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "enfants",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "1,2 kg Pomme de terre",
+    "500 g Bœuf haché",
+    "1 Oignon jaune",
+    "25 cl Lait demi-écrémé",
+    "50 g Beurre doux",
+    "80 g Emmental râpé",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Cuire les pommes de terre et les écraser en purée avec le lait et le beurre.",
+    "Faire revenir l'oignon et la viande, saler et poivrer.",
+    "Étaler la viande dans un plat, couvrir de purée et de fromage ; gratiner 25 min à 200 °C."
+   ]
+  },
+  {
+   "titre": "Gratin dauphinois",
+   "types": [
+    "plat",
+    "accompagnement"
+   ],
+   "portions": 6,
+   "preparation": 20,
+   "cuisson": 60,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "végétarien",
+    "hiver"
+   ],
+   "ingredients": [
+    "1,5 kg Pomme de terre",
+    "50 cl Lait demi-écrémé",
+    "25 cl Crème liquide entière",
+    "2 gousses Ail",
+    "1 pincée Muscade moulue",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Trancher finement les pommes de terre et les cuire 10 min dans le lait avec l'ail, la muscade, le sel et le poivre.",
+    "Verser dans un plat, ajouter la crème et cuire 50 min à 180 °C."
+   ]
+  },
+  {
+   "titre": "Saumon en papillote et haricots verts",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 20,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "poisson",
+    "four"
+   ],
+   "ingredients": [
+    "4 Filet de saumon",
+    "600 g Haricot vert",
+    "1 Citron jaune",
+    "2 c. à soupe Huile d'olive",
+    "1 botte Aneth",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Déposer chaque pavé sur une feuille de papier cuisson avec une rondelle de citron, de l'aneth, un filet d'huile, sel et poivre ; fermer.",
+    "Cuire 15 min à 200 °C ; pendant ce temps, cuire les haricots verts 8 min à la vapeur."
+   ]
+  },
+  {
+   "titre": "Cabillaud à la provençale",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "poisson",
+    "été"
+   ],
+   "ingredients": [
+    "4 Filet de cabillaud",
+    "4 Tomate",
+    "1 Courgette",
+    "1 Oignon jaune",
+    "2 gousses Ail",
+    "50 g Olives noires",
+    "3 c. à soupe Huile d'olive",
+    "1 c. à café Herbes de Provence",
+    "250 g Riz basmati",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Faire revenir l'oignon, l'ail, la courgette et les tomates en dés 10 min dans l'huile.",
+    "Ajouter les olives et les herbes, poser le poisson dessus et cuire à couvert 12 min.",
+    "Servir avec le riz cuit."
+   ]
+  },
+  {
+   "titre": "Moules marinières et frites",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 20,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "poisson",
+    "été"
+   ],
+   "ingredients": [
+    "2 kg Moules",
+    "2 Échalote",
+    "20 cl Vin blanc de cuisine",
+    "30 g Beurre doux",
+    "2 c. à soupe Persil plat",
+    "1 kg Frites surgelées"
+   ],
+   "etapes": [
+    "Gratter et rincer les moules.",
+    "Faire suer les échalotes dans le beurre, ajouter le vin puis les moules ; cuire à couvert 6 min en remuant.",
+    "Parsemer de persil ; servir avec les frites cuites au four."
+   ]
+  },
+  {
+   "titre": "Curry de pois chiches",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "végan",
+    "rapide",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "800 g Pois chiches en conserve",
+    "400 ml Lait de coco en conserve",
+    "400 g Tomates pelées en conserve",
+    "1 Oignon jaune",
+    "2 gousses Ail",
+    "1 c. à soupe Curry en poudre",
+    "1 c. à café Gingembre moulu",
+    "200 g Épinard frais",
+    "250 g Riz basmati",
+    "2 c. à soupe Huile d'olive",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Faire revenir l'oignon et l'ail dans l'huile avec les épices.",
+    "Ajouter tomates, lait de coco et pois chiches égouttés ; mijoter 15 min, puis ajouter les épinards.",
+    "Servir avec le riz."
+   ]
+  },
+  {
+   "titre": "Dahl de lentilles corail",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "végan",
+    "économique",
+    "rapide"
+   ],
+   "ingredients": [
+    "250 g Lentilles corail",
+    "400 ml Lait de coco en conserve",
+    "400 g Tomates concassées",
+    "1 Oignon jaune",
+    "2 gousses Ail",
+    "1 c. à café Curcuma",
+    "1 c. à café Cumin",
+    "1 c. à soupe Gingembre frais",
+    "2 c. à soupe Coriandre fraîche",
+    "2 c. à soupe Huile d'olive",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Faire revenir l'oignon, l'ail, le gingembre et les épices dans l'huile.",
+    "Ajouter les lentilles rincées, les tomates, le lait de coco et 40 cl d'eau ; cuire 20 min.",
+    "Parsemer de coriandre."
+   ]
+  },
+  {
+   "titre": "Chili con carne",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 15,
+   "cuisson": 45,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "batch cooking",
+    "épicé"
+   ],
+   "ingredients": [
+    "500 g Bœuf haché",
+    "800 g Haricots rouges en conserve",
+    "800 g Tomates pelées en conserve",
+    "1 Oignon jaune",
+    "1 Poivron rouge",
+    "2 gousses Ail",
+    "2 c. à café Cumin",
+    "1 c. à café Paprika",
+    "1 pincée Piment de Cayenne",
+    "2 c. à soupe Huile d'olive",
+    "300 g Riz long blanc",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Faire revenir l'oignon, le poivron et l'ail, puis la viande.",
+    "Ajouter les épices, les tomates et les haricots égouttés ; mijoter 35 min.",
+    "Servir avec le riz."
+   ]
+  },
+  {
+   "titre": "Chili sin carne",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 35,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "végan",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "800 g Haricots rouges en conserve",
+    "285 g Maïs doux en conserve",
+    "800 g Tomates pelées en conserve",
+    "1 Oignon jaune",
+    "1 Poivron rouge",
+    "2 c. à café Cumin",
+    "1 c. à café Paprika fumé",
+    "2 c. à soupe Huile d'olive",
+    "250 g Riz complet",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Faire revenir l'oignon et le poivron dans l'huile avec les épices.",
+    "Ajouter tomates, haricots et maïs égouttés ; mijoter 25 min.",
+    "Servir avec le riz complet."
+   ]
+  },
+  {
+   "titre": "Ratatouille",
+   "types": [
+    "plat",
+    "accompagnement"
+   ],
+   "portions": 6,
+   "preparation": 25,
+   "cuisson": 50,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "végan",
+    "été",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "2 Courgette",
+    "2 Aubergine",
+    "2 Poivron rouge",
+    "6 Tomate",
+    "2 Oignon jaune",
+    "3 gousses Ail",
+    "5 c. à soupe Huile d'olive",
+    "1 c. à café Herbes de Provence",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Couper tous les légumes en dés.",
+    "Les faire revenir séparément dans l'huile, puis les réunir avec l'ail et les herbes.",
+    "Laisser mijoter 40 min à couvert."
+   ]
+  },
+  {
+   "titre": "Risotto aux champignons",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 30,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "automne"
+   ],
+   "ingredients": [
+    "300 g Riz rond",
+    "400 g Champignon de Paris",
+    "1 Échalote",
+    "10 cl Vin blanc de cuisine",
+    "1 Bouillon de légumes",
+    "50 g Parmesan",
+    "30 g Beurre doux",
+    "2 c. à soupe Huile d'olive"
+   ],
+   "etapes": [
+    "Faire revenir l'échalote dans l'huile, ajouter le riz et le nacrer 2 min, déglacer au vin blanc.",
+    "Ajouter le bouillon chaud louche par louche pendant 18 min, puis les champignons poêlés.",
+    "Hors du feu, incorporer le beurre et le parmesan."
+   ]
+  },
+  {
+   "titre": "Gratin de pâtes au jambon",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "enfants",
+    "rapide",
+    "four",
+    "économique"
+   ],
+   "ingredients": [
+    "300 g Coquillettes",
+    "4 tranches Jambon blanc",
+    "20 cl Crème fraîche légère",
+    "100 g Emmental râpé",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Cuire les coquillettes 2 min de moins que le temps indiqué.",
+    "Mélanger avec le jambon en lanières et la crème, verser dans un plat, couvrir de fromage.",
+    "Gratiner 15 min à 200 °C."
+   ]
+  },
+  {
+   "titre": "Croque-monsieur et salade",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 10,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "enfants",
+    "four"
+   ],
+   "ingredients": [
+    "8 tranches Pain de mie",
+    "4 tranches Jambon blanc",
+    "100 g Emmental râpé",
+    "30 g Beurre doux",
+    "200 g Salade laitue",
+    "4 [Vinaigrette maison]"
+   ],
+   "etapes": [
+    "Beurrer le pain, garnir de jambon et de fromage, refermer et parsemer de fromage.",
+    "Cuire 10 min à 200 °C ; servir avec la salade assaisonnée."
+   ]
+  },
+  {
+   "titre": "Omelette aux fines herbes et salade",
+   "types": [
+    "plat"
+   ],
+   "portions": 2,
+   "preparation": 5,
+   "cuisson": 5,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "végétarien",
+    "économique"
+   ],
+   "ingredients": [
+    "5 Œufs",
+    "2 c. à soupe Ciboulette",
+    "1 c. à soupe Persil plat",
+    "1 noix Beurre doux",
+    "150 g Mâche",
+    "2 [Vinaigrette maison]",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Battre les œufs avec les herbes, saler et poivrer.",
+    "Cuire dans le beurre chaud 3 à 4 min ; servir avec la mâche assaisonnée."
+   ]
+  },
+  {
+   "titre": "Escalopes de dinde à la crème et champignons",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 20,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide"
+   ],
+   "ingredients": [
+    "4 Escalope de dinde",
+    "250 g Champignon de Paris",
+    "20 cl Crème fraîche épaisse",
+    "1 Échalote",
+    "250 g Tagliatelles sèches",
+    "1 c. à soupe Huile d'olive",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Dorer les escalopes dans l'huile 4 min de chaque côté, réserver.",
+    "Faire revenir l'échalote et les champignons, ajouter la crème et remettre la viande 5 min.",
+    "Servir avec les tagliatelles."
+   ]
+  },
+  {
+   "titre": "Poulet au curry et riz",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "enfants"
+   ],
+   "ingredients": [
+    "600 g Blanc de poulet",
+    "400 ml Lait de coco en conserve",
+    "1 Oignon jaune",
+    "1 c. à soupe Curry en poudre",
+    "250 g Riz basmati",
+    "2 c. à soupe Huile d'olive",
+    "2 c. à soupe Coriandre fraîche",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Faire revenir l'oignon puis le poulet en morceaux dans l'huile.",
+    "Ajouter le curry et le lait de coco ; mijoter 15 min.",
+    "Servir avec le riz et la coriandre."
+   ]
+  },
+  {
+   "titre": "Wok de poulet aux légumes",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 20,
+   "cuisson": 15,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide"
+   ],
+   "ingredients": [
+    "500 g Blanc de poulet",
+    "2 Carotte",
+    "1 Poivron rouge",
+    "1 Brocoli",
+    "250 g Nouilles chinoises",
+    "3 c. à soupe Sauce soja",
+    "1 c. à soupe Gingembre frais",
+    "2 c. à soupe Huile de tournesol"
+   ],
+   "etapes": [
+    "Cuire les nouilles et les égoutter.",
+    "Saisir le poulet en lamelles au wok, ajouter les légumes en fines lanières et le gingembre ; cuire 6 min.",
+    "Ajouter les nouilles et la sauce soja, mélanger 2 min."
+   ]
+  },
+  {
+   "titre": "Saucisses et lentilles",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 40,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "hiver",
+    "économique"
+   ],
+   "ingredients": [
+    "4 Saucisse de Toulouse",
+    "300 g Lentilles vertes",
+    "2 Carotte",
+    "1 Oignon jaune",
+    "1 feuille Laurier",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Cuire les lentilles 30 min avec les carottes, l'oignon et le laurier.",
+    "Dorer les saucisses à la poêle puis les ajouter aux lentilles 10 min."
+   ]
+  },
+  {
+   "titre": "Pizza maison tomate et mozzarella",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 15,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "enfants",
+    "végétarien"
+   ],
+   "ingredients": [
+    "2 Pâte à pizza",
+    "300 ml Coulis de tomate",
+    "2 Mozzarella",
+    "1 c. à café Origan séché",
+    "2 c. à soupe Huile d'olive",
+    "1 botte Basilic frais"
+   ],
+   "etapes": [
+    "Préchauffer le four à 250 °C ; étaler les pâtes et les couvrir de coulis.",
+    "Ajouter la mozzarella en tranches, l'origan et un filet d'huile.",
+    "Cuire 12 à 15 min et parsemer de basilic."
+   ]
+  },
+  {
+   "titre": "Gnocchis au pesto et tomates cerises",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 5,
+   "cuisson": 10,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "végétarien"
+   ],
+   "ingredients": [
+    "1 kg Gnocchi",
+    "190 g Pesto vert",
+    "250 g Tomate cerise",
+    "50 g Parmesan"
+   ],
+   "etapes": [
+    "Faire dorer les gnocchis à la poêle 8 min.",
+    "Ajouter les tomates cerises coupées en deux et le pesto, mélanger.",
+    "Servir avec le parmesan."
+   ]
+  },
+  {
+   "titre": "Tajine de poulet aux légumes",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 20,
+   "cuisson": 60,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "mijoté",
+    "épicé"
+   ],
+   "ingredients": [
+    "6 Cuisse de poulet",
+    "4 Carotte",
+    "2 Courgette",
+    "1 Oignon jaune",
+    "2 c. à café Ras el-hanout",
+    "100 g Olives vertes",
+    "1 Citron jaune",
+    "300 g Semoule moyenne",
+    "3 c. à soupe Huile d'olive",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Faire dorer le poulet dans l'huile avec l'oignon et les épices.",
+    "Ajouter les carottes et 30 cl d'eau, cuire 40 min ; ajouter courgettes, olives et citron 20 min.",
+    "Servir avec la semoule."
+   ]
+  },
+  {
+   "titre": "Couscous de légumes",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 20,
+   "cuisson": 45,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "végan",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "400 g Semoule moyenne",
+    "400 g Pois chiches en conserve",
+    "3 Carotte",
+    "3 Courgette",
+    "3 Navet",
+    "1 Oignon jaune",
+    "400 g Tomates pelées en conserve",
+    "2 c. à café Ras el-hanout",
+    "3 c. à soupe Huile d'olive",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Faire revenir l'oignon dans l'huile avec les épices, ajouter les légumes en morceaux, les tomates et 1 L d'eau.",
+    "Cuire 35 min, ajouter les pois chiches 10 min avant la fin.",
+    "Préparer la semoule et servir avec le bouillon de légumes."
+   ]
+  },
+  {
+   "titre": "Steak haché, purée et carottes",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "enfants",
+    "classique"
+   ],
+   "ingredients": [
+    "4 Steak haché",
+    "1 kg Pomme de terre",
+    "500 g Carotte",
+    "20 cl Lait demi-écrémé",
+    "40 g Beurre doux",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Cuire les pommes de terre et les carottes à l'eau salée 20 min.",
+    "Écraser les pommes de terre en purée avec le lait et le beurre.",
+    "Cuire les steaks 3 min de chaque côté."
+   ]
+  },
+  {
+   "titre": "Filets de colin, riz et brocolis",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 20,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "poisson",
+    "enfants"
+   ],
+   "ingredients": [
+    "4 Filet de colin",
+    "250 g Riz basmati",
+    "1 Brocoli",
+    "1 Citron jaune",
+    "2 c. à soupe Huile d'olive",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Cuire le riz et le brocoli en fleurettes à la vapeur.",
+    "Poêler le poisson 4 min de chaque côté dans l'huile ; arroser de jus de citron."
+   ]
+  },
+  {
+   "titre": "Pâtes au thon et à la tomate",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 5,
+   "cuisson": 15,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "économique",
+    "poisson"
+   ],
+   "ingredients": [
+    "400 g Penne",
+    "280 g Thon au naturel",
+    "400 g Tomates concassées",
+    "1 Oignon jaune",
+    "2 c. à soupe Huile d'olive",
+    "50 g Parmesan",
+    "Sel fin"
+   ],
+   "etapes": [
+    "Cuire les pâtes.",
+    "Faire revenir l'oignon dans l'huile, ajouter les tomates 8 min puis le thon émietté.",
+    "Mélanger aux pâtes et servir avec le parmesan."
+   ]
+  },
+  {
+   "titre": "Tartiflette",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 20,
+   "cuisson": 45,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "hiver",
+    "réception"
+   ],
+   "ingredients": [
+    "1,5 kg Pomme de terre à chair ferme",
+    "1 Reblochon",
+    "200 g Lardons fumés",
+    "2 Oignon jaune",
+    "20 cl Crème fraîche épaisse",
+    "10 cl Vin blanc de cuisine"
+   ],
+   "etapes": [
+    "Cuire les pommes de terre 15 min, les couper en rondelles.",
+    "Faire revenir oignons et lardons, déglacer au vin blanc, mélanger aux pommes de terre et à la crème.",
+    "Verser dans un plat, poser le reblochon coupé en deux, cuire 25 min à 200 °C."
+   ]
+  },
+  {
+   "titre": "Rôti de porc aux pommes",
+   "types": [
+    "plat"
+   ],
+   "portions": 6,
+   "preparation": 15,
+   "cuisson": 70,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "dimanche",
+    "automne"
+   ],
+   "ingredients": [
+    "1 kg Rôti de porc",
+    "4 Pomme",
+    "2 Oignon jaune",
+    "20 cl Vin blanc de cuisine",
+    "30 g Beurre doux",
+    "2 branches Thym frais",
+    "Sel fin",
+    "Poivre noir moulu"
+   ],
+   "etapes": [
+    "Dorer le rôti dans le beurre sur toutes les faces.",
+    "Ajouter les oignons, les pommes en quartiers, le thym et le vin.",
+    "Cuire 1 h au four à 180 °C en arrosant."
+   ]
+  },
+  {
+   "titre": "Tofu sauté aux légumes et quinoa",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 20,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "végan",
+    "rapide"
+   ],
+   "ingredients": [
+    "400 g Tofu nature",
+    "250 g Quinoa",
+    "1 Brocoli",
+    "2 Carotte",
+    "3 c. à soupe Sauce soja",
+    "1 c. à soupe Huile de sésame",
+    "1 c. à soupe Graines de sésame"
+   ],
+   "etapes": [
+    "Cuire le quinoa 12 min.",
+    "Faire dorer le tofu en dés dans l'huile, ajouter les légumes en petits morceaux et la sauce soja ; cuire 8 min.",
+    "Servir sur le quinoa, parsemé de sésame."
+   ]
+  },
+  {
+   "titre": "Galettes de sarrasin complètes",
+   "types": [
+    "plat"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 20,
+   "repos": 60,
+   "difficulte": 1,
+   "etiquettes": [
+    "classique",
+    "enfants"
+   ],
+   "ingredients": [
+    "250 g Farine de sarrasin",
+    "1 Œufs",
+    "50 cl Eau plate",
+    "4 Œufs",
+    "4 tranches Jambon blanc",
+    "100 g Emmental râpé",
+    "20 g Beurre demi-sel",
+    "1 pincée Sel fin"
+   ],
+   "etapes": [
+    "Mélanger la farine, un œuf, le sel et l'eau ; laisser reposer 1 h.",
+    "Cuire les galettes dans le beurre, garnir d'un œuf, de jambon et de fromage, replier les bords."
+   ]
+  },
+  {
+   "titre": "Soupe minestrone",
+   "types": [
+    "plat",
+    "entree"
+   ],
+   "portions": 6,
+   "preparation": 20,
+   "cuisson": 35,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "végétarien",
+    "batch cooking",
+    "économique"
+   ],
+   "ingredients": [
+    "2 Carotte",
+    "2 Courgette",
+    "1 Poireau",
+    "2 Pomme de terre",
+    "250 g Haricots blancs en conserve",
+    "400 g Tomates concassées",
+    "100 g Coquillettes",
+    "1 Bouillon de légumes",
+    "2 c. à soupe Huile d'olive",
+    "50 g Parmesan"
+   ],
+   "etapes": [
+    "Faire revenir les légumes en dés dans l'huile, ajouter tomates, bouillon et 1,5 L d'eau ; cuire 20 min.",
+    "Ajouter les pâtes et les haricots, cuire 10 min ; servir avec le parmesan."
+   ]
+  },
+  {
+   "titre": "Mousse au chocolat maison",
+   "types": [
+    "dessert"
+   ],
+   "portions": 6,
+   "preparation": 20,
+   "cuisson": 0,
+   "repos": 180,
+   "difficulte": 1,
+   "etiquettes": [
+    "classique",
+    "réception",
+    "sans cuisson"
+   ],
+   "ingredients": [
+    "200 g Chocolat noir pâtissier",
+    "6 Œufs",
+    "1 pincée Sel fin",
+    "30 g Sucre en poudre"
+   ],
+   "etapes": [
+    "Faire fondre le chocolat au bain-marie et laisser tiédir.",
+    "Incorporer les jaunes au chocolat ; monter les blancs en neige avec le sel et le sucre.",
+    "Incorporer délicatement les blancs, répartir et réserver 3 h au frais."
+   ]
+  },
+  {
+   "titre": "Gâteau au yaourt",
+   "types": [
+    "dessert",
+    "gouter"
+   ],
+   "portions": 8,
+   "preparation": 10,
+   "cuisson": 35,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "enfants",
+    "four",
+    "économique"
+   ],
+   "ingredients": [
+    "1 Yaourt nature",
+    "3 Œufs",
+    "150 g Sucre en poudre",
+    "250 g Farine de blé",
+    "1 sachet Levure chimique",
+    "8 cl Huile de tournesol",
+    "1 sachet Sucre vanillé"
+   ],
+   "etapes": [
+    "Préchauffer le four à 180 °C ; mélanger le yaourt, les œufs et les sucres.",
+    "Ajouter la farine et la levure, puis l'huile.",
+    "Verser dans un moule beurré et cuire 35 min."
+   ]
+  },
+  {
+   "titre": "Crêpes",
+   "types": [
+    "dessert",
+    "gouter"
+   ],
+   "portions": 6,
+   "preparation": 10,
+   "cuisson": 30,
+   "repos": 60,
+   "difficulte": 1,
+   "etiquettes": [
+    "enfants",
+    "économique",
+    "classique"
+   ],
+   "ingredients": [
+    "250 g Farine de blé",
+    "4 Œufs",
+    "50 cl Lait demi-écrémé",
+    "30 g Beurre doux",
+    "1 c. à soupe Sucre en poudre",
+    "1 pincée Sel fin"
+   ],
+   "etapes": [
+    "Mélanger farine, sucre et sel, ajouter les œufs puis le lait petit à petit et le beurre fondu.",
+    "Laisser reposer 1 h.",
+    "Cuire les crêpes dans une poêle chaude légèrement beurrée."
+   ]
+  },
+  {
+   "titre": "Tarte aux pommes",
+   "types": [
+    "dessert"
+   ],
+   "portions": 6,
+   "preparation": 20,
+   "cuisson": 35,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "automne",
+    "classique"
+   ],
+   "ingredients": [
+    "1 [Pâte brisée maison]",
+    "5 Pomme",
+    "300 g Compote de pommes",
+    "30 g Sucre en poudre",
+    "20 g Beurre doux"
+   ],
+   "etapes": [
+    "Étaler la pâte dans un moule, la garnir de compote.",
+    "Disposer les pommes en fines lamelles, saupoudrer de sucre et parsemer de beurre.",
+    "Cuire 35 min à 190 °C."
+   ]
+  },
+  {
+   "titre": "Salade de fruits frais",
+   "types": [
+    "dessert"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "sans cuisson",
+    "végan",
+    "enfants"
+   ],
+   "ingredients": [
+    "2 Orange",
+    "2 Kiwi",
+    "2 Pomme",
+    "2 Banane",
+    "1 Citron jaune",
+    "1 c. à soupe Sucre en poudre (facultatif)"
+   ],
+   "etapes": [
+    "Éplucher et couper les fruits en morceaux.",
+    "Arroser de jus de citron et de sucre si besoin ; servir frais."
+   ]
+  },
+  {
+   "titre": "Compote pommes-poires",
+   "types": [
+    "dessert",
+    "gouter"
+   ],
+   "portions": 6,
+   "preparation": 15,
+   "cuisson": 20,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "enfants",
+    "économique",
+    "végan",
+    "batch cooking"
+   ],
+   "ingredients": [
+    "1 kg Pomme",
+    "500 g Poire",
+    "1 c. à café Cannelle moulue",
+    "5 cl Eau plate"
+   ],
+   "etapes": [
+    "Éplucher et couper les fruits.",
+    "Cuire 20 min à couvert avec l'eau et la cannelle, puis écraser."
+   ]
+  },
+  {
+   "titre": "Clafoutis aux cerises",
+   "types": [
+    "dessert"
+   ],
+   "portions": 6,
+   "preparation": 15,
+   "cuisson": 40,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "été"
+   ],
+   "ingredients": [
+    "500 g Cerise",
+    "3 Œufs",
+    "100 g Sucre en poudre",
+    "80 g Farine de blé",
+    "30 cl Lait demi-écrémé",
+    "20 g Beurre doux"
+   ],
+   "etapes": [
+    "Beurrer un plat et y disposer les cerises lavées.",
+    "Battre œufs et sucre, ajouter la farine puis le lait.",
+    "Verser sur les fruits et cuire 40 min à 180 °C."
+   ]
+  },
+  {
+   "titre": "Crumble aux pommes",
+   "types": [
+    "dessert"
+   ],
+   "portions": 6,
+   "preparation": 15,
+   "cuisson": 35,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "automne",
+    "enfants"
+   ],
+   "ingredients": [
+    "6 Pomme",
+    "150 g Farine de blé",
+    "100 g Sucre roux",
+    "100 g Beurre doux",
+    "1 c. à café Cannelle moulue"
+   ],
+   "etapes": [
+    "Couper les pommes en dés dans un plat, saupoudrer de cannelle.",
+    "Sabler farine, sucre et beurre et répartir sur les fruits.",
+    "Cuire 35 min à 180 °C."
+   ]
+  },
+  {
+   "titre": "Fondant au chocolat",
+   "types": [
+    "dessert"
+   ],
+   "portions": 8,
+   "preparation": 15,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "four",
+    "réception"
+   ],
+   "ingredients": [
+    "200 g Chocolat noir pâtissier",
+    "150 g Beurre doux",
+    "150 g Sucre en poudre",
+    "4 Œufs",
+    "50 g Farine de blé"
+   ],
+   "etapes": [
+    "Faire fondre chocolat et beurre ; ajouter le sucre puis les œufs un à un et la farine.",
+    "Cuire 25 min à 180 °C ; le cœur doit rester fondant."
+   ]
+  },
+  {
+   "titre": "Panna cotta aux fruits rouges",
+   "types": [
+    "dessert"
+   ],
+   "portions": 6,
+   "preparation": 15,
+   "cuisson": 0,
+   "repos": 240,
+   "difficulte": 1,
+   "etiquettes": [
+    "réception"
+   ],
+   "ingredients": [
+    "50 cl Crème liquide entière",
+    "60 g Sucre en poudre",
+    "3 feuilles Gélatine en feuilles",
+    "1 c. à café Extrait de vanille",
+    "300 g Fruits rouges surgelés"
+   ],
+   "etapes": [
+    "Faire ramollir la gélatine dans l'eau froide.",
+    "Chauffer la crème avec le sucre et la vanille, ajouter la gélatine essorée.",
+    "Verser dans des verrines, réserver 4 h et servir avec les fruits rouges mixés."
+   ]
+  },
+  {
+   "titre": "Tiramisu",
+   "types": [
+    "dessert"
+   ],
+   "portions": 6,
+   "preparation": 25,
+   "cuisson": 0,
+   "repos": 360,
+   "difficulte": 1,
+   "etiquettes": [
+    "réception",
+    "sans cuisson"
+   ],
+   "ingredients": [
+    "500 g Mascarpone",
+    "4 Œufs",
+    "100 g Sucre en poudre",
+    "24 Biscuits cuillère",
+    "15 g Café moulu",
+    "2 c. à soupe Cacao en poudre non sucré"
+   ],
+   "etapes": [
+    "Préparer 30 cl de café fort et le laisser refroidir.",
+    "Fouetter jaunes et sucre, ajouter le mascarpone puis les blancs montés en neige.",
+    "Alterner biscuits trempés dans le café et crème ; réserver 6 h, saupoudrer de cacao."
+   ]
+  },
+  {
+   "titre": "Fromage blanc au miel et aux noix",
+   "types": [
+    "dessert"
+   ],
+   "portions": 4,
+   "preparation": 5,
+   "cuisson": 0,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "sans cuisson"
+   ],
+   "ingredients": [
+    "500 g Fromage blanc",
+    "4 c. à soupe Miel",
+    "40 g Cerneaux de noix"
+   ],
+   "etapes": [
+    "Répartir le fromage blanc, arroser de miel et parsemer de noix concassées."
+   ]
+  },
+  {
+   "titre": "Pancakes",
+   "types": [
+    "petit_dejeuner",
+    "gouter",
+    "dessert"
+   ],
+   "portions": 4,
+   "preparation": 10,
+   "cuisson": 15,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "enfants",
+    "rapide"
+   ],
+   "ingredients": [
+    "200 g Farine de blé",
+    "2 Œufs",
+    "25 cl Lait demi-écrémé",
+    "30 g Sucre en poudre",
+    "1 sachet Levure chimique",
+    "20 g Beurre doux"
+   ],
+   "etapes": [
+    "Mélanger farine, sucre et levure, ajouter les œufs puis le lait et le beurre fondu.",
+    "Cuire des petites louches de pâte 2 min de chaque côté dans une poêle chaude."
+   ]
+  },
+  {
+   "titre": "Banana bread",
+   "types": [
+    "gouter",
+    "petit_dejeuner"
+   ],
+   "portions": 8,
+   "preparation": 15,
+   "cuisson": 50,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "anti-gaspi",
+    "four"
+   ],
+   "ingredients": [
+    "3 Banane",
+    "2 Œufs",
+    "80 g Sucre roux",
+    "200 g Farine de blé",
+    "1 sachet Levure chimique",
+    "80 g Beurre doux"
+   ],
+   "etapes": [
+    "Écraser les bananes bien mûres, ajouter les œufs, le sucre et le beurre fondu.",
+    "Incorporer la farine et la levure ; cuire 50 min à 180 °C dans un moule à cake."
+   ]
+  },
+  {
+   "titre": "Poires pochées au chocolat",
+   "types": [
+    "dessert"
+   ],
+   "portions": 4,
+   "preparation": 15,
+   "cuisson": 25,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "automne",
+    "hiver"
+   ],
+   "ingredients": [
+    "4 Poire",
+    "80 g Sucre en poudre",
+    "100 g Chocolat noir pâtissier",
+    "10 cl Crème liquide entière",
+    "1 Gousse de vanille"
+   ],
+   "etapes": [
+    "Pocher les poires épluchées 20 min dans 1 L d'eau avec le sucre et la vanille.",
+    "Faire fondre le chocolat avec la crème et napper les poires égouttées."
+   ]
+  },
+  {
+   "titre": "Porridge aux fruits",
+   "types": [
+    "petit_dejeuner"
+   ],
+   "portions": 2,
+   "preparation": 5,
+   "cuisson": 5,
+   "repos": 0,
+   "difficulte": 1,
+   "etiquettes": [
+    "rapide",
+    "végétarien"
+   ],
+   "ingredients": [
+    "80 g Flocons d'avoine",
+    "40 cl Lait demi-écrémé",
+    "1 Banane",
+    "1 c. à soupe Miel"
+   ],
+   "etapes": [
+    "Cuire les flocons dans le lait 5 min en remuant.",
+    "Servir avec la banane en rondelles et le miel."
+   ]
+  }
+ ]
+}

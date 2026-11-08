@@ -114,7 +114,7 @@ func run() error {
 	members := household.NewService(database)
 	planning := menus.NewService(database, products, cookbook, members, inventory)
 	groceries := shopping.NewService(database, products, cookbook, planning, inventory)
-	if err := cookbook.SyncSeed(ctx); err != nil {
+	if _, err := cookbook.PurgeSeed(ctx); err != nil {
 		return err
 	}
 	baseURL := ""

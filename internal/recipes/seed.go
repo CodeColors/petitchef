@@ -3,29 +3,19 @@ package recipes
 import (
 	"context"
 	"database/sql"
-	"embed"
-	"errors"
 	"fmt"
 	"io/fs"
 	"log/slog"
-	"strconv"
 	"strings"
 
 	"go.yaml.in/yaml/v3"
 
 	"github.com/codecolors/petitchef/internal/catalog"
-	"github.com/codecolors/petitchef/internal/platform/db"
 )
 
-// SeedVersion est la version du jeu de départ de recettes ; à augmenter à
-// chaque modification de seed/.
-const SeedVersion = 1
-
-//go:embed seed/*.yaml
-var seedFS embed.FS
-
-// seedRecipe est une recette du jeu de départ (voir seed/LISEZMOI.md).
-type seedRecipe struct {
+// yamlRecipe est une recette décrite en YAML (jeu d'essai des tests, voir
+// recipetest/recettes/LISEZMOI.md).
+type yamlRecipe struct {
 	Title       string   `yaml:"titre"`
 	Types       string   `yaml:"types"`
 	Servings    int      `yaml:"portions"`
@@ -39,106 +29,115 @@ type seedRecipe struct {
 	Steps       []string `yaml:"etapes"`
 }
 
-// SeedRecipes lit le jeu de départ, dans l'ordre des fichiers (les bases
-// utilisées par d'autres recettes d'abord).
-func SeedRecipes() ([]seedRecipe, error) {
-	files, err := fs.Glob(seedFS, "seed/*.yaml")
+// LoadYAML enregistre les recettes des fichiers YAML de fsys (dans
+// l'ordre de leur nom) ; chaque ingrédient doit désigner exactement un
+// produit du catalogue. Renvoie le nombre de recettes créées.
+func (s *Service) LoadYAML(ctx context.Context, fsys fs.FS) (int, error) {
+	files, err := fs.Glob(fsys, "*.yaml")
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
-	var out []seedRecipe
+	n := 0
 	for _, f := range files {
-		raw, err := fs.ReadFile(seedFS, f)
+		raw, err := fs.ReadFile(fsys, f)
 		if err != nil {
-			return nil, err
+			return n, err
 		}
-		var list []seedRecipe
+		var list []yamlRecipe
 		if err := yaml.Unmarshal(raw, &list); err != nil {
-			return nil, fmt.Errorf("%s : %w", f, err)
+			return n, fmt.Errorf("%s : %w", f, err)
 		}
-		out = append(out, list...)
+		for _, yr := range list {
+			in, err := s.yamlInput(ctx, yr)
+			if err != nil {
+				return n, err
+			}
+			if _, err := s.Save(ctx, 0, in); err != nil {
+				return n, fmt.Errorf("%s : %w", yr.Title, err)
+			}
+			n++
+		}
 	}
-	return out, nil
+	return n, nil
 }
 
-// input convertit une recette du jeu de départ en saisie, ingrédients
-// rapprochés du catalogue ; tout rapprochement inexact est une erreur.
-func (s *Service) seedInput(ctx context.Context, sr seedRecipe) (Input, error) {
-	in := Input{Title: sr.Title, Servings: sr.Servings, PrepMin: sr.Prep, CookMin: sr.Cook, RestMin: sr.Rest, Difficulty: sr.Difficulty,
-		Utensils: sr.Utensils, Steps: sr.Steps, SeedKey: strings.ReplaceAll(catalog.Normalize(sr.Title), " ", "-")}
-	for t := range strings.SplitSeq(sr.Types, ",") {
+func (s *Service) yamlInput(ctx context.Context, yr yamlRecipe) (Input, error) {
+	in := Input{Title: yr.Title, Servings: yr.Servings, PrepMin: yr.Prep, CookMin: yr.Cook, RestMin: yr.Rest, Difficulty: yr.Difficulty,
+		Utensils: yr.Utensils, Steps: yr.Steps}
+	for t := range strings.SplitSeq(yr.Types, ",") {
 		bit, ok := TypeByCode(strings.TrimSpace(t))
 		if !ok {
-			return in, fmt.Errorf("%s : type %q inconnu", sr.Title, t)
+			return in, fmt.Errorf("%s : type %q inconnu", yr.Title, t)
 		}
 		in.Types |= bit
 	}
-	for t := range strings.SplitSeq(sr.Tags, ",") {
+	for t := range strings.SplitSeq(yr.Tags, ",") {
 		if t = strings.TrimSpace(t); t != "" {
 			in.Tags = append(in.Tags, t)
 		}
 	}
-	resolved, err := s.Resolve(ctx, ParseLines(sr.Ingredients))
+	resolved, err := s.Resolve(ctx, ParseLines(yr.Ingredients))
 	if err != nil {
 		return in, err
 	}
 	for _, r := range resolved {
 		if r.Confidence != Exact {
-			return in, fmt.Errorf("%s : ingrédient « %s » non reconnu exactement (%q)", sr.Title, r.Raw, r.Name)
+			return in, fmt.Errorf("%s : ingrédient « %s » non reconnu exactement (%q)", yr.Title, r.Raw, r.Name)
 		}
 	}
 	in.Ingredients = resolved
 	return in, nil
 }
 
-// SyncSeed charge le jeu de départ de recettes (après celui du
-// catalogue) : recettes nouvelles ajoutées, recettes non modifiées mises à
-// jour, recettes modifiées par l'utilisateur laissées telles quelles.
-func (s *Service) SyncSeed(ctx context.Context) error {
-	var current int
-	err := s.db.W.QueryRowContext(ctx, `SELECT CAST(value AS INTEGER) FROM settings WHERE key = 'recipes_seed_version'`).Scan(&current)
-	if err != nil && !errors.Is(err, sql.ErrNoRows) {
-		return err
-	}
-	if current >= SeedVersion {
-		return nil
-	}
-	list, err := SeedRecipes()
-	if err != nil {
-		return err
-	}
-	added := 0
-	for _, sr := range list {
-		in, err := s.seedInput(ctx, sr)
+// PurgeSeed retire les recettes de l'ancien jeu de départ (versions
+// antérieures de PetitChef), sauf celles que l'utilisateur a modifiées ou
+// qui servent encore : menus, menus enregistrés, autres recettes. Appelée à
+// chaque démarrage ; sans effet une fois le ménage fait.
+func (s *Service) PurgeSeed(ctx context.Context) (int, error) {
+	total := 0
+	for {
+		var ids []int64
+		rows, err := s.db.R.QueryContext(ctx, `SELECT r.id FROM recipes r WHERE r.origin = 'seed' AND NOT r.modified
+			AND NOT EXISTS (SELECT 1 FROM menu_entries e WHERE e.recipe_id = r.id)
+			AND NOT EXISTS (SELECT 1 FROM saved_menu_entries e WHERE e.recipe_id = r.id)
+			AND NOT EXISTS (SELECT 1 FROM recipe_ingredients i WHERE i.sub_recipe_id = r.id)`)
 		if err != nil {
-			return fmt.Errorf("jeu de départ des recettes : %w", err)
+			return total, err
 		}
-		var id int64
-		var modified bool
-		err = s.db.R.QueryRowContext(ctx, `SELECT id, modified FROM recipes WHERE seed_key = ?`, in.SeedKey).Scan(&id, &modified)
-		switch {
-		case errors.Is(err, sql.ErrNoRows):
-			if _, err := s.Save(ctx, 0, in); err != nil {
-				return fmt.Errorf("%s : %w", sr.Title, err)
+		for rows.Next() {
+			var id int64
+			if err := rows.Scan(&id); err != nil {
+				_ = rows.Close()
+				return total, err
 			}
-			added++
-		case err != nil:
-			return err
-		case !modified:
-			if _, err := s.Save(ctx, id, in); err != nil {
-				return fmt.Errorf("%s : %w", sr.Title, err)
-			}
-			if _, err := s.db.W.ExecContext(ctx, `UPDATE recipes SET modified = 0 WHERE id = ?`, id); err != nil {
-				return err
-			}
+			ids = append(ids, id)
 		}
+		if err := rows.Close(); err != nil {
+			return total, err
+		}
+		if len(ids) == 0 {
+			break
+		}
+		err = s.db.Tx(ctx, func(tx *sql.Tx) error {
+			for _, id := range ids {
+				if _, err := tx.ExecContext(ctx, `DELETE FROM recipes_fts WHERE rowid = ?`, id); err != nil {
+					return err
+				}
+				if _, err := tx.ExecContext(ctx, `DELETE FROM recipes WHERE id = ?`, id); err != nil {
+					return err
+				}
+			}
+			return nil
+		})
+		if err != nil {
+			return total, err
+		}
+		total += len(ids) // une recette de base libérée sera retirée au tour suivant
 	}
-	if _, err := s.db.W.ExecContext(ctx, `INSERT INTO settings (key, value) VALUES ('recipes_seed_version', ?)
-		ON CONFLICT (key) DO UPDATE SET value = excluded.value`, strconv.Itoa(SeedVersion)); err != nil {
-		return err
+	if total > 0 {
+		slog.InfoContext(ctx, "recettes de départ retirées", "recettes", total)
 	}
-	slog.InfoContext(ctx, "jeu de départ des recettes chargé", "version", SeedVersion, "ajoutées", added)
-	return nil
+	return total, nil
 }
 
-var _ = db.ErrNotFound
+var _ = catalog.Normalize

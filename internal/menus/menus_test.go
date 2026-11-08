@@ -11,6 +11,7 @@ import (
 	"github.com/codecolors/petitchef/internal/platform/calendar"
 	"github.com/codecolors/petitchef/internal/platform/db"
 	"github.com/codecolors/petitchef/internal/recipes"
+	"github.com/codecolors/petitchef/internal/recipes/recipetest"
 	"github.com/codecolors/petitchef/internal/stock"
 )
 
@@ -36,7 +37,7 @@ func newEnv(t *testing.T) *env {
 	}
 	c := catalog.NewService(d)
 	r := recipes.NewService(d, c)
-	if err := r.SyncSeed(t.Context()); err != nil {
+	if err := recipetest.Load(t.Context(), r); err != nil {
 		t.Fatal(err)
 	}
 	h := household.NewService(d)
@@ -229,7 +230,7 @@ func BenchmarkGenerateSeed(b *testing.B) {
 	}
 	c := catalog.NewService(d)
 	r := recipes.NewService(d, c)
-	if err := r.SyncSeed(b.Context()); err != nil {
+	if err := recipetest.Load(b.Context(), r); err != nil {
 		b.Fatal(err)
 	}
 	s := NewService(d, c, r, household.NewService(d), stock.NewService(d, c))

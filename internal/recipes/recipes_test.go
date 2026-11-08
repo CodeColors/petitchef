@@ -3,6 +3,7 @@ package recipes
 import (
 	"encoding/json"
 	"errors"
+	"os"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -140,10 +141,10 @@ func newService(t testing.TB) (*Service, *db.DB) {
 	return NewService(d, catalog.NewService(d)), d
 }
 
-func TestSeedRecipes(t *testing.T) {
+func TestFixtureRecipes(t *testing.T) {
 	s, d := newService(t)
 	ctx := t.Context()
-	if err := s.SyncSeed(ctx); err != nil {
+	if _, err := s.LoadYAML(ctx, os.DirFS("recipetest/recettes")); err != nil {
 		t.Fatal(err)
 	}
 	var n, veg int
@@ -189,9 +190,22 @@ func TestSeedRecipes(t *testing.T) {
 	if r.Grade() != "A" || r.Protein != "" || r.Season.Has(1) || !r.Season.Has(7) {
 		t.Errorf("ratatouille : indice %s, protéine %q, saison %s", r.Grade(), r.Protein, r.Season.Label())
 	}
-	// Une deuxième synchronisation ne change rien.
-	if err := s.SyncSeed(ctx); err != nil {
+	// Recettes d'un ancien jeu de départ : retirées, sauf la recette
+	// modifiée et la pâte brisée qu'elle utilise.
+	quiche, _ := s.ByTitle(ctx, "quiche lorraine")
+	if _, err := d.W.ExecContext(ctx, `UPDATE recipes SET origin = 'seed', modified = (id = ?)`, quiche); err != nil {
 		t.Fatal(err)
+	}
+	removed, err := s.PurgeSeed(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var left int
+	if err := d.R.QueryRowContext(ctx, `SELECT count(*) FROM recipes`).Scan(&left); err != nil || left != 2 || removed != n-2 {
+		t.Errorf("purge : %d retirées, %d restantes, %v", removed, left, err)
+	}
+	if p, _ := s.Search(ctx, Filter{Query: "ratatouille"}); p.Total != 0 {
+		t.Error("index de recherche non nettoyé")
 	}
 }
 
@@ -246,7 +260,7 @@ func TestSaveFormatAndRatings(t *testing.T) {
 func TestImportExport(t *testing.T) {
 	s, _ := newService(t)
 	ctx := t.Context()
-	if err := s.SyncSeed(ctx); err != nil {
+	if _, err := s.LoadYAML(ctx, os.DirFS("recipetest/recettes")); err != nil {
 		t.Fatal(err)
 	}
 	quiche, _ := s.ByTitle(ctx, "quiche lorraine")

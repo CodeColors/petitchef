@@ -128,6 +128,13 @@ func (s *Server) generateMenus(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	ctx := r.Context()
+	if page, err := s.Recipes.Search(ctx, recipes.Filter{PageSize: 1}); err != nil {
+		s.serverError(w, r, err)
+		return
+	} else if page.Total == 0 {
+		s.redirect(w, r, "/recettes", "Pas encore de recette : ajoutez ou importez vos recettes, puis générez le menu.")
+		return
+	}
 	pref, err := s.Menus.Preferences(ctx)
 	if err != nil {
 		s.serverError(w, r, err)

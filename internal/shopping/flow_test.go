@@ -11,6 +11,7 @@ import (
 	"github.com/codecolors/petitchef/internal/platform/calendar"
 	"github.com/codecolors/petitchef/internal/platform/db"
 	"github.com/codecolors/petitchef/internal/recipes"
+	"github.com/codecolors/petitchef/internal/recipes/recipetest"
 	"github.com/codecolors/petitchef/internal/stock"
 )
 
@@ -28,7 +29,7 @@ func TestFullFlow(t *testing.T) {
 	}
 	cat := catalog.NewService(d)
 	rec := recipes.NewService(d, cat)
-	if err := rec.SyncSeed(ctx); err != nil {
+	if err := recipetest.Load(ctx, rec); err != nil {
 		t.Fatal(err)
 	}
 	h := household.NewService(d)

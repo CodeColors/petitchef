@@ -6,7 +6,7 @@ import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
-import { mkdir, mkdtemp, rm } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
@@ -81,6 +81,11 @@ async function prepare() {
   await page.click('button[type=submit], form button');
   await page.waitForURL(`${BASE}/`);
   const post = (url, form) => page.request.post(`${BASE}${url}`, { form, headers: { Origin: BASE } });
+  const recettes = await readFile(path.join(import.meta.dirname, 'fixtures/recettes.json'));
+  const imp = await page.request.post(`${BASE}/recettes/importer`, {
+    headers: { Origin: BASE }, multipart: { file: { name: 'recettes.json', mimeType: 'application/json', buffer: recettes } },
+  });
+  assert.equal(imp.status(), 200);
   await post('/foyer', { name: 'Léa', portion: '1', diet_vegetarien: '1' });
   await post('/foyer', { name: 'Tom', portion: '0,5', all_arachides: '1' });
   await post('/magasins', { name: 'Hyper', default: '1' });
