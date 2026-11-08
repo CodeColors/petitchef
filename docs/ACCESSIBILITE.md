@@ -16,6 +16,14 @@ clair et en sombre :
 - thème effectivement appliqué.
 
 ## Principes appliqués
+- **Grande taille de texte** en un geste (menu « Affichage » : 17 px par
+  défaut, 20 px en « Grande »), mémorisée par compte, sans script ; tous les
+  écrans restent sans défilement horizontal à 360 px (test e2e dédié).
+- Couleurs Automatique / Clair / Sombre au même endroit.
+- Préférences du système respectées : mouvement réduit, contraste
+  renforcé, couleurs forcées de Windows.
+- Cibles tactiles de 48 px par défaut (44 px au minimum vérifié), champs à
+  bordure de 2 px, corps de texte de 17 px.
 - Navigation clavier complète, lien d'évitement « Aller au contenu », focus
   visible (contour de 3 px).
 - Chaque champ a son libellé ; aides reliées par `aria-describedby`.

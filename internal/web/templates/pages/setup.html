@@ -1,7 +1,8 @@
 {{define "content"}}
 <section class="card auth-card" aria-labelledby="titre">
+  <div class="welcome">{{template "logo"}}</div>
   <h1 id="titre">Bienvenue dans PetitChef</h1>
-  <p class="muted">Créez le premier compte du foyer. Il servira à vous connecter.</p>
+  <p class="muted">Menus, stock et courses de la maison, au même endroit. Commencez par créer votre compte : vous pourrez en ajouter pour chaque personne du foyer.</p>
   {{with .Data.Error}}<p class="alert" role="alert">{{.}}</p>{{end}}
   <form class="form" method="post" action="/setup">
     <div class="field">
@@ -11,13 +12,13 @@
     <div class="field">
       <label for="password">Mot de passe</label>
       <input id="password" name="password" type="password" autocomplete="new-password" minlength="{{.Data.PasswordMinLen}}" aria-describedby="password-aide" required>
-      <p id="password-aide" class="hint">Au moins {{.Data.PasswordMinLen}} caractères. Une phrase de plusieurs mots est idéale.</p>
+      <p id="password-aide" class="hint">Au moins {{.Data.PasswordMinLen}} caractères. Une petite phrase est facile à retenir et difficile à deviner.</p>
     </div>
     <div class="field">
-      <label for="confirm">Confirmation du mot de passe</label>
+      <label for="confirm">Le même mot de passe, une seconde fois</label>
       <input id="confirm" name="confirm" type="password" autocomplete="new-password" minlength="{{.Data.PasswordMinLen}}" required>
     </div>
-    <button class="btn btn-primary" type="submit">Créer le compte</button>
+    <button class="btn btn-primary" type="submit">Créer mon compte</button>
   </form>
 </section>
 {{end}}

@@ -1,36 +1,46 @@
 {{define "content"}}
-<h1>Bonjour {{.User.Username}}</h1>
-<div class="actions">
-  <a class="btn btn-primary" href="/courses/magasin">Liste de courses{{if .Data.ToBuy}} ({{.Data.ToBuy}}){{end}}</a>
-  <a class="btn" href="/stock/ajouter">Ajouter au stock</a>
-  <a class="btn" href="/ce-soir">Que cuisiner ce soir ?</a>
+<div class="hello">
+  <h1>Bonjour {{.User.Username}}</h1>
+  <p>Nous sommes {{dayLabel .Data.Today}}.</p>
 </div>
-{{- if .Data.Empty}}
+<ul class="shortcuts" aria-label="Raccourcis">
+  <li><a class="shortcut" href="/courses/magasin">{{template "icon" "cart"}}<span>Liste de courses</span><small>{{if .Data.ToBuy}}{{plural .Data.ToBuy "article" "articles"}} à prendre{{else}}rien à acheter{{end}}</small></a></li>
+  <li><a class="shortcut" href="/stock/ajouter">{{template "icon" "box"}}<span>Ajouter au stock</span><small>en quelques secondes</small></a></li>
+  <li><a class="shortcut" href="/ce-soir">{{template "icon" "leaf"}}<span>Que cuisiner ce soir ?</span><small>avec ce qu'il y a</small></a></li>
+  <li><a class="shortcut" href="/menus/generer">{{template "icon" "menus"}}<span>Générer le menu</span><small>pour une à huit semaines</small></a></li>
+</ul>
+{{- if lt .Data.Done (len .Data.Steps)}}
 <section class="card" aria-labelledby="premiers-pas">
-  <h2 id="premiers-pas">Premiers pas</h2>
-  <ol class="steps-list">
-    <li><a href="/foyer">Ajoutez les membres du foyer</a> (portions, allergies, régimes).</li>
-    <li><a href="/creneaux">Réglez votre semaine type</a> : qui mange à la maison, et quel repas.</li>
-    <li><a href="/stock/suivi">Choisissez un modèle de stock</a> (salle de bain, ménage, placard).</li>
-    <li><a href="/menus/generer">Générez le menu de la semaine</a>, puis la <a href="/courses">liste de courses</a>.</li>
+  <div class="section-head"><h2 id="premiers-pas">Pour bien démarrer</h2><span class="muted">{{.Data.Done}} sur {{len .Data.Steps}}</span></div>
+  <svg class="progress" viewBox="0 0 100 4" preserveAspectRatio="none" role="img" aria-label="{{.Data.Done}} étapes faites sur {{len .Data.Steps}}"><rect class="progress-track" width="100" height="4" rx="2"/><rect class="progress-fill" width="{{pct (int64 .Data.Done) (int64 (len .Data.Steps))}}" height="4" rx="2"/></svg>
+  <ol class="checklist">
+    {{- range .Data.Steps}}
+    <li{{if .Done}} class="done"{{end}}>
+      <span class="tick">{{if .Done}}{{template "icon" "check"}}<span class="sr-only">Fait :</span>{{else}}<span class="sr-only">À faire :</span>{{end}}</span>
+      <span><a href="{{.Href}}">{{.Label}}</a><br><span class="hint">{{.Hint}}</span></span>
+    </li>
+    {{- end}}
   </ol>
 </section>
 {{- end}}
-<ol class="week">
-  {{- range .Data.Days}}
-  <li class="day{{if .Today}} is-today{{end}}">
-    <h2>{{if .Today}}Aujourd'hui{{else}}Demain{{end}} · {{dayLabel .Date}}</h2>
-    {{- range .Meals}}{{$m := .}}
-    <section class="meal" aria-label="{{.SlotName}}">
-      <div class="meal-head"><a class="meal-slot" href="/menus/repas/{{.ID}}">{{.SlotName}}</a></div>
-      {{- range .Entries}}{{template "dish" dict "E" . "Meal" $m "Back" "/"}}{{else}}<p class="meal-off">Rien de prévu</p>{{end}}
-    </section>
-    {{- else}}
-    <p class="meal-off">Pas de repas planifié. <a href="/menus/generer">Générer le menu</a></p>
+<section aria-labelledby="repas">
+  <h2 id="repas" class="sr-only">Repas d'aujourd'hui et de demain</h2>
+  <ol class="week week-2">
+    {{- range .Data.Days}}
+    <li class="day{{if .Today}} is-today{{end}}">
+      <h3>{{if .Today}}Aujourd'hui{{else}}Demain{{end}}</h3>
+      {{- range .Meals}}{{$m := .}}
+      <section class="meal" aria-label="{{.SlotName}}">
+        <div class="meal-head"><a class="meal-slot" href="/menus/repas/{{.ID}}">{{.SlotName}}</a></div>
+        {{- range .Entries}}{{template "dish" dict "E" . "Meal" $m "Back" "/"}}{{else}}<p class="meal-off">Rien de prévu</p>{{end}}
+      </section>
+      {{- else}}
+      <p class="meal-off">Pas de repas planifié. <a href="/menus/generer">Générer le menu</a></p>
+      {{- end}}
+    </li>
     {{- end}}
-  </li>
-  {{- end}}
-</ol>
+  </ol>
+</section>
 <section aria-labelledby="priorite">
   <div class="section-head"><h2 id="priorite">À consommer en priorité</h2><a href="/stock/priorite">Tout voir</a></div>
   {{- if .Data.Expiring}}
@@ -39,7 +49,7 @@
 </section>
 {{- if .Data.Alerts}}
 <section aria-labelledby="alertes">
-  <div class="section-head"><h2 id="alertes">Alertes</h2><a href="/alertes">Toutes les alertes</a></div>
+  <div class="section-head"><h2 id="alertes">À savoir</h2><a href="/alertes">Toutes les alertes</a></div>
   <ul class="rows">{{range .Data.Alerts}}<li class="row"><a class="row-link" href="{{if .Link}}{{.Link}}{{else}}/alertes{{end}}"><span class="row-title">{{.Title}}</span><span class="row-meta">{{.Detail}}</span></a></li>{{end}}</ul>
 </section>
 {{- end}}

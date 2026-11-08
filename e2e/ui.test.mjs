@@ -21,8 +21,8 @@ const USER = 'camille';
 const PASSWORD = 'une phrase de passe solide';
 const WIDTHS = [360, 768, 1280];
 const SCHEMES = ['light', 'dark'];
-const BACKGROUND = { light: 'rgb(246, 245, 241)', dark: 'rgb(18, 20, 18)' };
-const TARGETS = 'button:not(.chart button), input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=range]), select, textarea, summary, a.btn, .tabbar a, .fab, .row-link, .chips a, .tabs a';
+const BACKGROUND = { light: 'rgb(251, 246, 238)', dark: 'rgb(27, 24, 20)' };
+const TARGETS = 'button:not(.chart button), .tool, .choice button, input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=range]), select, textarea, summary, a.btn, .tabbar a, .fab, .row-link, .chips a, .tabs a';
 
 let server;
 let dataDir;
@@ -241,5 +241,28 @@ test('mode cuisine et génération en trois clics', async () => {
     assert.match(await page.textContent('.flash'), /Menu généré en \d+ ms/);
     await page.goto(`${BASE}/recettes/${ids.recipe}/cuisine`);
     assert.ok(await page.locator('[data-step]').count() >= 1);
+  });
+});
+
+test('grand texte et panneau Affichage, à 360 px', async () => {
+  await withPage(360, 'dark', async (page) => {
+    await page.goto(`${BASE}/`);
+    await page.click('.prefs > summary');
+    await page.click('button[name="text"][value="grand"]');
+    await page.waitForURL(`${BASE}/`);
+    assert.equal(await page.getAttribute('html', 'data-text'), 'grand');
+    for (const [name, url] of [['accueil', '/'], ['courses', '/courses/magasin'], ['recette', `/recettes/${ids.recipe}`], ['stock', '/stock/ajouter']]) {
+      await page.goto(`${BASE}${url}`);
+      await checkLayout(page, `${name} grand texte`, 'dark');
+    }
+    await page.click('.prefs > summary');
+    const box = await page.locator('.prefs-panel').boundingBox();
+    assert.ok(box.x >= 0 && box.x + box.width <= 360, `panneau Affichage hors de l'écran : ${JSON.stringify(box)}`);
+    const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+    assert.deepEqual(axe.violations.map((v) => v.id), []);
+    await page.screenshot({ path: path.join(SHOTS, 'affichage-grand-texte-360.png') });
+    await page.click('button[name="text"][value="normal"]');
+    await page.waitForURL(/\//);
+    assert.equal(await page.getAttribute('html', 'data-text'), null);
   });
 });

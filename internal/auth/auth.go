@@ -70,6 +70,8 @@ type User struct {
 	ID       int64
 	Username string
 	Theme    Theme
+	// LargeText agrandit tout le texte de l'interface (accessibilité).
+	LargeText bool
 }
 
 // Service porte toute la logique d'authentification.
@@ -177,6 +179,16 @@ func (s *Service) Authenticate(ctx context.Context, ip netip.Addr, username, pas
 // SetTheme enregistre la préférence d'affichage de l'utilisateur.
 func (s *Service) SetTheme(ctx context.Context, userID int64, t Theme) error {
 	_, err := s.db.W.ExecContext(ctx, `UPDATE users SET theme = ? WHERE id = ?`, t, userID)
+	return err
+}
+
+// SetLargeText active ou désactive le grand texte d'un utilisateur.
+func (s *Service) SetLargeText(ctx context.Context, userID int64, large bool) error {
+	size := "normal"
+	if large {
+		size = "grand"
+	}
+	_, err := s.db.W.ExecContext(ctx, `UPDATE users SET text_size = ? WHERE id = ?`, size, userID)
 	return err
 }
 

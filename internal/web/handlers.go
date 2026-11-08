@@ -168,14 +168,23 @@ func (s *Server) setTheme(w http.ResponseWriter, r *http.Request) {
 		s.renderError(w, r, http.StatusBadRequest, "Formulaire illisible.")
 		return
 	}
-	theme, ok := auth.ParseTheme(r.PostFormValue("theme"))
-	if !ok {
-		s.renderError(w, r, http.StatusBadRequest, "Thème inconnu.")
-		return
+	user := currentUser(r.Context()).ID
+	if v := r.PostFormValue("theme"); v != "" {
+		theme, ok := auth.ParseTheme(v)
+		if !ok {
+			s.renderError(w, r, http.StatusBadRequest, "Thème inconnu.")
+			return
+		}
+		if err := s.Auth.SetTheme(r.Context(), user, theme); err != nil {
+			s.serverError(w, r, err)
+			return
+		}
 	}
-	if err := s.Auth.SetTheme(r.Context(), currentUser(r.Context()).ID, theme); err != nil {
-		s.serverError(w, r, err)
-		return
+	if v := r.PostFormValue("text"); v != "" {
+		if err := s.Auth.SetLargeText(r.Context(), user, v == "grand"); err != nil {
+			s.serverError(w, r, err)
+			return
+		}
 	}
 	http.Redirect(w, r, localPath(r.PostFormValue("back")), http.StatusSeeOther)
 }

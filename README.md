@@ -21,13 +21,14 @@ NAS Synology, un mini-PC ou un Raspberry Pi, à côté de
   minimum et consommation estimée, annulation.
 - **Recettes** typées (entrée, plat, dessert…) liées au catalogue, mises à
   l'échelle, composées, notées par chaque membre, avec un **indice
-  d'équilibre de A à E** expliqué ; 70 recettes de départ ; import et
-  export JSON et schema.org.
+  d'équilibre de A à E** expliqué ; saisie rapide (collez une liste
+  d'ingrédients), import et export JSON et schema.org. La base de recettes
+  démarre vide : ce sont les vôtres.
 - **Menus** générés en moins d'une seconde pour 1 à 8 semaines, au format
   choisi pour chaque repas (plat seul, entrée + plat, plat + dessert,
-  complet), en respectant allergies et régimes, en privilégiant ce qui
-  périme ; chaque choix est expliqué ; verrouiller, régénérer, échanger,
-  restes.
+  complet), en respectant allergies et régimes (option « sans poisson ni
+  fruits de mer » comprise), en privilégiant ce qui périme ; chaque choix
+  est expliqué ; verrouiller, régénérer, échanger, restes.
 - **Liste de courses** : ce qui manque pour le menu et ce qui passera sous
   le minimum avant les courses suivantes, arrondi aux conditionnements, dans
   l'ordre des rayons de votre magasin ; mode magasin utilisable **hors
@@ -36,8 +37,9 @@ NAS Synology, un mini-PC ou un Raspberry Pi, à côté de
   facultatifs), statistiques (gaspillage, dépenses, équilibre), exports
   (CSV, PDF, iCal), sauvegardes chiffrées.
 
-Interface en français, mobile d'abord, thèmes clair et sombre, utilisable
-sans JavaScript.
+Interface en français, chaleureuse et très accessible : mobile d'abord,
+thèmes clair et sombre, grande taille de texte en un geste, utilisable au
+clavier et sans JavaScript.
 
 ## Installation (Docker)
 
@@ -115,10 +117,13 @@ Aucune n'est obligatoire.
    soir, par exemple).
 3. **Magasins et rayons** : créez votre magasin et rangez ses rayons dans
    l'ordre de votre parcours.
-4. **Stock > Stock minimum** : appliquez un modèle (salle de bain, ménage,
+4. **Recettes > Nouvelle recette** : saisissez ou collez vos recettes
+   (« 200 g de farine, 3 œufs… »), ou importez un fichier JSON ou
+   schema.org.
+5. **Stock > Stock minimum** : appliquez un modèle (salle de bain, ménage,
    placard de base), puis ajoutez ce que vous avez (**Stock > Ajouter**).
-5. **Menus > Générer** : trois clics pour la semaine.
-6. **Courses** : recalculez la liste, passez en **mode magasin** pour faire
+6. **Menus > Générer** : trois clics pour la semaine.
+7. **Courses** : recalculez la liste, passez en **mode magasin** pour faire
    les courses, puis **Ranger les courses** au retour.
 
 ## Sauvegarde et restauration
@@ -150,8 +155,9 @@ docker compose pull && docker compose up -d
 ```
 
 Les migrations de la base s'appliquent au démarrage. Les mises à jour du
-catalogue et des recettes de départ n'écrasent jamais un produit ou une
-recette que vous avez modifiés. Faites une sauvegarde avant une mise à jour
+catalogue n'écrasent jamais un produit que vous avez modifié. Si votre
+installation avait reçu les anciennes recettes de départ, celles que vous
+n'avez ni modifiées ni utilisées sont retirées automatiquement. Faites une sauvegarde avant une mise à jour
 majeure.
 
 ## Développement

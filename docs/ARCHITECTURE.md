@@ -3,8 +3,9 @@
 PetitChef est un binaire Go unique : serveur HTTP, pages, fichiers
 statiques, migrations, catalogue et recettes de départ y sont embarqués.
 Les données tiennent dans un fichier SQLite et un dossier de photos sous
-`DATA_DIR`. Le socle (base, authentification, sauvegardes, alertes,
-interface) est une copie adaptée de BuddyGet ; voir `DECISIONS.md`.
+`DATA_DIR`. Le socle serveur (base, authentification, sauvegardes, alertes)
+est une copie adaptée de BuddyGet ; l'interface est propre à PetitChef ;
+voir `DECISIONS.md`.
 
 ## Principes
 
@@ -49,7 +50,7 @@ internal/
 ├── recipes/          recettes : analyse des ingrédients en texte, rapprochement
 │   │                 du catalogue, mise à l'échelle, recettes composées, indice
 │   │                 d'équilibre, recherche FTS5, avis, import/export
-│   └── seed/         70 recettes de départ (YAML)
+│   └── recipetest/   jeu d'essai de 70 recettes, pour les tests seulement
 ├── planner/          moteur du générateur de menus (pur) et « ce soir »
 ├── menus/            créneaux, semaines types, repas, génération, édition,
 │                     cuisiné (décompte FEFO), menus enregistrés
@@ -63,7 +64,7 @@ internal/
 ├── scheduler/        tâche quotidienne unique
 └── web/              routes, middlewares, handlers, rendu
     ├── templates/    layout.html + pages/<page>.html
-    └── static/       app.css, app.js, htmx, store.js (magasin), cook.js
+    └── static/       app.css (charte propre à PetitChef), app.js, htmx, store.js (magasin), cook.js
                       (cuisine), scan.js (code-barres), sw.js, icône, manifeste
 e2e/                  tests Playwright (développement et CI)
 ```
@@ -148,8 +149,8 @@ calculés).
   Courses, Stock, Plus), sous l'en-tête au-delà ; Recettes et Catalogue
   rejoignent la barre à partir de 1024 px. Bouton d'action flottant
   contextuel (Produit, Article, Recette).
-- Thème rendu côté serveur (`data-theme`), couleurs `light-dark()`,
-  impression toujours en clair.
+- Thème et taille du texte rendus côté serveur (`data-theme`,
+  `data-text`), couleurs `light-dark()`, impression toujours en clair.
 - Amélioration progressive : chaque écran fonctionne sans script ; HTMX
   pour la recherche instantanée et les suggestions ; `app.js`
   (confirmations, glisser-déposer, impression, copie) ; scripts propres à

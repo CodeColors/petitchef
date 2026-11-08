@@ -17,7 +17,14 @@ type homeView struct {
 	Alerts   []alerts.Alert
 	ToBuy    int
 	Back     string
-	Empty    bool
+	Steps    []onboardingStep
+	Done     int
+}
+
+// onboardingStep est une étape des premiers pas.
+type onboardingStep struct {
+	Label, Hint, Href string
+	Done              bool
 }
 
 func (s *Server) home(w http.ResponseWriter, r *http.Request) {
@@ -59,8 +66,44 @@ func (s *Server) home(w http.ResponseWriter, r *http.Request) {
 			v.ToBuy++
 		}
 	}
-	v.Empty = len(meals) == 0 && len(v.Expiring) == 0
+	if v.Steps, err = s.onboarding(r); err != nil {
+		s.serverError(w, r, err)
+		return
+	}
+	for _, st := range v.Steps {
+		if st.Done {
+			v.Done++
+		}
+	}
 	s.render(w, r, http.StatusOK, "home", "Accueil", v)
+}
+
+// onboarding renvoie les premiers pas et ce qui est déjà fait.
+func (s *Server) onboarding(r *http.Request) ([]onboardingStep, error) {
+	ctx := r.Context()
+	count := func(q string) (bool, error) {
+		var n int
+		err := s.db.R.QueryRowContext(ctx, q).Scan(&n)
+		return n > 0, err
+	}
+	steps := []struct {
+		label, hint, href, query string
+	}{
+		{"Présenter le foyer", "Qui mange à la maison, allergies et régimes", "/foyer", `SELECT count(*) FROM household_members WHERE NOT archived`},
+		{"Ajouter vos recettes", "Saisissez-les, collez une liste d'ingrédients ou importez-les", "/recettes/nouvelle", `SELECT count(*) FROM recipes`},
+		{"Faire le tour des placards", "Ce que vous avez déjà, avec les dates limites", "/stock/ajouter", `SELECT count(*) FROM stock_items`},
+		{"Générer le menu de la semaine", "En trois clics, selon vos envies", "/menus/generer", `SELECT count(*) FROM menu_entries`},
+		{"Préparer la liste de courses", "Triée dans l'ordre de votre magasin", "/courses", `SELECT count(*) FROM shopping_items`},
+	}
+	out := make([]onboardingStep, len(steps))
+	for i, st := range steps {
+		done, err := count(st.query)
+		if err != nil {
+			return nil, err
+		}
+		out[i] = onboardingStep{Label: st.label, Hint: st.hint, Href: st.href, Done: done}
+	}
+	return out, nil
 }
 
 var _ = menus.Monday

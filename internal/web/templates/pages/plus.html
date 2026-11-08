@@ -1,20 +1,12 @@
 {{define "content"}}
-<h1>Plus</h1>
-<section aria-labelledby="cuisine">
-  <h2 id="cuisine">Cuisine</h2>
-  <ul class="rows">
-    <li class="row nav-secondary-entry"><a class="row-link" href="/recettes"><span class="row-title">Recettes</span><span class="row-meta">Recherche, fiches, indice d'équilibre, import et export</span></a></li>
-    <li class="row"><a class="row-link" href="/ce-soir"><span class="row-title">Que cuisiner ce soir ?</span><span class="row-meta">Recettes faisables avec le stock, anti-gaspillage</span></a></li>
-    <li class="row nav-secondary-entry"><a class="row-link" href="/catalogue"><span class="row-title">Catalogue</span><span class="row-meta">Produits, rayons, magasins, produits à compléter</span></a></li>
-  </ul>
-</section>
-<section aria-labelledby="suivre">
-  <h2 id="suivre">Suivre</h2>
-  <ul class="rows">
-    <li class="row"><a class="row-link" href="/statistiques"><span class="row-title">Statistiques</span><span class="row-meta">Recettes cuisinées, équilibre, gaspillage, dépenses</span></a></li>
-    <li class="row"><a class="row-link" href="/alertes"><span class="row-title">Alertes</span><span class="row-meta">Dates limites, stock minimum, ruptures prévues</span></a></li>
-    <li class="row"><a class="row-link" href="/exports"><span class="row-title">Exports</span><span class="row-meta">Menus, liste, recettes, inventaire, achats, agenda iCal</span></a></li>
-    <li class="row"><a class="row-link" href="/parametres"><span class="row-title">Paramètres</span><span class="row-meta">Foyer, créneaux, magasins, utilisateurs, sauvegardes</span></a></li>
-  </ul>
-</section>
+<div class="page-head"><h1>Plus</h1></div>
+<ul class="shortcuts">
+  <li class="nav-secondary-entry"><a class="shortcut" href="/recettes">{{template "icon" "book"}}<span>Recettes</span><small>Chercher, créer, importer</small></a></li>
+  <li><a class="shortcut" href="/ce-soir">{{template "icon" "leaf"}}<span>Que cuisiner ce soir ?</span><small>Avec ce qu'il y a</small></a></li>
+  <li class="nav-secondary-entry"><a class="shortcut" href="/catalogue">{{template "icon" "grid"}}<span>Catalogue</span><small>Produits, rayons, magasins</small></a></li>
+  <li><a class="shortcut" href="/statistiques">{{template "icon" "clock"}}<span>Statistiques</span><small>Gaspillage, dépenses, équilibre</small></a></li>
+  <li><a class="shortcut" href="/alertes">{{template "icon" "bell"}}<span>Alertes</span><small>Dates limites, ruptures</small></a></li>
+  <li><a class="shortcut" href="/exports">{{template "icon" "menus"}}<span>Exports</span><small>PDF, CSV, agenda</small></a></li>
+  <li><a class="shortcut" href="/parametres">{{template "icon" "home"}}<span>Paramètres</span><small>Foyer, repas, comptes</small></a></li>
+</ul>
 {{end}}

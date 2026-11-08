@@ -19,7 +19,8 @@ BuddyGet : les deux applications évoluent indépendamment.
 | `internal/scheduler` (un minuteur réarmé chaque jour à 00h05) | tel quel | — |
 | `internal/alerts` (alertes à clé unique, acquittement, SMTP, webhook/ntfy, discrétion, rythme) | adapté | les examens sont **fournis par les domaines** (`alerts.Check`) : le paquet ne dépend plus d'aucun domaine ; six types propres à PetitChef |
 | `internal/attachments/image.go` (réduction mémoire-économe à 1600 px, EXIF) | adapté | devient `internal/photos` |
-| `internal/web` (middlewares, CSP stricte, `CrossOriginProtection`, rendu en tampon, assets embarqués compressés et versionnés, thème sans flash) | adapté | navigation Accueil / Menus / Courses / Stock / Plus, bouton flottant contextuel, palette verte, styles d'impression |
+| `internal/web` côté serveur (middlewares, CSP stricte, `CrossOriginProtection`, rendu en tampon, assets embarqués compressés et versionnés, thème posé par le serveur) | adapté | — |
+| Interface (gabarit, feuille de style, pages de connexion, comptes, alertes, sauvegardes, scripts) | **non reprise** | interface propre à PetitChef, voir « Interface » ci-dessous |
 | `Dockerfile`, `docker-compose.yml`, CI, `.golangci.yml`, e2e Playwright + axe | adaptés | mêmes contrôles de taille d'image et de mémoire au repos |
 
 ## Socle (jalon 1)
@@ -273,11 +274,20 @@ Note, favori, « à ne plus proposer », commentaire : une ligne par recette
 et par membre (`recipe_ratings`). L'historique « cuisinée » est un compteur
 et une date tenus à jour quand un repas est marqué cuisiné (jalon 9).
 
-### Jeu de départ
-70 recettes familiales rédigées pour PetitChef (YAML, même format de
-saisie), dont 3 bases réutilisées (pâte brisée, béchamel, vinaigrette).
-Chargé comme le catalogue, après lui, sans écraser une recette modifiée ;
-un test exige que chaque ingrédient corresponde **exactement** à un produit.
+### Pas de recettes de départ (le catalogue, lui, est fourni)
+La base de recettes démarre vide : chaque foyer saisit, colle ou importe
+ses propres recettes. Le binaire n'embarque que le catalogue de produits.
+Les 70 recettes rédigées pour PetitChef servent désormais de **jeu
+d'essai** aux tests (`internal/recipes/recipetest`, et
+`e2e/fixtures/recettes.json` pour les tests de bout en bout), importé avec
+le même format de saisie ; un test exige que chaque ingrédient corresponde
+exactement à un produit du catalogue.
+
+Pour les installations qui avaient reçu l'ancien jeu de départ,
+`recipes.PurgeSeed` retire au démarrage les recettes `origin = 'seed'` **non
+modifiées et inutilisées** (ni dans un menu, ni dans un menu enregistré, ni
+comme base d'une autre recette) ; une recette que vous avez modifiée ou
+servie reste. L'opération est sans effet une fois le ménage fait.
 
 ### Une photo par recette
 Une seule photo (`recipes.photo`) plutôt qu'une table `recipe_photos` :
@@ -506,3 +516,46 @@ avec son tableau de valeurs.
   chiffrement `age` facultatif par `BACKUP_PASSPHRASE`, rotation des
   sauvegardes automatiques, copie dossier ou WebDAV désactivée par défaut,
   restauration préparée puis appliquée au redémarrage).
+
+
+## Menus sans poisson
+
+Deux façons, un seul mécanisme : le régime « sans poisson ni fruits de
+mer » (`catalog.FishFree`, qui exclut les produits portant les allergènes
+poissons, crustacés ou mollusques), attribuable à un membre du foyer ou
+utilisable comme filtre des recettes ; et l'option du générateur « menus
+sans poisson ni fruits de mer », qui ajoute ce régime aux contraintes
+strictes de **tous** les repas générés (et annule la règle « poisson au
+moins N fois »). Les sauces à base de poisson (nuoc-mâm, Worcestershire)
+sont donc écartées elles aussi.
+
+## Interface
+
+L'interface est propre à PetitChef (rien n'est repris de BuddyGet côté
+visuel) : chaleureuse, claire et très accessible.
+
+- **Charte** : fond crème, accent terre cuite, vert sauge pour ce qui est
+  fait ; en sombre, brun chaud et terre cuite claire. Chaque couleur est
+  définie une fois avec `light-dark()` ; tous les couples texte/fond visent
+  le contraste AA (vérifié par axe), le texte courant AAA.
+- **Lisibilité** : corps de 17 px, interlignage 1,6, police système (ou
+  Atkinson Hyperlegible si elle est installée sur l'appareil ; aucune police
+  téléchargée). Cibles tactiles de 48 px, champs bordés de 2 px.
+- **Menu « Affichage »** dans l'en-tête : couleurs (Automatique, Clair,
+  Sombre) et **taille du texte** (Normale, Grande = 20 px), mémorisées par
+  compte (`users.text_size`, migration 0007) et posées par le serveur sur
+  `<html>` (`data-theme`, `data-text`) : aucun flash, aucun script. Le
+  menu se ferme avec Échap.
+- **Navigation** : barre du bas sur mobile (Accueil, Menus, Courses, Stock,
+  Plus, icône et libellé), barre de pastilles sous l'en-tête à partir de
+  768 px, Recettes et Catalogue visibles à partir de 1024 px. Libellés
+  toujours présents (visibles, ou lus par les lecteurs d'écran sur petit
+  écran).
+- **Accueil** : salutation, raccourcis (liste de courses, ajout au stock,
+  « ce soir », générer le menu), liste « pour bien démarrer » avec
+  progression, repas du jour et du lendemain, à consommer en priorité.
+- **Préférences du système respectées** : mouvement réduit, contraste
+  renforcé (bordures et textes secondaires plus marqués), couleurs forcées
+  de Windows (bordures et contours explicites).
+- Icônes au trait dessinées pour PetitChef, toujours accompagnées d'un
+  texte ; aucun style en ligne (CSP).

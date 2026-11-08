@@ -9,7 +9,7 @@ conteneur limité comme dans `docker-compose.yml` (`--memory 128m --cpus 0.5`).
 |---|---|---|
 | Image `linux/amd64` | 26,6 Mo (7,8 Mo compressée) | < 50 Mo |
 | Image `linux/arm64` | 7,2 Mo compressée (construite par compilation croisée) | — |
-| Démarrage à froid (première fois : migrations + 880 produits + 70 recettes) | 843 ms | < 3 s |
+| Démarrage à froid (première fois : migrations + 880 produits) | 843 ms mesurés avec l'ancien jeu de 70 recettes, désormais moins | < 3 s |
 | Démarrage suivant | 22 ms | < 3 s |
 | Mémoire au repos (démarrage) | 16,5 Mio | < 64 Mo (objectif 30) |
 | Mémoire au repos après la charge ci-dessous | 31 Mio | < 64 Mo |

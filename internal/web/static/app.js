@@ -1,74 +1,82 @@
-// PetitChef : comportements facultatifs. Sans script, chaque écran reste
-// utilisable (formulaires classiques).
+// PetitChef : petits conforts facultatifs. Chaque écran fonctionne aussi
+// sans script, avec des formulaires classiques.
 'use strict';
 
-// Confirmation avant toute action destructrice : <form data-confirm="…">.
+// Demande de confirmation avant une action irréversible : <form data-confirm>.
 document.addEventListener('submit', (event) => {
-  const message = event.target.dataset.confirm;
-  if (message && !window.confirm(message)) {
+  const question = event.target.dataset.confirm;
+  if (question && !window.confirm(question)) {
     event.preventDefault();
     event.stopImmediatePropagation();
   }
 }, true);
 
-// Glisser-déposer d'une liste ordonnée [data-sortable] (rayons d'un
-// magasin) : l'ordre est envoyé au serveur ; sans script, les boutons
-// monter et descendre font le même travail.
+// Le menu « Affichage » se referme avec Échap ou en cliquant ailleurs.
+const prefs = document.querySelector('.prefs');
+if (prefs) {
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && prefs.open) {
+      prefs.open = false;
+      prefs.querySelector('summary').focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (prefs.open && !prefs.contains(event.target)) prefs.open = false;
+  });
+}
+
+// Rayons d'un magasin : glisser-déposer pour réordonner (les boutons
+// monter et descendre font de même, au clavier et sans script).
 for (const list of document.querySelectorAll('[data-sortable]')) {
-  let dragged = null;
+  let moving = null;
   for (const item of list.querySelectorAll('li[data-id]')) {
     item.draggable = true;
-    item.addEventListener('dragstart', () => { dragged = item; });
+    item.addEventListener('dragstart', () => { moving = item; });
     item.addEventListener('dragover', (event) => { event.preventDefault(); item.classList.add('is-drop'); });
     item.addEventListener('dragleave', () => item.classList.remove('is-drop'));
-    item.addEventListener('drop', (event) => {
+    item.addEventListener('drop', async (event) => {
       event.preventDefault();
       item.classList.remove('is-drop');
-      if (!dragged || dragged === item) return;
-      const after = dragged.compareDocumentPosition(item) & Node.DOCUMENT_POSITION_FOLLOWING;
-      item.parentNode.insertBefore(dragged, after ? item.nextSibling : item);
+      if (!moving || moving === item) return;
+      const below = moving.compareDocumentPosition(item) & Node.DOCUMENT_POSITION_FOLLOWING;
+      item.parentNode.insertBefore(moving, below ? item.nextSibling : item);
       const order = [...list.querySelectorAll('li[data-id]')].map((li) => li.dataset.id).join(',');
-      fetch(list.dataset.sortable, { method: 'POST', headers: { 'HX-Request': 'true' }, body: new URLSearchParams({ order }) })
-        .then(() => window.location.reload());
+      await fetch(list.dataset.sortable, { method: 'POST', headers: { 'HX-Request': 'true' }, body: new URLSearchParams({ order }) });
+      window.location.reload();
     });
   }
 }
 
-// Impression (menu de la semaine, liste de courses) : <button data-print>.
-for (const button of document.querySelectorAll('[data-print]')) {
-  button.addEventListener('click', () => window.print());
-}
-
-// Copier la liste de courses en texte (messagerie) : <button data-copy>.
-if (navigator.clipboard) {
-  for (const button of document.querySelectorAll('[data-copy]')) {
-    button.hidden = false;
-    button.addEventListener('click', async () => {
-      const text = await (await fetch(button.dataset.copy)).text();
-      await navigator.clipboard.writeText(text);
-      button.textContent = 'Liste copiée';
-    });
-  }
-}
-
-// Échange de deux plats du menu par glisser-déposer (ordinateur) ; sur
-// mobile et sans script, le bouton « Échanger » du repas fait de même.
+// Menus : échanger deux plats par glisser-déposer (sur ordinateur).
 for (const week of document.querySelectorAll('[data-swap]')) {
-  let dragged = null;
-  for (const dish of week.querySelectorAll('.dish[data-entry]')) {
-    if (dish.classList.contains('is-cooked')) continue;
+  let moving = null;
+  for (const dish of week.querySelectorAll('.dish[data-entry]:not(.is-cooked)')) {
     dish.draggable = true;
-    dish.addEventListener('dragstart', () => { dragged = dish; });
-    dish.addEventListener('dragover', (event) => { if (dragged && dragged !== dish) { event.preventDefault(); dish.classList.add('is-drop'); } });
+    dish.addEventListener('dragstart', () => { moving = dish; });
+    dish.addEventListener('dragover', (event) => { if (moving && moving !== dish) { event.preventDefault(); dish.classList.add('is-drop'); } });
     dish.addEventListener('dragleave', () => dish.classList.remove('is-drop'));
     dish.addEventListener('drop', async (event) => {
       event.preventDefault();
       dish.classList.remove('is-drop');
-      if (!dragged || dragged === dish) return;
-      await fetch(`${week.dataset.swap}/${dragged.dataset.entry}/echanger`, {
+      if (!moving || moving === dish) return;
+      await fetch(`${week.dataset.swap}/${moving.dataset.entry}/echanger`, {
         method: 'POST', headers: { 'HX-Request': 'true' }, body: new URLSearchParams({ with: dish.dataset.entry }),
       });
       window.location.reload();
+    });
+  }
+}
+
+// Imprimer (menu, liste) et copier la liste de courses.
+for (const button of document.querySelectorAll('[data-print]')) {
+  button.addEventListener('click', () => window.print());
+}
+if (navigator.clipboard) {
+  for (const button of document.querySelectorAll('[data-copy]')) {
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(await (await fetch(button.dataset.copy)).text());
+      button.textContent = 'Liste copiée ✓';
     });
   }
 }

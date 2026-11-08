@@ -1,6 +1,8 @@
 {{define "content"}}
 <section class="card auth-card" aria-labelledby="titre">
-  <h1 id="titre">Connexion</h1>
+  <div class="welcome">{{template "logo"}}</div>
+  <h1 id="titre">Bon retour !</h1>
+  <p class="muted">Connectez-vous pour retrouver menus, stock et courses du foyer.</p>
   {{with .Data.Error}}<p class="alert" role="alert">{{.}}</p>{{end}}
   <form class="form" method="post" action="/login">
     <div class="field">
@@ -13,5 +15,6 @@
     </div>
     <button class="btn btn-primary" type="submit">Se connecter</button>
   </form>
+  <p class="hint">Mot de passe oublié ? Un autre membre du foyer peut vous en donner un nouveau, ou l'administrateur du serveur avec la commande <code>petitchef reset-password</code>.</p>
 </section>
 {{end}}

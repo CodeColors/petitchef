@@ -51,10 +51,10 @@ func (s *Service) Session(ctx context.Context, token string) (Session, error) {
 	sess := Session{Token: token}
 	var expires int64
 	err := s.db.R.QueryRowContext(ctx, `
-		SELECT u.id, u.username, u.theme, s.expires_at
+		SELECT u.id, u.username, u.theme, u.text_size = 'grand', s.expires_at
 		FROM sessions s JOIN users u ON u.id = s.user_id
 		WHERE s.token_hash = ? AND s.expires_at > ?`, hash, now.Unix(),
-	).Scan(&sess.User.ID, &sess.User.Username, &sess.User.Theme, &expires)
+	).Scan(&sess.User.ID, &sess.User.Username, &sess.User.Theme, &sess.User.LargeText, &expires)
 	if errors.Is(err, sql.ErrNoRows) {
 		return Session{}, ErrNoSession
 	}

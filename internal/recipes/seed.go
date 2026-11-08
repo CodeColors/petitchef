@@ -11,6 +11,7 @@ import (
 	"go.yaml.in/yaml/v3"
 
 	"github.com/codecolors/petitchef/internal/catalog"
+	"github.com/codecolors/petitchef/internal/platform/db"
 )
 
 // yamlRecipe est une recette décrite en YAML (jeu d'essai des tests, voir
@@ -96,23 +97,14 @@ func (s *Service) yamlInput(ctx context.Context, yr yamlRecipe) (Input, error) {
 func (s *Service) PurgeSeed(ctx context.Context) (int, error) {
 	total := 0
 	for {
-		var ids []int64
-		rows, err := s.db.R.QueryContext(ctx, `SELECT r.id FROM recipes r WHERE r.origin = 'seed' AND NOT r.modified
+		ids, err := db.Collect(ctx, s.db.R, func(r db.Scanner) (int64, error) {
+			var id int64
+			return id, r.Scan(&id)
+		}, `SELECT r.id FROM recipes r WHERE r.origin = 'seed' AND NOT r.modified
 			AND NOT EXISTS (SELECT 1 FROM menu_entries e WHERE e.recipe_id = r.id)
 			AND NOT EXISTS (SELECT 1 FROM saved_menu_entries e WHERE e.recipe_id = r.id)
 			AND NOT EXISTS (SELECT 1 FROM recipe_ingredients i WHERE i.sub_recipe_id = r.id)`)
 		if err != nil {
-			return total, err
-		}
-		for rows.Next() {
-			var id int64
-			if err := rows.Scan(&id); err != nil {
-				_ = rows.Close()
-				return total, err
-			}
-			ids = append(ids, id)
-		}
-		if err := rows.Close(); err != nil {
 			return total, err
 		}
 		if len(ids) == 0 {
