@@ -110,6 +110,10 @@
 {{- else if eq . "check"}}<path d="m5 12.5 4.5 4.5L19 7.5"/>
 {{- else if eq . "search"}}<circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.4-4.4"/>
 {{- else if eq . "leaf"}}<path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19l7-7"/>
+{{- else if eq . "trash"}}<path d="M4.5 7h15M10 4h4M6.5 7l1 13h9l1-13M10 11v5.5M14 11v5.5"/>
+{{- else if eq . "lock"}}<rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/>
+{{- else if eq . "select"}}<rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8 12.5 3 3 5-6"/>
+{{- else if eq . "print"}}<path d="M7 9V4h10v5M7 17H5a1.5 1.5 0 0 1-1.5-1.5v-5A1.5 1.5 0 0 1 5 9h14a1.5 1.5 0 0 1 1.5 1.5v5A1.5 1.5 0 0 1 19 17h-2"/><rect x="7" y="14" width="10" height="6" rx="1"/>
 {{- else if eq . "clock"}}<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>
 {{- end}}</svg>{{end}}
 
@@ -174,14 +178,20 @@
    (contenu supplémentaire facultatif). */}}
 {{define "recipe-card"}}
 {{- $r := .R}}
-<li class="item">
+<li class="item{{if .Select}} is-pickable{{end}}">
   {{- with $r.Photo}}<img class="item-photo" src="/photos/{{.}}" alt="" loading="lazy">{{end}}
   <div class="item-head">
     <a class="item-title" href="/recettes/{{$r.ID}}">{{$r.Title}}</a>
     {{template "grade" $r.Grade}}
   </div>
   <p class="item-meta">{{$r.Types.Labels}} · {{$r.TotalMin}} min{{if $r.Stars}} · {{decimal (mul100 (int64 $r.Stars))}}/5{{end}}{{if $r.Favorite}} · favori{{end}}</p>
-  {{- with .Extra}}{{.}}{{end}}
+  {{- if .Select}}
+  <label class="check item-pick"><input type="checkbox" name="recette" value="{{$r.ID}}" form="bulk-recettes"{{if .Checked}} checked{{end}}> Sélectionner<span class="sr-only"> « {{$r.Title}} »</span></label>
+  {{- else if .Manage}}
+  <form class="item-tools" method="post" action="/recettes/{{$r.ID}}/supprimer" data-confirm="Supprimer « {{$r.Title}} » ? Elle sera aussi retirée de tous les menus.">
+    <button class="btn btn-icon btn-quiet" title="Supprimer">{{template "icon" "trash"}}<span class="sr-only">Supprimer « {{$r.Title}} »</span></button>
+  </form>
+  {{- end}}
 </li>
 {{- end}}
 

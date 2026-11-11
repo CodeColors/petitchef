@@ -1,44 +1,72 @@
 {{define "content"}}
+{{- $d := .Data}}
 <div class="page-head">
   <h1>Menus</h1>
   <div class="actions no-print">
-    <a class="btn btn-primary" href="/menus/generer?du={{.Data.Monday}}">Générer</a>
-    <a class="btn" href="/menus/imprimer?semaine={{.Data.Monday}}">Imprimer</a>
-    <a class="btn" href="/courses">Liste de courses</a>
+    {{- if not $d.Select}}
+    <a class="btn btn-primary" href="/menus/generer?du={{$d.Monday}}">Générer</a>
+    <details class="popup" data-popup>
+      <summary class="btn btn-ghost">{{template "icon" "more"}} Plus</summary>
+      <ul class="popup-panel" role="list">
+        {{- if $d.HasAny}}<li><a href="/menus?semaine={{$d.Monday}}&amp;selection=1">{{template "icon" "select"}} Sélectionner des repas</a></li>{{end}}
+        <li><a href="/courses">{{template "icon" "cart"}} Liste de courses</a></li>
+        <li><a href="/menus/imprimer?semaine={{$d.Monday}}">{{template "icon" "print"}} Imprimer la semaine</a></li>
+        <li><a href="/menus/modeles">{{template "icon" "book"}} Menus enregistrés et historique</a></li>
+        <li><a href="/creneaux">{{template "icon" "clock"}} Créneaux et semaines types</a></li>
+      </ul>
+    </details>
+    {{- end}}
   </div>
 </div>
-<nav class="tabs no-print" aria-label="Menus">
-  <a href="/menus" aria-current="page">Semaine</a>
-  <a href="/menus/modeles">Menus enregistrés et historique</a>
-  <a href="/creneaux">Créneaux et semaines types</a>
-</nav>
 <div class="week-nav no-print">
-  <a class="btn" href="/menus?semaine={{.Data.Prev}}" aria-label="Semaine précédente">←</a>
-  <h2>Semaine du {{dayLabel .Data.Monday}}</h2>
-  <a class="btn" href="/menus?semaine={{.Data.Next}}" aria-label="Semaine suivante">→</a>
+  <a class="btn" href="/menus?semaine={{$d.Prev}}{{if $d.Select}}&amp;selection=1{{end}}" aria-label="Semaine précédente">←</a>
+  <h2>Semaine du {{dayLabel $d.Monday}}</h2>
+  <a class="btn" href="/menus?semaine={{$d.Next}}{{if $d.Select}}&amp;selection=1{{end}}" aria-label="Semaine suivante">→</a>
 </div>
-{{- if .Data.HasMeals}}
-{{template "week-summary" .Data.Summary}}
+{{- if $d.Select}}
+<p class="hint">Cochez les repas à supprimer, puis validez en bas de l'écran.</p>
+{{- else if $d.HasMeals}}
+{{template "week-summary" $d.Summary}}
 {{- else}}
 <div class="card empty">
   <p>Aucun menu pour cette semaine.</p>
-  <a class="btn btn-primary" href="/menus/generer?du={{.Data.Monday}}">Générer le menu</a>
+  <a class="btn btn-primary" href="/menus/generer?du={{$d.Monday}}">Générer le menu</a>
 </div>
 {{- end}}
-<ol class="week" data-swap="/menus/plats">
-  {{- range .Data.Days}}
+<ol class="week{{if $d.Select}} is-selecting{{end}}" data-swap="/menus/plats">
+  {{- range $d.Days}}{{$day := .}}
   <li class="day{{if .Today}} is-today{{end}}">
     <h2>{{dayLabel .Date}}{{if .Today}} <span class="tag">aujourd'hui</span>{{end}}</h2>
     {{- range .Meals}}{{$m := .}}
     <section class="meal" aria-label="{{.SlotName}}">
       <div class="meal-head">
-        <a class="meal-slot" href="/menus/repas/{{.ID}}">{{.SlotName}}</a>
-        <span class="muted">{{.Format.Label}}</span>
+        {{- if $d.Select}}
+        <label class="check meal-pick"><input type="checkbox" name="repas" value="{{.ID}}" form="bulk"{{if $d.SelectAll}} checked{{end}}> {{.SlotName}}<span class="sr-only"> du {{dayLabel $day.Date}}</span></label>
+        {{- else}}
+        <a class="meal-slot" href="/menus/repas/{{.ID}}">{{.SlotName}}<span class="sr-only"> du {{dayLabel $day.Date}} : modifier</span></a>
+        <form class="no-print" method="post" action="/menus/repas/supprimer" data-confirm="Supprimer le {{lower .SlotName}} du {{dayLabel $day.Date}} ?">
+          <input type="hidden" name="repas" value="{{.ID}}"><input type="hidden" name="semaine" value="{{$d.Monday}}">
+          <button class="btn btn-icon btn-quiet" title="Supprimer ce repas">{{template "icon" "trash"}}<span class="sr-only">Supprimer le {{lower .SlotName}} du {{dayLabel $day.Date}}</span></button>
+        </form>
+        {{- end}}
       </div>
       {{- if eq .Format "aucun"}}<p class="meal-off">Pas de repas à la maison</p>
       {{- else}}
-      {{- range .Entries}}{{template "dish" dict "E" . "Meal" $m "Back" (printf "/menus?semaine=%s" $.Data.Monday)}}{{end}}
-      {{- if lt (len .Entries) (len .Format.Roles)}}<a class="btn btn-small btn-ghost no-print" href="/menus/repas/{{.ID}}?alternatives=tout">Compléter</a>{{end}}
+      <ul class="dishes">
+        {{- range .Entries}}
+        <li class="dish-line{{if .Locked}} is-locked{{end}}{{if eq .Status "cuisine"}} is-cooked{{end}}" data-entry="{{.ID}}">
+          {{- if gt (len $m.Entries) 1}}<span class="dish-role">{{.Role.Label}}</span>{{end}}
+          <span class="dish-name">
+            {{- if .RecipeID}}<a href="/recettes/{{.RecipeID}}?portions={{decimal .Portions}}">{{.Title}}</a>{{else}}{{.Title}}{{end}}
+            {{- if eq .Status "cuisine"}} <span class="state ok">{{template "icon" "check"}}<span class="sr-only">cuisiné</span></span>
+            {{- else if .Locked}} <span class="state">{{template "icon" "lock"}}<span class="sr-only">verrouillé</span></span>{{end}}
+            {{- with .Grade}} {{template "grade" .}}{{end}}
+            {{- if .IsLeftover}} <span class="tag">restes</span>{{else if eq .Status "reporte"}} <span class="tag">reporté</span>{{end}}
+          </span>
+        </li>
+        {{- end}}
+      </ul>
+      {{- if and (not $d.Select) (lt (len .Entries) (len .Format.Roles))}}<a class="meal-fill no-print" href="/menus/repas/{{.ID}}?alternatives=tout">{{template "icon" "plus"}} Compléter</a>{{end}}
       {{- end}}
     </section>
     {{- else}}
@@ -47,11 +75,32 @@
   </li>
   {{- end}}
 </ol>
+{{- if $d.Select}}
+<form id="bulk" class="bulk-bar" method="post" action="/menus/repas/supprimer" data-confirm="Supprimer les repas sélectionnés ? Les plats déjà cuisinés sont conservés." data-bulk>
+  <input type="hidden" name="semaine" value="{{$d.Monday}}">
+  <div class="bulk-top">
+    <p class="bulk-count" aria-live="polite"><span data-bulk-count>Cochez les repas à supprimer.</span></p>
+    <a class="btn btn-small btn-ghost" href="/menus?semaine={{$d.Monday}}">Terminer</a>
+  </div>
+  <div class="bulk-actions">
+    <button class="btn btn-danger">{{template "icon" "trash"}} Supprimer<span class="sr-only"> la sélection</span></button>
+    <a class="btn btn-small btn-ghost" href="/menus?semaine={{$d.Monday}}&amp;selection=tout">Tout cocher</a>
+  </div>
+</form>
+{{- else}}<p class="hint no-print">Touchez un repas pour changer, verrouiller ou marquer un plat comme cuisiné.</p>{{end}}
 {{end}}
 
 {{define "week-summary"}}
-<section class="card" aria-labelledby="bilan">
-  <h2 id="bilan">Bilan de la semaine</h2>
+<details class="week-summary card">
+  <summary>
+    <span class="week-line">
+      {{- if .Grade}}<span>{{template "grade" .Grade}} indice moyen</span>{{end}}
+      <span>{{plural .Dishes "plat" "plats"}}</span>
+      <span>{{.StockShare}} % déjà en stock</span>
+      {{- if .Cost}}<span>≈ {{euros .Cost}}</span>{{end}}
+    </span>
+    <span class="week-more">Détail<span class="sr-only"> du bilan de la semaine</span></span>
+  </summary>
   <dl class="figures">
     {{- if .Grade}}<div><dt>Indice moyen</dt><dd>{{template "grade" .Grade}}</dd></div>{{end}}
     <div><dt>Plats</dt><dd>{{.Dishes}}</dd></div>
@@ -61,5 +110,5 @@
   {{- if .Proteins}}
   <p class="hint">Plats principaux : {{$first := true}}{{range $k, $v := .Proteins}}{{if not $first}} · {{end}}{{$first = false}}{{$k}} {{$v}}{{end}}.</p>
   {{- end}}
-</section>
+</details>
 {{end}}

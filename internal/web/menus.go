@@ -31,8 +31,12 @@ type weekView struct {
 	Next     calendar.Date
 	Days     []dayView
 	Summary  planner.Summary
-	HasMeals bool
+	HasMeals bool // au moins un plat
+	HasAny   bool // au moins un repas
 	Print    bool
+	// Mode sélection : cases à cocher pour supprimer plusieurs repas.
+	Select    bool
+	SelectAll bool
 }
 
 func (v weekView) bodyClass() string {
@@ -48,11 +52,13 @@ func (s *Server) weekData(r *http.Request) (weekView, error) {
 	if d, err := calendar.Parse(r.URL.Query().Get("semaine")); err == nil {
 		mon = menus.Monday(d)
 	}
-	v := weekView{Monday: mon, Prev: mon.AddDays(-7), Next: mon.AddDays(7)}
+	sel := r.URL.Query().Get("selection")
+	v := weekView{Monday: mon, Prev: mon.AddDays(-7), Next: mon.AddDays(7), Select: sel != "", SelectAll: sel == "tout"}
 	meals, err := s.Menus.Range(r.Context(), mon, mon.AddDays(7))
 	if err != nil {
 		return v, err
 	}
+	v.HasAny = len(meals) > 0
 	for i := range 7 {
 		d := mon.AddDays(i)
 		day := dayView{Date: d, Today: d == today}
@@ -81,6 +87,33 @@ func (s *Server) menusPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	s.render(w, r, http.StatusOK, "menus", "Menus", v)
+}
+
+// deleteMeals supprime un ou plusieurs repas (champ « repas » répété).
+func (s *Server) deleteMeals(w http.ResponseWriter, r *http.Request) {
+	if parseForm(w, r) != nil {
+		s.renderError(w, r, http.StatusBadRequest, "Formulaire illisible.")
+		return
+	}
+	back := "/menus"
+	if d, err := calendar.Parse(r.PostFormValue("semaine")); err == nil {
+		back += "?semaine=" + string(menus.Monday(d))
+	}
+	ids := formIDs(r.PostForm["repas"])
+	if len(ids) == 0 {
+		s.redirect(w, r, back+"&selection=1", "Cochez au moins un repas.")
+		return
+	}
+	removed, kept, err := s.Menus.DeleteMeals(r.Context(), ids)
+	if err != nil {
+		s.failed(w, r, err, back)
+		return
+	}
+	msg := plural(removed, "repas supprimé", "repas supprimés") + "."
+	if kept > 0 {
+		msg = "Repas vidés, sauf " + plural(kept, "plat déjà cuisiné, conservé", "plats déjà cuisinés, conservés") + "."
+	}
+	s.redirect(w, r, back, msg)
 }
 
 func (s *Server) printMenu(w http.ResponseWriter, r *http.Request) {

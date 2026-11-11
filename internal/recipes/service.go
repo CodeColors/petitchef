@@ -653,24 +653,56 @@ func (s *Service) SaveGrid(ctx context.Context, g Grid) error {
 	return s.RefreshAll(ctx)
 }
 
-// Delete supprime une recette, sauf si une autre l'utilise.
+// Delete supprime une recette ; voir DeleteMany.
 func (s *Service) Delete(ctx context.Context, id int64) error {
-	return s.db.Tx(ctx, func(tx *sql.Tx) error {
-		var title string
-		err := tx.QueryRowContext(ctx, `SELECT r.title FROM recipe_ingredients i JOIN recipes r ON r.id = i.recipe_id WHERE i.sub_recipe_id = ? LIMIT 1`, id).Scan(&title)
+	_, err := s.DeleteMany(ctx, []int64{id})
+	return err
+}
+
+// DeleteMany supprime des recettes et les retire de tous les menus, passés
+// comme à venir (plats prévus, cuisinés, restes, menus enregistrés). Une
+// recette utilisée comme ingrédient par une recette conservée ne peut pas
+// être supprimée. Renvoie les photos à effacer.
+func (s *Service) DeleteMany(ctx context.Context, ids []int64) ([]string, error) {
+	if len(ids) == 0 {
+		return nil, nil
+	}
+	list, err := json.Marshal(ids)
+	if err != nil {
+		return nil, err
+	}
+	var photos []string
+	err = s.db.Tx(ctx, func(tx *sql.Tx) error {
+		var title, used string
+		err := tx.QueryRowContext(ctx, `SELECT r.title, u.title FROM recipe_ingredients i
+			JOIN recipes r ON r.id = i.recipe_id JOIN recipes u ON u.id = i.sub_recipe_id
+			WHERE i.sub_recipe_id IN (SELECT value FROM json_each(?1)) AND i.recipe_id NOT IN (SELECT value FROM json_each(?1)) LIMIT 1`,
+			string(list)).Scan(&title, &used)
 		if err == nil {
-			return validation.Errorf("Cette recette est utilisée par « %s » : retirez-la d'abord de cette recette.", title)
+			return validation.Errorf("« %s » est utilisée par « %s » : retirez-la d'abord de cette recette, ou supprimez les deux.", used, title)
 		}
 		if !errors.Is(err, sql.ErrNoRows) {
 			return err
 		}
-		if _, err := tx.ExecContext(ctx, `DELETE FROM recipes_fts WHERE rowid = ?`, id); err != nil {
+		var raw string
+		if err := tx.QueryRowContext(ctx, `SELECT json_group_array(photo) FROM recipes WHERE photo != ''
+			AND id IN (SELECT value FROM json_each(?))`, string(list)).Scan(&raw); err != nil {
 			return err
 		}
-		res, err := tx.ExecContext(ctx, `DELETE FROM recipes WHERE id = ?`, id)
-		if db.IsForeignKeyViolation(err) {
-			return validation.Error("Cette recette figure dans des menus : elle ne peut pas être supprimée.")
+		if err := json.Unmarshal([]byte(raw), &photos); err != nil {
+			return err
 		}
+		for _, q := range []string{
+			// Restes prévus à partir de ces plats, puis les plats eux-mêmes.
+			`DELETE FROM menu_entries WHERE leftovers_from IN (SELECT id FROM menu_entries WHERE recipe_id IN (SELECT value FROM json_each(?)))`,
+			`DELETE FROM menu_entries WHERE recipe_id IN (SELECT value FROM json_each(?))`,
+			`DELETE FROM recipes_fts WHERE rowid IN (SELECT value FROM json_each(?))`,
+		} {
+			if _, err := tx.ExecContext(ctx, q, string(list)); err != nil {
+				return err
+			}
+		}
+		res, err := tx.ExecContext(ctx, `DELETE FROM recipes WHERE id IN (SELECT value FROM json_each(?))`, string(list))
 		if err != nil {
 			return err
 		}
@@ -679,6 +711,7 @@ func (s *Service) Delete(ctx context.Context, id int64) error {
 		}
 		return nil
 	})
+	return photos, err
 }
 
 // InputFrom reconstitue la saisie d'une recette existante (duplication,

@@ -515,3 +515,40 @@ func clearRange(ctx context.Context, tx *sql.Tx, from, to calendar.Date) error {
 		AND meal_id IN (SELECT id FROM meals WHERE date >= ? AND date < ?)`, from, to)
 	return err
 }
+
+// DeleteMeals retire des repas du menu, avec leurs plats et les restes
+// prévus ailleurs à partir de ces plats. Les plats déjà cuisinés sont
+// conservés (le stock a été décompté) : leur repas reste en place. Renvoie
+// le nombre de repas retirés et de plats cuisinés conservés.
+func (s *Service) DeleteMeals(ctx context.Context, ids []int64) (removed, kept int, err error) {
+	if len(ids) == 0 {
+		return 0, 0, nil
+	}
+	list, err := json.Marshal(ids)
+	if err != nil {
+		return 0, 0, err
+	}
+	err = s.db.Tx(ctx, func(tx *sql.Tx) error {
+		if err := tx.QueryRowContext(ctx, `SELECT count(*) FROM menu_entries WHERE status = 'cuisine'
+			AND meal_id IN (SELECT value FROM json_each(?))`, string(list)).Scan(&kept); err != nil {
+			return err
+		}
+		if _, err := tx.ExecContext(ctx, `DELETE FROM menu_entries WHERE status != 'cuisine' AND leftovers_from IN (
+			SELECT id FROM menu_entries WHERE meal_id IN (SELECT value FROM json_each(?)) AND status != 'cuisine')`, string(list)); err != nil {
+			return err
+		}
+		if _, err := tx.ExecContext(ctx, `DELETE FROM menu_entries WHERE status != 'cuisine'
+			AND meal_id IN (SELECT value FROM json_each(?))`, string(list)); err != nil {
+			return err
+		}
+		res, err := tx.ExecContext(ctx, `DELETE FROM meals WHERE id IN (SELECT value FROM json_each(?))
+			AND NOT EXISTS (SELECT 1 FROM menu_entries e WHERE e.meal_id = meals.id)`, string(list))
+		if err != nil {
+			return err
+		}
+		n, _ := res.RowsAffected()
+		removed = int(n)
+		return nil
+	})
+	return removed, kept, err
+}

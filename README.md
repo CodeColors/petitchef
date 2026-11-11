@@ -23,13 +23,15 @@ NAS Synology, un mini-PC ou un Raspberry Pi, à côté de
   l'échelle, composées, notées par chaque membre, avec un **indice
   d'équilibre de A à E** expliqué ; ingrédients saisis ligne à ligne
   (quantité, unité de cuisine, produit cherché dans le catalogue, « Autre »
-  pour le reste) ou collés en liste, import et export JSON et schema.org. La base de recettes
+  pour le reste) ou collés en liste ; suppression à l'unité ou en
+  sélection multiple (la recette est aussi retirée des menus), import et export JSON et schema.org. La base de recettes
   démarre vide : ce sont les vôtres.
 - **Menus** générés en moins d'une seconde pour 1 à 8 semaines, au format
   choisi pour chaque repas (plat seul, entrée + plat, plat + dessert,
   complet), en respectant allergies et régimes (option « sans poisson ni
   fruits de mer » comprise), en privilégiant ce qui périme ; chaque choix
-  est expliqué ; verrouiller, régénérer, échanger, restes.
+  est expliqué ; verrouiller, régénérer, échanger, restes ; supprimer un
+  repas ou plusieurs d'un coup.
 - **Liste de courses** : ce qui manque pour le menu et ce qui passera sous
   le minimum avant les courses suivantes, arrondi aux conditionnements, dans
   l'ordre des rayons de votre magasin ; mode magasin utilisable **hors

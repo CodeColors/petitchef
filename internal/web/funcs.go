@@ -23,6 +23,7 @@ func templateFuncs(static assets) template.FuncMap {
 		"euros":      money.Format,
 		"navActive":  navActive,
 		"plural":     plural,
+		"lower":      strings.ToLower,
 		"date":       func(d calendar.Date) string { return d.Format() },
 		"datetime":   func(t time.Time) string { return t.In(time.Local).Format("02/01/2006 à 15h04") },
 		"fileSize":   fileSize,

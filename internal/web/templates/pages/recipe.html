@@ -91,8 +91,9 @@
     <a class="btn" href="/recettes/{{$r.ID}}/export/recette.json">Exporter (JSON)</a>
     <a class="btn" href="/recettes/{{$r.ID}}/export/schema.json">Exporter (schema.org)</a>
   </div>
-  <form class="danger-zone" method="post" action="/recettes/{{$r.ID}}/supprimer" data-confirm="Supprimer définitivement « {{$r.Title}} » ?">
-    <button class="btn btn-danger">Supprimer la recette</button>
+  <form class="danger-zone" method="post" action="/recettes/{{$r.ID}}/supprimer" data-confirm="Supprimer définitivement « {{$r.Title}} » ? Elle sera aussi retirée de tous les menus, passés et à venir.">
+    <button class="btn btn-danger">{{template "icon" "trash"}} Supprimer la recette</button>
+    <p class="hint">Elle est aussi retirée de tous les menus, passés et à venir.</p>
   </form>
 </section>
 {{end}}

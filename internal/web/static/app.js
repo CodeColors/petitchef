@@ -11,17 +11,23 @@ document.addEventListener('submit', (event) => {
   }
 }, true);
 
-// Le menu « Affichage » se referme avec Échap ou en cliquant ailleurs.
-const prefs = document.querySelector('.prefs');
-if (prefs) {
+// Menus déroulants (« Affichage », « Plus ») : un seul ouvert à la fois,
+// fermés avec Échap ou en cliquant ailleurs.
+const popups = [...document.querySelectorAll('.prefs, [data-popup]')];
+if (popups.length) {
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && prefs.open) {
-      prefs.open = false;
-      prefs.querySelector('summary').focus();
+    if (event.key !== 'Escape') return;
+    for (const p of popups) {
+      if (p.open) {
+        p.open = false;
+        p.querySelector('summary').focus();
+      }
     }
   });
   document.addEventListener('click', (event) => {
-    if (prefs.open && !prefs.contains(event.target)) prefs.open = false;
+    for (const p of popups) {
+      if (p.open && !p.contains(event.target)) p.open = false;
+    }
   });
 }
 
@@ -50,7 +56,8 @@ for (const list of document.querySelectorAll('[data-sortable]')) {
 // Menus : échanger deux plats par glisser-déposer (sur ordinateur).
 for (const week of document.querySelectorAll('[data-swap]')) {
   let moving = null;
-  for (const dish of week.querySelectorAll('.dish[data-entry]:not(.is-cooked)')) {
+  if (week.classList.contains('is-selecting')) continue;
+  for (const dish of week.querySelectorAll('[data-entry]:not(.is-cooked)')) {
     dish.draggable = true;
     dish.addEventListener('dragstart', () => { moving = dish; });
     dish.addEventListener('dragover', (event) => { if (moving && moving !== dish) { event.preventDefault(); dish.classList.add('is-drop'); } });
@@ -129,4 +136,26 @@ if (ingList && ingTemplate) {
     const after = ingList.querySelectorAll(':scope > .ing');
     after[Math.min(index, after.length - 1)].querySelector('input').focus();
   });
+}
+
+// Sélection multiple : nombre d'éléments cochés dans la barre d'action.
+for (const bar of document.querySelectorAll('[data-bulk]')) {
+  const count = bar.querySelector('[data-bulk-count]');
+  const initial = count.textContent;
+  const boxes = () => document.querySelectorAll(`input[type=checkbox][form="${bar.id}"]`);
+  const update = () => {
+    const n = [...boxes()].filter((b) => b.checked).length;
+    count.textContent = n === 0 ? initial : `${n} sélectionné${n > 1 ? 's' : ''}`;
+  };
+  document.addEventListener('change', (event) => { if (event.target.form === bar) update(); });
+  document.addEventListener('htmx:afterSwap', update);
+  update();
+  // Avant la demande de confirmation (écouteur posé sur document).
+  window.addEventListener('submit', (event) => {
+    if (event.target === bar && ![...boxes()].some((b) => b.checked)) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      count.textContent = 'Cochez au moins un élément.';
+    }
+  }, true);
 }

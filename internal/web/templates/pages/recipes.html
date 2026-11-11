@@ -2,10 +2,14 @@
 <div class="page-head">
   <h1>Recettes</h1>
   <div class="actions">
+    {{- if not .Data.Select}}
     <a class="btn btn-primary" href="/recettes/nouvelle">Nouvelle recette</a>
     <a class="btn" href="/ce-soir">Que cuisiner ce soir ?</a>
+    <a class="btn btn-ghost" href="/recettes?selection=1">{{template "icon" "select"}} Sélectionner</a>
+    {{- end}}
   </div>
 </div>
+
 <form class="filters" method="get" action="/recettes" role="search" hx-get="/recettes" hx-target="#resultats" hx-trigger="input changed delay:250ms from:#q, change" hx-push-url="true">
   <div class="filter-grid">
     <div class="field"><label for="q">Rechercher</label><input id="q" name="q" type="search" value="{{.Data.Filter.Query}}" placeholder="Titre, ingrédient, étiquette" autocomplete="off"></div>
@@ -56,17 +60,31 @@
     <label class="check"><input type="checkbox" name="saison" value="1"{{if .Data.Season}} checked{{end}}> De saison</label>
     <label class="check"><input type="checkbox" name="favoris" value="1"{{if .Data.Filter.Favorites}} checked{{end}}> Favoris</label>
     <a href="/ce-soir">Faisable avec mon stock</a>
+    {{- if .Data.Select}}<input type="hidden" name="selection" value="1">{{end}}
     <noscript><button class="btn">Filtrer</button></noscript>
   </div>
 </form>
 <div id="resultats" class="results" aria-live="polite">{{template "results" .}}</div>
+{{- if .Data.Select}}
+<form id="bulk-recettes" class="bulk-bar" method="post" action="/recettes/supprimer" data-confirm="Supprimer les recettes sélectionnées ? Elles seront aussi retirées de tous les menus, passés et à venir." data-bulk>
+  <input type="hidden" name="retour" value="/recettes?{{.Data.Query}}">
+  <div class="bulk-top">
+    <p class="bulk-count" aria-live="polite"><span data-bulk-count>Cochez les recettes à supprimer.</span></p>
+    <a class="btn btn-small btn-ghost" href="/recettes">Terminer</a>
+  </div>
+  <div class="bulk-actions">
+    <button class="btn btn-danger">{{template "icon" "trash"}} Supprimer<span class="sr-only"> la sélection</span></button>
+    <a class="btn btn-small btn-ghost" href="/recettes?{{.Data.AllQuery}}">Tout cocher<span class="sr-only"> sur cette page</span></a>
+  </div>
+</form>
+{{- end}}
 <p class="actions"><a href="/recettes/importer">Importer des recettes</a> <a href="/recettes/export.json">Exporter toutes les recettes (JSON)</a></p>
 {{end}}
 
 {{define "results"}}
 <p class="summary">{{plural .Data.Page.Total "recette" "recettes"}}</p>
 {{- if .Data.Page.Items}}
-<ul class="cards">{{range .Data.Page.Items}}{{template "recipe-card" dict "R" .}}{{end}}</ul>
+<ul class="cards">{{range .Data.Page.Items}}{{template "recipe-card" dict "R" . "Select" $.Data.Select "Checked" $.Data.SelectAll "Manage" true}}{{end}}</ul>
 {{template "pager" dict "Page" .Data.Page "Base" "/recettes" "Query" .Data.Query}}
 {{- else}}
 <div class="card empty"><p>Aucune recette ne correspond.</p><a class="btn btn-primary" href="/recettes/nouvelle">Créer une recette</a></div>

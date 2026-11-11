@@ -129,6 +129,8 @@ const PAGES = () => [
   ['accueil', '/'],
   ['menus', `/menus?semaine=${ids.monday}`],
   ['repas', `/menus/repas/${ids.meal}`],
+  ['menus-selection', `/menus?semaine=${ids.monday}&selection=tout`],
+  ['recettes-selection', '/recettes?selection=1'],
   ['generer', '/menus/generer'],
   ['courses', '/courses'],
   ['magasin', '/courses/magasin'],
@@ -174,7 +176,7 @@ for (const width of WIDTHS) {
           if (width !== 768) {
             await page.screenshot({ path: path.join(SHOTS, `${name}-${width}-${scheme}.png`), fullPage: true });
           }
-          if (width === 1280 || (width === 360 && ['magasin', 'cuisine', 'stock-ajouter', 'menus', 'recette-modifier'].includes(name))) {
+          if (width === 1280 || (width === 360 && ['magasin', 'cuisine', 'stock-ajouter', 'menus', 'recette-modifier', 'menus-selection', 'recettes-selection'].includes(name))) {
             const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
             assert.deepEqual(axe.violations.map((v) => v.id), [],
               `${name} ${width}px ${scheme} : ${JSON.stringify(axe.violations.map((v) => [v.id, v.nodes.slice(0, 3).map((n) => n.target)]))}`);
@@ -334,4 +336,47 @@ test('saisie des ingrédients sans JavaScript', async () => {
   } finally {
     await context.close();
   }
+});
+
+test('suppression de repas et de recettes, à l\'unité et en sélection multiple', async () => {
+  await withPage(360, 'light', async (page) => {
+    page.on('dialog', (dialog) => dialog.accept());
+    const week = `${BASE}/menus?semaine=${ids.monday}`;
+    await page.goto(week);
+    const meals = await page.locator('.meal').count();
+    // Un repas, avec son bouton.
+    await Promise.all([page.waitForNavigation(), page.locator('.meal-head button[title="Supprimer ce repas"]').first().click()]);
+    assert.match(await page.textContent('.flash'), /1 repas supprimé/);
+    assert.equal(await page.locator('.meal').count(), meals - 1);
+    // Plusieurs repas : mode sélection depuis le menu « Plus ».
+    await page.click('.popup > summary');
+    await page.click('text=Sélectionner des repas');
+    const boxes = page.locator('input[name="repas"]');
+    await boxes.nth(0).check();
+    await boxes.nth(1).check();
+    assert.equal(await page.textContent('[data-bulk-count]'), '2 sélectionnés');
+    await checkLayout(page, 'sélection de repas', 'light');
+    await page.screenshot({ path: path.join(SHOTS, 'menus-selection-360-light.png'), fullPage: true });
+    await Promise.all([page.waitForNavigation(), page.click('.bulk-bar .btn-danger')]);
+    assert.match(await page.textContent('.flash'), /2 repas supprimés/);
+    assert.equal(await page.locator('.meal').count(), meals - 3);
+
+    // Une recette au menu, supprimée en sélection multiple : elle disparaît
+    // du menu.
+    const html = await (await page.request.get(week)).text();
+    const [, rid, title] = html.match(/<a href="\/recettes\/(\d+)\?portions=[^"]*">([^<]+)<\/a>/);
+    await page.goto(`${BASE}/recettes?selection=1`);
+    await page.check(`input[name="recette"][value="${rid}"]`);
+    await Promise.all([page.waitForNavigation(), page.click('.bulk-bar .btn-danger')]);
+    assert.match(await page.textContent('.flash'), /1 recette supprimée et retirée des menus/);
+    await page.goto(week);
+    assert.ok(!(await page.textContent('.week')).includes(title.replace('&#39;', "'")), `${title} encore au menu`);
+    // Une recette à l'unité, depuis la liste.
+    await page.goto(`${BASE}/recettes`);
+    const total = async () => Number((await page.textContent('.summary')).match(/\d+/)[0]);
+    const before = await total();
+    await Promise.all([page.waitForNavigation(), page.locator('.item-tools button').first().click()]);
+    assert.match(await page.textContent('.flash'), /supprimée et retirée des menus/);
+    assert.equal(await total(), before - 1);
+  });
 });

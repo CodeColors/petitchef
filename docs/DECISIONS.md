@@ -553,6 +553,42 @@ strictes de **tous** les repas générés (et annule la règle « poisson au
 moins N fois »). Les sauces à base de poisson (nuoc-mâm, Worcestershire)
 sont donc écartées elles aussi.
 
+## Supprimer des repas et des recettes
+
+- **Repas** : bouton « Supprimer ce repas » (icône corbeille, libellé lu
+  par les lecteurs d'écran) sur chaque repas de la semaine, et **mode
+  sélection** (« Plus › Sélectionner des repas », `?selection=1`) avec une
+  case par repas, « Tout cocher » (`?selection=tout`, sans script) et une
+  barre d'action collée en bas de l'écran qui compte la sélection.
+  `menus.DeleteMeals` retire les repas, leurs plats et les restes prévus
+  ailleurs à partir de ces plats. Les **plats déjà cuisinés sont
+  conservés** (le stock a été décompté ; « annuler cuisiné » reste
+  possible) : leur repas reste en place, vidé du reste. Un repas supprimé
+  revient à la prochaine génération (la semaine type le prévoit).
+- **Recettes** : corbeille sur chaque carte de la liste, bouton de la
+  fiche, et mode sélection (« Sélectionner », cases sur les cartes,
+  « Tout cocher » pour la page). `recipes.DeleteMany` supprime en une
+  transaction et **retire les recettes de tous les menus**, passés comme à
+  venir : plats prévus, cuisinés et restes, menus enregistrés (les
+  statistiques ne les comptent donc plus). Une recette utilisée comme
+  ingrédient d'une recette conservée reste protégée ; supprimer les deux
+  ensemble est permis. Le stock « fait maison » déjà rangé est conservé.
+- Chaque suppression demande confirmation (texte explicite sur les
+  menus) ; sans JavaScript, elle s'applique directement, comme les autres
+  formulaires.
+
+## Page Menus allégée
+
+La semaine ne montre plus que l'essentiel : par repas, le créneau (lien
+vers le repas, où l'on change, verrouille, reporte ou marque « cuisiné ») ;
+par plat, une ligne avec le titre, l'indice et un état discret (coche
+« cuisiné », cadenas « verrouillé », « restes »). Les raisons du choix et
+les boutons par plat sont sur la page du repas. Le bilan tient sur une
+ligne dépliable ; les actions secondaires (sélection, courses, impression,
+menus enregistrés, créneaux) sont regroupées dans un menu « Plus », à côté
+du seul bouton principal « Générer ». Le glisser-déposer pour échanger deux
+plats reste disponible.
+
 ## Interface
 
 L'interface est propre à PetitChef (rien n'est repris de BuddyGet côté

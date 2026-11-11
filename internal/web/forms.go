@@ -1,6 +1,7 @@
 package web
 
 import (
+	"slices"
 	"strconv"
 	"strings"
 
@@ -68,4 +69,16 @@ func parseEuros(v string) (int64, error) {
 		return 0, validation.Error("Le prix doit être positif.")
 	}
 	return c, nil
+}
+
+// formIDs lit une liste d'identifiants (champ répété), sans doublons ni
+// valeurs invalides ; 500 au plus.
+func formIDs(values []string) []int64 {
+	var ids []int64
+	for _, v := range values {
+		if id := formInt(v, 0); id > 0 && !slices.Contains(ids, id) && len(ids) < 500 {
+			ids = append(ids, id)
+		}
+	}
+	return ids
 }

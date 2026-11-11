@@ -21,11 +21,14 @@ import (
 
 // recipesView est la donnée de la liste des recettes.
 type recipesView struct {
-	Filter recipes.Filter
-	Page   recipes.Page
-	Tags   []recipes.Tag
-	Query  string
-	Season bool
+	Filter    recipes.Filter
+	Page      recipes.Page
+	Tags      []recipes.Tag
+	Query     string
+	Season    bool
+	Select    bool   // mode sélection : cases à cocher pour supprimer
+	SelectAll bool   // toutes les recettes de la page cochées
+	AllQuery  string // filtres, toutes les cases cochées
 }
 
 func recipeFilter(r *http.Request) (recipes.Filter, bool) {
@@ -53,7 +56,8 @@ func recipeFilter(r *http.Request) (recipes.Filter, bool) {
 
 func (s *Server) recipesPage(w http.ResponseWriter, r *http.Request) {
 	f, season := recipeFilter(r)
-	v := recipesView{Filter: f, Season: season}
+	sel := r.URL.Query().Get("selection")
+	v := recipesView{Filter: f, Season: season, Select: sel != "", SelectAll: sel == "tout"}
 	var err error
 	if v.Page, err = s.Recipes.Search(r.Context(), f); err == nil {
 		v.Tags, err = s.Recipes.Tags(r.Context())
@@ -64,6 +68,11 @@ func (s *Server) recipesPage(w http.ResponseWriter, r *http.Request) {
 	}
 	q := r.URL.Query()
 	q.Del("page")
+	if v.Select {
+		q.Set("selection", "tout")
+		v.AllQuery = q.Encode()
+		q.Set("selection", "1")
+	}
 	v.Query = q.Encode()
 	if r.Header.Get("HX-Request") == "true" && r.Header.Get("HX-Target") == "resultats" {
 		s.renderBlock(w, r, "recipes", "results", v)
@@ -392,15 +401,48 @@ func (s *Server) deleteRecipe(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	rec, err := s.Recipes.Get(r.Context(), id)
-	if err == nil {
-		err = s.Recipes.Delete(r.Context(), id)
+	if err != nil {
+		s.failed(w, r, err, "/recettes")
+		return
 	}
+	photos, err := s.Recipes.DeleteMany(r.Context(), []int64{id})
 	if err != nil {
 		s.failed(w, r, err, "/recettes/"+strconv.FormatInt(id, 10))
 		return
 	}
-	_ = s.Photos.Delete(rec.Photo)
-	s.redirect(w, r, "/recettes", "Recette supprimée.")
+	s.deletePhotos(photos)
+	s.redirect(w, r, "/recettes", "« "+rec.Title+" » supprimée et retirée des menus.")
+}
+
+// deleteRecipes supprime plusieurs recettes (champ « recette » répété),
+// retirées aussi de tous les menus.
+func (s *Server) deleteRecipes(w http.ResponseWriter, r *http.Request) {
+	if parseForm(w, r) != nil {
+		s.renderError(w, r, http.StatusBadRequest, "Formulaire illisible.")
+		return
+	}
+	back := "/recettes?selection=1"
+	if q := r.PostFormValue("retour"); strings.HasPrefix(q, "/recettes") {
+		back = localPath(q)
+	}
+	ids := formIDs(r.PostForm["recette"])
+	if len(ids) == 0 {
+		s.redirect(w, r, back, "Cochez au moins une recette.")
+		return
+	}
+	photos, err := s.Recipes.DeleteMany(r.Context(), ids)
+	if err != nil {
+		s.failed(w, r, err, back)
+		return
+	}
+	s.deletePhotos(photos)
+	s.redirect(w, r, "/recettes", plural(len(ids), "recette supprimée et retirée des menus.", "recettes supprimées et retirées des menus."))
+}
+
+func (s *Server) deletePhotos(names []string) {
+	for _, p := range names {
+		_ = s.Photos.Delete(p)
+	}
 }
 
 func (s *Server) duplicateRecipe(w http.ResponseWriter, r *http.Request) {
