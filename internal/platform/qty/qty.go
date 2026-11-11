@@ -310,3 +310,32 @@ func FormatInput(v int64, b Base) string {
 	}
 	return strconv.FormatInt(v, 10)
 }
+
+// Choice est une unité proposée à la saisie d'un ingrédient.
+type Choice struct {
+	Code  string
+	Label string
+}
+
+// KitchenUnits liste les unités de cuisine proposées à la saisie d'un
+// ingrédient, dans l'ordre d'affichage ; « piece » vaut « à la pièce »
+// (« 3 œufs »).
+var KitchenUnits = []Choice{
+	{"piece", "pièce(s)"}, {"g", "grammes (g)"}, {"kg", "kilogrammes (kg)"}, {"ml", "millilitres (ml)"}, {"cl", "centilitres (cL)"},
+	{"dl", "décilitres (dL)"}, {"l", "litres (L)"}, {"cs", "cuillère(s) à soupe"}, {"cc", "cuillère(s) à café"},
+	{"pincee", "pincée(s)"}, {"tasse", "tasse(s)"}, {"verre", "verre(s)"}, {"gousse", "gousse(s)"}, {"tranche", "tranche(s)"},
+	{"sachet", "sachet(s)"}, {"botte", "botte(s)"}, {"bouquet", "bouquet(s)"}, {"brin", "brin(s)"}, {"branche", "branche(s)"},
+	{"feuille", "feuille(s)"}, {"poignee", "poignée(s)"}, {"noix", "noix (de beurre…)"}, {"noisette", "noisette(s)"},
+	{"filet", "filet(s)"}, {"boite", "boîte(s)"}, {"pot", "pot(s)"}, {"brique", "brique(s)"}, {"bouteille", "bouteille(s)"},
+	{"paquet", "paquet(s)"}, {"rouleau", "rouleau(x)"}, {"tablette", "tablette(s)"}, {"carre", "carré(s)"}, {"lamelle", "lamelle(s)"},
+}
+
+// IsKitchenUnit indique une unité de la liste proposée.
+func IsKitchenUnit(code string) bool {
+	for _, c := range KitchenUnits {
+		if c.Code == code {
+			return true
+		}
+	}
+	return false
+}

@@ -566,3 +566,43 @@ a.dish-title:hover { color: var(--accent-text); text-decoration: underline; }
   .prefs-panel { position: fixed; top: calc(68px + env(safe-area-inset-top)); left: .75rem; right: .75rem; width: auto; max-height: calc(100dvh - 160px); overflow-y: auto; }
 }
 .qty-input { max-width: 8rem; }
+
+/* ---------- Ingrédients d'une recette : une ligne par ingrédient ---------- */
+
+.ingredients { display: grid; gap: .9rem; }
+.ingredients > legend { font-size: 1.125rem; }
+.ing-list { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.ing > fieldset {
+  padding: .75rem;
+  background: var(--surface-2); border: 2px solid var(--line); border-radius: var(--radius-s);
+}
+.ing > fieldset > legend { float: left; width: 100%; margin: 0 0 .75rem; color: var(--muted); font-size: .9375rem; }
+.ing-body { display: grid; gap: .75rem; clear: both; }
+.ing-invalid > fieldset { border-color: var(--danger); }
+.ing-error { display: flex; gap: .4rem; align-items: start; margin: 0 0 .75rem; color: var(--danger-text); font-weight: 600; }
+.ing-error .i { flex: none; margin-top: .15rem; }
+.ing-qty { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: .5rem; }
+.ing-qty .ing-unit-other { grid-column: 1 / -1; }
+.ing-what { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+.ing-kind { flex-wrap: nowrap; }
+.ing-kind label { flex: 1 1 0; min-width: 0; }
+.ing-kind span { padding-inline: .35rem; }
+.ing-more > summary { font-size: .9375rem; }
+.ing-more[open] { display: grid; gap: .75rem; }
+.ing-remove { justify-self: end; }
+.ing-add { justify-self: start; }
+@media (min-width: 60rem) {
+  .ing-body { grid-template-columns: auto minmax(0, 1fr); align-items: start; column-gap: 1.5rem; }
+  .ing-qty { grid-template-columns: 6rem 12rem; }
+  .ing-kind label { flex: 0 1 auto; }
+  .ing-kind span { padding-inline: .75rem; }
+  .ing-more { grid-column: 1; }
+  .ing-remove { grid-column: 2; }
+}
+/* Seuls les champs utiles sont montrés : unité précisée si « Autre », et le
+   champ correspondant à la nature choisie. Sans :has(), tout reste visible
+   et le serveur ne lit que le champ utile. */
+.ing:has(.ing-unit option[value="autre"]:not(:checked)) .ing-unit-other,
+.ing:has(.ing-kind input:not([value="produit"]):checked) .ing-product,
+.ing:has(.ing-kind input:not([value="recette"]):checked) .ing-recipe,
+.ing:has(.ing-kind input:not([value="autre"]):checked) .ing-other { display: none; }

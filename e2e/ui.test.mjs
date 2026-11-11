@@ -138,6 +138,8 @@ const PAGES = () => [
   ['recettes', '/recettes'],
   ['recette', `/recettes/${ids.recipe}`],
   ['cuisine', `/recettes/${ids.recipe}/cuisine`],
+  ['recette-nouvelle', '/recettes/nouvelle'],
+  ['recette-modifier', `/recettes/${ids.recipe}/modifier`],
   ['ce-soir', '/ce-soir'],
   ['catalogue', '/catalogue'],
   ['produit', '/catalogue/1'],
@@ -172,7 +174,7 @@ for (const width of WIDTHS) {
           if (width !== 768) {
             await page.screenshot({ path: path.join(SHOTS, `${name}-${width}-${scheme}.png`), fullPage: true });
           }
-          if (width === 1280 || (width === 360 && ['magasin', 'cuisine', 'stock-ajouter', 'menus'].includes(name))) {
+          if (width === 1280 || (width === 360 && ['magasin', 'cuisine', 'stock-ajouter', 'menus', 'recette-modifier'].includes(name))) {
             const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
             assert.deepEqual(axe.violations.map((v) => v.id), [],
               `${name} ${width}px ${scheme} : ${JSON.stringify(axe.violations.map((v) => [v.id, v.nodes.slice(0, 3).map((n) => n.target)]))}`);
@@ -265,4 +267,71 @@ test('grand texte et panneau Affichage, à 360 px', async () => {
     await page.waitForURL(/\//);
     assert.equal(await page.getAttribute('html', 'data-text'), null);
   });
+});
+
+test('saisie structurée des ingrédients, à 360 px', async () => {
+  await withPage(360, 'light', async (page) => {
+    await page.goto(`${BASE}/recettes/nouvelle`);
+    assert.equal(await page.locator('.ing').count(), 1, 'une ligne par défaut');
+    // Les champs hors sujet sont masqués : unité précisée, recette, autre.
+    assert.equal(await page.isVisible('#ing_unit_other_0'), false);
+    assert.equal(await page.isVisible('#ing_other_0'), false);
+    await page.fill('#title', 'Crêpes du test');
+    await page.fill('#ing_qty_0', '250');
+    await page.selectOption('#ing_unit_0', 'g');
+    await page.fill('#ing_product_0', 'Farine de blé');
+    await page.click('[data-ing-add]');
+    assert.equal(await page.locator('.ing').count(), 2);
+    assert.match(await page.textContent('#ing-1 legend'), /Ingrédient 2/);
+    await page.fill('#ing_qty_1', '2');
+    await page.selectOption('#ing_unit_1', 'autre');
+    assert.ok(await page.isVisible('#ing_unit_other_1'), 'unité « Autre » à préciser');
+    await page.fill('#ing_unit_other_1', 'louche');
+    await page.click('#ing-1 .ing-kind label:has-text("Autre")');
+    assert.equal(await page.isVisible('#ing_product_1'), false);
+    await page.fill('#ing_other_1', 'Pâte à tartiner du test');
+    // Une ligne fausse est signalée, le reste de la saisie est conservé.
+    await page.click('[data-ing-add]');
+    await page.fill('#ing_qty_2', 'beaucoup');
+    await page.fill('#ing_product_2', 'Sucre en poudre');
+    await checkLayout(page, 'éditeur d\'ingrédients', 'light');
+    await page.screenshot({ path: path.join(SHOTS, 'ingredients-360-light.png'), fullPage: true });
+    await page.click('form button.btn-primary');
+    assert.match(await page.textContent('.ing-invalid .ing-error'), /Quantité illisible/);
+    assert.equal(await page.inputValue('#ing_other_1'), 'Pâte à tartiner du test');
+    assert.equal(await page.getAttribute('#ing_qty_2', 'aria-describedby'), 'ing-2-err');
+    const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+    assert.deepEqual(axe.violations.map((v) => v.id), [], JSON.stringify(axe.violations.map((v) => [v.id, v.nodes.slice(0, 3).map((n) => n.target)])));
+    await page.click('#ing-2 [data-ing-remove]');
+    assert.equal(await page.locator('.ing').count(), 2);
+    await page.click('form button.btn-primary');
+    await page.waitForURL(/\/recettes\/\d+$/);
+    const text = await page.textContent('main');
+    assert.match(text, /250\s?g/);
+    assert.match(text, /2 louche/);
+    assert.match(text, /Pâte à tartiner du test/);
+  });
+});
+
+test('saisie des ingrédients sans JavaScript', async () => {
+  const context = await browser.newContext({ viewport: { width: 360, height: 800 }, locale: 'fr-FR', storageState: session, javaScriptEnabled: false });
+  try {
+    const page = await context.newPage();
+    await page.goto(`${BASE}/recettes/nouvelle`);
+    await page.fill('#title', 'Omelette sans script');
+    await page.fill('#ing_qty_0', '3');
+    await page.selectOption('#ing_unit_0', 'piece');
+    await page.fill('#ing_product_0', 'Œufs');
+    await page.click('[data-ing-add]');
+    assert.equal(await page.locator('.ing').count(), 2);
+    assert.equal(await page.inputValue('#ing_product_0'), 'Œufs');
+    await page.fill('#ing_qty_1', '1');
+    await page.selectOption('#ing_unit_1', 'pincee');
+    await page.fill('#ing_product_1', 'Sel');
+    await page.click('form button.btn-primary');
+    await page.waitForURL(/\/recettes\/\d+$/);
+    assert.match(await page.textContent('main'), /pincée/);
+  } finally {
+    await context.close();
+  }
 });

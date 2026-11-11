@@ -28,6 +28,7 @@ func templateFuncs(static assets) template.FuncMap {
 		"fileSize":   fileSize,
 		"add":        func(a, b int) int { return a + b },
 		"seq":        seq,
+		"newIngRow":  func() ingRow { return newRow(-1) },
 		"qty":        qty.Format,
 		"qtyShort":   qty.FormatShort,
 		"qtyInput":   qty.FormatInput,

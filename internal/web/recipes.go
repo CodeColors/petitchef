@@ -1,6 +1,7 @@
 package web
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -206,18 +207,20 @@ func roundTo(v, step int64) int64 {
 
 // recipeForm est la donnée du formulaire d'une recette.
 type recipeForm struct {
-	ID          int64
-	Input       recipes.Input
-	Ingredients string
-	Steps       string
-	Tags        string
-	Review      []recipes.Resolved // lignes à valider
-	Error       string
-	Titles      []recipes.Summary
+	ID     int64
+	Input  recipes.Input
+	Rows   []ingRow // lignes d'ingrédients
+	Paste  string   // liste collée, à convertir en lignes
+	Steps  string
+	Tags   string
+	Error  string
+	Focus  int // ligne à mettre en évidence (ajout) ; -1 : aucune
+	Titles []recipes.Summary
+	Units  []qty.Choice
 }
 
 func (s *Server) newRecipePage(w http.ResponseWriter, r *http.Request) {
-	f := recipeForm{Input: recipes.Input{Servings: 4, Types: recipes.Main, Difficulty: 1}}
+	f := recipeForm{Input: recipes.Input{Servings: 4, Types: recipes.Main, Difficulty: 1}, Rows: []ingRow{newRow(0)}, Focus: -1}
 	if t, ok := recipes.TypeByCode(r.URL.Query().Get("type")); ok {
 		f.Input.Types = t
 	}
@@ -235,7 +238,10 @@ func (s *Server) editRecipePage(w http.ResponseWriter, r *http.Request) {
 		s.failed(w, r, err, "/recettes")
 		return
 	}
-	f := recipeForm{ID: id, Input: recipes.InputFrom(rec), Ingredients: recipes.FormatLines(rec.Ingredients), Tags: strings.Join(rec.Tags, ", ")}
+	f := recipeForm{ID: id, Input: recipes.InputFrom(rec), Rows: rowsFrom(rec.Ingredients), Tags: strings.Join(rec.Tags, ", "), Focus: -1}
+	if len(f.Rows) == 0 {
+		f.Rows = []ingRow{newRow(0)}
+	}
 	var steps []string
 	for _, st := range rec.Steps {
 		steps = append(steps, st.Text)
@@ -249,12 +255,25 @@ func (s *Server) renderRecipeForm(w http.ResponseWriter, r *http.Request, status
 	if f.ID > 0 {
 		title = "Modifier « " + f.Input.Title + " »"
 	}
+	all, err := s.Recipes.Titles(r.Context(), 0)
+	if err != nil {
+		s.serverError(w, r, err)
+		return
+	}
+	for _, t := range all {
+		if t.ID != f.ID {
+			f.Titles = append(f.Titles, t)
+		}
+	}
+	f.Units = qty.KitchenUnits
 	s.render(w, r, status, "recipe_form", title, f)
 }
 
-// saveRecipe enregistre une recette. Les ingrédients saisis en texte sont
-// rapprochés du catalogue ; si un rapprochement est incertain, le
-// formulaire revient avec un écran de validation des correspondances.
+// saveRecipe enregistre une recette. Les ingrédients arrivent en lignes
+// structurées (quantité, unité, ingrédient) contrôlées une à une. Les
+// boutons « + » (action=add), « Retirer » (remove=N) et « Convertir la
+// liste » (action=paste) renvoient le formulaire complété sans enregistrer :
+// l'écran fonctionne sans JavaScript.
 func (s *Server) saveRecipe(w http.ResponseWriter, r *http.Request) {
 	if parseForm(w, r) != nil {
 		s.renderError(w, r, http.StatusBadRequest, "Formulaire illisible.")
@@ -262,7 +281,12 @@ func (s *Server) saveRecipe(w http.ResponseWriter, r *http.Request) {
 	}
 	ctx := r.Context()
 	id, _ := pathID(r)
-	f := recipeForm{ID: id, Ingredients: r.PostFormValue("ingredients"), Steps: r.PostFormValue("steps"), Tags: r.PostFormValue("tags")}
+	remove := -1
+	if v := r.PostFormValue("remove"); v != "" {
+		remove = int(formInt(v, -1))
+	}
+	f := recipeForm{ID: id, Rows: parseRows(r.PostForm, remove), Paste: r.PostFormValue("paste"), Steps: r.PostFormValue("steps"),
+		Tags: r.PostFormValue("tags"), Focus: -1}
 	in := recipes.Input{Title: r.PostFormValue("title"), Servings: int(formInt(r.PostFormValue("servings"), 0)),
 		PrepMin: int(formInt(r.PostFormValue("prep"), 0)), CookMin: int(formInt(r.PostFormValue("cook"), 0)),
 		RestMin: int(formInt(r.PostFormValue("rest"), 0)), Difficulty: int(formInt(r.PostFormValue("difficulty"), 1)),
@@ -279,39 +303,46 @@ func (s *Server) saveRecipe(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	f.Input = in
-	resolved, err := s.Recipes.Resolve(ctx, recipes.ParseLines(f.Ingredients))
+	switch {
+	case r.PostFormValue("action") == "add":
+		f.Rows = renumber(append(f.Rows, newRow(len(f.Rows))))
+		f.Focus = len(f.Rows) - 1
+		s.renderRecipeForm(w, r, http.StatusOK, f)
+		return
+	case remove >= 0:
+		if len(f.Rows) == 0 {
+			f.Rows = []ingRow{newRow(0)}
+		}
+		s.renderRecipeForm(w, r, http.StatusOK, f)
+		return
+	case r.PostFormValue("action") == "paste":
+		if err := s.pasteRows(ctx, &f); err != nil {
+			s.serverError(w, r, err)
+		} else {
+			s.renderRecipeForm(w, r, http.StatusOK, f)
+		}
+		return
+	}
+	list, ok, err := checkRows(ctx, serverChecker{s}, f.Rows)
 	if err != nil {
 		s.serverError(w, r, err)
 		return
 	}
-	// Choix faits sur l'écran de validation : produit désigné ligne à ligne.
-	if r.PostFormValue("review") != "" {
-		for i := range resolved {
-			field := "produit_" + strconv.Itoa(i)
-			if strings.TrimSpace(r.PostFormValue(field)) == "" {
-				continue
-			}
-			pid, _, err := s.resolveProduct(r, field)
-			if err != nil {
-				s.failed(w, r, err, "/recettes")
-				return
-			}
-			resolved[i].ProductID, resolved[i].Confidence = pid, recipes.Exact
-		}
+	if len(f.Rows) == 0 {
+		f.Rows = []ingRow{newRow(0)}
 	}
-	var review []recipes.Resolved
-	for _, x := range resolved {
-		if x.Confidence < recipes.Partial {
-			review = append(review, x)
-		}
+	switch {
+	case !ok:
+		f.Error = "Certains ingrédients sont à corriger : voyez les lignes signalées."
+	case len(list) == 0:
+		f.Rows[0].Error = "Ajoutez au moins un ingrédient."
+		f.Error = "La recette n'a aucun ingrédient."
 	}
-	in.Ingredients = resolved
-	if len(review) > 0 {
-		f.Review = resolved
-		f.Error = "Vérifiez les correspondances avec le catalogue, puis enregistrez."
+	if f.Error != "" {
 		s.renderRecipeForm(w, r, http.StatusUnprocessableEntity, f)
 		return
 	}
+	in.Ingredients = list
 	nid, err := s.Recipes.Save(ctx, id, in)
 	if err != nil {
 		if msg, ok := s.inputError(w, r, err); ok {
@@ -321,6 +352,37 @@ func (s *Server) saveRecipe(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	s.redirect(w, r, "/recettes/"+strconv.FormatInt(nid, 10), "Recette enregistrée.")
+}
+
+// pasteRows convertit une liste collée en lignes, à la suite des lignes
+// déjà remplies ; les noms non reconnus restent signalés, à choisir.
+func (s *Server) pasteRows(ctx context.Context, f *recipeForm) error {
+	resolved, err := s.Recipes.Resolve(ctx, recipes.ParseLines(f.Paste))
+	if err != nil {
+		return err
+	}
+	names := map[int64]string{}
+	for _, x := range resolved {
+		if x.ProductID > 0 && x.Confidence >= recipes.Partial {
+			p, err := s.Catalog.Get(ctx, x.ProductID)
+			if err != nil {
+				return err
+			}
+			names[x.ProductID] = p.Name
+		}
+	}
+	var kept []ingRow
+	for _, row := range f.Rows {
+		if !row.blank() {
+			kept = append(kept, row)
+		}
+	}
+	f.Rows = renumber(append(kept, rowsFromLines(resolved, names)...))
+	if len(f.Rows) == 0 {
+		f.Rows = []ingRow{newRow(0)}
+	}
+	f.Paste = ""
+	return nil
 }
 
 func (s *Server) deleteRecipe(w http.ResponseWriter, r *http.Request) {

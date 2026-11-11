@@ -213,20 +213,44 @@ caméra pour l'application elle-même.
 
 ## Recettes (jalon 5)
 
-### Ingrédients saisis en texte, rapprochés du catalogue
-Le formulaire d'une recette prend ses ingrédients en **texte libre**, une
-ligne par ingrédient ou une liste collée (« 200 g de farine, 3 œufs, 1
-pincée de sel »). `recipes.ParseLine` en extrait quantité (décimale,
-fraction, « ½ »), unité (g, kg, cl, c. à soupe, gousse, sachet…), nom,
-précision (« émincé »), mentions « facultatif » et « au goût ». Le
-rapprochement (`recipes.Service.Resolve`) essaie, dans l'ordre : le nom
-exact ou un synonyme ; l'unité propre faisant partie du nom (« 4 filets de
-saumon ») ; le nom raccourci (« oignon émincé » → « oignon ») ; une
-proposition de la recherche. Dès qu'une ligne est incertaine, le formulaire
-revient avec un **écran de validation des correspondances**, ligne par
-ligne, où l'on corrige ou crée le produit à la volée. Le même format sert à
-l'édition (les ingrédients enregistrés sont réécrits en texte relisible),
-au jeu de départ et à l'export JSON : un seul analyseur, testé.
+### Ingrédients saisis ligne à ligne, choisis dans le catalogue
+Le formulaire d'une recette présente un **espace Ingrédients structuré** :
+une ligne par défaut, un bouton **« + Ajouter un ingrédient »**, un bouton
+« Retirer » par ligne. Chaque ligne comporte :
+
+- **Quantité** (décimale, fraction ou « ½ ») ;
+- **Unité** choisie dans la liste des unités de cuisine (`qty.KitchenUnits` :
+  pièce(s), g, kg, ml, cL, dL, L, cuillère à soupe, à café, pincée, tasse,
+  verre, gousse, tranche, sachet, botte, brin, feuille, boîte, pot…), ou
+  **« Autre… »** avec une unité précisée en clair (« louche ») ;
+- **Ingrédient** : du **catalogue** (champ de recherche, suggestions à la
+  frappe), une **recette** (recette composée, quantité en portions) ou
+  **« Autre »**, un nom libre ;
+- facultativement : précision (« émincé »), groupe (« Pour la pâte »),
+  « au goût », « facultatif ».
+
+La saisie est **stricte** (`web.checkRows`, testé) : quantité lisible
+(obligatoire sauf « au goût » ou facultatif), unité de la liste ou précisée,
+nom présent dans le catalogue (nom exact ou synonyme ; sinon la ligne est
+signalée), unité compatible avec le produit (« 200 g d'œufs » est refusé si
+le poids d'un œuf est inconnu). Les erreurs s'affichent sur la ligne
+(`aria-describedby`), toute la saisie est conservée. Un ingrédient
+« Autre » est ajouté au catalogue comme produit « à compléter », **une fois
+toutes les lignes valides** : le catalogue reste le référentiel unique des
+courses et du stock. Une unité « Autre » est conservée telle quelle
+(affichage) ; sa quantité ne se convertit pas en poids.
+
+Sans JavaScript, « + » et « Retirer » renvoient le formulaire avec une
+ligne de plus ou de moins ; avec, ils agissent sur place (modèle
+`<template>` cloné). Les champs inutiles (unité précisée, recette, nom
+libre) sont masqués en CSS (`:has()`), sans script.
+
+La **saisie rapide** reste disponible en second choix (« Coller une liste
+d'ingrédients ») : `recipes.ParseLine` analyse la liste, le rapprochement
+(`recipes.Service.Resolve` : nom exact ou synonyme, unité propre faisant
+partie du nom, nom raccourci, proposition de la recherche) pré-remplit les
+lignes, et les noms non reconnus sont signalés pour être choisis. Le même
+analyseur sert à l'import et à l'export JSON.
 
 ### Quantités enregistrées deux fois
 `recipe_ingredients.qty` est en unités de base (calculs), `input_qty` et

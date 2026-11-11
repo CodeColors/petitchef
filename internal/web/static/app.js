@@ -80,3 +80,53 @@ if (navigator.clipboard) {
     });
   }
 }
+
+// Ingrédients d'une recette : « Ajouter » et « Retirer » agissent sur place
+// (sans script, le serveur renvoie le formulaire avec une ligne de plus ou
+// de moins).
+const ingList = document.getElementById('ing-list');
+const ingTemplate = document.getElementById('ing-template');
+if (ingList && ingTemplate) {
+  const renumber = () => {
+    ingList.querySelectorAll(':scope > .ing').forEach((row, k) => {
+      row.querySelectorAll('.ing-n').forEach((el) => { el.textContent = 'Ingrédient ' + (k + 1); });
+      row.querySelectorAll('.ing-remove .sr-only').forEach((el) => { el.textContent = ' l\'ingrédient ' + (k + 1); });
+      const group = row.querySelector('.ing-kind');
+      if (group) group.setAttribute('aria-label', 'Nature de l\'ingrédient ' + (k + 1));
+    });
+  };
+  let next = 0;
+  for (const row of ingList.querySelectorAll('.ing')) {
+    next = Math.max(next, Number(row.id.replace('ing-', '')) + 1);
+  }
+  document.querySelector('[data-ing-add]')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    const html = ingTemplate.innerHTML.replaceAll('__I__', String(next++)).replaceAll('__N__', '');
+    ingList.insertAdjacentHTML('beforeend', html);
+    const row = ingList.lastElementChild;
+    if (window.htmx) window.htmx.process(row);
+    renumber();
+    row.querySelector('input').focus();
+  });
+  ingList.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-ing-remove]');
+    if (!button) return;
+    event.preventDefault();
+    const row = button.closest('.ing');
+    const rows = ingList.querySelectorAll(':scope > .ing');
+    const index = [...rows].indexOf(row);
+    if (rows.length === 1) {
+      // Dernière ligne : elle est vidée plutôt que retirée.
+      row.querySelectorAll('input[type=text], input:not([type]), select').forEach((f) => { f.value = f.tagName === 'SELECT' ? f.options[0].value : ''; });
+      row.querySelector('.ing-unit').value = 'g';
+      row.querySelector('input[value="produit"]').checked = true;
+      row.querySelectorAll('input[type=checkbox]').forEach((c) => { c.checked = false; });
+      row.querySelector('input').focus();
+      return;
+    }
+    row.remove();
+    renumber();
+    const after = ingList.querySelectorAll(':scope > .ing');
+    after[Math.min(index, after.length - 1)].querySelector('input').focus();
+  });
+}

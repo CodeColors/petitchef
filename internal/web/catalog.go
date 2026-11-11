@@ -62,7 +62,7 @@ func (s *Server) catalogPage(w http.ResponseWriter, r *http.Request) {
 func (s *Server) productSuggestions(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query().Get("q")
 	for k, vals := range r.URL.Query() {
-		if k != "q" && strings.HasPrefix(k, "produit") && len(vals) > 0 {
+		if k != "q" && (strings.HasPrefix(k, "produit") || strings.HasPrefix(k, "ing_product_")) && len(vals) > 0 && vals[0] != "" {
 			q = vals[0]
 		}
 	}

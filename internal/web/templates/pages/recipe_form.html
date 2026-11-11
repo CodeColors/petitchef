@@ -3,27 +3,7 @@
 <h1>{{.Title}}</h1>
 <form class="form card form-card" method="post" action="{{if .Data.ID}}/recettes/{{.Data.ID}}{{else}}/recettes{{end}}">
   {{- with .Data.Error}}<p class="alert" role="alert">{{.}}</p>{{end}}
-  {{- if .Data.Review}}
-  <input type="hidden" name="review" value="1">
-  <section aria-labelledby="validation">
-    <h2 id="validation">Correspondances avec le catalogue</h2>
-    <p class="hint">Chaque ligne doit désigner un produit. Corrigez une proposition, ou saisissez un nom : un produit inconnu est créé à la volée.</p>
-    <ul class="rows">
-      {{- range $i, $x := .Data.Review}}
-      <li class="row">
-        <div class="field grow">
-          <label for="produit_{{$i}}">« {{$x.Raw}} »{{if eq $x.Confidence 3}} <span class="tag badge-ok">reconnu</span>{{else if eq $x.Confidence 2}} <span class="tag badge-ok">reconnu (nom raccourci)</span>{{else if eq $x.Confidence 1}} <span class="tag badge-warn">proposition</span>{{else}} <span class="tag badge-danger">inconnu</span>{{end}}</label>
-          {{- if $x.SubRecipe}}<input id="produit_{{$i}}" value="Recette : {{$x.Name}}" disabled>
-          {{- else}}
-          {{- $val := ""}}{{range $x.Suggestions}}{{if eq .ID $x.ProductID}}{{$val = .Name}}{{end}}{{end}}{{if eq $x.Confidence 0}}{{$val = $x.Name}}{{end}}
-          {{template "product-input" dict "ID" (printf "produit_%d" $i) "Name" (printf "produit_%d" $i) "Value" $val "Required" false}}
-          {{- end}}
-        </div>
-      </li>
-      {{- end}}
-    </ul>
-  </section>
-  {{- end}}
+  <button class="sr-only" tabindex="-1" aria-hidden="true">Enregistrer</button>
   <div class="field"><label for="title">Titre</label><input id="title" name="title" value="{{$in.Title}}" maxlength="150" required></div>
   <fieldset>
     <legend>Types</legend>
@@ -39,11 +19,26 @@
       <select id="difficulty" name="difficulty">{{range $d := list 1 2 3}}<option value="{{$d}}"{{if eq $d $in.Difficulty}} selected{{end}}>{{difficulty $d}}</option>{{end}}</select>
     </div>
   </div>
-  <div class="field">
-    <label for="ingredients">Ingrédients <span class="optional">(un par ligne, ou collés en une liste)</span></label>
-    <textarea id="ingredients" name="ingredients" rows="10" aria-describedby="ing-aide" required placeholder="200 g de farine&#10;3 œufs&#10;1 pincée de sel">{{.Data.Ingredients}}</textarea>
-    <p id="ing-aide" class="hint">« 2 c. à soupe d'huile d'olive », « ½ citron », « sel (au goût) », « 50 g de noix (facultatif) ». Une ligne terminée par « : » ouvre un groupe (« Pour la pâte : »). Une recette entre crochets s'utilise comme ingrédient : « 1 [Pâte brisée maison] ».</p>
-  </div>
+  <fieldset class="ingredients" aria-describedby="ing-aide">
+    <legend>Ingrédients</legend>
+    <p id="ing-aide" class="hint">Une ligne par ingrédient : quantité, unité, puis l'ingrédient, cherché dans le catalogue des produits. « Autre » permet une unité ou un ingrédient hors liste.</p>
+    <ol class="ing-list" id="ing-list">
+      {{- range .Data.Rows}}
+      {{template "ing-row" dict "Row" . "Units" $.Data.Units "Titles" $.Data.Titles "Focus" (eq .Index $.Data.Focus)}}
+      {{- end}}
+    </ol>
+    <template id="ing-template">{{template "ing-row" dict "Row" (newIngRow) "Units" .Data.Units "Titles" .Data.Titles "Focus" false}}</template>
+    <button class="btn ing-add" name="action" value="add" formnovalidate data-ing-add>{{template "icon" "plus"}} Ajouter un ingrédient</button>
+    <details class="more"{{if .Data.Paste}} open{{end}}>
+      <summary>Coller une liste d'ingrédients</summary>
+      <div class="field">
+        <label for="paste">Liste <span class="optional">(un ingrédient par ligne)</span></label>
+        <textarea id="paste" name="paste" rows="6" aria-describedby="paste-aide" placeholder="200 g de farine&#10;3 œufs&#10;1 pincée de sel">{{.Data.Paste}}</textarea>
+        <p id="paste-aide" class="hint">La liste est convertie en lignes, à vérifier avant d'enregistrer. Une recette entre crochets s'utilise comme ingrédient : « 1 [Pâte brisée maison] ».</p>
+      </div>
+      <button class="btn" name="action" value="paste" formnovalidate>Convertir en lignes</button>
+    </details>
+  </fieldset>
   <div class="field">
     <label for="steps">Étapes <span class="optional">(une par ligne ; une durée comme « 20 min » devient une minuterie)</span></label>
     <textarea id="steps" name="steps" rows="8">{{.Data.Steps}}</textarea>
@@ -68,3 +63,60 @@
   </div>
 </form>
 {{end}}
+
+{{/* Ligne de saisie d'un ingrédient ; paramètres : Row, Units, Titles,
+     Focus. Une ligne d'index négatif est le modèle cloné par le script
+     (« __I__ » et « __N__ » remplacés par l'index et le numéro). */}}
+{{define "ing-row"}}
+{{- $r := .Row}}{{$i := $r.Index}}{{$n := add $r.Index 1}}{{if lt $r.Index 0}}{{$i = "__I__"}}{{$n = "__N__"}}{{end}}
+{{- $err := ""}}{{if $r.Error}}{{$err = printf "ing-%v-err" $i}}{{end}}
+<li class="ing{{if $r.Error}} ing-invalid{{end}}" id="ing-{{$i}}">
+  <fieldset>
+    <legend><span class="ing-n">Ingrédient {{$n}}</span></legend>
+    {{- with $r.Error}}<p class="ing-error" id="{{$err}}">{{template "icon" "bell"}} {{.}}</p>{{end}}
+    <div class="ing-body">
+    <div class="ing-qty">
+      <div class="field"><label for="ing_qty_{{$i}}">Quantité</label>
+        <input id="ing_qty_{{$i}}" name="ing_qty_{{$i}}" value="{{$r.Qty}}" inputmode="decimal" autocomplete="off" placeholder="200"{{if $err}} aria-describedby="{{$err}}"{{end}}{{if .Focus}} autofocus{{end}}></div>
+      <div class="field"><label for="ing_unit_{{$i}}">Unité</label>
+        <select id="ing_unit_{{$i}}" name="ing_unit_{{$i}}" class="ing-unit"{{if $err}} aria-describedby="{{$err}}"{{end}}>
+          {{- range .Units}}<option value="{{.Code}}"{{if eq .Code $r.Unit}} selected{{end}}>{{.Label}}</option>{{end}}
+          <option value="autre"{{if eq $r.Unit "autre"}} selected{{end}}>Autre…</option>
+        </select></div>
+      <div class="field ing-unit-other"><label for="ing_unit_other_{{$i}}">Unité précisée</label>
+        <input id="ing_unit_other_{{$i}}" name="ing_unit_other_{{$i}}" value="{{$r.UnitOther}}" maxlength="30" autocomplete="off" placeholder="ex. : cube, louche"></div>
+    </div>
+    <div class="ing-what">
+      <div class="segmented ing-kind" role="radiogroup" aria-label="Nature de l'ingrédient {{$n}}">
+        <label><input type="radio" name="ing_kind_{{$i}}" value="produit"{{if or (eq $r.Kind "produit") (eq $r.Kind "")}} checked{{end}}><span>Catalogue</span></label>
+        <label><input type="radio" name="ing_kind_{{$i}}" value="recette"{{if eq $r.Kind "recette"}} checked{{end}}><span>Recette</span></label>
+        <label><input type="radio" name="ing_kind_{{$i}}" value="autre"{{if eq $r.Kind "autre"}} checked{{end}}><span>Autre</span></label>
+      </div>
+      <div class="field ing-product"><label for="ing_product_{{$i}}">Ingrédient du catalogue <span class="optional">(tapez pour chercher)</span></label>
+        <input id="ing_product_{{$i}}" name="ing_product_{{$i}}" value="{{$r.Product}}" list="ing_product_{{$i}}-liste" autocomplete="off" spellcheck="false" maxlength="120"
+          hx-get="/catalogue/suggestions" hx-trigger="input changed delay:150ms, focus once" hx-target="#ing_product_{{$i}}-liste" hx-swap="innerHTML"{{if $err}} aria-describedby="{{$err}}"{{end}}>
+        <datalist id="ing_product_{{$i}}-liste"></datalist></div>
+      <div class="field ing-recipe"><label for="ing_recipe_{{$i}}">Recette utilisée <span class="optional">(quantité en portions)</span></label>
+        <select id="ing_recipe_{{$i}}" name="ing_recipe_{{$i}}"{{if $err}} aria-describedby="{{$err}}"{{end}}>
+          <option value="">Choisir une recette…</option>
+          {{- range .Titles}}<option value="{{.ID}}"{{if eq .ID $r.RecipeID}} selected{{end}}>{{.Title}}</option>{{end}}
+        </select></div>
+      <div class="field ing-other"><label for="ing_other_{{$i}}">Autre ingrédient <span class="optional">(ajouté au catalogue, à compléter)</span></label>
+        <input id="ing_other_{{$i}}" name="ing_other_{{$i}}" value="{{$r.Other}}" maxlength="120" autocomplete="off"{{if $err}} aria-describedby="{{$err}}"{{end}}></div>
+    </div>
+    <details class="ing-more"{{if or $r.Note $r.Group $r.Optional $r.ToTaste}} open{{end}}>
+      <summary>Précision, groupe, facultatif</summary>
+      <div class="field-row">
+        <div class="field"><label for="ing_note_{{$i}}">Précision</label><input id="ing_note_{{$i}}" name="ing_note_{{$i}}" value="{{$r.Note}}" maxlength="80" placeholder="émincé, bien mûr…"></div>
+        <div class="field"><label for="ing_group_{{$i}}">Groupe</label><input id="ing_group_{{$i}}" name="ing_group_{{$i}}" value="{{$r.Group}}" maxlength="60" placeholder="Pour la pâte"></div>
+      </div>
+      <div class="actions">
+        <label class="check"><input type="checkbox" name="ing_taste_{{$i}}" value="1"{{if $r.ToTaste}} checked{{end}}> Au goût</label>
+        <label class="check"><input type="checkbox" name="ing_optional_{{$i}}" value="1"{{if $r.Optional}} checked{{end}}> Facultatif</label>
+      </div>
+    </details>
+    <button class="btn btn-ghost ing-remove" name="remove" value="{{$i}}" formnovalidate data-ing-remove><span aria-hidden="true">×</span> Retirer<span class="sr-only"> l'ingrédient {{$n}}</span></button>
+    </div>
+  </fieldset>
+</li>
+{{- end}}

@@ -21,8 +21,9 @@ NAS Synology, un mini-PC ou un Raspberry Pi, à côté de
   minimum et consommation estimée, annulation.
 - **Recettes** typées (entrée, plat, dessert…) liées au catalogue, mises à
   l'échelle, composées, notées par chaque membre, avec un **indice
-  d'équilibre de A à E** expliqué ; saisie rapide (collez une liste
-  d'ingrédients), import et export JSON et schema.org. La base de recettes
+  d'équilibre de A à E** expliqué ; ingrédients saisis ligne à ligne
+  (quantité, unité de cuisine, produit cherché dans le catalogue, « Autre »
+  pour le reste) ou collés en liste, import et export JSON et schema.org. La base de recettes
   démarre vide : ce sont les vôtres.
 - **Menus** générés en moins d'une seconde pour 1 à 8 semaines, au format
   choisi pour chaque repas (plat seul, entrée + plat, plat + dessert,
