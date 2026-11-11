@@ -664,6 +664,7 @@ body:has(.bulk-bar) .fab { display: none; }
 .dish-line[draggable="true"] { cursor: grab; }
 .dish-line.is-drop { outline: 3px dashed var(--accent); }
 .dish-line .dish-role { grid-column: auto; grid-row: auto; }
+.dish-role.is-alone { display: none; }
 .dish-name { min-width: 0; font-weight: 700; overflow-wrap: break-word; }
 .dish-name .grade, .dish-name .tag { vertical-align: .1em; }
 .dish-name a { color: var(--text); text-decoration: none; }
@@ -690,5 +691,44 @@ body:has(.bulk-bar) .fab { display: none; }
 @media print { .bulk-bar, .meal-head form { display: none !important; } }
 @media (min-width: 1024px) {
   .dish-line { padding: .45rem .55rem; font-size: .9375rem; }
-  .dish-name { hyphens: auto; }
+}
+
+/* Semaine sur grand écran : une grille commune aux sept jours (subgrid).
+   Chaque créneau occupe la même rangée dans toutes les colonnes et, dans
+   un repas, entrée, plat et dessert ont chacun leur rangée : les plats
+   restent alignés quelle que soit la longueur des noms. Cinq rangées par
+   créneau : en-tête, entrée, plat, dessert, « Compléter ». */
+@media (min-width: 1024px) {
+  @supports (grid-template-rows: subgrid) {
+    .week-aligned { row-gap: 0; }
+    .week-aligned .day { grid-template-rows: subgrid; row-gap: 0; }
+    .week-aligned .day > h2 { grid-row: 1; padding-bottom: .5rem; }
+    .week-aligned .day > .meal-off { grid-row: 2 / -1; }
+    .week-aligned .meal { grid-template-rows: subgrid; row-gap: .35rem; align-content: start; padding-bottom: .5rem; }
+    .week-aligned .meal-head { grid-row: 1; }
+    .week-aligned .dishes { grid-row: 2 / span 3; grid-template-rows: subgrid; row-gap: .35rem; }
+    .week-aligned .dish-line { align-content: start; }
+    .week-aligned .dish-role.is-alone { display: block; }
+    .week-aligned .role-entree { grid-row: 1; }
+    .week-aligned .role-plat { grid-row: 2; }
+    .week-aligned .role-dessert { grid-row: 3; }
+    .week-aligned .meal > .meal-off { grid-row: 2 / span 3; }
+    .week-aligned .meal-fill { grid-row: 5; }
+    .week-aligned.slots-1 .day { grid-row: 1 / span 6; }
+    .week-aligned.slots-2 .day { grid-row: 1 / span 11; }
+    .week-aligned.slots-3 .day { grid-row: 1 / span 16; }
+    .week-aligned.slots-4 .day { grid-row: 1 / span 21; }
+    .week-aligned.slots-5 .day { grid-row: 1 / span 26; }
+    .week-aligned.slots-6 .day { grid-row: 1 / span 31; }
+    .week-aligned.slots-7 .day { grid-row: 1 / span 36; }
+    .week-aligned.slots-8 .day { grid-row: 1 / span 41; }
+    .week-aligned .slot-0 { grid-row: 2 / span 5; }
+    .week-aligned .slot-1 { grid-row: 7 / span 5; }
+    .week-aligned .slot-2 { grid-row: 12 / span 5; }
+    .week-aligned .slot-3 { grid-row: 17 / span 5; }
+    .week-aligned .slot-4 { grid-row: 22 / span 5; }
+    .week-aligned .slot-5 { grid-row: 27 / span 5; }
+    .week-aligned .slot-6 { grid-row: 32 / span 5; }
+    .week-aligned .slot-7 { grid-row: 37 / span 5; }
+  }
 }

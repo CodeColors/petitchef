@@ -338,6 +338,30 @@ test('saisie des ingrédients sans JavaScript', async () => {
   }
 });
 
+test('semaine alignée sur grand écran', async () => {
+  await withPage(1280, 'light', async (page) => {
+    await page.goto(`${BASE}/menus?semaine=${ids.monday}`);
+    // Pour chaque créneau et chaque rôle, les plats des sept jours
+    // commencent à la même hauteur, quelle que soit la longueur des noms.
+    const tops = await page.$$eval('.week .meal', (meals) => {
+      const by = {};
+      for (const m of meals) {
+        const slot = [...m.classList].find((c) => c.startsWith('slot-'));
+        by[`${slot} en-tête`] = [...(by[`${slot} en-tête`] ?? []), Math.round(m.querySelector('.meal-head').getBoundingClientRect().top)];
+        for (const d of m.querySelectorAll('.dish-line')) {
+          const role = [...d.classList].find((c) => c.startsWith('role-'));
+          by[`${slot} ${role}`] = [...(by[`${slot} ${role}`] ?? []), Math.round(d.getBoundingClientRect().top)];
+        }
+      }
+      return by;
+    });
+    assert.ok(Object.keys(tops).length >= 3);
+    for (const [key, list] of Object.entries(tops)) {
+      assert.equal(new Set(list).size, 1, `${key} non aligné : ${list.join(', ')}`);
+    }
+  });
+});
+
 test('suppression de repas et de recettes, à l\'unité et en sélection multiple', async () => {
   await withPage(360, 'light', async (page) => {
     page.on('dialog', (dialog) => dialog.accept());

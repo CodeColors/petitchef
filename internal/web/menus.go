@@ -37,6 +37,9 @@ type weekView struct {
 	// Mode sélection : cases à cocher pour supprimer plusieurs repas.
 	Select    bool
 	SelectAll bool
+	// Alignement sur grand écran : rang de chaque créneau dans la semaine.
+	SlotRow   map[int64]int
+	SlotCount int
 }
 
 func (v weekView) bodyClass() string {
@@ -59,6 +62,8 @@ func (s *Server) weekData(r *http.Request) (weekView, error) {
 		return v, err
 	}
 	v.HasAny = len(meals) > 0
+	v.SlotRow = slotRows(meals)
+	v.SlotCount = max(len(v.SlotRow), 1)
 	for i := range 7 {
 		d := mon.AddDays(i)
 		day := dayView{Date: d, Today: d == today}
@@ -87,6 +92,31 @@ func (s *Server) menusPage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	s.render(w, r, http.StatusOK, "menus", "Menus", v)
+}
+
+// slotRows numérote les créneaux présents dans la semaine, dans l'ordre de
+// la journée : sur grand écran, chaque créneau occupe la même rangée dans
+// les sept colonnes.
+func slotRows(meals []menus.Meal) map[int64]int {
+	pos := map[int64]int{}
+	for _, m := range meals {
+		pos[m.SlotID] = m.SlotPos
+	}
+	ids := make([]int64, 0, len(pos))
+	for id := range pos {
+		ids = append(ids, id)
+	}
+	slices.SortFunc(ids, func(a, b int64) int {
+		if pos[a] != pos[b] {
+			return pos[a] - pos[b]
+		}
+		return int(a - b)
+	})
+	rows := make(map[int64]int, len(ids))
+	for i, id := range ids {
+		rows[id] = i
+	}
+	return rows
 }
 
 // deleteMeals supprime un ou plusieurs repas (champ « repas » répété).

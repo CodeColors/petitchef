@@ -589,6 +589,14 @@ menus enregistrés, créneaux) sont regroupées dans un menu « Plus », à côt
 du seul bouton principal « Générer ». Le glisser-déposer pour échanger deux
 plats reste disponible.
 
+Sur grand écran (≥ 1024 px), les sept colonnes partagent une même grille
+(`grid-template-rows: subgrid`) : chaque créneau occupe la même rangée
+dans tous les jours (rang calculé côté serveur, classes `slot-N`, aucun
+style en ligne) et, dans un repas, entrée, plat et dessert ont chacun leur
+rangée (`role-*`). Les plats restent alignés quelle que soit la longueur
+des noms ; le libellé du rôle est alors toujours affiché. Sans prise en
+charge de `subgrid`, l'affichage précédent s'applique.
+
 ## Interface
 
 L'interface est propre à PetitChef (rien n'est repris de BuddyGet côté

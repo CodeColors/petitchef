@@ -33,12 +33,12 @@
   <a class="btn btn-primary" href="/menus/generer?du={{$d.Monday}}">Générer le menu</a>
 </div>
 {{- end}}
-<ol class="week{{if $d.Select}} is-selecting{{end}}" data-swap="/menus/plats">
+<ol class="week week-aligned slots-{{$d.SlotCount}}{{if $d.Select}} is-selecting{{end}}" data-swap="/menus/plats">
   {{- range $d.Days}}{{$day := .}}
   <li class="day{{if .Today}} is-today{{end}}">
     <h2>{{dayLabel .Date}}{{if .Today}} <span class="tag">aujourd'hui</span>{{end}}</h2>
     {{- range .Meals}}{{$m := .}}
-    <section class="meal" aria-label="{{.SlotName}}">
+    <section class="meal slot-{{index $d.SlotRow .SlotID}}" aria-label="{{.SlotName}}">
       <div class="meal-head">
         {{- if $d.Select}}
         <label class="check meal-pick"><input type="checkbox" name="repas" value="{{.ID}}" form="bulk"{{if $d.SelectAll}} checked{{end}}> {{.SlotName}}<span class="sr-only"> du {{dayLabel $day.Date}}</span></label>
@@ -54,8 +54,8 @@
       {{- else}}
       <ul class="dishes">
         {{- range .Entries}}
-        <li class="dish-line{{if .Locked}} is-locked{{end}}{{if eq .Status "cuisine"}} is-cooked{{end}}" data-entry="{{.ID}}">
-          {{- if gt (len $m.Entries) 1}}<span class="dish-role">{{.Role.Label}}</span>{{end}}
+        <li class="dish-line role-{{.Role}}{{if .Locked}} is-locked{{end}}{{if eq .Status "cuisine"}} is-cooked{{end}}" data-entry="{{.ID}}">
+          <span class="dish-role{{if eq (len $m.Entries) 1}} is-alone{{end}}">{{.Role.Label}}</span>
           <span class="dish-name">
             {{- if .RecipeID}}<a href="/recettes/{{.RecipeID}}?portions={{decimal .Portions}}">{{.Title}}</a>{{else}}{{.Title}}{{end}}
             {{- if eq .Status "cuisine"}} <span class="state ok">{{template "icon" "check"}}<span class="sr-only">cuisiné</span></span>
