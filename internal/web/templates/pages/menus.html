@@ -44,10 +44,27 @@
         <label class="check meal-pick"><input type="checkbox" name="repas" value="{{.ID}}" form="bulk"{{if $d.SelectAll}} checked{{end}}> {{.SlotName}}<span class="sr-only"> du {{dayLabel $day.Date}}</span></label>
         {{- else}}
         <a class="meal-slot" href="/menus/repas/{{.ID}}">{{.SlotName}}<span class="sr-only"> du {{dayLabel $day.Date}} : modifier</span></a>
-        <form class="no-print" method="post" action="/menus/repas/supprimer" data-confirm="Supprimer le {{lower .SlotName}} du {{dayLabel $day.Date}} ?">
-          <input type="hidden" name="repas" value="{{.ID}}"><input type="hidden" name="semaine" value="{{$d.Monday}}">
-          <button class="btn btn-icon btn-quiet" title="Supprimer ce repas">{{template "icon" "trash"}}<span class="sr-only">Supprimer le {{lower .SlotName}} du {{dayLabel $day.Date}}</span></button>
-        </form>
+        <details class="popup meal-menu no-print" data-popup>
+          <summary class="btn btn-icon btn-quiet" title="Modifier ce repas">{{template "icon" "more"}}<span class="sr-only">Modifier le {{lower .SlotName}} du {{dayLabel $day.Date}}</span></summary>
+          <ul class="popup-panel" role="list">
+            {{- if ne .Format "aucun"}}
+            {{- range missingRoles .}}
+            <li><form method="post" action="/menus/repas/{{$m.ID}}/ajouter"><input type="hidden" name="role" value="{{.}}"><input type="hidden" name="back" value="/menus?semaine={{$d.Monday}}">
+              <button>{{template "icon" "plus"}} Ajouter {{roleArticle .}}</button></form></li>
+            <li><form method="post" action="/menus/repas/{{$m.ID}}/ajouter"><input type="hidden" name="role" value="{{.}}"><input type="hidden" name="choisir" value="1">
+              <button class="sub">Choisir {{roleArticle .}} moi-même…</button></form></li>
+            {{- end}}
+            {{- range .Entries}}{{if ne .Status "cuisine"}}
+            <li><form method="post" action="/menus/plats/{{.ID}}/retirer"><input type="hidden" name="back" value="/menus?semaine={{$d.Monday}}">
+              <button>{{template "icon" "trash"}} <span>Retirer {{if eq .Role "plat"}}le plat{{else if eq .Role "entree"}}l'entrée{{else}}le dessert{{end}}<span class="sub"> · {{.Title}}</span></span></button></form></li>
+            {{- end}}{{end}}
+            {{- end}}
+            <li><a href="/menus/repas/{{.ID}}">{{template "icon" "menus"}} Détail et réglages du repas</a></li>
+            <li><form method="post" action="/menus/repas/supprimer" data-confirm="Supprimer le {{lower .SlotName}} du {{dayLabel $day.Date}} ?">
+              <input type="hidden" name="repas" value="{{.ID}}"><input type="hidden" name="semaine" value="{{$d.Monday}}">
+              <button class="danger">{{template "icon" "trash"}} Supprimer ce repas</button></form></li>
+          </ul>
+        </details>
         {{- end}}
       </div>
       {{- if eq .Format "aucun"}}<p class="meal-off">Pas de repas à la maison</p>
@@ -87,7 +104,7 @@
     <a class="btn btn-small btn-ghost" href="/menus?semaine={{$d.Monday}}&amp;selection=tout">Tout cocher</a>
   </div>
 </form>
-{{- else}}<p class="hint no-print">Touchez un repas pour changer, verrouiller ou marquer un plat comme cuisiné.</p>{{end}}
+{{- else}}<p class="hint no-print">Le bouton ⋯ d'un repas ajoute ou retire une entrée, un plat ou un dessert. Touchez le nom du repas pour changer un plat, le verrouiller ou le marquer comme cuisiné.</p>{{end}}
 {{end}}
 
 {{define "week-summary"}}

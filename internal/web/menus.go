@@ -119,6 +119,42 @@ func slotRows(meals []menus.Meal) map[int64]int {
 	return rows
 }
 
+// addCourse ajoute une entrée, un plat ou un dessert à un repas, avec la
+// meilleure proposition du générateur ; choisir=1 ouvre plutôt le choix à
+// la main sur la page du repas.
+func (s *Server) addCourse(w http.ResponseWriter, r *http.Request) {
+	id, ok := pathID(r)
+	if !ok || parseForm(w, r) != nil {
+		s.notFound(w, r)
+		return
+	}
+	ctx := r.Context()
+	role := planner.Role(r.PostFormValue("role"))
+	back := localPath(r.PostFormValue("back"))
+	if r.PostFormValue("back") == "" {
+		back = "/menus"
+	}
+	pick := r.PostFormValue("choisir") == ""
+	title, err := s.Menus.AddCourse(ctx, id, role, pick)
+	if err != nil {
+		s.failed(w, r, err, back)
+		return
+	}
+	mealPage := "/menus/repas/" + strconv.FormatInt(id, 10) + "?alternatives=" + string(role) + "#" + string(role)
+	switch {
+	case !pick:
+		http.Redirect(w, r, mealPage, http.StatusSeeOther)
+	case title == "":
+		s.redirect(w, r, mealPage, "Aucune recette ne convient : choisissez-en une, ou un simple produit.")
+	default:
+		done := " ajouté : "
+		if role == planner.Starter {
+			done = " ajoutée : "
+		}
+		s.redirect(w, r, back, role.Label()+done+title+".")
+	}
+}
+
 // deleteMeals supprime un ou plusieurs repas (champ « repas » répété).
 func (s *Server) deleteMeals(w http.ResponseWriter, r *http.Request) {
 	if parseForm(w, r) != nil {
@@ -401,7 +437,7 @@ func (s *Server) dishAction(w http.ResponseWriter, r *http.Request) {
 			msg = "Plat verrouillé : il sera conservé à la prochaine génération."
 		}
 	case "retirer":
-		err = s.Menus.RemoveDish(ctx, id)
+		err = s.Menus.DropCourse(ctx, id)
 		msg = e.Title + " retiré du menu."
 	case "reporter":
 		err = s.Menus.Postpone(ctx, id, e.Status != menus.Postponed)

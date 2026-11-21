@@ -534,3 +534,68 @@ func (s *Service) WeekSummary(ctx context.Context, meals []Meal) (planner.Summar
 	}
 	return planner.Summarize(in, plan), nil
 }
+
+// AddCourse ajoute un élément (entrée, plat, dessert) à un repas : le
+// format du repas s'élargit et la meilleure proposition du générateur est
+// placée (le reste de la semaine étant pris en compte). pick vaut false :
+// le format est seulement élargi, pour un choix à la main. Renvoie le
+// titre du plat placé ("" si aucun).
+func (s *Service) AddCourse(ctx context.Context, mealID int64, role planner.Role, pick bool) (string, error) {
+	if !slices.Contains(planner.Roles, role) {
+		return "", validation.Error("Élément de repas inconnu.")
+	}
+	m, err := s.Meal(ctx, mealID)
+	if err != nil {
+		return "", err
+	}
+	if !slices.Contains(m.Format.Roles(), role) {
+		in := MealInput{Format: formatWith(m.Format, role), AllMembers: m.AllMembers, Members: m.Members, Guests: m.Guests, MaxMin: m.MaxMin}
+		if err := s.UpdateMeal(ctx, m.ID, in); err != nil {
+			return "", err
+		}
+	}
+	if !pick {
+		return "", nil
+	}
+	alts, err := s.AlternativesForMeal(ctx, mealID, role, 1)
+	if err != nil || len(alts) == 0 {
+		return "", err
+	}
+	reasons := alts[0].Reasons
+	if len(reasons) == 0 {
+		reasons = []string{"ajouté au menu"}
+	}
+	if _, err := s.SetDish(ctx, mealID, role, alts[0].RecipeID, 0, 0, reasons); err != nil {
+		return "", err
+	}
+	return alts[0].Title, nil
+}
+
+// DropCourse retire un élément d'un repas : le plat (et ses restes prévus)
+// part, et une entrée ou un dessert sort aussi du format du repas, pour que
+// la prochaine génération ne le remette pas. Le plat principal reste prévu
+// (le repas affiche alors « Compléter »).
+func (s *Service) DropCourse(ctx context.Context, entryID int64) error {
+	e, m, err := s.Entry(ctx, entryID)
+	if err != nil {
+		return err
+	}
+	if err := s.RemoveDish(ctx, entryID); err != nil {
+		return err
+	}
+	if e.Role == planner.Main {
+		return nil
+	}
+	var keep []planner.Role
+	for _, r := range m.Format.Roles() {
+		if r != e.Role {
+			keep = append(keep, r)
+		}
+	}
+	f := planner.MainOnly
+	for _, r := range keep {
+		f = formatWith(f, r)
+	}
+	in := MealInput{Format: f, AllMembers: m.AllMembers, Members: m.Members, Guests: m.Guests, MaxMin: m.MaxMin}
+	return s.UpdateMeal(ctx, m.ID, in)
+}

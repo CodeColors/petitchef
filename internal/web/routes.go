@@ -81,6 +81,7 @@ func (s *Server) routes() map[string]http.HandlerFunc {
 		"POST /menus/generer":                         s.generateMenus,
 		"GET /menus/repas/{id}":                       s.mealPage,
 		"POST /menus/repas/supprimer":                 s.deleteMeals,
+		"POST /menus/repas/{id}/ajouter":              s.addCourse,
 		"POST /menus/repas/{id}":                      s.updateMeal,
 		"POST /menus/repas/{id}/plat":                 s.setDish,
 		"POST /menus/plats/{id}/{action}":             s.dishAction,

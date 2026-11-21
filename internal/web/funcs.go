@@ -19,11 +19,29 @@ import (
 // templateFuncs renvoie les fonctions disponibles dans les gabarits.
 func templateFuncs(static assets) template.FuncMap {
 	return template.FuncMap{
-		"asset":      static.url,
-		"euros":      money.Format,
-		"navActive":  navActive,
-		"plural":     plural,
-		"lower":      strings.ToLower,
+		"asset":     static.url,
+		"euros":     money.Format,
+		"navActive": navActive,
+		"plural":    plural,
+		"lower":     strings.ToLower,
+		"missingRoles": func(m menus.Meal) []planner.Role {
+			var out []planner.Role
+			for _, r := range planner.Roles {
+				if !slices.ContainsFunc(m.Entries, func(e menus.Entry) bool { return e.Role == r }) {
+					out = append(out, r)
+				}
+			}
+			return out
+		},
+		"roleArticle": func(r planner.Role) string {
+			switch r {
+			case planner.Starter:
+				return "une entrée"
+			case planner.Dessert:
+				return "un dessert"
+			}
+			return "un plat"
+		},
 		"date":       func(d calendar.Date) string { return d.Format() },
 		"datetime":   func(t time.Time) string { return t.In(time.Local).Format("02/01/2006 à 15h04") },
 		"fileSize":   fileSize,

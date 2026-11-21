@@ -87,3 +87,56 @@ func TestDeleteMealsAndRecipes(t *testing.T) {
 		t.Error("recette non supprimée")
 	}
 }
+
+func TestAddAndDropCourse(t *testing.T) {
+	e := newEnv(t)
+	ctx := t.Context()
+	pref := DefaultPreferences()
+	pref.Seed = 7
+	if _, err := e.s.Generate(ctx, Request{From: monday, Weeks: 1, Preferences: pref}); err != nil {
+		t.Fatal(err)
+	}
+	meals, _ := e.s.Range(ctx, monday, monday.AddDays(7))
+	var m Meal
+	for _, x := range meals {
+		if x.Format == planner.MainOnly && len(x.Entries) == 1 {
+			m = x
+			break
+		}
+	}
+	if m.ID == 0 {
+		t.Fatal("aucun repas « plat seul »")
+	}
+	// Ajouter un dessert : le format s'élargit et une recette est placée.
+	title, err := e.s.AddCourse(ctx, m.ID, planner.Dessert, true)
+	if err != nil || title == "" {
+		t.Fatalf("ajout du dessert : %q, %v", title, err)
+	}
+	got, _ := e.s.Meal(ctx, m.ID)
+	if got.Format != planner.MainDessert || len(got.Entries) != 2 {
+		t.Fatalf("après ajout : %s, %d plats", got.Format, len(got.Entries))
+	}
+	// Ajouter une entrée à choisir soi-même : format élargi, rien de placé.
+	if _, err := e.s.AddCourse(ctx, m.ID, planner.Starter, false); err != nil {
+		t.Fatal(err)
+	}
+	if got, _ = e.s.Meal(ctx, m.ID); got.Format != planner.FullMeal || len(got.Entries) != 2 {
+		t.Fatalf("après choix manuel : %s, %d plats", got.Format, len(got.Entries))
+	}
+	// Retirer le dessert : il sort aussi du format.
+	var dessert Entry
+	for _, x := range got.Entries {
+		if x.Role == planner.Dessert {
+			dessert = x
+		}
+	}
+	if err := e.s.DropCourse(ctx, dessert.ID); err != nil {
+		t.Fatal(err)
+	}
+	if got, _ = e.s.Meal(ctx, m.ID); got.Format != planner.StarterMain || len(got.Entries) != 1 {
+		t.Fatalf("après retrait : %s, %d plats", got.Format, len(got.Entries))
+	}
+	if _, err := e.s.AddCourse(ctx, m.ID, "apéritif", true); err == nil {
+		t.Error("un rôle inconnu doit être refusé")
+	}
+}
