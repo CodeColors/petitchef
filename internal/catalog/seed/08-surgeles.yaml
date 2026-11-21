@@ -49,3 +49,77 @@ produits:
   - Galettes de légumes surgelées | cond 400 | groupe plats_transformes | all gluten
   - Soja edamame surgelé | syn edamame | cond 500 | groupe legumineuses | all soja
   - Glaçons | cond 2000 | groupe boissons | cons 365/-/365
+  # Ajouts
+  - Haricots verts extra-fins surgelés | cond 1000 | saison toute
+  - Petits pois carottes surgelés | cond 1000 | saison toute
+  - Carottes en rondelles surgelées | cond 1000 | saison toute
+  - Courgettes en rondelles surgelées | cond 1000 | saison toute
+  - Aubergines grillées surgelées | cond 600 | saison toute
+  - Potiron en dés surgelé | cond 1000 | saison toute
+  - Butternut en dés surgelé | cond 750 | saison toute
+  - Choux de Bruxelles surgelés | cond 1000 | saison toute
+  - Chou romanesco surgelé | cond 600 | saison toute
+  - Poêlée asiatique surgelée | cond 750 | saison toute
+  - Poêlée méridionale surgelée | cond 750 | saison toute
+  - Poêlée forestière surgelée | syn poêlée de champignons surgelée | cond 750 | saison toute
+  - Purée de légumes surgelée | syn purée de carottes surgelée | cond 1000 | saison toute
+  - Soupe surgelée | syn soupe de légumes surgelée | cond 1000 | saison toute
+  - Mélange pour paella surgelé | cond 750 | saison toute | groupe plats_transformes | all crustaces, mollusques
+  - Maïs en grains surgelé | cond 1000 | saison toute | groupe feculents_raffines
+  - Fèves surgelées | cond 1000 | saison toute | groupe legumineuses
+  - Artichauts surgelés | syn fonds d'artichaut surgelés | cond 600 | saison toute
+  - Asperges vertes surgelées | cond 400 | saison toute
+  - Basilic surgelé | cond 50 | groupe condiments | saison toute
+  - Échalotes surgelées | cond 250 | groupe condiments | saison toute
+  - Gingembre surgelé | cond 50 | groupe condiments | saison toute
+  - Potatoes surgelées | syn potatoes | cond 1000 | groupe feculents_raffines
+  - Frites allumettes surgelées | cond 1000 | groupe feculents_raffines
+  - Galettes de pommes de terre surgelées | syn rösti surgelés | cond 600 | groupe feculents_raffines
+  - Pommes dauphine surgelées | cond 600 | groupe feculents_raffines | all lait, oeufs, gluten
+  - Gratin dauphinois surgelé | cond 1000 | groupe plats_transformes | all lait
+  - Wedges surgelés | cond 750 | groupe feculents_raffines
+  - Riz cantonais surgelé | cond 750 | groupe plats_transformes | all oeufs, soja
+  - Fruits de la passion surgelés | syn pulpe de passion surgelée | cond 500 | groupe fruits
+  - Myrtilles surgelées | cond 500 | groupe fruits
+  - Cerises surgelées | syn griottes surgelées | cond 600 | groupe fruits
+  - Ananas en morceaux surgelé | cond 500 | groupe fruits
+  - Smoothie surgelé | syn mélange smoothie surgelé | cond 500 | groupe fruits
+  - Rhubarbe surgelée | cond 600 | groupe fruits
+  - Filets de lieu surgelés | piece 120 | cond 600, 1000 | groupe poisson | all poissons
+  - Filets de merlu surgelés | piece 120 | cond 600 | groupe poisson | all poissons
+  - Moules décortiquées surgelées | cond 500 | groupe poisson | all mollusques
+  - Noix de Saint-Jacques surgelées | cond 300 | groupe poisson | all mollusques
+  - Calamars surgelés | syn anneaux de calamar surgelés | cond 500 | groupe poisson | all mollusques
+  - Gambas surgelées | cond 800 | groupe poisson | all crustaces
+  - Bâtonnets de poisson pané | syn fish sticks | cond 450, 900 | groupe plats_transformes | all poissons, gluten
+  - Cordons bleus surgelés | cond 1000 | groupe plats_transformes | all gluten, lait | traits +porc
+  - Boulettes de bœuf surgelées | cond 600 | groupe viande_rouge
+  - Viande hachée surgelée | cond 1000 | groupe viande_rouge
+  - Émincés de poulet surgelés | cond 600 | groupe volaille
+  - Ailes de poulet surgelées | cond 1000 | groupe volaille
+  - Burgers surgelés | syn hamburgers surgelés | cond 500 | groupe plats_transformes | all gluten, lait
+  - Hot-dogs surgelés | cond 500 | groupe plats_transformes | all gluten | traits +porc
+  - Quiche surgelée | cond 400 | groupe plats_transformes | all gluten, lait, oeufs | traits +porc
+  - Tarte flambée surgelée | cond 350 | groupe plats_transformes | all gluten, lait | traits +porc
+  - Pizza jambon surgelée | cond 400 | groupe plats_transformes | all gluten, lait | traits +porc
+  - Nems surgelés | cond 500 | groupe plats_transformes | all gluten, crustaces
+  - Samoussas surgelés | cond 300 | groupe plats_transformes | all gluten
+  - Raviolis chinois surgelés | syn gyoza | cond 600 | groupe plats_transformes | all gluten, soja
+  - Paëlla surgelée | cond 800 | groupe plats_transformes | all crustaces, mollusques
+  - Couscous surgelé | cond 800 | groupe plats_transformes | all gluten
+  - Tartiflette surgelée | cond 800 | groupe plats_transformes | all lait | traits +porc
+  - Escargots surgelés | syn escargots de Bourgogne | cond 250 | groupe plats_transformes | all lait, mollusques
+  - Pâte feuilletée surgelée | cond 500 | groupe feculents_raffines | all gluten, lait
+  - Pain à l'ail surgelé | cond 350 | groupe feculents_raffines | all gluten, lait
+  - Glace vanille bourbon | unite ml | cond 900 | groupe produits_sucres | all lait, oeufs
+  - Glace pistache | unite ml | cond 500 | groupe produits_sucres | all lait, fruits_a_coque
+  - Glace café | unite ml | cond 500 | groupe produits_sucres | all lait
+  - Glace fraise | unite ml | cond 500 | groupe produits_sucres | all lait
+  - Glace caramel beurre salé | unite ml | cond 500 | groupe produits_sucres | all lait
+  - Sorbet fruits rouges | unite ml | cond 500 | groupe produits_sucres | all
+  - Sorbet mangue | unite ml | cond 500 | groupe produits_sucres | all
+  - Cônes glacés | unite piece | piece 70 | cond 280:4 cônes | groupe produits_sucres | all lait, gluten
+  - Profiteroles surgelées | cond 300 | groupe produits_sucres | all lait, oeufs, gluten
+  - Fondants au chocolat surgelés | cond 360 | groupe produits_sucres | all lait, oeufs, gluten
+  - Macarons surgelés | cond 144 | groupe produits_sucres | all fruits_a_coque, oeufs, lait
+  - Pâte à pizza surgelée | cond 400 | groupe feculents_raffines | all gluten

@@ -21,8 +21,8 @@ produits:
   - Margarine | syn matière grasse végétale | groupe matieres_grasses | u cs=15, cc=5 | cond 250, 500 | cons 90/30/- | ddm | all
   - Crème fraîche épaisse | syn crème épaisse | groupe matieres_grasses | u cs=20, cc=7 | cond 200, 400 | cons 21/5/90
   - Crème fraîche légère | groupe matieres_grasses | u cs=20, cc=7 | cond 200, 400 | cons 21/5/90
-  - Crème liquide entière | syn crème liquide, crème fleurette | unite ml | densite 1000 | groupe matieres_grasses | cond 200:20 cl, 500 | cons 60/4/90 | ddm
-  - Crème liquide légère | unite ml | groupe matieres_grasses | cond 200:20 cl, 500 | cons 60/4/90 | ddm
+  - Crème liquide entière | syn crème liquide, crème fleurette | unite ml | densite 1000 | groupe matieres_grasses | cond 200:20 cl, 250:25 cl, 500:50 cl, 1000:1 L | cons 60/4/90 | ddm
+  - Crème liquide légère | unite ml | groupe matieres_grasses | cond 200:20 cl, 250:25 cl, 500:50 cl | cons 60/4/90 | ddm
   - Crème de soja | syn crème végétale | unite ml | groupe matieres_grasses | cond 200 | cons 240/4/- | ddm | emp placard | all soja | traits -animal
   - Crème de coco | syn lait de coco | unite ml | groupe matieres_grasses | cond 200, 400 | cons 365/3/90 | ddm | emp placard | all | traits -animal
   - Yaourt nature | syn yaourts nature | unite piece | piece 125 | cond 4000:4 pots, 8000:8 pots, 16000:16 pots | cons 28/1/-
@@ -49,3 +49,41 @@ produits:
   - Mascarpone | groupe matieres_grasses | cond 250, 500 | cons 30/4/-
   - Ricotta | cond 250 | cons 21/4/- | groupe fromage
   - Pâte à crêpes prête | unite ml | cond 750 | cons 14/2/- | groupe feculents_raffines | all lait, oeufs, gluten
+  # Ajouts
+  - Crème fraîche d'Isigny | cond 200, 400 | cons 30/7/- | groupe matieres_grasses
+  - Crème liquide 15 % | syn crème légère 15 % | unite ml | densite 1010 | cond 200, 500 | cons 60/4/- | groupe matieres_grasses | ddm
+  - Crème fouettée en bombe | syn chantilly | unite ml | cond 250 | cons 60/10/- | groupe produits_sucres
+  - Crème d'avoine | syn crème végétale avoine | unite ml | cond 200 | cons 270/4/- | ddm | emp placard | groupe matieres_grasses | all gluten
+  - Beurre doux tendre | syn beurre tendre | cond 250 | cons 60/30/180 | groupe matieres_grasses
+  - Beurre allégé | cond 250 | cons 60/30/180 | groupe matieres_grasses
+  - Beurre clarifié | syn ghee | cond 250 | cons 270/90/- | groupe matieres_grasses | emp placard | ddm
+  - Margarine végétale | syn margarine sans lait | cond 250, 500 | cons 90/30/- | groupe matieres_grasses | all
+  - Lait demi-écrémé bouteille | syn lait en bouteille | unite ml | densite 1030 | cond 1000, 6000:6 × 1 L | cons 90/4/- | ddm | emp placard | groupe produits_laitiers
+  - Lait de chèvre | unite ml | densite 1030 | cond 1000 | cons 90/4/- | ddm | emp placard | groupe produits_laitiers
+  - Lait de brebis | unite ml | densite 1030 | cond 1000 | cons 90/4/- | ddm | emp placard | groupe produits_laitiers
+  - Boisson au riz | unite ml | cond 1000 | cons 300/5/- | ddm | emp placard | groupe boissons | all
+  - Boisson à la noisette | unite ml | cond 1000 | cons 300/5/- | ddm | emp placard | groupe boissons | all fruits_a_coque
+  - Boisson coco | syn lait de coco à boire | unite ml | cond 1000 | cons 300/5/- | ddm | emp placard | groupe boissons | all
+  - Babeurre | syn lait ribot | unite ml | cond 500 | cons 21/3/- | groupe produits_laitiers
+  - Yaourt nature 0 % | syn yaourt maigre | piece 125 | unite piece | cond 4000:4 pots, 8000:8 pots, 16000:16 pots | cons 30/2/- | groupe produits_laitiers
+  - Yaourt au lait entier | piece 125 | unite piece | cond 4000:4 pots | cons 30/2/- | groupe produits_laitiers
+  - Yaourt à la vanille | piece 125 | unite piece | cond 4000:4 pots, 8000:8 pots | cons 30/2/- | groupe produits_sucres
+  - Yaourt au lait de brebis | piece 125 | unite piece | cond 4000:4 pots | cons 30/2/- | groupe produits_laitiers
+  - Yaourt végétal coco | piece 125 | unite piece | cond 4000:4 pots | cons 30/2/- | groupe produits_sucres | all
+  - Fromage blanc 0 % | cond 500, 1000 | cons 21/4/- | groupe produits_laitiers
+  - Fromage blanc aux fruits | piece 100 | unite piece | cond 4000:4 pots | cons 21/2/- | groupe produits_sucres
+  - Crème au café | syn crème dessert café | piece 125 | unite piece | cond 4000:4 pots | cons 30/2/- | groupe produits_sucres
+  - Crème dessert caramel | piece 125 | unite piece | cond 4000:4 pots | cons 30/2/- | groupe produits_sucres
+  - Liégeois au chocolat | piece 100 | unite piece | cond 4000:4 pots | cons 30/2/- | groupe produits_sucres
+  - Panna cotta | piece 120 | unite piece | cond 2000:2 pots | cons 21/2/- | groupe produits_sucres
+  - Tiramisu pâtissier | piece 90 | unite piece | cond 2000:2 pots | cons 14/2/- | groupe produits_sucres | all lait, oeufs, gluten
+  - Île flottante | piece 125 | unite piece | cond 2000:2 pots | cons 14/2/- | groupe produits_sucres | all lait, oeufs
+  - Œufs frais x 12 | syn douzaine d'œufs | unite piece | piece 60 | cond 12000:12 œufs | cons 28/3/- | groupe oeufs | all oeufs
+  - Œufs de caille | unite piece | piece 10 | cond 18000:18 œufs | cons 28/3/- | groupe oeufs | all oeufs
+  - Blancs d'œufs liquides | unite ml | cond 500 | cons 30/3/- | groupe oeufs | all oeufs
+  - Pâte à cookies prête | cond 300 | cons 30/3/90 | groupe produits_sucres | all gluten, lait, oeufs
+  - Pâte à pancakes prête | unite ml | cond 500 | cons 14/2/- | groupe feculents_raffines | all lait, oeufs, gluten
+  - Soupe fraîche potiron | syn velouté de potiron frais | unite ml | cond 1000 | cons 21/3/- | groupe legumes | all lait
+  - Purée fraîche | syn purée traiteur | cond 400 | cons 14/3/- | groupe feculents_raffines
+  - Jus de pomme frais | unite ml | cond 1000 | cons 21/4/- | groupe fruits | all
+  - Smoothie frais | unite ml | cond 750 | cons 14/3/- | groupe fruits | all

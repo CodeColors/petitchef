@@ -82,3 +82,73 @@ produits:
   - Chutney de mangue | syn chutney | cond 250 | groupe produits_sucres | cons 365/60/-
   - Vin blanc de cuisine | unite ml | densite 990 | cond 750 | groupe boissons | all sulfites | traits +alcool | cons 730/7/-
   - Vin rouge de cuisine | unite ml | densite 990 | cond 750 | groupe boissons | all sulfites | traits +alcool | cons 730/7/-
+  # Ajouts
+  - Huile d'olive vierge extra | syn huile d'olive extra vierge | unite ml | densite 915 | cond 500, 750, 1000 | u cs=15, cc=5 | groupe matieres_grasses | cons 540/180/-
+  - Huile d'arachide | unite ml | densite 915 | cond 1000 | u cs=15, cc=5 | groupe matieres_grasses | cons 540/180/- | all arachides
+  - Huile de pépins de raisin | unite ml | densite 920 | cond 500 | u cs=15, cc=5 | groupe matieres_grasses | cons 540/180/-
+  - Huile de coco | cond 300 | u cs=14, cc=5 | groupe matieres_grasses | cons 730/365/-
+  - Huile pimentée | unite ml | cond 100 | u cs=15, cc=5 | groupe matieres_grasses | cons 730/180/-
+  - Spray de cuisson | syn huile en spray | unite ml | cond 250 | groupe matieres_grasses | cons 730/365/-
+  - Vinaigre de Xérès | unite ml | cond 250 | u cs=15, cc=5 | all sulfites
+  - Vinaigre d'alcool coloré | unite ml | cond 1000 | u cs=15, cc=5 | all
+  - Crème de vinaigre balsamique | syn crème balsamique | unite ml | cond 250 | all sulfites
+  - Sel de Guérande | cond 500, 1000 | u cs=15, cc=5, pincee=1 | all | base
+  - Sel aux herbes | cond 125 | u cc=5, pincee=1 | all
+  - Sel au céleri | cond 100 | u cc=5, pincee=1 | all celeri
+  - Mélange cinq baies | cond 50 | u cc=2, pincee=1 | all
+  - Poivre blanc moulu | cond 50 | u cc=2, pincee=1 | all
+  - Piment en flocons | syn piment séché | cond 40 | u cc=2, pincee=1 | all
+  - Coriandre moulue | cond 40 | u cc=2, pincee=1 | all
+  - Graines de coriandre | cond 40 | u cc=2 | all
+  - Graines de fenouil | cond 40 | u cc=2 | all
+  - Graines de cumin | cond 40 | u cc=2 | all
+  - Fenugrec | cond 40 | u cc=2 | all
+  - Sumac | cond 40 | u cc=2 | all
+  - Za'atar | cond 40 | u cc=2 | all sesame
+  - Mélange tandoori | syn épices tandoori | cond 40 | u cc=2 | all
+  - Colombo | syn épices colombo | cond 40 | u cc=2 | all moutarde
+  - Mélange pour couscous | syn épices couscous | cond 50 | u cc=2 | all
+  - Épices cajun | cond 40 | u cc=2 | all
+  - Cinq-épices chinois | syn cinq épices | cond 40 | u cc=2 | all
+  - Baies de genièvre | cond 30 | u cc=2 | all
+  - Mélange italien | syn herbes italiennes | cond 20 | u cc=1 | all
+  - Persil séché | cond 15 | u cc=1 | all
+  - Basilic séché | cond 15 | u cc=1 | all
+  - Ciboulette séchée | cond 10 | u cc=1 | all
+  - Romarin séché | cond 20 | u cc=1 | all
+  - Estragon séché | cond 10 | u cc=1 | all
+  - Aneth séché | cond 10 | u cc=1 | all
+  - Menthe séchée | cond 10 | u cc=1 | all
+  - Oignon en poudre | cond 50 | u cc=3 | all
+  - Bouquet garni | unite piece | piece 10 | cond 10000:10 bouquets | all
+  - Moutarde forte | cond 210, 370 | u cs=15, cc=5 | all moutarde
+  - Moutarde au miel | cond 200 | u cs=15, cc=5 | all moutarde
+  - Mayonnaise allégée | cond 235 | u cs=15, cc=5 | all oeufs, moutarde | groupe matieres_grasses
+  - Sauce tartare | cond 235 | u cs=15 | all oeufs, moutarde | groupe matieres_grasses
+  - Sauce cocktail | cond 235 | u cs=15 | all oeufs, moutarde | groupe matieres_grasses
+  - Sauce samouraï | cond 235 | u cs=15 | all oeufs, moutarde | groupe matieres_grasses
+  - Sauce algérienne | cond 235 | u cs=15 | all oeufs, moutarde | groupe matieres_grasses
+  - Sauce blanche | syn sauce kebab | cond 235 | u cs=15 | all lait, oeufs | groupe matieres_grasses
+  - Sauce burger | cond 250 | u cs=15 | all oeufs, moutarde | groupe matieres_grasses
+  - Sauce au poivre | syn sauce poivre | unite ml | cond 200 | all lait | groupe matieres_grasses
+  - Sauce hollandaise | unite ml | cond 200 | all lait, oeufs | groupe matieres_grasses
+  - Sauce au roquefort | unite ml | cond 200 | all lait | groupe matieres_grasses
+  - Sauce carbonara | cond 190 | all lait, oeufs | groupe plats_transformes | traits +porc
+  - Sauce arrabbiata | cond 400 | all | groupe legumes
+  - Sauce basilic | syn sauce tomate au basilic | cond 400 | all | groupe legumes
+  - Sauce napolitaine | cond 400 | all | groupe legumes
+  - Sauce curry | cond 200 | u cs=15 | all moutarde
+  - Sauce chili douce | syn sauce chili thaï | unite ml | cond 300 | u cs=15 | all
+  - Ketchup allégé | cond 500 | u cs=15 | all
+  - Câpres à queue | cond 100 | all
+  - Cornichons extra-fins | cond 200, 380 | all moutarde
+  - Pickles | syn légumes au vinaigre | cond 300 | all moutarde
+  - Ail confit | cond 100 | all
+  - Purée d'ail | cond 90 | u cc=5 | all
+  - Purée de gingembre | cond 90 | u cc=5 | all
+  - Fumet de poisson déshydraté | cond 90 | u cs=10 | all poissons, celeri
+  - Liant pour sauce | syn maïzena express | cond 250 | u cs=10 | all
+  - Vin de Madère | syn madère | unite ml | cond 750 | traits +alcool | all sulfites | groupe boissons
+  - Mirin | unite ml | cond 300 | u cs=15 | traits +alcool | all
+  - Saké de cuisine | unite ml | cond 300 | traits +alcool | all
+  - Concentré de tomate double | cond 140 | u cs=15, cc=5 | all | groupe legumes

@@ -66,3 +66,49 @@ produits:
   - Bouillotte | piece 1 | cons -/-/-
   - Brosse à dents électrique tête | syn têtes de rechange | piece 1 | cond 4000:4 têtes | cons -/90/-
   - Eau de toilette | syn parfum | unite ml | cond 100 | cons 1095/730/-
+  # Ajouts
+  - Dentifrice blancheur | unite ml | cond 75 | cons 1095/365/-
+  - Dentifrice dents sensibles | unite ml | cond 75 | cons 1095/365/-
+  - Gel douche homme | unite ml | cond 250 | cons 1095/365/-
+  - Crème de douche | unite ml | cond 250, 500 | cons 1095/365/-
+  - Huile de douche | unite ml | cond 250 | cons 1095/365/-
+  - Shampooing antipelliculaire | unite ml | cond 250 | cons 1095/365/-
+  - Shampooing sec | unite ml | cond 200 | cons 1095/365/-
+  - Soin sans rinçage | unite ml | cond 200 | cons 1095/365/-
+  - Déodorant bille | unite ml | cond 50 | cons 1095/365/-
+  - Crème de jour | unite ml | cond 50 | cons 1095/180/-
+  - Crème de nuit | unite ml | cond 50 | cons 1095/180/-
+  - Sérum visage | unite ml | cond 30 | cons 1095/180/-
+  - Gel nettoyant visage | unite ml | cond 200 | cons 1095/180/-
+  - Masque visage | piece 1 | cond 1000 | cons 730/-/-
+  - Gommage | unite ml | cond 150 | cons 1095/180/-
+  - Après-soleil | unite ml | cond 200 | cons 1095/365/- | saison 5-9
+  - Autobronzant | unite ml | cond 150 | cons 1095/180/-
+  - Mascara | piece 1 | cons 1095/180/-
+  - Fond de teint | unite ml | cond 30 | cons 1095/365/-
+  - Rouge à lèvres | piece 1 | cons 1095/365/-
+  - Crayon pour les yeux | piece 1 | cons 1095/365/-
+  - Rasoir rechargeable | piece 1 | cons -/-/-
+  - Tondeuse barbe huile | unite ml | cond 30 | cons 1095/365/-
+  - Serviettes hygiéniques nuit | piece 1 | cond 10000:10 serviettes | cons -/-/-
+  - Culottes menstruelles | piece 1 | cons -/-/-
+  - Coupe menstruelle | piece 1 | cons -/-/-
+  - Mouchoirs en boîte | piece 1 | cond 1000:1 boîte | cons -/-/-
+  - Papier toilette recyclé | piece 1 | cond 12000:12 rouleaux | cons -/-/-
+  - Pansements waterproof | piece 1 | cond 20000:20 pansements | cons 1825/-/-
+  - Compresses stériles | piece 1 | cond 25000:25 compresses | cons 1825/-/-
+  - Ibuprofène | piece 1 | cond 20000:20 comprimés | cons 1095/-/-
+  - Pastilles pour la gorge | piece 1 | cond 24000:24 pastilles | cons 730/-/-
+  - Spray nasal | unite ml | cond 20 | cons 1095/90/-
+  - Crème anti-inflammatoire | unite ml | cond 50 | cons 1095/90/-
+  - Vitamines | syn complément vitamines | piece 1 | cond 30000:30 comprimés | cons 730/-/-
+  - Huile essentielle de lavande | unite ml | cond 10 | cons 1095/365/-
+  - Savon surgras | unite g | cond 100 | cons 1095/365/-
+  - Gel antibactérien mains | unite ml | cond 300 | cons 1095/365/-
+  - Bain moussant | unite ml | cond 750 | cons 1095/365/-
+  - Fil dentaire ruban | piece 1 | cons 1095/-/-
+  - Barrettes | piece 1 | cond 6000:6 barrettes | cons -/-/-
+  - Ouate de coton | unite g | cond 100 | cons -/-/-
+  - Lime à ongles | piece 1 | cons -/-/-
+  - Crème pieds | unite ml | cond 100 | cons 1095/365/-
+  - Bouchons d'oreilles | piece 1 | cond 10000:10 paires | cons -/-/-

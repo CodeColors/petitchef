@@ -34,3 +34,23 @@ produits:
   - Gressins | unite g | cond 125 | cons 180/30/- | ddm
   - Pain d'épices | unite g | u tranche=25 | cond 300 | cons 60/10/- | ddm | groupe produits_sucres
   - Galette de riz soufflé | syn galettes de riz | unite g | cond 130 | cons 180/30/- | ddm | all | groupe feculents_complets
+  # Ajouts
+  - Bagels | syn bagel | piece 90 | cond 360:4 bagels | cons 30/5/90
+  - Pain ciabatta | syn ciabatta | piece 250 | cond 500:2 pains | cons 7/3/90
+  - Blinis | syn blini | piece 15 | cond 240:16 blinis | cons 30/4/90 | all gluten, lait, oeufs
+  - Galettes de sarrasin | syn galettes bretonnes, galettes de blé noir | piece 60 | cond 360:6 galettes | cons 21/4/90 | all | groupe feculents_complets
+  - Pain de mie sans croûte | piece 30 | u tranche=30 | cond 500 | cons 14/5/90
+  - Pain de mie spécial croque | piece 40 | u tranche=40 | cond 600 | cons 14/5/90
+  - Pain viennois | piece 300 | u tranche=30 | cons 4/2/90 | all gluten, lait
+  - Demi-baguette | piece 125 | cons 1/1/90
+  - Pain de seigle aux noix | piece 400 | u tranche=40 | cons 5/3/90 | all gluten, fruits_a_coque
+  - Pain sans gluten | piece 300 | u tranche=30 | cond 300 | cons 21/4/90 | all
+  - Pain naan nature | syn naan | piece 120 | cond 240:2 naans | cons 21/4/90 | all gluten, lait
+  - Muffins anglais | piece 60 | cond 240:4 muffins | cons 14/4/90
+  - Wraps complets | syn tortillas complètes | piece 60 | cond 360:6 wraps | cons 30/5/90 | groupe feculents_complets
+  - Chouquettes | piece 8 | cond 160:20 chouquettes | cons 2/1/60 | all gluten, lait, oeufs | groupe produits_sucres
+  - Éclair au chocolat | piece 90 | cons 2/1/- | all gluten, lait, oeufs | groupe produits_sucres | emp refrigerateur
+  - Tarte aux pommes pâtissière | syn tarte aux pommes boulangerie | piece 600 | cons 2/2/- | all gluten, lait, oeufs | groupe produits_sucres
+  - Chausson aux pommes | piece 110 | cons 2/1/90 | all gluten, lait | groupe produits_sucres
+  - Pain bun brioché | syn buns briochés | piece 70 | cond 280:4 buns | cons 14/4/90 | all gluten, lait, oeufs
+  - Croûtons à l'ail | piece 1 | unite g | cond 90 | cons 180/30/- | ddm

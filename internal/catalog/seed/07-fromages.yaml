@@ -48,3 +48,43 @@ produits:
   - Fromage à fondue | syn mélange pour fondue | cond 600 | cons 30/3/- | all lait, sulfites | traits +alcool
   - Mont d'Or | syn vacherin | cond 500 | cons 21/5/- | saison 9-5
   - Fromage végétal | syn alternative végétale au fromage | cond 200 | cons 60/7/- | groupe matieres_grasses | all
+  # Ajouts
+  - Comté 18 mois | cond 200 | cons 60/14/90 | u tranche=20
+  - Emmental en tranches | u tranche=20 | cond 200, 400 | cons 45/7/90
+  - Comté râpé | cond 150 | cons 30/7/90
+  - Mélange râpé pizza | syn fromage râpé pizza | cond 200 | cons 30/7/90
+  - Abondance | cond 250 | cons 45/14/90
+  - Tomme de brebis | syn ossau-iraty | cond 250 | cons 60/14/90
+  - Manchego | cond 200 | cons 60/14/90
+  - Pont-l'évêque | cond 220 | cons 21/5/- 
+  - Livarot | cond 250 | cons 21/5/- 
+  - Maroilles | cond 200, 750 | cons 21/5/- 
+  - Époisses | cond 250 | cons 21/5/- 
+  - Brillat-savarin | cond 200 | cons 21/5/- 
+  - Chaource | cond 250 | cons 21/5/- 
+  - Carré frais | syn carré demi-sel | cond 100 | cons 21/4/- 
+  - Boursin | syn fromage ail et fines herbes | cond 150 | cons 30/5/- 
+  - Chèvre en bûchette | cond 150 | cons 21/5/- 
+  - Valençay | cond 220 | cons 21/5/- 
+  - Rocamadour | piece 35 | cond 105:3 palets | cons 21/5/- 
+  - Saint-Marcellin | piece 80 | cond 80 | cons 14/4/- 
+  - Fourme d'Ambert | cond 200 | cons 30/7/- 
+  - Bleu de Bresse | cond 200 | cons 30/7/- 
+  - Morbier tranché | u tranche=25 | cond 150 | cons 30/7/- 
+  - Raclette en tranches | u tranche=25 | cond 400, 800 | cons 30/7/- | saison 10-3
+  - Raclette fumée | cond 400 | cons 30/7/- | saison 10-3
+  - Mozzarella di bufala | cond 125 | cons 14/2/- 
+  - Mozzarella cerise | syn billes de mozzarella | cond 150 | cons 21/3/- 
+  - Scamorza | cond 250 | cons 30/7/- 
+  - Provolone | cond 200 | cons 45/14/- 
+  - Grana padano | cond 200 | cons 90/30/- 
+  - Parmesan en copeaux | cond 100 | cons 60/14/- 
+  - Comté en dés | syn dés de fromage apéritif | cond 150 | cons 30/7/- 
+  - Feta AOP | cond 200 | cons 60/7/- 
+  - Fromage à raclette sans croûte | cond 600 | cons 30/7/- | saison 10-3
+  - Fromage frais de chèvre | syn petit chèvre frais | cond 150 | cons 21/4/- 
+  - Kiri | syn fromage frais en portions | piece 18 | cond 216:12 portions | cons 60/5/- 
+  - Mini Babybel | syn fromages en portions apéritif | piece 20 | cond 240:12 mini-fromages | cons 60/7/- 
+  - Cheddar en tranches | u tranche=20 | cond 200 | cons 60/7/- 
+  - Fromage en grains | syn fromage pour poutine | cond 300 | cons 21/4/- 
+  - Paneer | cond 200 | cons 21/4/- 

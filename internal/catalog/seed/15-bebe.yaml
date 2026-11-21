@@ -31,3 +31,23 @@ produits:
   - Tétine | piece 1 | cond 2000:2 tétines | cons -/-/-
   - Lessive bébé | syn lessive hypoallergénique | unite ml | cond 1500 | univers entretien | cons 730/365/-
   - Biberon | piece 1 | cons -/-/-
+  # Ajouts
+  - Couches taille 6 | piece 1 | cond 30000:paquet de 30
+  - Couches de nuit | piece 1 | cond 24000:paquet de 24
+  - Lait infantile 3e âge | univers bebe | unite g | cond 800 | cons 730/21/-
+  - Lait infantile hypoallergénique | unite g | cond 800 | cons 730/21/-
+  - Lait infantile en brique | syn lait infantile liquide | unite ml | cond 1000 | cons 270/2/-
+  - Petits pots viande et légumes | syn petits pots dès 8 mois | unite g | cond 400:2 pots | cons 730/2/-
+  - Purée de fruits bébé | unite g | cond 400:4 pots | cons 365/2/-
+  - Yaourts bébé | unite g | cond 360:6 pots | cons 30/2/- | emp refrigerateur
+  - Céréales bébé au chocolat | unite g | cond 400 | cons 365/30/-
+  - Boudoirs bébé | unite g | cond 150 | cons 365/30/-
+  - Biscuits de dentition | unite g | cond 120 | cons 365/30/-
+  - Compotes bébé en gourde | piece 90 | cond 360:4 gourdes | cons 365/2/-
+  - Lingettes à l'eau | piece 1 | cond 60000:60 lingettes | cons 730/90/-
+  - Eau thermale bébé | unite ml | cond 300 | cons 1095/365/-
+  - Crème hydratante bébé | unite ml | cond 200 | cons 1095/365/-
+  - Shampooing bébé | unite ml | cond 300 | cons 1095/365/-
+  - Mouche-bébé embouts | piece 1 | cond 10000:10 embouts | cons -/-/-
+  - Bavoirs jetables | piece 1 | cond 20000:20 bavoirs | cons -/-/-
+  - Tétines de biberon | piece 1 | cond 2000:2 tétines | cons -/-/-

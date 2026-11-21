@@ -53,3 +53,46 @@ produits:
   - Recharge de désodorisant | piece 1 | cond 2000:2 recharges | cons 1095/60/-
   - Pierre d'argile | syn pierre blanche | unite g | cond 300
   - Alcool ménager | unite ml | cond 1000
+  # Ajouts
+  - Liquide vaisselle écologique | unite ml | cond 500, 1000 | emp placard
+  - Recharge de liquide vaisselle | unite ml | cond 1500 | emp placard
+  - Gel lave-vaisselle | unite ml | cond 1000 | emp placard
+  - Lessive liquide écologique | unite ml | cond 1500, 3000 | cons 1095/365/-
+  - Lessive noire | syn lessive couleurs sombres | unite ml | cond 1500 | cons 1095/365/-
+  - Lessive laine | unite ml | cond 750 | cons 1095/365/-
+  - Assouplissant concentré | unite ml | cond 750 | cons 1095/365/-
+  - Perles parfumées pour linge | unite g | cond 250 | cons 1095/365/-
+  - Percarbonate de soude | unite g | cond 500 | cons 1825/730/-
+  - Acide citrique | unite g | cond 350 | cons 1825/730/-
+  - Terre de Sommières | unite g | cond 300 | cons 1825/730/-
+  - Spray détachant | unite ml | cond 500 | cons 1095/365/-
+  - Nettoyant parquet | unite ml | cond 1000 | cons 1095/365/-
+  - Nettoyant carrelage | unite ml | cond 1000 | cons 1095/365/-
+  - Nettoyant plaque vitrocéramique | unite ml | cond 250 | cons 1095/365/-
+  - Nettoyant micro-ondes | unite ml | cond 500 | cons 1095/365/-
+  - Détartrant bouilloire | unite g | cond 100 | cons 1095/365/-
+  - Nettoyant anticalcaire | unite ml | cond 750 | cons 1095/365/-
+  - Gel WC javel | unite ml | cond 750 | cons 1095/365/-
+  - Lingettes désinfectantes | piece 1 | cond 80000:80 lingettes | cons 1095/90/-
+  - Nettoyant écran | unite ml | cond 200 | cons 1095/365/-
+  - Cire pour sol | unite ml | cond 750 | cons 1095/365/-
+  - Produit pour cuir | unite ml | cond 250 | cons 1095/365/-
+  - Cirage | unite ml | cond 50 | cons 1095/365/-
+  - Brosse WC | piece 1 | cons -/-/-
+  - Balai | piece 1 | cons -/-/-
+  - Pelle et balayette | piece 1 | cons -/-/-
+  - Seau | piece 1 | cons -/-/-
+  - Recharge de balai microfibre | piece 1 | cond 2000:2 recharges | cons -/-/-
+  - Lingettes sol | piece 1 | cond 20000:20 lingettes | cons -/-/-
+  - Plumeau | piece 1 | cons -/-/-
+  - Grattoir | piece 1 | cons -/-/-
+  - Chiffons microfibres vitres | piece 1 | cond 2000:2 chiffons | cons -/-/-
+  - Sacs poubelle 20 L | syn petits sacs poubelle | piece 1 | cond 30000:30 sacs | cons -/-/-
+  - Sacs poubelle compostables | piece 1 | cond 20000:20 sacs | cons -/-/-
+  - Sacs poubelle à liens | piece 1 | cond 20000:20 sacs | cons -/-/-
+  - Désodorisant voiture | piece 1 | cons 730/60/-
+  - Bougie parfumée | piece 1 | cons -/-/-
+  - Diffuseur de parfum | unite ml | cond 100 | cons 730/90/-
+  - Pièges à mouches | piece 1 | cond 4000:4 pièges | cons 730/-/- | saison 5-9
+  - Anti-fourmis | unite g | cond 300 | cons 730/-/-
+  - Diffuseur anti-moustiques | piece 1 | cons 730/-/- | saison 5-9

@@ -46,3 +46,49 @@ produits:
   - Cure-dents | piece 1 | cond 200000:200 cure-dents
   - Pique-niques | syn couverts jetables | piece 1 | cond 24000:24 couverts
   - Charbon de bois | syn barbecue | unite g | cond 3000 | emp garage | saison 5-9
+  # Ajouts
+  - Essuie-tout compact | piece 1 | cond 6000:6 rouleaux
+  - Papier cuisson en feuilles | piece 1 | cond 20000:20 feuilles
+  - Moules en papier | syn caissettes à muffins | piece 1 | cond 50000:50 caissettes
+  - Barquettes aluminium | piece 1 | cond 10000:10 barquettes
+  - Sacs à vrac | piece 1 | cond 5000:5 sacs
+  - Sacs de courses réutilisables | piece 1
+  - Boîte hermétique en verre | piece 1
+  - Gourde | piece 1
+  - Couverts en bois jetables | piece 1 | cond 24000:24 couverts
+  - Verres en plastique réutilisables | piece 1 | cond 10000:10 verres
+  - Bougies d'anniversaire | piece 1 | cond 24000:24 bougies
+  - Ballons de baudruche | piece 1 | cond 20000:20 ballons
+  - Serviettes de table en tissu | piece 1 | cond 4000:4 serviettes
+  - Piles AA rechargeables | piece 1 | cond 4000:lot de 4
+  - Piles LR14 | syn piles C | piece 1 | cond 2000:lot de 2
+  - Piles LR20 | syn piles D | piece 1 | cond 2000:lot de 2
+  - Ampoule LED filament | piece 1
+  - Multiprise | piece 1
+  - Rallonge électrique | piece 1
+  - Câble USB-C | piece 1
+  - Chargeur USB | piece 1
+  - Ruban de masquage | piece 1
+  - Ficelle de cuisine | piece 1
+  - Élastiques | piece 1 | cond 100000:100 élastiques
+  - Trombones | piece 1 | cond 100000:100 trombones
+  - Agrafes | piece 1 | cond 1000000:1000 agrafes
+  - Surligneurs | piece 1 | cond 4000:4 surligneurs
+  - Feutres | piece 1 | cond 12000:12 feutres
+  - Crayons de couleur | piece 1 | cond 12000:12 crayons
+  - Colle en bâton | piece 1 | cond 2000:2 bâtons
+  - Gomme | piece 1
+  - Taille-crayon | piece 1
+  - Ciseaux | piece 1
+  - Classeur | piece 1
+  - Pochettes plastiques | piece 1 | cond 50000:50 pochettes
+  - Papier cadeau | piece 1 | u rouleau=1
+  - Bolduc | piece 1
+  - Allume-feu | piece 1 | cond 32000:32 cubes | emp garage
+  - Bûches de bois compressé | unite g | cond 10000 | emp garage | saison 10-3
+  - Filtres à café n° 4 | piece 1 | cond 80000:80 filtres
+  - Sacs pour aspirateur universel | piece 1 | cond 4000:4 sacs
+  - Pastilles de chlore | unite g | cond 1000 | emp garage | saison 5-9
+  - Insecticide plantes | unite ml | cond 500 | emp garage
+  - Terreau | unite g | cond 20000 | emp garage
+  - Engrais plantes vertes | unite ml | cond 500 | emp garage

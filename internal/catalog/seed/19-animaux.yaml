@@ -26,3 +26,29 @@ produits:
   - Jouet pour chat | unite piece | piece 1 | cons -/-/-
   - Arbre à chat recharge | syn griffoir | unite piece | piece 1 | cons -/-/-
   - Copeaux de litière | syn copeaux de bois | cond 2000 | cons -/-/-
+  # Ajouts
+  - Croquettes chat stérilisé | cond 1500, 4000 | cons 365/60/-
+  - Croquettes chaton | cond 1500 | cons 365/60/-
+  - Croquettes chiot | cond 3000 | cons 365/60/-
+  - Croquettes petit chien | cond 1500 | cons 365/60/-
+  - Croquettes sans céréales | cond 2000 | cons 365/60/-
+  - Terrine pour chat | unite piece | piece 100 | cond 4000:4 barquettes | cons 730/2/-
+  - Mousse pour chat | unite piece | piece 85 | cond 12000:12 sachets | cons 730/2/-
+  - Pâtée chien en barquette | unite piece | piece 300 | cond 4000:4 barquettes | cons 730/2/-
+  - Bâtonnets à mâcher | unite piece | piece 20 | cond 10000:10 bâtonnets | cons 365/60/-
+  - Herbe à chat | cond 50 | cons 365/30/-
+  - Litière agglomérante | cond 10000 | cons -/-/-
+  - Litière silice | cond 5000 | cons -/-/-
+  - Sable pour oiseaux | cond 2500 | cons -/-/-
+  - Graines pour perruches | cond 1000 | cons 365/90/-
+  - Nourriture pour tortues | cond 100 | cons 365/90/-
+  - Granulés pour lapins | cond 2500 | cons 365/90/-
+  - Bloc de sel pour rongeurs | unite piece | piece 1 | cons -/-/-
+  - Collier antiparasitaire | unite piece | piece 1 | cons 730/-/-
+  - Vermifuge | unite piece | piece 1 | cond 2000:2 comprimés | cons 730/-/-
+  - Tapis éducateurs | unite piece | piece 1 | cond 30000:30 tapis | cons -/-/-
+  - Gamelle | unite piece | piece 1 | cons -/-/-
+  - Laisse | unite piece | piece 1 | cons -/-/-
+  - Jouet pour chien | unite piece | piece 1 | cons -/-/-
+  - Brosse pour animaux | unite piece | piece 1 | cons -/-/-
+  - Lingettes pour animaux | unite piece | piece 1 | cond 40000:40 lingettes | cons 730/90/-

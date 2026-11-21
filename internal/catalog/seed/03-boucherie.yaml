@@ -52,3 +52,50 @@ produits:
   - Foie de volaille | cond 250 | cons 2/1/120 | groupe volaille
   - Cordon bleu | piece 100 | cond 200:2 pièces, 400:4 pièces | cons 10/2/120 | groupe plats_transformes | all gluten, lait, oeufs | traits +porc
   - Nuggets de poulet | cond 400 | cons 10/2/120 | groupe plats_transformes | all gluten
+  # Ajouts
+  - Chipolatas | syn chipolata | piece 50 | cond 300, 600 | cons 4/1/180 | groupe charcuterie | traits +porc
+  - Saucisse végétale | piece 60 | cond 240 | cons 21/3/180 | groupe legumineuses | traits | all soja, gluten
+  - Steak haché 5 % | syn steak haché maigre | piece 100 | cond 200, 400, 1000 | cons 3/1/120
+  - Steak haché 15 % | piece 125 | cond 250, 500, 1000 | cons 3/1/120
+  - Bœuf haché 5 % | cond 350, 500 | cons 2/1/120
+  - Tournedos | piece 150 | cond 300 | cons 3/1/240
+  - Côte de bœuf | piece 1000 | cons 4/1/240
+  - Onglet | piece 180 | cond 360 | cons 3/1/240
+  - Queue de bœuf | cond 1000 | cons 3/1/180
+  - Steak de bœuf | syn steak | piece 150 | cond 300, 600 | cons 3/1/240
+  - Viande des Grisons | cond 80 | cons 30/5/- | groupe charcuterie
+  - Carpaccio de bœuf | syn bœuf tranché fin | cond 150 | cons 3/1/60
+  - Tartare de bœuf préparé | cond 200 | cons 2/1/- | groupe viande_rouge
+  - Côte de veau | piece 300 | cons 3/1/180
+  - Veau haché | cond 350 | cons 2/1/120
+  - Tendron de veau | cond 800 | cons 3/1/180
+  - Noix de veau | syn quasi de veau | cond 500 | cons 3/1/180
+  - Souris d'agneau | piece 350 | cond 700 | cons 4/1/240
+  - Agneau haché | cond 350 | cons 2/1/120
+  - Carré d'agneau | cond 600 | cons 4/1/240
+  - Rôti de porc dans le filet | syn rôti de porc filet | cond 800, 1200 | cons 4/1/240 | traits +porc
+  - Côtes de porc échine | piece 180 | cond 360, 720 | cons 4/1/240 | traits +porc
+  - Escalope de porc | piece 120 | cond 480 | cons 4/1/240 | traits +porc
+  - Jarret de porc | syn jambonneau | piece 1000 | cons 4/1/240 | traits +porc
+  - Porc haché | cond 350 | cons 2/1/120 | traits +porc
+  - Poitrine de porc fraîche | syn poitrine fraîche | cond 500 | cons 4/1/240 | traits +porc
+  - Lardons de volaille | cond 150 | cons 21/4/60 | groupe volaille
+  - Haut de cuisse de poulet | piece 150 | cond 600 | groupe volaille | cons 4/1/240
+  - Poulet rôti | syn poulet cuit | piece 1100 | groupe volaille | cons 2/2/120 | emp refrigerateur
+  - Émincés de poulet | syn lanières de poulet | cond 300, 600 | groupe volaille | cons 4/1/240
+  - Poulet haché | cond 350 | groupe volaille | cons 2/1/120
+  - Cuisse de dinde | piece 800 | groupe volaille | cons 4/1/240
+  - Sauté de dinde | cond 500 | groupe volaille | cons 4/1/240
+  - Dinde hachée | cond 350 | groupe volaille | cons 2/1/120
+  - Filet de canard | syn aiguillettes de canard | cond 300 | groupe volaille | cons 4/1/240
+  - Cuisses de canard confites | syn confit de canard | piece 300 | cond 1200:4 cuisses | groupe volaille | cons 730/5/- | emp placard | ddm
+  - Caille | piece 180 | cond 720:4 cailles | groupe volaille | cons 4/1/240
+  - Chapon | piece 3000 | groupe volaille | cons 5/1/240 | saison 11-12
+  - Pigeon | piece 400 | groupe volaille | cons 4/1/240
+  - Cuisse de lapin | piece 200 | cond 800 | groupe volaille | cons 4/1/240
+  - Rognons de veau | cond 400 | cons 2/1/120
+  - Boudin antillais | piece 60 | cond 240 | groupe charcuterie | cons 7/2/90 | traits +porc
+  - Brochettes de bœuf | piece 120 | cond 480 | cons 3/1/180
+  - Brochettes de volaille | piece 100 | cond 400 | groupe volaille | cons 3/1/180
+  - Viande pour fondue bourguignonne | cond 600 | cons 3/1/240
+  - Pierrade assortiment | syn viande pour pierrade | cond 800 | cons 3/1/- 

@@ -38,3 +38,38 @@ produits:
   - Jus multifruits | unite ml | cond 1000 | groupe fruits | cons 365/5/-
   - Jus d'orange à base de concentré | unite ml | cond 1000, 1500 | groupe fruits | cons 365/5/-
   - Sirop de grenadine | syn sirop | unite ml | cond 750 | groupe produits_sucres | cons 730/180/-
+  # Ajouts
+  - Flocons d'avoine complets | syn gros flocons d'avoine | cond 500, 1000 | all gluten | cons 365/90/-
+  - Porridge instantané | cond 400 | all gluten | cons 365/60/-
+  - Céréales au miel | syn pétales au miel | cond 400 | all gluten | groupe produits_sucres
+  - Riz soufflé | cond 375 | all | groupe produits_sucres
+  - Granola chocolat | cond 500 | all gluten, lait | groupe produits_sucres
+  - Muesli sans sucres ajoutés | cond 500 | all gluten, fruits_a_coque
+  - Galettes d'avoine | cond 200 | all gluten
+  - Pain grillé complet | syn tartines craquantes | cond 250 | all gluten
+  - Brioche aux pépites | cond 400 | all gluten, lait, oeufs | groupe produits_sucres
+  - Pains au chocolat emballés | unite piece | piece 45 | cond 360:8 pains | all gluten, lait, oeufs | groupe produits_sucres
+  - Croissants emballés | unite piece | piece 40 | cond 400:10 croissants | all gluten, lait, oeufs | groupe produits_sucres
+  - Café moulu décaféiné | cond 250 | groupe boissons | all
+  - Café en grains bio | cond 1000 | groupe boissons | all
+  - Café soluble décaféiné | cond 100 | groupe boissons | all
+  - Capsules de café décaféiné | unite piece | piece 6 | cond 10000:10 capsules | groupe boissons | all
+  - Thé Earl Grey | unite piece | piece 2 | cond 25000:25 sachets | groupe boissons | all
+  - Thé à la menthe | unite piece | piece 2 | cond 25000:25 sachets | groupe boissons | all
+  - Thé vert matcha | cond 30 | groupe boissons | all
+  - Rooibos | unite piece | piece 2 | cond 20000:20 sachets | groupe boissons | all
+  - Tisane camomille | unite piece | piece 2 | cond 20000:20 sachets | groupe boissons | all
+  - Thé en vrac | cond 100 | groupe boissons | all
+  - Sucre de coco | cond 250 | groupe produits_sucres | all
+  - Beurre de cacahuète crunchy | cond 340 | groupe fruits_coque | all arachides
+  - Purée de noisettes | cond 250 | groupe fruits_coque | all fruits_a_coque
+  - Purée de noix de cajou | cond 250 | groupe fruits_coque | all fruits_a_coque
+  - Graines de sésame complet | cond 250 | groupe fruits_coque | all sesame
+  - Mélange de fruits secs | syn mélange étudiant | cond 200 | groupe fruits_coque | all fruits_a_coque, arachides
+  - Baies de goji | cond 150 | groupe fruits | all
+  - Germe de blé | cond 300 | all gluten
+  - Jus de pamplemousse | unite ml | cond 1000 | groupe fruits | all | cons 365/7/-
+  - Jus de pomme pétillant | unite ml | cond 750 | groupe fruits | all | cons 365/5/-
+  - Jus de carotte | unite ml | cond 750 | groupe legumes | all | cons 365/5/-
+  - Nectar de mangue | unite ml | cond 1000 | groupe produits_sucres | all | cons 365/5/-
+  - Nectar de poire | unite ml | cond 1000 | groupe produits_sucres | all | cons 365/5/-

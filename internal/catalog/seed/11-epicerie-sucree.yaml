@@ -7,7 +7,7 @@ defauts:
   date: DDM
   cons: 365/90/-
 produits:
-  - Sucre en poudre | syn sucre, sucre blanc | cond 1000 | u cs=12, cc=4, tasse=200 | cons 1825/1825/- | base
+  - Sucre en poudre | syn sucre, sucre blanc | cond 500, 1000 | u cs=12, cc=4, tasse=200 | cons 1825/1825/- | base
   - Sucre roux | syn cassonade | cond 500, 1000 | u cs=12, cc=4 | cons 1825/1825/- | base
   - Sucre glace | cond 500 | u cs=8, cc=3 | cons 1825/1825/- | base
   - Sucre en morceaux | unite g | cond 1000 | cons 1825/1825/-
@@ -59,3 +59,88 @@ produits:
   - Pâte d'amande | cond 250 | all fruits_a_coque | cons 365/60/-
   - Sucre de canne | syn rapadura | cond 500 | u cs=12 | cons 1825/1825/-
   - Crêpes prêtes | syn crêpes industrielles | unite piece | piece 50 | cond 8000:8 crêpes | all gluten, lait, oeufs | cons 60/5/-
+  # Ajouts
+  - Crème de marrons | syn crème de châtaignes | cond 250, 500 | u cs=20 | groupe produits_sucres | cons 1095/14/- | emp placard
+  - Fruits confits | syn fruits confits en dés | cond 200 | groupe produits_sucres | cons 730/90/-
+  - Pâte de praliné | syn praliné | cond 200 | u cs=20 | groupe produits_sucres | cons 365/60/- | all fruits_a_coque, lait
+  - Sucre complet | cond 500 | u cs=12, cc=4 | groupe produits_sucres | cons 1825/1825/-
+  - Sucre perlé | cond 250 | groupe produits_sucres | cons 1825/1825/-
+  - Sucre gélifiant | cond 1000 | groupe produits_sucres | cons 1825/365/-
+  - Vergeoise | syn vergeoise brune | cond 500 | u cs=12 | groupe produits_sucres | cons 1095/365/-
+  - Sirop de sucre de canne | unite ml | cond 700 | groupe produits_sucres | cons 730/365/-
+  - Sirop de glucose | cond 250 | groupe produits_sucres | cons 730/365/-
+  - Miel d'acacia | cond 250, 500 | u cs=20, cc=7 | groupe produits_sucres | cons 1095/730/-
+  - Miel de fleurs crémeux | cond 500 | u cs=20, cc=7 | groupe produits_sucres | cons 1095/730/-
+  - Confiture de framboises | cond 370 | u cs=20 | groupe produits_sucres | cons 730/30/-
+  - Confiture de cerises | cond 370 | u cs=20 | groupe produits_sucres | cons 730/30/-
+  - Confiture d'oranges amères | syn marmelade | cond 370 | u cs=20 | groupe produits_sucres | cons 730/30/-
+  - Confiture de myrtilles | cond 370 | u cs=20 | groupe produits_sucres | cons 730/30/-
+  - Confiture de lait | cond 250 | u cs=20 | groupe produits_sucres | cons 730/30/- | all lait
+  - Pâte à tartiner sans huile de palme | cond 350 | u cs=20 | groupe produits_sucres | cons 365/60/- | all lait, fruits_a_coque
+  - Chocolat noir 70 % | syn chocolat noir à croquer | cond 100 | u carre=5 | groupe produits_sucres | cons 730/90/- | all lait
+  - Chocolat noisettes | cond 100 | u carre=5 | groupe produits_sucres | cons 365/90/- | all lait, fruits_a_coque
+  - Chocolat au lait pâtissier | cond 200 | groupe produits_sucres | cons 365/90/- | all lait
+  - Chocolat de couverture | cond 200 | groupe produits_sucres | cons 365/90/- | all lait
+  - Pépites de chocolat blanc | cond 100 | groupe produits_sucres | cons 365/90/- | all lait
+  - Vermicelles en chocolat | cond 80 | groupe produits_sucres | cons 365/90/- | all lait
+  - Perles de sucre colorées | syn décors de pâtisserie | cond 80 | groupe produits_sucres | cons 730/365/-
+  - Colorant alimentaire | unite ml | cond 30 | groupe produits_sucres | cons 730/365/-
+  - Arôme amande amère | unite ml | cond 20 | u cc=5 | groupe produits_sucres | cons 1095/365/-
+  - Vanille en poudre | cond 10 | u cc=2 | groupe produits_sucres | cons 1095/365/-
+  - Fève tonka | unite piece | piece 1 | cond 5000:5 fèves | groupe condiments | cons 1095/730/-
+  - Levure chimique en vrac | cond 100 | u cc=4, sachet=11 | groupe condiments | cons 730/180/-
+  - Crème de coco en poudre | cond 100 | groupe matieres_grasses | cons 365/30/-
+  - Lait en poudre | cond 400 | groupe produits_laitiers | cons 365/30/- | all lait
+  - Lait concentré non sucré | unite ml | cond 410 | groupe produits_laitiers | cons 365/3/- | all lait
+  - Préparation pour crème brûlée | cond 200 | groupe produits_sucres | cons 365/30/- | all lait
+  - Préparation pour flan | syn flan en poudre | cond 100 | groupe produits_sucres | cons 365/30/-
+  - Préparation pour mousse au chocolat | cond 120 | groupe produits_sucres | cons 365/30/- | all lait
+  - Préparation pour brownies | cond 400 | groupe produits_sucres | cons 365/30/- | all gluten
+  - Préparation pour muffins | cond 400 | groupe produits_sucres | cons 365/30/- | all gluten
+  - Pistaches décortiquées | cond 100 | groupe fruits_coque | cons 365/60/- | all fruits_a_coque
+  - Amandes effilées | cond 100, 125 | groupe fruits_coque | cons 365/60/- | all fruits_a_coque
+  - Noix de pécan caramélisées | cond 100 | groupe produits_sucres | cons 180/30/- | all fruits_a_coque
+  - Noisettes torréfiées | cond 125 | groupe fruits_coque | cons 365/60/- | all fruits_a_coque
+  - Pruneaux dénoyautés | cond 250, 500 | groupe fruits | cons 365/60/-
+  - Abricots moelleux | cond 250 | groupe fruits | cons 365/60/-
+  - Mangue séchée | cond 125 | groupe fruits | cons 365/60/-
+  - Bananes séchées | syn chips de banane | cond 150 | groupe produits_sucres | cons 365/60/-
+  - Gingembre confit | cond 100 | groupe produits_sucres | cons 365/90/-
+  - Écorces d'orange confites | cond 100 | groupe produits_sucres | cons 365/90/-
+  - Cerises confites | syn bigarreaux confits | cond 100 | groupe produits_sucres | cons 365/90/-
+  - Marrons glacés | cond 150 | groupe produits_sucres | cons 180/14/- | saison 11-12
+  - Châtaignes cuites | syn marrons cuits sous vide | cond 200, 400 | groupe feculents_raffines | cons 730/5/-
+  - Purée de marrons | cond 435 | groupe feculents_raffines | cons 1095/5/-
+  - Compote sans sucres ajoutés | cond 400, 700 | groupe fruits | cons 365/7/-
+  - Compote pomme-fraise | cond 400 | groupe fruits | cons 365/7/-
+  - Compote en coupelles | syn compote en pots | unite piece | piece 100 | cond 4000:4 coupelles | groupe fruits | cons 365/2/-
+  - Ananas en tranches au sirop | cond 565 | groupe fruits | cons 1095/5/-
+  - Cocktail de fruits au sirop | cond 820 | groupe fruits | cons 1095/5/-
+  - Bigarreaux au sirop | syn cerises au sirop | cond 425 | groupe fruits | cons 1095/5/-
+  - Coulis de fruits rouges | unite ml | cond 250 | groupe produits_sucres | cons 365/7/-
+  - Sauce chocolat | syn nappage chocolat | unite ml | cond 250 | groupe produits_sucres | cons 365/30/- | all lait
+  - Caramel au beurre salé | syn sauce caramel | cond 250 | u cs=20 | groupe produits_sucres | cons 365/30/- | all lait
+  - Meringues | cond 100 | groupe produits_sucres | cons 180/30/- | all oeufs
+  - Sablés pur beurre | cond 150 | groupe produits_sucres | cons 365/30/- | all gluten, lait, oeufs
+  - Palets bretons | cond 125 | groupe produits_sucres | cons 365/30/- | all gluten, lait, oeufs
+  - Biscuits fourrés | syn biscuits fourrés chocolat | cond 300 | groupe produits_sucres | cons 365/30/- | all gluten, lait
+  - Biscuits à la confiture | cond 200 | groupe produits_sucres | cons 365/30/- | all gluten
+  - Barquettes | syn barquettes à la fraise | cond 120 | groupe produits_sucres | cons 365/30/- | all gluten, oeufs
+  - Cigarettes russes | cond 100 | groupe produits_sucres | cons 365/30/- | all gluten, lait, oeufs
+  - Tuiles aux amandes | cond 100 | groupe produits_sucres | cons 180/30/- | all gluten, oeufs, fruits_a_coque
+  - Macarons | cond 120 | groupe produits_sucres | cons 30/7/- | all oeufs, fruits_a_coque | emp refrigerateur
+  - Brownies emballés | cond 240 | groupe produits_sucres | cons 180/14/- | all gluten, lait, oeufs
+  - Gâteaux au chocolat individuels | cond 240 | groupe produits_sucres | cons 180/14/- | all gluten, lait, oeufs
+  - Cake aux fruits | cond 400 | groupe produits_sucres | cons 180/14/- | all gluten, oeufs
+  - Gaufres sucrées | syn gaufres emballées | cond 300 | groupe produits_sucres | cons 180/14/- | all gluten, lait, oeufs
+  - Crêpes dentelle | cond 100 | groupe produits_sucres | cons 365/30/- | all gluten, lait
+  - Nougat | cond 100 | groupe produits_sucres | cons 365/90/- | all fruits_a_coque, oeufs
+  - Calissons | cond 100 | groupe produits_sucres | cons 180/30/- | all fruits_a_coque
+  - Pâtes de fruits | cond 200 | groupe produits_sucres | cons 365/90/-
+  - Guimauves | syn marshmallows | cond 200 | groupe produits_sucres | cons 365/90/-
+  - Réglisse | cond 200 | groupe produits_sucres | cons 365/90/-
+  - Chewing-gums | syn chewing-gum | cond 50 | groupe produits_sucres | cons 730/365/-
+  - Barres chocolatées | unite piece | piece 50 | cond 250:5 barres | groupe produits_sucres | cons 365/30/- | all lait, arachides
+  - Œufs en chocolat | cond 200 | groupe produits_sucres | cons 365/30/- | all lait | saison 3-4
+  - Truffes en chocolat | cond 200 | groupe produits_sucres | cons 120/30/- | all lait | saison 11-1
+  - Pain d'épices en tranches | cond 300 | groupe produits_sucres | cons 180/30/- | all gluten

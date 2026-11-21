@@ -78,7 +78,7 @@ produits:
   - Bouillon de bœuf | unite piece | piece 10 | cond 12000:12 cubes | groupe condiments | base | traits +viande | all celeri
   - Fumet de poisson | unite g | cond 90 | groupe condiments | all poissons, celeri
   # Farines, aides
-  - Farine de blé | syn farine, farine T55 | cond 1000 | u cs=10, cc=3, tasse=140 | all gluten | base | groupe feculents_raffines
+  - Farine de blé | syn farine, farine T55 | cond 500, 1000 | u cs=10, cc=3, tasse=140 | all gluten | base | groupe feculents_raffines
   - Farine complète | syn farine T110 | cond 1000 | u cs=10, tasse=130 | all gluten | groupe feculents_complets
   - Fécule de maïs | syn maïzena | cond 400 | u cs=10, cc=3 | base
   - Farine de sarrasin | cond 500 | u cs=10 | groupe feculents_complets
@@ -94,3 +94,93 @@ produits:
   - Pignons de pin | cond 100 | groupe fruits_coque | cons 365/60/- | all
   - Tomates séchées | cond 150 | groupe legumes | cons 365/30/-
   - Pâte de curry | cond 100 | groupe condiments | cons 365/30/- | all crustaces
+  # Ajouts
+  - Torsades complètes | syn fusilli complets | cond 500 | all gluten | groupe feculents_complets
+  - Rigatoni | cond 500 | all gluten
+  - Orecchiette | cond 500 | all gluten
+  - Conchiglie | syn coquillages pâtes | cond 500 | all gluten
+  - Pâtes alphabet | syn petites pâtes | cond 250 | all gluten
+  - Orzo | syn pâtes langues d'oiseau, risoni | cond 500 | all gluten
+  - Tagliatelles aux œufs | cond 250, 500 | all gluten, oeufs
+  - Pappardelle | cond 250 | all gluten, oeufs
+  - Pâtes de lentilles corail | cond 250 | all | groupe legumineuses
+  - Pâtes de pois chiches | cond 250 | all | groupe legumineuses
+  - Riz de Camargue | syn riz rouge | cond 500 | all | groupe feculents_complets
+  - Riz noir | syn riz vénéré | cond 500 | all | groupe feculents_complets
+  - Riz en sachets cuisson | syn riz en sachets | cond 500, 1000 | all
+  - Riz précuit express | syn riz express | cond 250 | all | cons 365/2/- 
+  - Quinoa tricolore | cond 500 | all | groupe feculents_complets
+  - Épeautre | syn petit épeautre | cond 500 | all gluten | groupe feculents_complets
+  - Orge perlé | cond 500 | all gluten | groupe feculents_complets
+  - Freekeh | cond 400 | all gluten | groupe feculents_complets
+  - Fonio | cond 500 | all | groupe feculents_complets
+  - Tapioca | syn perles du Japon | cond 250 | all
+  - Pois chiches cuits | syn pois chiches au naturel | cond 265, 530 | all | groupe legumineuses | cons 1095/3/- 
+  - Lentilles blondes | cond 500 | all | groupe legumineuses
+  - Lentilles du Puy | cond 500 | all | groupe legumineuses
+  - Haricots coco | cond 500 | all | groupe legumineuses
+  - Haricots mungo | cond 500 | all | groupe legumineuses
+  - Fèves sèches | cond 500 | all | groupe legumineuses
+  - Haricots azuki | cond 500 | all | groupe legumineuses
+  - Haricots blancs à la tomate | syn baked beans | cond 420 | all | groupe legumineuses | cons 1095/3/- 
+  - Lingots blancs | syn haricots lingots | cond 500 | all | groupe legumineuses
+  - Haricots verts extra-fins en conserve | cond 440, 880 | all | groupe legumes | cons 1095/3/- 
+  - Macédoine de légumes en conserve | cond 265, 530 | all | groupe legumes | cons 1095/3/- 
+  - Carottes en conserve | cond 530 | all | groupe legumes | cons 1095/3/- 
+  - Épinards en conserve | cond 395 | all | groupe legumes | cons 1095/3/- 
+  - Céleri en conserve | cond 530 | all celeri | groupe legumes | cons 1095/3/- 
+  - Salsifis en conserve | cond 530 | all | groupe legumes | cons 1095/3/- 
+  - Ratatouille en conserve | cond 375, 750 | all | groupe legumes | cons 1095/3/- 
+  - Poivrons grillés en bocal | cond 280 | all | groupe legumes | cons 1095/7/- 
+  - Tomates cerises en conserve | cond 400 | all | groupe legumes | cons 1095/3/- 
+  - Olives dénoyautées | cond 160 | all | groupe matieres_grasses | cons 730/14/- 
+  - Olives de Kalamata | cond 200 | all | groupe matieres_grasses | cons 730/14/- 
+  - Caviar de tomates séchées | cond 90 | all | groupe condiments | cons 730/14/- 
+  - Thon albacore en conserve | cond 160 | all poissons | groupe poisson | cons 1825/2/- 
+  - Saumon en conserve | cond 213 | all poissons | groupe poisson | cons 1825/2/- 
+  - Maquereaux à la tomate | cond 176 | all poissons | groupe poisson | cons 1825/2/- 
+  - Harengs marinés | cond 200 | all poissons | groupe poisson | cons 365/7/- | emp refrigerateur
+  - Foie de morue | cond 121 | all poissons | groupe poisson | cons 1825/2/- 
+  - Moules à l'escabèche | cond 115 | all mollusques | groupe poisson | cons 1825/2/- 
+  - Rillettes de saumon en boîte | cond 125 | all poissons | groupe plats_transformes | cons 1095/3/- 
+  - Corned-beef | cond 340 | all | groupe viande_rouge | cons 1825/3/- 
+  - Pâté de foie en boîte | cond 78 | all | groupe charcuterie | traits +porc | cons 1825/3/- 
+  - Confit de canard en boîte | cond 1350 | all | groupe volaille | cons 1825/7/- 
+  - Petit salé aux lentilles en conserve | cond 840 | all | groupe plats_transformes | traits +porc | cons 1095/3/- 
+  - Chili con carne en conserve | cond 840 | all | groupe plats_transformes | cons 1095/3/- 
+  - Couscous en conserve | cond 980 | all gluten | groupe plats_transformes | cons 1095/3/- 
+  - Paëlla en conserve | cond 980 | all crustaces, mollusques | groupe plats_transformes | cons 1095/3/- 
+  - Bolognaise en conserve | syn sauce bolognaise en conserve | cond 400 | all | groupe plats_transformes | cons 1095/3/- 
+  - Soupe déshydratée | syn soupe en sachet | cond 100 | all gluten | groupe plats_transformes
+  - Velouté en brique | unite ml | cond 1000 | all lait | groupe legumes | cons 365/3/- 
+  - Bouillon cube de légumes | unite piece | piece 10 | cond 12000:12 cubes | all celeri | groupe condiments
+  - Bouillon cube de volaille | unite piece | piece 10 | cond 12000:12 cubes | all celeri | groupe condiments
+  - Bouillon cube de bœuf | unite piece | piece 10 | cond 12000:12 cubes | all celeri | groupe condiments
+  - Farine T45 | syn farine pâtissière | cond 1000 | all gluten
+  - Farine T80 | syn farine bise | cond 1000 | all gluten | groupe feculents_complets
+  - Farine de riz | cond 500 | all
+  - Farine de pois chiches | cond 500 | all | groupe legumineuses
+  - Farine de maïs | cond 500 | all
+  - Farine de seigle | cond 1000 | all gluten | groupe feculents_complets
+  - Farine d'épeautre | cond 1000 | all gluten | groupe feculents_complets
+  - Farine à pain | syn farine T65 | cond 1000 | all gluten
+  - Préparation pour pain | cond 500 | all gluten
+  - Levure sèche de boulanger | syn levure déshydratée | unite g | cond 30 | u sachet=5 | all
+  - Chapelure panko | syn panko | cond 200 | all gluten
+  - Fécule de pomme de terre | cond 250 | all
+  - Purée de pommes de terre en flocons nature | cond 750 | all
+  - Croûtons nature | cond 90 | all gluten
+  - Chips nature | cond 150, 300 | all | groupe plats_transformes
+  - Chips de légumes | cond 100 | all | groupe plats_transformes
+  - Bretzels | cond 150 | all gluten | groupe plats_transformes
+  - Popcorn salé | cond 100 | all | groupe plats_transformes
+  - Maïs à popcorn | cond 500 | all
+  - Amandes grillées salées | cond 150 | all fruits_a_coque | groupe fruits_coque
+  - Mélange apéritif | cond 200 | all arachides, fruits_a_coque | groupe fruits_coque
+  - Noix de macadamia | cond 125 | all fruits_a_coque | groupe fruits_coque
+  - Noix du Brésil | cond 125 | all fruits_a_coque | groupe fruits_coque
+  - Noix de pécan | cond 125 | all fruits_a_coque | groupe fruits_coque
+  - Graines de tournesol | cond 250 | all | groupe fruits_coque
+  - Champignons noirs séchés | cond 50 | all | groupe legumes
+  - Cèpes séchés | cond 30 | all | groupe legumes
+  - Vinaigrette allégée | unite ml | cond 500 | all moutarde | groupe condiments

@@ -15,8 +15,8 @@ func TestSeedIsConsistent(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(seed) < 800 {
-		t.Errorf("base de départ : %d produits, 800 au moins attendus", len(seed))
+	if len(seed) < 1700 {
+		t.Errorf("base de départ : %d produits, 1700 au moins attendus", len(seed))
 	}
 	aisles := []string{"fruits-legumes", "boulangerie", "boucherie", "poissonnerie", "charcuterie-traiteur", "cremerie", "fromages",
 		"surgeles", "epicerie-salee", "condiments", "epicerie-sucree", "petit-dejeuner", "monde", "boissons", "bebe", "hygiene",
@@ -35,6 +35,48 @@ func TestSeedIsConsistent(t *testing.T) {
 	for _, a := range aisles {
 		if perAisle[a] == 0 {
 			t.Errorf("rayon %s sans produit", a)
+		}
+	}
+}
+
+// TestSeedIsBuyable : chaque produit alimentaire s'achète comme dans le
+// commerce (conditionnement, botte ou pièce), pour que la liste de courses
+// arrondisse un besoin (300 g de farine) à un achat réel (un paquet de
+// 500 g ou 1 kg).
+func TestSeedIsBuyable(t *testing.T) {
+	seed, err := LoadSeed()
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, p := range seed {
+		if p.Universe == Food && p.Unit != qty.Piece && len(p.BuyUnits()) == 0 {
+			t.Errorf("%s : ni conditionnement, ni botte, ni poids à la pièce", p.Name)
+		}
+	}
+	flour := map[string]Product{}
+	for _, p := range seed {
+		flour[p.Name] = p.Product
+	}
+	for _, c := range []struct {
+		name string
+		need int64
+		buy  int64
+	}{
+		{"Farine de blé", 300, 1000},        // 300 g → un paquet de 1 kg
+		{"Sucre en poudre", 300, 500},       // 300 g → 500 g
+		{"Crème liquide entière", 250, 250}, // 25 cl → 25 cl (ou plus)
+		{"Œufs", 3000, 6000},                // 3 œufs → boîte de 6
+		{"Lait demi-écrémé", 300, 1000},     // 30 cl → 1 L
+		{"Beurre doux", 125, 250},           // 125 g → plaquette de 250 g
+	} {
+		p, ok := flour[c.name]
+		if !ok {
+			t.Errorf("%s absent", c.name)
+			continue
+		}
+		buy, _, _ := RoundToPackages(c.need, p.Unit, p.BuyUnits())
+		if buy < c.need || buy > c.buy {
+			t.Errorf("%s : besoin %d, achat %d (au plus %d attendu)", c.name, c.need, buy, c.buy)
 		}
 	}
 }

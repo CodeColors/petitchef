@@ -48,3 +48,35 @@ produits:
   - Martini | syn vermouth | cond 1000 | traits +alcool | all sulfites | cons 1095/90/-
   - Liqueur | cond 700 | traits +alcool | groupe produits_sucres | cons 1825/365/-
   - Bière de Noël | syn bière ambrée | cond 750 | all gluten | traits +alcool | cons 270/2/- | saison 11-12
+  # Ajouts
+  - Eau pétillante citron | cond 1000 | groupe boissons | cons 365/3/-
+  - Limonade artisanale | cond 750 | groupe produits_sucres | cons 365/3/-
+  - Ginger beer | cond 330, 1320:4 × 33 cl | groupe produits_sucres | cons 365/3/-
+  - Ginger ale | cond 330 | groupe produits_sucres | cons 365/3/-
+  - Soda citron | cond 1500 | groupe produits_sucres | cons 365/3/-
+  - Thé glacé pêche | cond 1500 | groupe produits_sucres | cons 365/3/-
+  - Jus de citron vert | unite ml | cond 250 | u cs=15, cc=5 | groupe fruits | cons 365/30/-
+  - Sirop d'orgeat | unite ml | cond 700 | groupe produits_sucres | all fruits_a_coque | cons 730/180/-
+  - Sirop de fraise | unite ml | cond 750 | groupe produits_sucres | cons 730/180/-
+  - Sirop de pêche | unite ml | cond 750 | groupe produits_sucres | cons 730/180/-
+  - Sirop de cassis | unite ml | cond 750 | groupe produits_sucres | cons 730/180/-
+  - Lait de poule | syn boisson aux œufs | cond 1000 | groupe produits_sucres | all lait, oeufs | cons 30/3/- | emp refrigerateur
+  - Lait fraise | cond 1000 | groupe produits_sucres | all lait | cons 180/3/-
+  - Bière IPA | cond 330, 2000:6 × 33 cl | all gluten | traits +alcool | cons 365/2/-
+  - Bière blanche | cond 330, 2000:6 × 33 cl | all gluten | traits +alcool | cons 365/2/-
+  - Bière brune | cond 330 | all gluten | traits +alcool | cons 365/2/-
+  - Panaché | cond 330 | all gluten | traits +alcool | cons 365/2/-
+  - Cidre doux | cond 750 | all sulfites | traits +alcool | cons 730/3/-
+  - Poiré de Normandie | syn poiré fermier | cond 750 | all sulfites | traits +alcool | cons 730/3/-
+  - Prosecco | cond 750 | all sulfites | traits +alcool | cons 730/2/-
+  - Vin blanc moelleux | syn vin moelleux | cond 750 | all sulfites | traits +alcool | cons 1825/5/-
+  - Muscat | cond 750 | all sulfites | traits +alcool | cons 1825/30/-
+  - Pineau des Charentes | cond 750 | all sulfites | traits +alcool | cons 1825/90/-
+  - Calvados | cond 700 | traits +alcool | cons 3650/3650/-
+  - Tequila | cond 700 | traits +alcool | cons 3650/3650/-
+  - Liqueur d'orange | syn triple sec | cond 700 | traits +alcool | groupe produits_sucres | cons 3650/730/-
+  - Amaretto | cond 700 | traits +alcool | groupe produits_sucres | cons 3650/730/- | all fruits_a_coque
+  - Apéritif anisé sans alcool | cond 700 | groupe produits_sucres | cons 730/180/-
+  - Vin sans alcool | cond 750 | all sulfites | groupe boissons | cons 730/5/-
+  - Boisson isotonique | cond 500 | groupe produits_sucres | cons 365/2/-
+  - Eau de coco pétillante | cond 330 | groupe produits_sucres | cons 365/2/-

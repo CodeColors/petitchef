@@ -55,3 +55,53 @@ produits:
   - Galette végétale | syn steak végétal, burger végétarien | piece 100 | cond 200 | cons 21/3/90 | groupe legumineuses | traits | all soja, gluten
   - Falafels | cond 200 | cons 14/3/90 | groupe legumineuses | traits | all
   - Seitan | cond 200 | cons 21/4/90 | groupe legumineuses | traits | all gluten, soja
+  # Ajouts
+  - Bacon en tranches | syn tranches de bacon | u tranche=15 | cond 150 | cons 30/5/90
+  - Tomme fraîche | syn tomme fraîche de l'Aubrac | cond 400 | cons 14/3/- | groupe fromage | traits | all lait
+  - Crozets | syn crozets de Savoie | unite g | cond 400 | cons 730/180/- | emp placard | ddm | groupe feculents_raffines | traits | all gluten, oeufs
+  - Jambon blanc découenné | syn jambon supérieur | u tranche=40 | cond 160, 240 | cons 14/3/60
+  - Jambon braisé | u tranche=45 | cond 180 | cons 14/3/60
+  - Jambon aux herbes | u tranche=40 | cond 160 | cons 14/3/60
+  - Épaule cuite | syn épaule de porc cuite | u tranche=40 | cond 160 | cons 14/3/60
+  - Jambon de Parme | syn prosciutto | u tranche=15 | cond 90 | cons 60/7/- 
+  - Coppa | u tranche=10 | cond 80 | cons 60/7/- 
+  - Bresaola | u tranche=10 | cond 80 | cons 60/7/- | traits +viande
+  - Pancetta | u tranche=10 | cond 100 | cons 60/7/- 
+  - Mortadelle | u tranche=20 | cond 120 | cons 30/5/- 
+  - Saucisson à l'ail | piece 300 | cond 300 | cons 21/5/- 
+  - Saucisson de Lyon | syn saucisson à cuire | piece 400 | cond 400 | cons 21/4/- 
+  - Fuet | piece 170 | cond 170 | cons 90/14/- 
+  - Chorizo doux | cond 225 | cons 90/14/- 
+  - Rillettes de poulet | cond 220 | cons 30/5/- | groupe volaille | traits
+  - Terrine de lapin | cond 180 | cons 30/5/- 
+  - Pâté en croûte | u tranche=80 | cond 160 | cons 14/3/- | all gluten, oeufs
+  - Pâté de foie | cond 180 | cons 30/5/- 
+  - Tête de veau | syn fromage de tête | cond 300 | cons 14/3/- 
+  - Knacki pur porc | syn saucisses knacki | piece 35 | cond 350:10 saucisses | cons 30/5/90
+  - Saucisses de Francfort | piece 50 | cond 400 | cons 30/5/90
+  - Merguez de volaille | piece 50 | cond 300 | groupe volaille | traits | cons 4/1/180
+  - Cervelas | piece 300 | cons 21/4/- 
+  - Quenelles de brochet | piece 60 | cond 240:4 quenelles | cons 21/4/- | groupe plats_transformes | traits | all gluten, oeufs, lait, poissons
+  - Quenelles nature | piece 60 | cond 240:4 quenelles | cons 21/4/- | groupe plats_transformes | traits | all gluten, oeufs, lait
+  - Hachis parmentier frais | syn parmentier traiteur | cond 300, 1000 | cons 7/2/90 | groupe plats_transformes | traits | all lait
+  - Paella traiteur | cond 300, 1000 | cons 5/2/- | groupe plats_transformes | traits | all crustaces, mollusques
+  - Taboulé oriental | cond 300 | cons 10/3/- | groupe plats_transformes | traits | all gluten
+  - Salade de pâtes traiteur | cond 300 | cons 7/2/- | groupe plats_transformes | traits | all gluten, oeufs
+  - Coleslaw traiteur | syn salade de chou | cond 300 | cons 7/2/- | groupe legumes | traits | all oeufs, moutarde
+  - Salade de museau | cond 200 | cons 10/2/- 
+  - Poulet tikka traiteur | cond 300 | cons 5/2/- | groupe plats_transformes | traits | all lait
+  - Sushis prêts | syn plateau de sushis | cond 250 | cons 2/1/- | groupe plats_transformes | traits | all poissons, soja, sesame
+  - Sandwich jambon beurre | piece 200 | unite piece | cons 2/1/- | groupe plats_transformes | all gluten, lait
+  - Wraps traiteur | piece 180 | unite piece | cons 3/1/- | groupe plats_transformes | traits | all gluten
+  - Pâte à pizza fine | syn pâte à pizza étalée | unite piece | piece 260 | cond 260 | cons 21/1/90 | groupe feculents_raffines | traits | all gluten
+  - Pâte feuilletée pur beurre | unite piece | piece 230 | cond 230 | cons 21/1/90 | groupe feculents_raffines | traits | all gluten, lait
+  - Pâte brisée pur beurre | unite piece | piece 230 | cond 230 | cons 21/1/90 | groupe feculents_raffines | traits | all gluten, lait
+  - Pâte à pain prête | unite piece | piece 400 | cond 400 | cons 21/1/90 | groupe feculents_raffines | traits | all gluten
+  - Raviolis aux cèpes | cond 250 | cons 21/3/90 | groupe plats_transformes | traits | all gluten, oeufs, lait
+  - Gnocchis à poêler | cond 300 | cons 30/3/90 | groupe feculents_raffines | traits | all gluten
+  - Spätzle | cond 400 | cons 30/3/90 | groupe feculents_raffines | traits | all gluten, oeufs
+  - Tofu soyeux | cond 300 | cons 60/3/- | groupe legumineuses | traits | all soja
+  - Tempeh | cond 200 | cons 30/3/90 | groupe legumineuses | traits | all soja
+  - Haché végétal | syn hachis végétal | cond 250 | cons 21/3/180 | groupe legumineuses | traits | all soja
+  - Nuggets végétaux | cond 200 | cons 21/3/180 | groupe legumineuses | traits | all soja, gluten
+  - Émincés végétaux | cond 200 | cons 21/3/180 | groupe legumineuses | traits | all soja

@@ -35,3 +35,33 @@ produits:
   - Hareng fumé | syn filets de hareng | cond 250 | cons 30/5/- | groupe poisson
   - Tarama | cond 100, 200 | cons 30/4/- | groupe plats_transformes | all poissons, oeufs, lait
   - Rillettes de thon | cond 125 | cons 30/3/- | groupe plats_transformes | all poissons, lait
+  # Ajouts
+  - Saumon entier en filets | syn côté de saumon | cond 1000 | cons 2/1/180
+  - Filet de haddock | syn haddock | cond 300 | cons 7/2/90
+  - Filet de flétan | cond 300 | cons 2/1/180
+  - Filet de tilapia | piece 120 | cond 480 | cons 2/1/180
+  - Pavé de merlu | piece 140 | cond 280 | cons 2/1/180
+  - Filet de rouget | cond 300 | cons 2/1/180
+  - Saint-Pierre | cond 500 | cons 2/1/180
+  - Turbot | cond 800 | cons 2/1/180
+  - Anchois frais | cond 500 | cons 1/1/90
+  - Hareng frais | cond 500 | cons 1/1/90
+  - Langoustines | cond 500 | cons 1/1/180 | all crustaces
+  - Tourteau | piece 800 | cons 1/1/- | all crustaces
+  - Homard | piece 500 | cons 1/1/180 | all crustaces
+  - Bulots | cond 500 | cons 2/1/- | all mollusques
+  - Coques | cond 1000 | cons 2/1/- | all mollusques
+  - Palourdes | syn vongole | cond 500 | cons 2/1/- | all mollusques
+  - Couteaux | cond 500 | cons 1/1/- | all mollusques
+  - Seiche | cond 500 | cons 2/1/180 | all mollusques
+  - Poulpe | syn pieuvre | cond 1000 | cons 2/1/180 | all mollusques
+  - Œufs de lump | cond 100 | cons 120/5/- | groupe poisson | emp refrigerateur
+  - Œufs de saumon | cond 50 | cons 30/3/- | groupe poisson
+  - Saumon gravlax | cond 150 | cons 21/3/- | groupe poisson
+  - Saumon fumé d'Écosse | cond 120, 200 | cons 21/3/- 
+  - Maquereau fumé | cond 200 | cons 21/3/- 
+  - Haddock fumé | cond 250 | cons 14/3/- 
+  - Crevettes décortiquées | syn crevettes roses décortiquées | cond 150, 300 | cons 5/2/- | all crustaces
+  - Brochettes de saumon | cond 300 | cons 2/1/180
+  - Soupe de poisson | syn soupe de poissons | unite ml | cond 780 | cons 730/3/- | emp placard | ddm | groupe poisson
+  - Rouille | syn sauce rouille | cond 90 | cons 365/7/- | emp placard | ddm | groupe matieres_grasses | all oeufs, poissons

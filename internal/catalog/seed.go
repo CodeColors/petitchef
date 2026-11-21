@@ -21,7 +21,7 @@ import (
 // SeedVersion est la version de la base de départ embarquée : à augmenter
 // à chaque modification des fichiers de seed/ pour que les installations
 // existantes reçoivent les nouveautés (sans toucher aux produits modifiés).
-const SeedVersion = 1
+const SeedVersion = 2
 
 //go:embed seed/*.yaml
 var seedFS embed.FS

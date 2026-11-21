@@ -39,4 +39,6 @@ Règles :
   jamais écrasés.
 
 `go test ./internal/catalog` vérifie la cohérence de la base (doublons,
-rayons, conversions, groupes).
+rayons, conversions, groupes) et que chaque produit alimentaire s'achète
+comme dans le commerce : conditionnement (`cond`), botte (`u botte=`) ou
+poids à la pièce (`piece`).

@@ -37,3 +37,51 @@ produits:
   - Lentilles beluga | cond 500 | groupe legumineuses | cons 730/180/-
   - Pain naan | unite piece | piece 120 | cond 2000:2 naans | groupe feculents_raffines | all gluten, lait | cons 30/5/90
   - Gnocchis de patate douce | cond 400 | groupe feculents_raffines | all gluten | cons 60/3/90
+  # Ajouts
+  - Nouilles de blé | syn nouilles ramen | cond 250 | groupe feculents_raffines | all gluten
+  - Galettes de riz pour nems | syn galettes pour nems | cond 200 | groupe feculents_raffines | all
+  - Feuilles de wonton | syn pâte à raviolis chinois | cond 250 | groupe feculents_raffines | all gluten | cons 30/3/90 | emp refrigerateur
+  - Riz gluant | cond 1000 | groupe feculents_raffines | all
+  - Sauce soja salée réduite | syn sauce soja allégée en sel | unite ml | cond 250 | u cs=15, cc=5 | all soja, gluten
+  - Sauce tamari | syn tamari | unite ml | cond 250 | u cs=15, cc=5 | all soja
+  - Sauce d'huître | unite ml | cond 250 | u cs=15 | all mollusques
+  - Sauce pour wok | unite ml | cond 250 | u cs=15 | all soja, gluten
+  - Sauce yakitori | unite ml | cond 250 | u cs=15 | all soja, gluten
+  - Sauce aux haricots noirs | cond 220 | u cs=15 | all soja, gluten
+  - Pâte de piment coréenne | syn gochujang | cond 200 | u cs=15, cc=5 | all gluten, soja
+  - Kimchi | cond 300 | groupe legumes | all | cons 120/30/- | emp refrigerateur
+  - Huile de sésame grillé | unite ml | densite 920 | cond 250 | u cs=15, cc=5 | groupe matieres_grasses | all sesame
+  - Graines de sésame noir | cond 100 | groupe fruits_coque | all sesame
+  - Pâte de tamarin | cond 200 | all
+  - Galanga | syn galanga frais | cond 100 | all
+  - Feuilles de combava | syn feuilles de kaffir | cond 10 | all
+  - Lait de coco léger | unite ml | densite 1000 | cond 400 | groupe matieres_grasses | all
+  - Crème de coco en brique | unite ml | cond 200 | groupe matieres_grasses | all
+  - Tofu frit | syn tofu en cubes frits | cond 200 | groupe legumineuses | all soja | emp refrigerateur | cons 30/3/-
+  - Edamame en conserve | cond 200 | groupe legumineuses | all soja
+  - Dal de lentilles prêt | syn dhal en conserve | cond 400 | groupe plats_transformes | all
+  - Pâte de curry jaune | cond 100 | all crustaces
+  - Pâte de curry massaman | cond 100 | all crustaces, arachides
+  - Pâte tandoori | cond 200 | all lait
+  - Chutney de tomates | cond 250 | all
+  - Papadums | syn galettes papadum | cond 100 | groupe feculents_raffines | all
+  - Riz basmati complet | cond 1000 | groupe feculents_complets | all
+  - Harissa en tube | cond 70 | u cc=5 | all
+  - Pâte de piment rouge | syn sambal oelek | cond 200 | u cc=5 | all
+  - Preserved lemons | syn citrons confits | cond 300 | all
+  - Eau de rose | unite ml | cond 250 | all
+  - Mélasse de grenade | unite ml | cond 250 | all
+  - Halva | cond 250 | groupe produits_sucres | all sesame
+  - Loukoums | cond 250 | groupe produits_sucres | all
+  - Couscous complet | cond 500 | groupe feculents_complets | all gluten
+  - Pain libanais | syn pain pita libanais | unite piece | piece 80 | cond 480:6 pains | groupe feculents_raffines | all gluten | cons 14/4/90
+  - Pois chiches grillés | cond 150 | groupe legumineuses | all
+  - Feuilles de vigne farcies | syn dolmas | cond 280 | groupe plats_transformes | all
+  - Tortillas de blé complètes | unite piece | piece 60 | cond 360:6 tortillas | groupe feculents_complets | all gluten | cons 60/5/90
+  - Haricots refrits | syn refried beans | cond 430 | groupe legumineuses | all
+  - Sauce enchilada | cond 400 | all
+  - Kit pour tacos | syn kit tacos | cond 300 | groupe plats_transformes | all gluten
+  - Sauce guacamole | syn guacamole en bocal | cond 200 | groupe matieres_grasses | all
+  - Feuilles de nori grillées | syn algues pour sushis | unite piece | piece 3 | cond 10000:10 feuilles | all
+  - Vinaigre à sushi | unite ml | cond 250 | u cs=15 | all
+  - Panko japonais | cond 150 | groupe feculents_raffines | all gluten
