@@ -10,7 +10,7 @@ une image de **27 Mo**, aucun appel réseau sortant par défaut. Conçu pour un
 NAS Synology, un mini-PC ou un Raspberry Pi, à côté de
 [BuddyGet](https://github.com/CodeColors/buddyget) dont il reprend le socle.
 
-- **Catalogue** de 880 produits d'hypermarché (alimentaire, hygiène,
+- **Catalogue** d'environ 1 770 produits d'hypermarché (alimentaire, hygiène,
   entretien, maison, bébé, animaux) avec rayon, unité, conversions,
   conditionnements, conservation indicative, saison, allergènes ;
   entièrement modifiable, enrichi par l'usage (création à la volée,
@@ -24,14 +24,19 @@ NAS Synology, un mini-PC ou un Raspberry Pi, à côté de
   d'équilibre de A à E** expliqué ; ingrédients saisis ligne à ligne
   (quantité, unité de cuisine, produit cherché dans le catalogue, « Autre »
   pour le reste) ou collés en liste ; suppression à l'unité ou en
-  sélection multiple (la recette est aussi retirée des menus), import et export JSON et schema.org. La base de recettes
-  démarre vide : ce sont les vôtres.
+  sélection multiple (la recette est aussi retirée des menus), import et
+  export JSON et schema.org. **Bibliothèque de 532 recettes** fournie
+  (entrées, plats, desserts, petits-déjeuners, goûters), des assiettes
+  équilibrées aux classiques gourmands (raclette, burgers, tartiflette…),
+  chaque ingrédient relié au catalogue et achetable dans un conditionnement
+  du commerce.
 - **Menus** générés en moins d'une seconde pour 1 à 8 semaines, au format
   choisi pour chaque repas (plat seul, entrée + plat, plat + dessert,
   complet), en respectant allergies et régimes (option « sans poisson ni
   fruits de mer » comprise), en privilégiant ce qui périme ; chaque choix
-  est expliqué ; verrouiller, régénérer, échanger, restes ; supprimer un
-  repas ou plusieurs d'un coup.
+  est expliqué ; verrouiller, régénérer, échanger, restes ; ajouter ou
+  retirer une entrée, un plat ou un dessert directement depuis la semaine ;
+  supprimer un repas ou plusieurs d'un coup.
 - **Liste de courses** : ce qui manque pour le menu et ce qui passera sous
   le minimum avant les courses suivantes, arrondi aux conditionnements, dans
   l'ordre des rayons de votre magasin ; mode magasin utilisable **hors
@@ -160,8 +165,10 @@ docker compose pull && docker compose up -d
 Les migrations de la base s'appliquent au démarrage. Les mises à jour du
 catalogue n'écrasent jamais un produit que vous avez modifié. Si votre
 installation avait reçu les anciennes recettes de départ, celles que vous
-n'avez ni modifiées ni utilisées sont retirées automatiquement. Faites une sauvegarde avant une mise à jour
-majeure.
+n'avez ni modifiées ni utilisées sont retirées automatiquement. La
+bibliothèque de recettes est ajoutée une fois : une recette que vous
+supprimez ne revient pas, une recette de même titre que l'une des vôtres
+n'est pas ajoutée. Faites une sauvegarde avant une mise à jour majeure.
 
 ## Développement
 

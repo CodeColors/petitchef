@@ -1,7 +1,7 @@
 # Architecture
 
 PetitChef est un binaire Go unique : serveur HTTP, pages, fichiers
-statiques, migrations, catalogue et recettes de départ y sont embarqués.
+statiques, migrations, catalogue et bibliothèque de recettes y sont embarqués.
 Les données tiennent dans un fichier SQLite et un dossier de photos sous
 `DATA_DIR`. Le socle serveur (base, authentification, sauvegardes, alertes)
 est une copie adaptée de BuddyGet ; l'interface est propre à PetitChef ;
@@ -43,13 +43,14 @@ internal/
 ├── auth/             comptes, argon2id, sessions, limitation des tentatives, thème
 ├── catalog/          produits, conversions, conditionnements, rayons, magasins,
 │   │                 emplacements, prix ; recherche ; création à la volée
-│   └── seed/         base de départ : un YAML par rayon (880 produits)
+│   └── seed/         base de départ : un YAML par rayon (≈ 1 770 produits)
 ├── stock/            lots, journal des mouvements, FEFO, annulation, inventaire,
 │                     stock minimum, consommation estimée, modèles de stock
 ├── household/        membres du foyer : portions, allergies, régimes, refus
 ├── recipes/          recettes : analyse des ingrédients en texte, rapprochement
 │   │                 du catalogue, mise à l'échelle, recettes composées, indice
 │   │                 d'équilibre, recherche FTS5, avis, import/export
+│   ├── library/      bibliothèque embarquée de 532 recettes (format texte)
 │   └── recipetest/   jeu d'essai de 70 recettes, pour les tests seulement
 ├── planner/          moteur du générateur de menus (pur) et « ce soir »
 ├── menus/            créneaux, semaines types, repas, génération, édition,

@@ -1,0 +1,880 @@
+# Desserts : fruits, crèmes, gâteaux, tartes, glacés.
+
+= Salade de fruits frais
+dessert | 4 | 15 | 0 | fruits, équilibré, rapide, été
+2 Orange
+2 Kiwi
+1 Pomme
+1 Banane
+250 g Fraise
+1 Citron jaune
+> Éplucher et couper les fruits en morceaux.
+> Arroser de jus de citron et réserver au frais.
+
+= Compote de pommes maison
+dessert | 4 | 10 | 20 | fruits, équilibré, économique, enfants
+1 kg Pomme
+1 sachet Sucre vanillé
+1 c. à café Cannelle moulue
+> Éplucher et couper les pommes, les cuire 20 min à couvert avec un fond d'eau.
+> Écraser avec le sucre vanillé et la cannelle.
+
+= Compote pommes-poires
+dessert | 4 | 10 | 20 | fruits, équilibré, économique
+4 Pomme
+3 Poire
+1 sachet Sucre vanillé
+> Couper les fruits et les cuire 20 min avec un fond d'eau.
+> Écraser grossièrement.
+
+= Pommes au four
+dessert | 4 | 10 | 30 | fruits, hiver, équilibré, four
+4 Pomme
+20 g Beurre doux
+2 c. à soupe Sucre roux
+1 c. à café Cannelle moulue
+40 g Raisins secs
+> Évider les pommes, les garnir de beurre, sucre, cannelle et raisins.
+> Cuire 30 min à 180 °C.
+
+= Poires pochées au vin
+dessert | 4 | 10 | 25 | fruits, fête, hiver
+4 Poire
+75 cl Vin rouge
+100 g Sucre en poudre
+1 Bâton de cannelle
+1 Anis étoilé
+> Porter le vin, le sucre et les épices à ébullition.
+> Pocher les poires épluchées 25 min, réduire le sirop.
+
+= Crumble aux pommes
+dessert | 6 | 15 | 35 | four, classique, gourmand
+1 kg Pomme
+150 g Farine de blé
+100 g Beurre doux
+100 g Sucre roux
+1 c. à café Cannelle moulue
+> Disposer les pommes en dés dans un plat avec la cannelle.
+> Sabler farine, sucre et beurre, couvrir les fruits et cuire 35 min à 180 °C.
+
+= Crumble aux fruits rouges
+dessert | 6 | 10 | 30 | four, été
+600 g Fruits rouges surgelés
+150 g Farine de blé
+100 g Beurre doux
+100 g Sucre roux
+50 g Amandes en poudre
+> Répartir les fruits dans un plat.
+> Couvrir de pâte sablée (farine, amandes, sucre, beurre) et cuire 30 min à 180 °C.
+
+= Crumble pommes-rhubarbe
+dessert | 6 | 15 | 35 | four, printemps
+500 g Rhubarbe
+3 Pomme
+150 g Farine de blé
+100 g Beurre doux
+120 g Sucre roux
+> Couper rhubarbe et pommes, les sucrer légèrement.
+> Couvrir de crumble et cuire 35 min à 180 °C.
+
+= Tarte aux pommes
+dessert | 8 | 20 | 35 | four, classique
+1 [Pâte brisée maison]
+6 Pomme
+30 g Beurre doux
+40 g Sucre en poudre
+1 sachet Sucre vanillé
+> Étaler la pâte, la garnir de pommes en fines lamelles.
+> Parsemer de sucre et de beurre, cuire 35 min à 190 °C.
+
+= Tarte Tatin
+dessert | 8 | 20 | 40 | four, classique, gourmand | 2
+1 [Pâte brisée maison]
+8 Pomme
+120 g Sucre en poudre
+80 g Beurre doux
+> Préparer un caramel avec le sucre et le beurre dans le moule, y ranger les pommes en quartiers serrés ; cuire 15 min.
+> Couvrir de pâte, cuire 25 min à 190 °C et retourner tiède.
+
+= Tarte au citron meringuée
+dessert | 8 | 30 | 25 | four, fête | 3
+1 [Pâte sablée maison]
+3 Citron jaune
+4 Œufs
+150 g Sucre en poudre
+20 g Fécule de maïs
+80 g Beurre doux
+> Cuire la pâte à blanc 15 min ; préparer une crème avec le jus de citron, les jaunes, la moitié du sucre, la fécule et le beurre.
+> Garnir, couvrir de meringue (blancs et reste du sucre) et dorer 8 min.
+
+= Tarte aux fraises
+dessert | 8 | 30 | 15 | été, fête
+1 [Pâte sablée maison]
+4 [Crème pâtissière]
+500 g Fraise
+2 c. à soupe Gelée de groseilles
+> Cuire la pâte à blanc 15 min et la laisser refroidir.
+> Garnir de crème pâtissière, disposer les fraises et les napper de gelée.
+
+= Tarte au chocolat
+dessert | 8 | 20 | 20 | gourmand, chocolat, fête
+1 [Pâte sablée maison]
+200 g Chocolat noir pâtissier
+20 cl Crème liquide entière
+2 Œufs
+30 g Beurre doux
+> Cuire la pâte à blanc 15 min ; faire fondre le chocolat dans la crème chaude, ajouter le beurre et les œufs.
+> Verser sur la pâte et cuire 10 min à 160 °C.
+
+= Tarte normande
+dessert | 8 | 20 | 40 | four, normand
+1 [Pâte brisée maison]
+4 Pomme
+2 Œufs
+20 cl Crème fraîche épaisse
+80 g Sucre en poudre
+> Garnir la pâte de pommes en quartiers et cuire 15 min.
+> Verser œufs, crème et sucre battus, cuire 25 min.
+
+= Tarte bourdaloue
+dessert | 8 | 25 | 35 | four, classique
+1 [Pâte sablée maison]
+6 Poire
+100 g Amandes en poudre
+100 g Sucre en poudre
+100 g Beurre doux
+2 Œufs
+> Préparer une crème d'amande (beurre, sucre, amandes, œufs), en garnir la pâte.
+> Disposer les poires en lamelles et cuire 35 min à 180 °C.
+
+= Tarte aux abricots
+dessert | 8 | 20 | 35 | été, four
+1 [Pâte brisée maison]
+800 g Abricot
+40 g Amandes en poudre
+60 g Sucre en poudre
+> Parsemer la pâte de poudre d'amande, disposer les abricots coupés en deux.
+> Sucrer et cuire 35 min à 190 °C.
+
+= Clafoutis aux cerises
+dessert | 6 | 15 | 40 | été, four, classique
+500 g Cerise
+3 Œufs
+100 g Farine de blé
+100 g Sucre en poudre
+40 cl Lait demi-écrémé
+20 g Beurre doux
+> Répartir les cerises dans un plat beurré.
+> Verser la pâte (œufs, sucre, farine, lait) et cuire 40 min à 180 °C.
+
+= Flognarde aux pommes
+dessert | 6 | 15 | 35 | four, économique
+4 Pomme
+3 Œufs
+80 g Farine de blé
+80 g Sucre en poudre
+40 cl Lait demi-écrémé
+> Disposer les pommes en lamelles dans un plat beurré.
+> Verser la pâte et cuire 35 min à 180 °C.
+
+= Far breton
+dessert | 8 | 10 | 50 | breton, four
+250 g Pruneaux
+4 Œufs
+200 g Farine de blé
+150 g Sucre en poudre
+75 cl Lait entier
+30 g Beurre demi-sel
+> Mélanger farine, sucre, œufs puis le lait ; verser dans un plat beurré.
+> Ajouter les pruneaux et cuire 50 min à 200 °C.
+
+= Gâteau au yaourt
+gouter, dessert | 8 | 10 | 35 | enfants, économique, four
+1 Yaourt nature
+3 Œufs
+250 g Farine de blé
+200 g Sucre en poudre
+10 cl Huile de tournesol
+1 sachet Levure chimique
+> Mélanger le yaourt, le sucre, les œufs, la farine, la levure puis l'huile.
+> Cuire 35 min à 180 °C.
+
+= Gâteau au chocolat fondant
+dessert | 8 | 15 | 25 | chocolat, gourmand, enfants
+200 g Chocolat noir pâtissier
+150 g Beurre doux
+150 g Sucre en poudre
+4 Œufs
+50 g Farine de blé
+> Faire fondre le chocolat avec le beurre, ajouter le sucre, les œufs puis la farine.
+> Cuire 22 à 25 min à 180 °C.
+
+= Moelleux au chocolat cœur coulant
+dessert | 6 | 15 | 10 | chocolat, gourmand, fête
+150 g Chocolat noir pâtissier
+100 g Beurre doux
+3 Œufs
+80 g Sucre en poudre
+40 g Farine de blé
+> Faire fondre chocolat et beurre, ajouter les œufs battus avec le sucre, puis la farine.
+> Répartir dans des moules et cuire 9 min à 200 °C.
+
+= Brownies
+gouter, dessert | 12 | 15 | 25 | chocolat, gourmand
+200 g Chocolat noir pâtissier
+150 g Beurre doux
+200 g Sucre roux
+3 Œufs
+80 g Farine de blé
+100 g Cerneaux de noix
+> Faire fondre chocolat et beurre, ajouter sucre, œufs, farine et noix.
+> Cuire 25 min à 180 °C dans un moule carré ; couper en carrés.
+
+= Cookies aux pépites de chocolat
+gouter | 20 | 15 | 12 | enfants, gourmand
+250 g Farine de blé
+125 g Beurre doux
+150 g Sucre roux
+1 Œufs
+150 g Pépites de chocolat
+1 c. à café Levure chimique
+> Mélanger beurre mou et sucre, ajouter l'œuf, la farine, la levure et les pépites.
+> Former des boules espacées et cuire 10 à 12 min à 180 °C.
+
+= Quatre-quarts
+gouter, dessert | 8 | 10 | 40 | classique, enfants
+3 Œufs
+150 g Farine de blé
+150 g Sucre en poudre
+150 g Beurre doux
+1 c. à café Levure chimique
+> Fouetter les œufs et le sucre, ajouter le beurre fondu puis la farine et la levure.
+> Cuire 40 min à 180 °C.
+
+= Cake au citron
+gouter, dessert | 8 | 15 | 45 | four
+3 Œufs
+200 g Farine de blé
+180 g Sucre en poudre
+120 g Beurre doux
+2 Citron jaune
+1 sachet Levure chimique
+> Mélanger œufs et sucre, ajouter le beurre fondu, les zestes et le jus, puis la farine et la levure.
+> Cuire 45 min à 170 °C.
+
+= Gâteau marbré
+gouter | 8 | 20 | 45 | enfants, four
+4 Œufs
+200 g Farine de blé
+180 g Sucre en poudre
+150 g Beurre doux
+2 c. à soupe Cacao en poudre non sucré
+1 sachet Levure chimique
+> Préparer une pâte, la diviser et ajouter le cacao dans une moitié.
+> Alterner les deux pâtes dans un moule et cuire 45 min à 170 °C.
+
+= Banana bread
+gouter, petit_dejeuner | 8 | 15 | 50 | économique, four
+3 Banane
+2 Œufs
+200 g Farine de blé
+100 g Sucre roux
+80 g Beurre doux
+1 sachet Levure chimique
+50 g Cerneaux de noix
+> Écraser les bananes très mûres, ajouter œufs, sucre, beurre fondu puis farine, levure et noix.
+> Cuire 50 min à 170 °C.
+
+= Carrot cake
+gouter, dessert | 10 | 25 | 45 | four, gourmand
+300 g Carotte
+3 Œufs
+200 g Farine de blé
+150 g Sucre roux
+15 cl Huile de tournesol
+1 c. à café Cannelle moulue
+1 sachet Levure chimique
+200 g Fromage frais nature
+60 g Sucre glace
+> Mélanger œufs, sucre, huile, carottes râpées, farine, levure et cannelle ; cuire 45 min à 170 °C.
+> Napper le gâteau refroidi de fromage frais battu avec le sucre glace.
+
+= Fondant aux marrons
+dessert | 8 | 10 | 30 | hiver, fête
+500 g Crème de marrons
+3 Œufs
+100 g Beurre doux
+> Mélanger la crème de marrons, le beurre fondu et les œufs.
+> Cuire 30 min à 170 °C.
+
+= Gâteau basque
+dessert | 8 | 30 | 40 | basque, four | 2
+300 g Farine de blé
+200 g Sucre en poudre
+150 g Beurre doux
+3 Œufs
+1 c. à café Levure chimique
+4 [Crème pâtissière]
+> Préparer une pâte sablée avec farine, sucre, beurre, 2 œufs et levure ; foncer un moule.
+> Garnir de crème pâtissière, couvrir de pâte, dorer à l'œuf et cuire 40 min à 180 °C.
+
+= Fraisier
+dessert | 8 | 60 | 25 | fête, été | 3
+4 Œufs
+120 g Sucre en poudre
+120 g Farine de blé
+500 g Fraise
+4 [Crème pâtissière]
+150 g Beurre doux
+> Préparer une génoise (œufs et sucre fouettés, farine) et la cuire 20 min à 180 °C.
+> Monter le fraisier : génoise, crème pâtissière enrichie de beurre, fraises entières, génoise ; réserver une nuit au frais.
+
+= Mousse au chocolat
+dessert | 6 | 20 | 0/180 | chocolat, classique
+200 g Chocolat noir pâtissier
+6 Œufs
+1 pincée Sel fin
+> Faire fondre le chocolat, y incorporer les jaunes.
+> Monter les blancs en neige avec le sel, les incorporer délicatement ; réserver 3 h au frais.
+
+= Crème brûlée
+dessert | 6 | 15 | 50 | fête, classique
+50 cl Crème liquide entière
+6 Œufs
+100 g Sucre en poudre
+1 Gousse de vanille
+60 g Sucre roux
+> Infuser la vanille dans la crème chaude, la verser sur les jaunes fouettés avec le sucre.
+> Cuire 50 min à 100 °C, refroidir et caraméliser le sucre roux au chalumeau.
+
+= Crème caramel
+dessert | 6 | 15 | 40 | classique, enfants
+75 cl Lait entier
+5 Œufs
+150 g Sucre en poudre
+1 sachet Sucre vanillé
+> Préparer un caramel avec 80 g de sucre et le verser dans des ramequins.
+> Verser le lait chaud battu avec les œufs et le reste du sucre ; cuire 40 min au bain-marie à 160 °C.
+
+= Panna cotta aux fruits rouges
+dessert | 6 | 15 | 5/180 | italien, fête
+50 cl Crème liquide entière
+60 g Sucre en poudre
+3 Gélatine en feuilles
+1 Gousse de vanille
+300 g Fruits rouges surgelés
+> Chauffer la crème avec le sucre et la vanille, y dissoudre la gélatine ramollie ; verser en verrines.
+> Réserver 3 h au frais ; napper d'un coulis de fruits rouges mixés.
+
+= Tiramisu
+dessert | 8 | 25 | 0/240 | italien, gourmand, fête
+500 g Mascarpone
+4 Œufs
+100 g Sucre en poudre
+300 g Biscuits cuillère
+20 g Café moulu
+30 cl Eau plate
+2 c. à soupe Cacao en poudre non sucré
+> Fouetter les jaunes avec le sucre, ajouter le mascarpone puis les blancs en neige.
+> Préparer 30 cl de café fort et le laisser refroidir ; alterner biscuits trempés dans le café et crème ; saupoudrer de cacao et réserver 4 h.
+
+= Tiramisu aux fraises
+dessert | 6 | 25 | 0/240 | été, fête
+250 g Mascarpone
+3 Œufs
+80 g Sucre en poudre
+200 g Biscuits cuillère
+400 g Fraise
+> Préparer une crème au mascarpone ; tremper les biscuits dans un jus de fraises mixées.
+> Alterner biscuits, crème et fraises ; réserver 4 h au frais.
+
+= Riz au lait vanillé
+dessert | 6 | 5 | 40 | enfants, classique, économique
+150 g Riz rond
+1 l Lait entier
+100 g Sucre en poudre
+1 Gousse de vanille
+> Cuire le riz dans le lait vanillé à feu très doux 35 min en remuant souvent.
+> Ajouter le sucre en fin de cuisson et laisser refroidir.
+
+= Semoule au lait et raisins
+dessert | 4 | 5 | 15 | enfants, économique
+80 g Semoule moyenne
+75 cl Lait demi-écrémé
+60 g Sucre en poudre
+40 g Raisins secs
+> Porter le lait à ébullition avec le sucre, verser la semoule en pluie.
+> Cuire 10 min en remuant, ajouter les raisins.
+
+= Œufs à la neige
+dessert | 6 | 25 | 15 | classique, fête | 2
+6 Œufs
+75 cl Lait entier
+150 g Sucre en poudre
+1 Gousse de vanille
+> Préparer une crème anglaise avec le lait vanillé, les jaunes et 100 g de sucre.
+> Pocher les blancs montés avec le reste du sucre et les servir sur la crème.
+
+= Île flottante au caramel
+dessert | 6 | 25 | 15 | classique
+6 Œufs
+75 cl Lait demi-écrémé
+150 g Sucre en poudre
+5 cl Caramel liquide
+> Préparer une crème anglaise ; cuire les blancs en neige sucrés 1 min au micro-ondes en ramequins.
+> Démouler sur la crème et napper de caramel.
+
+= Profiteroles
+dessert | 6 | 40 | 25 | fête, gourmand, chocolat | 3
+25 cl Eau plate
+80 g Beurre doux
+150 g Farine de blé
+4 Œufs
+1 l Glace vanille
+150 g Chocolat noir pâtissier
+15 cl Crème liquide entière
+> Préparer une pâte à choux, la dresser en petites boules et cuire 25 min à 190 °C.
+> Garnir les choux de glace et napper de chocolat fondu dans la crème.
+
+= Crêpes sucrées
+dessert, gouter | 4 | 10 | 20 | enfants, convivial
+4 [Pâte à crêpes maison]
+100 g Pâte à tartiner chocolat-noisettes
+80 g Confiture de fraises
+50 g Sucre en poudre
+> Cuire les crêpes dans une poêle beurrée.
+> Les garnir de pâte à tartiner, de confiture ou de sucre.
+
+= Crêpes Suzette
+dessert | 4 | 15 | 15 | fête, classique
+4 [Pâte à crêpes maison]
+3 Orange
+80 g Beurre doux
+80 g Sucre en poudre
+4 cl Liqueur
+> Cuire les crêpes ; préparer un beurre à l'orange avec le beurre, le sucre, le jus et les zestes.
+> Réchauffer les crêpes pliées dans le beurre, flamber à la liqueur.
+
+= Gaufres
+gouter, dessert | 6 | 15 | 20 | enfants, convivial
+250 g Farine de blé
+3 Œufs
+50 cl Lait demi-écrémé
+80 g Beurre doux
+50 g Sucre en poudre
+1 sachet Levure chimique
+> Mélanger farine, levure, sucre, œufs, lait et beurre fondu ; laisser reposer 30 min.
+> Cuire dans le gaufrier chaud.
+
+= Pancakes
+petit_dejeuner, gouter | 4 | 10 | 15 | enfants, rapide
+200 g Farine de blé
+2 Œufs
+25 cl Lait demi-écrémé
+30 g Sucre en poudre
+1 sachet Levure chimique
+30 g Beurre doux
+4 c. à soupe Sirop d'érable
+> Mélanger farine, levure, sucre, œufs, lait et beurre fondu.
+> Cuire des petites crêpes épaisses 2 min de chaque côté ; servir avec le sirop d'érable.
+
+= Pain perdu
+dessert, gouter | 4 | 10 | 10 | économique, enfants
+8 tranche Brioche tranchée
+2 Œufs
+25 cl Lait entier
+40 g Sucre en poudre
+20 g Beurre doux
+> Tremper la brioche dans les œufs battus avec le lait et le sucre.
+> Dorer au beurre 2 min de chaque côté.
+
+= Beignets aux pommes
+dessert | 6 | 20 | 15 | convivial, gourmand
+3 Pomme
+150 g Farine de blé
+2 Œufs
+20 cl Lait demi-écrémé
+1 l Huile de friture
+50 g Sucre glace
+> Préparer une pâte à beignets ; tremper les rondelles de pomme.
+> Frire 2 min de chaque côté et saupoudrer de sucre glace.
+
+= Bananes flambées
+dessert | 4 | 5 | 8 | rapide, fête
+4 Banane
+40 g Beurre doux
+40 g Sucre roux
+4 cl Rhum
+> Dorer les bananes coupées en deux au beurre avec le sucre.
+> Flamber au rhum et servir aussitôt.
+
+= Ananas rôti à la vanille
+dessert | 4 | 10 | 25 | fruits, fête, équilibré
+1 Ananas
+1 Gousse de vanille
+2 c. à soupe Sucre roux
+20 g Beurre doux
+> Éplucher l'ananas et le couper en quartiers.
+> Rôtir 25 min à 200 °C avec le beurre, le sucre et la vanille.
+
+= Fraises au sucre et chantilly
+dessert | 4 | 10 | 0 | été, rapide
+500 g Fraise
+20 cl Crème liquide entière
+30 g Sucre glace
+> Équeuter et couper les fraises.
+> Fouetter la crème bien froide avec le sucre glace, servir avec les fraises.
+
+= Soupe de fraises à la menthe
+dessert | 4 | 10 | 0 | été, équilibré, rapide
+500 g Fraise
+½ botte Menthe fraîche
+1 Citron vert
+2 c. à soupe Sucre en poudre
+> Mixer la moitié des fraises avec le sucre et le citron.
+> Ajouter le reste des fraises en morceaux et la menthe.
+
+= Salade d'agrumes à la cannelle
+dessert | 4 | 15 | 0 | hiver, fruits, équilibré
+2 Orange
+2 Pamplemousse
+2 Clémentine
+1 c. à café Cannelle moulue
+> Peler les agrumes à vif et les couper en tranches.
+> Saupoudrer de cannelle et réserver au frais.
+
+= Mangue et fruit de la passion
+dessert | 4 | 10 | 0 | fruits, équilibré, rapide
+2 Mangue
+4 Fruit de la passion
+1 Citron vert
+> Couper les mangues en dés.
+> Arroser de la pulpe des fruits de la passion et du citron vert.
+
+= Fromage blanc et coulis de fruits rouges
+dessert | 4 | 5 | 5 | rapide, équilibré
+500 g Fromage blanc
+300 g Fruits rouges surgelés
+2 c. à soupe Sucre en poudre
+> Chauffer les fruits avec le sucre 5 min et les mixer.
+> Napper le fromage blanc de coulis.
+
+= Yaourt grec, miel et noix
+dessert | 4 | 5 | 0 | rapide, équilibré
+4 Yaourt à la grecque
+4 c. à soupe Miel
+50 g Cerneaux de noix
+> Répartir les yaourts dans des coupes.
+> Arroser de miel et parsemer de noix concassées.
+
+= Verrines de skyr aux fruits
+dessert | 4 | 10 | 0 | équilibré, rapide
+400 g Skyr
+250 g Framboise
+60 g Muesli croustillant
+> Alterner skyr, framboises et muesli dans des verrines.
+> Servir aussitôt.
+
+= Mousse au citron
+dessert | 6 | 20 | 0/120 | léger
+3 Citron jaune
+4 Œufs
+100 g Sucre en poudre
+20 cl Crème liquide entière
+> Préparer une crème au citron cuite avec le jus, les jaunes et le sucre ; laisser refroidir.
+> Incorporer la crème fouettée puis les blancs en neige ; réserver 2 h.
+
+= Charlotte aux poires
+dessert | 8 | 30 | 0/360 | fête
+30 Biscuits cuillère
+4 Poire
+50 cl Crème liquide entière
+4 Gélatine en feuilles
+80 g Sucre en poudre
+> Tapisser un moule de biscuits ; mixer deux poires, y dissoudre la gélatine, ajouter la crème fouettée sucrée.
+> Alterner crème et dés de poires, couvrir de biscuits et réserver une nuit.
+
+= Bavarois aux framboises
+dessert | 8 | 30 | 0/360 | fête, été
+400 g Framboise
+50 cl Crème liquide entière
+100 g Sucre en poudre
+5 Gélatine en feuilles
+1 Gâteau moelleux
+> Mixer les framboises avec le sucre, y dissoudre la gélatine, incorporer la crème fouettée.
+> Verser sur une base de gâteau et réserver une nuit.
+
+= Cheesecake new-yorkais
+dessert | 10 | 25 | 60/240 | gourmand, fête
+250 g Spéculoos
+80 g Beurre doux
+600 g Fromage à tartiner
+150 g Sucre en poudre
+3 Œufs
+20 cl Crème fraîche épaisse
+> Tasser les biscuits écrasés avec le beurre fondu au fond d'un moule.
+> Fouetter fromage, sucre, œufs et crème, verser et cuire 1 h à 150 °C ; réserver 4 h au frais.
+
+= Cheesecake au citron sans cuisson
+dessert | 8 | 20 | 0/240 | fête, été
+200 g Biscuits secs
+70 g Beurre doux
+400 g Fromage frais nature
+20 cl Crème liquide entière
+80 g Sucre en poudre
+2 Citron jaune
+> Tasser les biscuits écrasés au beurre ; fouetter fromage, sucre, zestes et jus.
+> Incorporer la crème fouettée, verser et réserver 4 h au frais.
+
+= Mille-feuille
+dessert | 6 | 30 | 20 | fête, gourmand | 3
+2 Pâte feuilletée
+6 [Crème pâtissière]
+100 g Sucre glace
+> Cuire la pâte piquée entre deux plaques 20 min à 190 °C ; la couper en rectangles.
+> Monter avec la crème pâtissière, glacer le dessus au sucre glace.
+
+= Paris-brest
+dessert | 8 | 45 | 30 | fête, gourmand | 3
+25 cl Eau plate
+80 g Beurre doux
+150 g Farine de blé
+4 Œufs
+6 [Crème pâtissière]
+150 g Pâte de praliné
+30 g Amandes entières
+> Dresser une couronne de pâte à choux, parsemer d'amandes et cuire 30 min à 180 °C.
+> Garnir de crème pâtissière au praliné.
+
+= Galette des rois
+dessert | 8 | 25 | 35 | fête, hiver | 2
+2 Pâte feuilletée
+125 g Amandes en poudre
+100 g Sucre en poudre
+100 g Beurre doux
+2 Œufs
+> Préparer une frangipane avec le beurre, le sucre, les amandes et un œuf.
+> L'étaler entre les deux pâtes, souder, dorer à l'œuf et cuire 35 min à 190 °C.
+
+= Bûche de Noël au chocolat
+dessert | 8 | 45 | 15 | fête, hiver, chocolat | 3
+4 Œufs
+120 g Sucre en poudre
+100 g Farine de blé
+250 g Chocolat noir pâtissier
+40 cl Crème liquide entière
+> Cuire un biscuit roulé 10 min à 200 °C et le rouler chaud dans un torchon.
+> Garnir de ganache montée, rouler et couvrir de ganache ; strier à la fourchette.
+
+= Sablés bretons
+gouter | 20 | 15 | 15 | breton, enfants
+250 g Farine de blé
+150 g Beurre demi-sel
+120 g Sucre en poudre
+3 Œufs
+1 sachet Levure chimique
+> Mélanger beurre et sucre, ajouter les jaunes puis la farine et la levure ; réserver 1 h.
+> Découper des disques, dorer et cuire 15 min à 180 °C.
+
+= Madeleines maison
+gouter | 20 | 15 | 10 | classique, enfants
+3 Œufs
+130 g Sucre en poudre
+150 g Farine de blé
+130 g Beurre doux
+1 Citron jaune
+1 c. à café Levure chimique
+> Fouetter œufs et sucre, ajouter farine, levure, zeste et beurre fondu ; réserver 1 h au frais.
+> Remplir les moules et cuire 10 min à 210 °C.
+
+= Financiers aux amandes
+gouter | 12 | 15 | 15 | classique
+100 g Amandes en poudre
+120 g Sucre glace
+40 g Farine de blé
+4 Œufs
+100 g Beurre doux
+> Faire un beurre noisette ; mélanger amandes, sucre glace, farine et blancs.
+> Ajouter le beurre, remplir les moules et cuire 15 min à 190 °C.
+
+= Muffins aux myrtilles
+gouter, petit_dejeuner | 12 | 15 | 22 | enfants
+250 g Farine de blé
+120 g Sucre en poudre
+2 Œufs
+20 cl Lait demi-écrémé
+80 g Beurre doux
+1 sachet Levure chimique
+200 g Myrtille
+> Mélanger séparément les ingrédients secs et liquides, puis les réunir sans trop travailler.
+> Ajouter les myrtilles, remplir les moules et cuire 22 min à 180 °C.
+
+= Moelleux aux amandes et poires
+dessert | 8 | 15 | 35 | four
+3 Poire
+3 Œufs
+120 g Sucre en poudre
+100 g Amandes en poudre
+80 g Farine de blé
+100 g Beurre doux
+> Mélanger œufs, sucre, amandes, farine et beurre fondu.
+> Verser sur les poires en lamelles et cuire 35 min à 180 °C.
+
+= Sorbet express à la mangue
+dessert | 4 | 10 | 0 | rapide, équilibré, été
+500 g Mangue surgelée
+1 Citron vert
+2 c. à soupe Miel
+> Mixer la mangue surgelée avec le citron et le miel.
+> Servir aussitôt.
+
+= Coupe glacée chocolat liégeois
+dessert | 4 | 10 | 0 | gourmand, été
+50 cl Glace chocolat
+20 cl Crème liquide entière
+40 g Sucre glace
+50 g Chocolat noir pâtissier
+> Fouetter la crème en chantilly avec le sucre glace.
+> Répartir la glace, napper de chocolat fondu et couvrir de chantilly.
+
+= Dame blanche
+dessert | 4 | 10 | 5 | gourmand, classique
+50 cl Glace vanille
+100 g Chocolat noir pâtissier
+10 cl Crème liquide entière
+> Faire fondre le chocolat dans la crème chaude.
+> Napper les boules de glace de sauce chaude.
+
+= Banana split
+dessert | 4 | 10 | 0 | gourmand, enfants, été
+4 Banane
+25 cl Glace vanille
+25 cl Glace chocolat
+20 cl Crème liquide entière
+40 g Amandes entières
+5 cl Caramel liquide
+> Couper les bananes en deux dans la longueur, ajouter les boules de glace.
+> Garnir de chantilly, d'amandes grillées et de caramel.
+
+= Nougat glacé
+dessert | 8 | 30 | 0/360 | fête, été
+40 cl Crème liquide entière
+3 Œufs
+80 g Miel
+80 g Amandes entières
+60 g Pistaches
+50 g Fruits confits
+> Monter les blancs en meringue avec le miel chaud, incorporer la crème fouettée.
+> Ajouter les fruits secs torréfiés et les fruits confits ; congeler 6 h.
+
+= Mousse de fruits rouges
+dessert | 6 | 20 | 0/180 | été
+400 g Fruits rouges surgelés
+80 g Sucre en poudre
+3 Gélatine en feuilles
+25 cl Crème liquide entière
+> Mixer les fruits avec le sucre, y dissoudre la gélatine.
+> Incorporer la crème fouettée et réserver 3 h.
+
+= Crème au chocolat maison
+dessert | 6 | 10 | 10/120 | enfants, chocolat
+75 cl Lait entier
+120 g Chocolat noir pâtissier
+3 Œufs
+60 g Sucre en poudre
+30 g Fécule de maïs
+> Chauffer le lait avec le chocolat ; fouetter œufs, sucre et fécule.
+> Réunir et cuire en remuant jusqu'à épaississement ; répartir en pots et réserver 2 h.
+
+= Clafoutis aux abricots
+dessert | 6 | 15 | 35 | été, four
+600 g Abricot
+3 Œufs
+80 g Farine de blé
+80 g Sucre en poudre
+30 cl Lait demi-écrémé
+> Disposer les abricots dans un plat beurré.
+> Verser la pâte et cuire 35 min à 180 °C.
+
+= Fondue au chocolat et fruits
+dessert | 6 | 15 | 5 | convivial, chocolat, fête
+250 g Chocolat noir pâtissier
+20 cl Crème liquide entière
+2 Banane
+250 g Fraise
+1 Ananas
+> Faire fondre le chocolat dans la crème.
+> Servir dans un caquelon avec les fruits en morceaux.
+
+= Crème de marrons et fromage blanc
+dessert | 4 | 5 | 0 | hiver, rapide
+400 g Fromage blanc
+200 g Crème de marrons
+> Répartir le fromage blanc dans des coupes.
+> Ajouter la crème de marrons en spirale.
+
+= Tarte fine aux poires et chocolat
+dessert | 6 | 15 | 25 | four, chocolat
+1 Pâte feuilletée
+3 Poire
+80 g Chocolat noir pâtissier
+30 g Sucre roux
+> Étaler la pâte, disposer les poires en lamelles et saupoudrer de sucre.
+> Cuire 25 min à 200 °C et napper de chocolat fondu.
+
+= Kouign-amann express
+dessert, gouter | 8 | 20 | 30 | breton, gourmand
+1 Pâte feuilletée
+100 g Beurre demi-sel
+120 g Sucre en poudre
+> Étaler la pâte, la couvrir de beurre et de sucre, la plier en trois deux fois.
+> Former un disque dans un moule beurré et cuire 30 min à 200 °C.
+
+= Pastéis de nata
+dessert, gouter | 12 | 25 | 20 | portugais, gourmand
+1 Pâte feuilletée
+50 cl Lait entier
+4 Œufs
+120 g Sucre en poudre
+30 g Fécule de maïs
+1 Bâton de cannelle
+> Préparer une crème avec le lait infusé à la cannelle, les jaunes, le sucre et la fécule.
+> Foncer des moules à muffins de pâte roulée, garnir de crème et cuire 20 min à 240 °C.
+
+= Tarte aux framboises
+dessert | 8 | 25 | 15 | été, fête
+1 [Pâte sablée maison]
+4 [Crème pâtissière]
+400 g Framboise
+2 c. à soupe Sucre glace
+> Cuire la pâte à blanc 15 min et la laisser refroidir.
+> Garnir de crème pâtissière et couvrir de framboises ; saupoudrer de sucre glace.
+
+= Tarte aux quetsches
+dessert | 8 | 20 | 35 | automne, four
+1 [Pâte brisée maison]
+800 g Prune
+40 g Amandes en poudre
+60 g Sucre roux
+1 c. à café Cannelle moulue
+> Parsemer la pâte de poudre d'amande, disposer les prunes coupées en deux bien serrées.
+> Saupoudrer de sucre et de cannelle, cuire 35 min à 190 °C.
+
+= Moelleux à la châtaigne et poire
+dessert | 8 | 15 | 35 | hiver, four
+250 g Crème de marrons
+3 Œufs
+80 g Beurre doux
+60 g Farine de blé
+2 Poire
+> Mélanger la crème de marrons, les œufs, le beurre fondu et la farine.
+> Ajouter les poires en dés et cuire 35 min à 170 °C.
+
+= Verrines yaourt, kiwi et granola
+dessert | 4 | 10 | 0 | équilibré, rapide
+4 Yaourt à la grecque
+3 Kiwi
+60 g Muesli croustillant
+1 c. à soupe Miel
+> Couper les kiwis en dés.
+> Alterner yaourt au miel, kiwi et granola dans des verrines.

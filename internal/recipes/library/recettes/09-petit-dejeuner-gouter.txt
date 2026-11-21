@@ -1,0 +1,273 @@
+# Petits-déjeuners, goûters et accompagnements.
+
+= Porridge aux fruits
+petit_dejeuner | 2 | 5 | 8 | équilibré, rapide, hiver
+80 g Flocons d'avoine
+40 cl Lait demi-écrémé
+1 Banane
+1 c. à soupe Miel
+100 g Myrtille
+> Cuire les flocons dans le lait 5 min en remuant.
+> Servir avec la banane en rondelles, les myrtilles et le miel.
+
+= Overnight oats
+petit_dejeuner | 2 | 5 | 0/480 | équilibré, sans cuisson
+80 g Flocons d'avoine
+200 g Yaourt nature
+15 cl Lait demi-écrémé
+1 c. à soupe Graines de chia
+150 g Fruits rouges surgelés
+> Mélanger flocons, yaourt, lait et chia dans deux pots.
+> Couvrir de fruits et réserver une nuit au frais.
+
+= Granola maison
+petit_dejeuner | 10 | 10 | 25 | équilibré, batch cooking
+300 g Flocons d'avoine
+100 g Amandes entières
+50 g Graines de courge
+80 g Miel
+4 c. à soupe Huile de colza
+80 g Raisins secs
+> Mélanger flocons, amandes, graines, miel et huile ; étaler sur une plaque.
+> Cuire 25 min à 160 °C en remuant, ajouter les raisins une fois refroidi.
+
+= Bol de fromage blanc, granola et fruits
+petit_dejeuner | 2 | 5 | 0 | équilibré, rapide
+300 g Fromage blanc
+60 g Muesli croustillant
+1 Pomme
+1 Kiwi
+> Répartir le fromage blanc dans deux bols.
+> Ajouter le muesli et les fruits en dés.
+
+= Smoothie banane et fraise
+petit_dejeuner, gouter | 2 | 5 | 0 | équilibré, rapide, fruits
+1 Banane
+200 g Fraise
+150 g Yaourt nature
+15 cl Lait demi-écrémé
+> Mixer tous les ingrédients jusqu'à obtenir une boisson lisse.
+> Servir bien frais.
+
+= Smoothie vert
+petit_dejeuner | 2 | 5 | 0 | équilibré, rapide
+1 Banane
+1 Pomme
+50 g Jeunes pousses d'épinard
+1 Kiwi
+20 cl Jus de pomme
+> Mixer tous les ingrédients.
+> Servir aussitôt.
+
+= Tartines avocat et œuf
+petit_dejeuner | 2 | 10 | 6 | équilibré
+2 tranche Pain complet
+1 Avocat
+2 Œufs
+½ Citron jaune
+1 pincée Piment d'Espelette
+> Griller le pain, écraser l'avocat avec le citron ; cuire les œufs mollets 6 min.
+> Tartiner, poser l'œuf et saupoudrer de piment.
+
+= Œufs brouillés et pain grillé
+petit_dejeuner | 2 | 5 | 5 | rapide
+4 Œufs
+10 g Beurre doux
+2 tranche Pain de campagne
+½ botte Ciboulette
+> Cuire les œufs battus au beurre à feu doux en remuant.
+> Servir sur le pain grillé avec la ciboulette.
+
+= English breakfast
+petit_dejeuner, plat | 2 | 10 | 20 | gourmand, anglais
+4 Œufs
+4 tranche Bacon en tranches
+4 Chipolatas
+200 g Haricots blancs en conserve
+2 Tomate
+150 g Champignon de Paris
+2 tranche Pain de mie
+> Griller les saucisses, le bacon, les tomates en deux et les champignons.
+> Cuire les œufs au plat, chauffer les haricots et servir avec le pain grillé.
+
+= Pain perdu salé au fromage
+petit_dejeuner, plat | 2 | 10 | 10 | gourmand, économique
+4 tranche Pain de campagne
+2 Œufs
+15 cl Lait demi-écrémé
+80 g Comté
+2 tranche Jambon blanc
+> Tremper le pain dans les œufs battus avec le lait.
+> Le dorer à la poêle, couvrir de jambon et de comté et laisser fondre.
+
+= Crêpes au sarrasin, œuf et fromage du matin
+petit_dejeuner | 2 | 10 | 10 | breton
+2 Galettes de sarrasin
+2 Œufs
+60 g Emmental râpé
+10 g Beurre demi-sel
+> Réchauffer les galettes au beurre, casser un œuf au centre.
+> Parsemer de fromage, replier les bords et cuire 4 min.
+
+= Brioche perdue aux fruits rouges
+petit_dejeuner, gouter | 4 | 10 | 10 | gourmand
+8 tranche Brioche tranchée
+2 Œufs
+20 cl Lait entier
+200 g Fruits rouges surgelés
+30 g Sucre en poudre
+> Tremper la brioche dans les œufs battus avec le lait et le sucre, la dorer.
+> Servir avec les fruits rouges réchauffés.
+
+= Tartines beurre et confiture
+petit_dejeuner, gouter | 2 | 5 | 0 | rapide, enfants
+½ Baguette
+30 g Beurre doux
+60 g Confiture d'abricots
+> Couper la baguette en tartines.
+> Beurrer et napper de confiture.
+
+= Chocolat chaud maison
+petit_dejeuner, gouter | 4 | 5 | 10 | hiver, enfants, chocolat
+1 l Lait entier
+150 g Chocolat noir pâtissier
+2 c. à soupe Sucre en poudre
+> Chauffer le lait, y faire fondre le chocolat avec le sucre.
+> Fouetter pour faire mousser.
+
+= Pain d'épices maison
+gouter, petit_dejeuner | 10 | 15 | 50 | hiver, four
+250 g Farine de blé
+200 g Miel
+10 cl Lait demi-écrémé
+1 Œufs
+2 c. à café Quatre-épices
+1 sachet Levure chimique
+> Chauffer le miel avec le lait, mélanger avec la farine, la levure, les épices et l'œuf.
+> Cuire 50 min à 160 °C dans un moule à cake.
+
+= Barres de céréales maison
+gouter | 12 | 15 | 20 | enfants, batch cooking
+200 g Flocons d'avoine
+100 g Miel
+60 g Beurre doux
+60 g Abricots secs
+40 g Amandes entières
+40 g Pépites de chocolat
+> Faire fondre le miel et le beurre, mélanger avec les autres ingrédients hachés.
+> Tasser dans un moule, cuire 20 min à 170 °C et couper en barres tièdes.
+
+= Yaourts maison
+gouter, dessert | 8 | 10 | 480 | économique, enfants
+1 l Lait entier
+1 Yaourt nature
+> Fouetter le yaourt avec le lait tiède et répartir dans des pots.
+> Étuver 8 h à 40 °C (yaourtière ou four éteint), puis réserver au frais.
+
+= Compote pomme-banane et biscuits
+gouter | 4 | 10 | 15 | enfants, équilibré
+4 Pomme
+2 Banane
+8 Biscuits secs
+> Cuire les pommes en morceaux 15 min, les écraser avec les bananes.
+> Servir tiède avec les biscuits.
+
+= Pommes de terre sautées
+accompagnement | 4 | 10 | 25 | classique, enfants
+1 kg Pomme de terre à chair ferme
+3 c. à soupe Huile de tournesol
+2 gousse Ail
+½ botte Persil plat
+> Couper les pommes de terre en dés et les faire sauter 25 min dans l'huile.
+> Ajouter l'ail et le persil hachés en fin de cuisson.
+
+= Purée de pommes de terre
+accompagnement | 4 | 10 | 25 | classique, enfants, économique
+1 kg Pomme de terre
+25 cl Lait entier
+50 g Beurre doux
+Muscade moulue
+> Cuire les pommes de terre épluchées 25 min à l'eau salée.
+> Les écraser avec le lait chaud, le beurre et la muscade.
+
+= Purée de carottes
+accompagnement | 4 | 10 | 25 | enfants, équilibré
+800 g Carotte
+2 Pomme de terre
+20 g Beurre doux
+10 cl Lait demi-écrémé
+> Cuire carottes et pommes de terre 25 min.
+> Mixer avec le beurre et le lait.
+
+= Haricots verts persillés
+accompagnement | 4 | 10 | 10 | équilibré, rapide
+600 g Haricot vert
+20 g Beurre doux
+1 gousse Ail
+½ botte Persil plat
+> Cuire les haricots 8 min à l'eau bouillante salée.
+> Les faire sauter au beurre avec l'ail et le persil.
+
+= Légumes rôtis au four
+accompagnement | 4 | 15 | 35 | équilibré, four, végétarien
+3 Carotte
+2 Panais
+1 Patate douce
+1 Oignon rouge
+3 c. à soupe Huile d'olive
+1 c. à café Thym séché
+> Couper les légumes en morceaux, les enrober d'huile et de thym.
+> Rôtir 35 min à 200 °C.
+
+= Frites de patate douce
+accompagnement | 4 | 10 | 30 | four, végétarien
+3 Patate douce
+2 c. à soupe Huile d'olive
+1 c. à café Paprika
+> Couper les patates douces en bâtonnets et les enrober d'huile et de paprika.
+> Cuire 30 min à 210 °C en les retournant.
+
+= Riz pilaf
+accompagnement | 4 | 5 | 20 | classique
+250 g Riz long blanc
+1 Oignon jaune
+20 g Beurre doux
+50 cl Bouillon de volaille
+> Faire revenir l'oignon au beurre, ajouter le riz et le nacrer.
+> Mouiller avec le bouillon chaud et cuire 17 min à couvert.
+
+= Semoule aux herbes
+accompagnement | 4 | 10 | 5 | rapide, été
+250 g Semoule moyenne
+½ botte Menthe fraîche
+½ botte Coriandre fraîche
+1 Citron jaune
+3 c. à soupe Huile d'olive
+> Faire gonfler la semoule dans l'eau bouillante salée.
+> Égrainer avec l'huile, le citron et les herbes ciselées.
+
+= Épinards à la crème
+accompagnement | 4 | 5 | 15 | classique
+800 g Épinards hachés surgelés
+10 cl Crème fraîche épaisse
+Muscade moulue
+> Cuire les épinards à feu doux 10 min et les égoutter.
+> Ajouter la crème et la muscade, réchauffer.
+
+= Champignons persillés
+accompagnement | 4 | 10 | 10 | rapide, végétarien
+500 g Champignon de Paris
+20 g Beurre doux
+2 gousse Ail
+½ botte Persil plat
+> Poêler les champignons émincés au beurre à feu vif.
+> Ajouter l'ail et le persil.
+
+= Pommes de terre au four et sauce au fromage blanc
+accompagnement, plat | 4 | 10 | 50 | four, végétarien
+8 Pomme de terre
+300 g Fromage blanc
+½ botte Ciboulette
+1 Échalote
+> Cuire les pommes de terre entières enveloppées de papier 50 min à 200 °C.
+> Les ouvrir et garnir de fromage blanc aux herbes et à l'échalote.

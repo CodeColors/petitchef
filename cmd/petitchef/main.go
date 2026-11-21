@@ -39,6 +39,7 @@ import (
 	"github.com/codecolors/petitchef/internal/platform/calendar"
 	"github.com/codecolors/petitchef/internal/platform/db"
 	"github.com/codecolors/petitchef/internal/recipes"
+	"github.com/codecolors/petitchef/internal/recipes/library"
 	"github.com/codecolors/petitchef/internal/scheduler"
 	"github.com/codecolors/petitchef/internal/shopping"
 	"github.com/codecolors/petitchef/internal/stats"
@@ -115,6 +116,9 @@ func run() error {
 	planning := menus.NewService(database, products, cookbook, members, inventory)
 	groceries := shopping.NewService(database, products, cookbook, planning, inventory)
 	if _, err := cookbook.PurgeSeed(ctx); err != nil {
+		return err
+	}
+	if _, err := cookbook.SyncLibrary(ctx, library.FS(), library.Version); err != nil {
 		return err
 	}
 	baseURL := ""

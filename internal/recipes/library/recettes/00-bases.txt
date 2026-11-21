@@ -1,0 +1,105 @@
+# Bases réutilisées par d'autres recettes (recettes composées).
+
+= Pâte brisée maison
+accompagnement | 1 | 10 | 0/30 | base
+250 g Farine de blé
+125 g Beurre doux
+1 pincée Sel fin
+5 cl Eau plate
+> Sabler la farine, le sel et le beurre froid coupé en dés du bout des doigts.
+> Ajouter l'eau petit à petit, former une boule sans trop travailler, filmer et laisser reposer 30 min au frais.
+
+= Pâte sablée maison
+accompagnement | 1 | 15 | 0/30 | base, dessert
+250 g Farine de blé
+125 g Beurre doux
+80 g Sucre glace
+1 Œufs
+1 pincée Sel fin
+> Sabler la farine, le sucre glace, le sel et le beurre mou.
+> Ajouter l'œuf, rassembler en boule, filmer et réserver 30 min au frais.
+
+= Sauce béchamel
+sauce | 4 | 5 | 10 | base, rapide
+40 g Beurre doux
+40 g Farine de blé
+50 cl Lait demi-écrémé
+1 pincée Muscade moulue
+Sel fin
+Poivre noir moulu
+> Faire fondre le beurre, ajouter la farine et cuire 1 min en remuant.
+> Verser le lait froid en fouettant et cuire 5 à 8 min jusqu'à épaississement ; assaisonner.
+
+= Vinaigrette maison
+sauce | 4 | 5 | 0 | base, rapide, sans cuisson
+1 c. à café Moutarde de Dijon
+1 c. à soupe Vinaigre de vin
+3 c. à soupe Huile d'olive
+Sel fin
+Poivre noir moulu
+> Mélanger la moutarde, le vinaigre, le sel et le poivre.
+> Ajouter l'huile en fouettant pour émulsionner.
+
+= Pâte à pizza maison
+accompagnement | 2 | 15 | 0/60 | base
+250 g Farine de blé
+5 g Levure de boulanger
+15 cl Eau plate
+1 c. à soupe Huile d'olive
+1 c. à café Sel fin
+> Délayer la levure dans l'eau tiède, mélanger avec la farine, le sel et l'huile.
+> Pétrir 10 min jusqu'à obtenir une pâte souple, couvrir et laisser lever 1 h.
+
+= Pâte à crêpes maison
+accompagnement | 4 | 10 | 0/60 | base
+250 g Farine de blé
+4 Œufs
+50 cl Lait demi-écrémé
+30 g Beurre doux
+1 pincée Sel fin
+> Mélanger la farine et le sel, creuser un puits et ajouter les œufs.
+> Verser le lait petit à petit en fouettant, puis le beurre fondu ; laisser reposer 1 h.
+
+= Sauce tomate maison
+sauce | 4 | 10 | 30 | base, batch cooking, végétarien
+800 g Tomates pelées en conserve
+1 Oignon jaune
+2 gousse Ail
+2 c. à soupe Huile d'olive
+1 c. à café Herbes de Provence
+1 c. à café Sucre en poudre
+Sel fin
+Poivre noir moulu
+> Faire revenir l'oignon et l'ail émincés dans l'huile 5 min.
+> Ajouter les tomates, le sucre et les herbes, saler, poivrer et laisser mijoter 25 min ; mixer si besoin.
+
+= Crème pâtissière
+sauce | 4 | 10 | 10 | base, dessert
+50 cl Lait demi-écrémé
+4 Œufs
+80 g Sucre en poudre
+40 g Fécule de maïs
+1 Gousse de vanille
+> Chauffer le lait avec la vanille fendue ; fouetter les jaunes avec le sucre puis la fécule.
+> Verser le lait chaud sur le mélange, remettre sur le feu et cuire en fouettant jusqu'à épaississement ; filmer au contact.
+
+= Sauce pesto maison
+sauce | 4 | 10 | 0 | base, végétarien, été
+1 botte Basilic frais
+40 g Parmesan
+30 g Pignons de pin
+1 gousse Ail
+8 cl Huile d'olive
+Sel fin
+> Mixer le basilic, l'ail, les pignons et le parmesan.
+> Ajouter l'huile en filet jusqu'à obtenir une sauce lisse ; saler.
+
+= Mayonnaise maison
+sauce | 4 | 10 | 0 | base, sans cuisson
+1 Œufs
+1 c. à café Moutarde de Dijon
+20 cl Huile de tournesol
+1 c. à café Vinaigre de vin
+Sel fin
+> Mélanger le jaune d'œuf et la moutarde à température ambiante.
+> Verser l'huile en filet en fouettant sans arrêt, puis ajouter le vinaigre, saler.

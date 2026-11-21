@@ -338,6 +338,35 @@ test('saisie des ingrédients sans JavaScript', async () => {
   }
 });
 
+test('ajouter et retirer une entrée ou un dessert depuis le menu, à 360 px', async () => {
+  await withPage(360, 'light', async (page) => {
+    const week = `${BASE}/menus?semaine=${ids.monday}`;
+    await page.goto(week);
+    // Un repas sans dessert : « ⋯ » puis « Ajouter un dessert ».
+    const menu = page.locator('.meal-menu').filter({ has: page.locator('button:has-text("Ajouter un dessert")') }).first();
+    await menu.locator('summary').click();
+    await checkLayout(page, 'menu d\'un repas', 'light');
+    const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+    assert.deepEqual(axe.violations.map((v) => v.id), [], JSON.stringify(axe.violations.map((v) => [v.id, v.nodes.slice(0, 3).map((n) => n.target)])));
+    await page.screenshot({ path: path.join(SHOTS, 'menu-repas-360-light.png') });
+    await Promise.all([page.waitForNavigation(), menu.locator('button:has-text("Ajouter un dessert")').click()]);
+    const flash = await page.textContent('.flash');
+    assert.match(flash, /Dessert ajouté : .+\./);
+    const title = flash.match(/Dessert ajouté : (.+)\./)[1];
+    assert.ok((await page.textContent('.week')).includes(title));
+    // Retirer ce dessert, depuis le même menu.
+    const again = page.locator('.meal-menu').filter({ has: page.locator(`button:has-text("${title}")`) }).first();
+    await again.locator('summary').click();
+    await Promise.all([page.waitForNavigation(), again.locator('button:has-text("Retirer le dessert")').click()]);
+    assert.match(await page.textContent('.flash'), /retiré du menu/);
+    // « Choisir moi-même » ouvre les propositions du repas.
+    const pick = page.locator('.meal-menu').filter({ has: page.locator('button:has-text("Choisir une entrée moi-même")') }).first();
+    await pick.locator('summary').click();
+    await Promise.all([page.waitForNavigation(), pick.locator('button:has-text("Choisir une entrée moi-même")').click()]);
+    assert.match(page.url(), /\/menus\/repas\/\d+\?alternatives=entree/);
+  });
+});
+
 test('semaine alignée sur grand écran', async () => {
   await withPage(1280, 'light', async (page) => {
     await page.goto(`${BASE}/menus?semaine=${ids.monday}`);
@@ -369,7 +398,9 @@ test('suppression de repas et de recettes, à l\'unité et en sélection multipl
     await page.goto(week);
     const meals = await page.locator('.meal').count();
     // Un repas, avec son bouton.
-    await Promise.all([page.waitForNavigation(), page.locator('.meal-head button[title="Supprimer ce repas"]').first().click()]);
+    const first = page.locator('.meal-menu').first();
+    await first.locator('summary').click();
+    await Promise.all([page.waitForNavigation(), first.locator('button:has-text("Supprimer ce repas")').click()]);
     assert.match(await page.textContent('.flash'), /1 repas supprimé/);
     assert.equal(await page.locator('.meal').count(), meals - 1);
     // Plusieurs repas : mode sélection depuis le menu « Plus ».
@@ -389,7 +420,7 @@ test('suppression de repas et de recettes, à l\'unité et en sélection multipl
     // du menu.
     const html = await (await page.request.get(week)).text();
     const [, rid, title] = html.match(/<a href="\/recettes\/(\d+)\?portions=[^"]*">([^<]+)<\/a>/);
-    await page.goto(`${BASE}/recettes?selection=1`);
+    await page.goto(`${BASE}/recettes?selection=1&q=${encodeURIComponent(title.replace('&#39;', "'"))}`);
     await page.check(`input[name="recette"][value="${rid}"]`);
     await Promise.all([page.waitForNavigation(), page.click('.bulk-bar .btn-danger')]);
     assert.match(await page.textContent('.flash'), /1 recette supprimée et retirée des menus/);

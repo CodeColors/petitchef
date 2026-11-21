@@ -5,7 +5,7 @@
 | # | Jalon | État |
 |---|---|---|
 | 1 | Socle repris de BuddyGet : dépôt, Dockerfile multi-arch, SQLite et migrations, authentification, gabarit, thèmes, navigation mobile, CI, `/healthz` | fait |
-| 2 | Catalogue : produits, unités et conversions, conditionnements, rayons, magasins et ordre des rayons, emplacements, base de départ (880 produits) | fait |
+| 2 | Catalogue : produits, unités et conversions, conditionnements, rayons, magasins et ordre des rayons, emplacements, base de départ (≈ 1 770 produits) | fait |
 | 3 | Inventaire : lots, dates limites, gestes rapides, journal, mode inventaire, à consommer en priorité, scan | fait |
 | 4 | Stock minimum et consommation, modèles de stock | fait |
 | 5 | Recettes : saisie, ingrédients liés, étapes, échelle, composées, avis, indice d'équilibre, FTS5, 70 recettes, import/export | fait |

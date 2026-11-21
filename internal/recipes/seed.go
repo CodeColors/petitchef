@@ -91,7 +91,8 @@ func (s *Service) yamlInput(ctx context.Context, yr yamlRecipe) (Input, error) {
 }
 
 // PurgeSeed retire les recettes de l'ancien jeu de départ (versions
-// antérieures de PetitChef), sauf celles que l'utilisateur a modifiées ou
+// antérieures de PetitChef ; la bibliothèque actuelle, clés « lib: », n'est
+// pas concernée), sauf celles que l'utilisateur a modifiées ou
 // qui servent encore : menus, menus enregistrés, autres recettes. Appelée à
 // chaque démarrage ; sans effet une fois le ménage fait.
 func (s *Service) PurgeSeed(ctx context.Context) (int, error) {
@@ -100,7 +101,7 @@ func (s *Service) PurgeSeed(ctx context.Context) (int, error) {
 		ids, err := db.Collect(ctx, s.db.R, func(r db.Scanner) (int64, error) {
 			var id int64
 			return id, r.Scan(&id)
-		}, `SELECT r.id FROM recipes r WHERE r.origin = 'seed' AND NOT r.modified
+		}, `SELECT r.id FROM recipes r WHERE r.origin = 'seed' AND NOT r.modified AND coalesce(r.seed_key, '') NOT LIKE 'lib:%'
 			AND NOT EXISTS (SELECT 1 FROM menu_entries e WHERE e.recipe_id = r.id)
 			AND NOT EXISTS (SELECT 1 FROM saved_menu_entries e WHERE e.recipe_id = r.id)
 			AND NOT EXISTS (SELECT 1 FROM recipe_ingredients i WHERE i.sub_recipe_id = r.id)`)

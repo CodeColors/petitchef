@@ -105,9 +105,20 @@ par rayon), contrôlé par un test, et mises à jour possibles :
   suivantes de la base ne touchent plus ce produit ;
 - un nom déjà pris par un produit de l'utilisateur n'est pas réimporté.
 
-880 produits (19 rayons), sans prix, code-barres ni valeur nutritionnelle
-(laissés vides). Durées de conservation indicatives, modifiables. Coût :
-160 ms au premier démarrage, rien ensuite.
+Environ 1 770 produits (19 rayons, version 2 de la base), sans prix,
+code-barres ni valeur nutritionnelle (laissés vides). Durées de
+conservation indicatives, modifiables. Coût : moins de 300 ms au premier
+démarrage, rien ensuite.
+
+**Achats cohérents avec les recettes.** Chaque produit alimentaire
+s'achète comme dans le commerce : conditionnements usuels (`cond 500,
+1000`), botte, ou poids à la pièce (`TestSeedIsBuyable`). Une recette
+s'exprime dans son unité (« 300 g de farine », « 2 c. à soupe d'huile »,
+« 1 botte de persil »), convertie en unités de base du produit ; la liste
+de courses additionne les besoins de la semaine puis arrondit au
+conditionnement qui couvre le besoin avec le moins de surplus (300 g de
+farine → un paquet de 500 g ; 3 œufs → une boîte de 6 ; 25 cl de crème →
+une brique de 25 cl).
 
 ### Recherche de produits
 Forme normalisée (`catalog.Normalize` : casse, accents, ponctuation,
@@ -298,20 +309,33 @@ Note, favori, « à ne plus proposer », commentaire : une ligne par recette
 et par membre (`recipe_ratings`). L'historique « cuisinée » est un compteur
 et une date tenus à jour quand un repas est marqué cuisiné (jalon 9).
 
-### Pas de recettes de départ (le catalogue, lui, est fourni)
-La base de recettes démarre vide : chaque foyer saisit, colle ou importe
-ses propres recettes. Le binaire n'embarque que le catalogue de produits.
-Les 70 recettes rédigées pour PetitChef servent désormais de **jeu
-d'essai** aux tests (`internal/recipes/recipetest`, et
-`e2e/fixtures/recettes.json` pour les tests de bout en bout), importé avec
-le même format de saisie ; un test exige que chaque ingrédient corresponde
-exactement à un produit du catalogue.
+### Une bibliothèque de recettes, ajoutée une seule fois
+PetitChef embarque une **bibliothèque de 532 recettes**
+(`internal/recipes/library`, format texte compact décrit dans
+`recettes/LISEZMOI.md`) : 10 bases (pâtes, sauces), plus de 90 entrées,
+plus de 300 plats (viandes, volailles, poissons, végétariens, cuisines du
+monde, gourmands), plus de 80 desserts, petits-déjeuners, goûters et
+accompagnements. Environ 300 recettes sont classées A ou B à l'indice
+d'équilibre, environ 140 D ou E (raclette, burgers, tartiflette, fish and
+chips…) : le générateur de menus les dose selon vos réglages.
 
-Pour les installations qui avaient reçu l'ancien jeu de départ,
-`recipes.PurgeSeed` retire au démarrage les recettes `origin = 'seed'` **non
-modifiées et inutilisées** (ni dans un menu, ni dans un menu enregistré, ni
-comme base d'une autre recette) ; une recette que vous avez modifiée ou
-servie reste. L'opération est sans effet une fois le ménage fait.
+- `recipes.SyncLibrary` l'ajoute au démarrage, une recette à la fois, en
+  mémorisant chaque clé proposée (`recipe_library`, migration 0008) :
+  une recette **supprimée ne revient pas**, une recette dont le titre
+  existe déjà chez vous **n'est pas ajoutée**, et seule une nouvelle
+  version de la bibliothèque (`library.Version`) peut proposer des
+  recettes inédites. Coût : environ 1 s au premier démarrage.
+- `go test ./internal/recipes/library` vérifie toute la bibliothèque :
+  chaque ingrédient correspond exactement à un produit du catalogue, chaque
+  quantité se convertit dans l'unité de base du produit (aucune quantité
+  nulle), chaque produit utilisé s'achète dans un conditionnement, et la
+  répartition entrées / plats / desserts suffit à composer des menus
+  variés.
+- Les 70 recettes du **jeu d'essai** des tests (`recipetest`,
+  `e2e/fixtures/recettes.json`) restent séparées.
+- `recipes.PurgeSeed` retire toujours l'**ancien** jeu de départ (versions
+  antérieures de PetitChef) non modifié et inutilisé ; la bibliothèque
+  (clés `lib:`) n'est pas concernée.
 
 ### Une photo par recette
 Une seule photo (`recipes.photo`) plutôt qu'une table `recipe_photos` :
@@ -576,6 +600,21 @@ sont donc écartées elles aussi.
 - Chaque suppression demande confirmation (texte explicite sur les
   menus) ; sans JavaScript, elle s'applique directement, comme les autres
   formulaires.
+
+## Ajouter ou retirer un élément depuis la semaine
+
+Chaque repas de la semaine a un bouton « ⋯ » (menu déroulant, un seul
+ouvert à la fois, fermé par Échap) qui propose, selon le repas :
+
+- **Ajouter une entrée / un plat / un dessert** : `menus.AddCourse` élargit
+  le format du repas et place la meilleure proposition du générateur (en
+  tenant compte du reste de la semaine, des régimes et du stock) ; le titre
+  ajouté s'affiche en confirmation. « Choisir … moi-même » élargit le
+  format et ouvre les propositions du repas ;
+- **Retirer l'entrée / le plat / le dessert** : `menus.DropCourse` retire
+  le plat (et les restes prévus à partir de lui) ; une entrée ou un dessert
+  sort aussi du format, pour que la prochaine génération ne le remette pas ;
+- détail du repas, et suppression du repas.
 
 ## Page Menus allégée
 
